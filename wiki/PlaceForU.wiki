@@ -1,5 +1,5 @@
+#summary tentang PlaceForU : Portal Cara Cepat Sewa Tempat dengan Tepat
 #labels Featured,Phase-Design
-tentang PlaceForU : Portal Cara Cepat Sewa Tempat dengan Tepat
 
 = Introduction =
 
@@ -16,6 +16,8 @@ tentang PlaceForU : Portal Cara Cepat Sewa Tempat dengan Tepat
 A. Tujuan :
 
 Beberapa tujuan yang menjadi sasaran kami, dapat kami jabarkan sebagai berikut:
+
+
 1.	Menggabungkan segala informasi lengkap tentang jasa persewaan gedung  mulai dari fasilitas, kapasitas, harga, ketersediaan gedung sampai jasa pemesanan gedung secara online dan real-time dalam sebuah website PlaceforU.com.
 
 2.	Mensosialisasikan PlaceforU.com dan menjadikannya sebagai media publikasi jasa persewaan tempat  (gedung) yang dapat diakses  oleh siapapun, dimanapun dan kapanpun. 
