@@ -5,6 +5,7 @@
 
 Fitur-fitur yang terdapat pada placeforU berguna untuk aktor - aktor yang akan menggunakannya, yaitu :
  
+
 1. Penyewa tempat 
    - mempermudah pemesanan
    - mempermudah pencarian informasi lengkap mengenai tempat (harga,lokasi, fasilitas, tanggal booking, dsb)
