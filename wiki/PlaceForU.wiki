@@ -13,7 +13,7 @@
 
 = Details =
 
-A. Tujuan :
+==Tujuan==
 
 Beberapa tujuan yang menjadi sasaran kami, dapat kami jabarkan sebagai berikut:
 
@@ -24,11 +24,11 @@ Beberapa tujuan yang menjadi sasaran kami, dapat kami jabarkan sebagai berikut:
 
 3.	Membangun suatu fasilitas pada aplikasi  dimana berfungsi untuk mencatat segala administrasi pemesanan gedung secara efektif dan terstruktur oleh pengelola gedung.
 
-B. Luaran yang Diharapkan
+==Luaran yang Diharapkan==
 
 Terciptanya suatu sistem informasi terintegrasi berupa website placeforU.com. Aplikasi  yang interaktif ini diharapkan dapat menjadi rujukan orang untuk mendapatkan informasi lengkap tentang  persewaan gedung atau tempat mulai dari fasilitas sampai ketersediaan tempat di seluruh Indonesia. Selain dapat diakses secara online, aplikasi ini nantinya dapat juga diakses via sms. Pengunjung (penyewa gedung) juga dapat melakukan transaksi atau pemesanan tempat secara online. Selain itu, para pemilik jasa persewaan tempat  dapat mempublikasikan segala informasi mengenai usaha persewaannya ke situs kami. Aplikasi ini nantinya diharapkan juga menyediakan fasilitas bagi pengelola tempat/gedung untuk mengatur administrasi keuangan ataupun pengelolaan pesanan pelanggannya.
 
-C. Kegunaan
+==Kegunaan==
 Manfaat dari program pembuatan website PlaceforU.com adalah sebagai berikut:
 
 1.	Sebagai media publikasi persewaan tempat terpadu dan efisien (tepat sasaran), sehingga dapat memberikan kemudahan bagi para pengunjung (penyewa tempat) maupun pemilik persewaan dalam memenuhi tujuannya.
