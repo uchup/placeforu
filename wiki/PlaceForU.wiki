@@ -1,5 +1,5 @@
 #summary tentang PlaceForU : Portal Cara Cepat Sewa Tempat dengan Tepat
-#labels Featured,Phase-Design
+#labels Phase-Requirements
 
 = Introduction =
 
