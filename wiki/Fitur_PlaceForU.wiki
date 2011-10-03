@@ -1,9 +1,21 @@
 #summary Fitur-Fitur PlaceForU
-#labels Phase-Design
+#labels Phase-Requirements
 
 = Introduction =
 
-Fitur-fitur yang terdapat pada placeforU berguna untuk mempermudah para penyewa tempat untuk melakukan pemesanan serta untuk mempermudah pengelola tempat dalam mempublikasikan jasa persewaan dan mengelola administrasi pesanan pelanggannya.
+Fitur-fitur yang terdapat pada placeforU berguna untuk aktor - aktor yang akan menggunakannya, yaitu :
+ 
+1. Penyewa tempat 
+   - mempermudah pemesanan
+   - mempermudah pencarian informasi lengkap mengenai tempat (harga,lokasi, fasilitas, tanggal booking, dsb)
+
+2. Pemilik tempat
+   - menyediakan space untuk memasang informasi tempat secara lengkap
+   - mempermudah pengelolaan administrasi pembayaran persewaan tempat
+
+3. Administrator
+   - mempermudah pengelolaan akun
+   - mempermudah kendali terhadap keseluruhan aktivitas website
 
 
 = Details =
@@ -18,6 +30,7 @@ Fitur – fitur yang akan disediakan oleh “Place for U” adalah sebagai berik
    - Menghapus informasi tempat
 
    - Melihat / mencari  informasi tempat
+
 2. Mengelola penyewaan tempat
    - Menyewa tempat
   
@@ -30,6 +43,7 @@ Fitur – fitur yang akan disediakan oleh “Place for U” adalah sebagai berik
    - Melihat daftar penyewaan tempat
 
    - Mengubah data penyewaan tempat
+
 3. Mengelola administasi penyewaan
    - Melihat administrasi penyewaan
 
@@ -40,6 +54,7 @@ Fitur – fitur yang akan disediakan oleh “Place for U” adalah sebagai berik
    - Menghapus administrasi penyewaan
 
    - Melakukan konfirmasi pembayaran sewa
+
 4. Mengelola akun
    - Menambah akun user baru
 
@@ -56,6 +71,3 @@ Fitur – fitur yang akan disediakan oleh “Place for U” adalah sebagai berik
    - Melakukan registrasi akun
 
    - Melakukan konfirmasi registrasi akun
-5. Melakukan Login
-
-6. Melakukan Logout
