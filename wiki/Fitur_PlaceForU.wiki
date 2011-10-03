@@ -9,16 +9,19 @@ Fitur-fitur yang terdapat pada placeforU berguna untuk aktor - aktor yang akan m
 1. Penyewa tempat 
 
    - mempermudah pemesanan
+
    - mempermudah pencarian informasi lengkap mengenai tempat (harga,lokasi, fasilitas, tanggal booking, dsb)
 
 2. Pemilik tempat
 
    - menyediakan space untuk memasang informasi tempat secara lengkap
+
    - mempermudah pengelolaan administrasi pembayaran persewaan tempat
 
 3. Administrator
 
    - mempermudah pengelolaan akun
+
    - mempermudah kendali terhadap keseluruhan aktivitas website
 
 
