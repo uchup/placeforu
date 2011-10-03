@@ -30,6 +30,7 @@ Terciptanya suatu sistem informasi terintegrasi berupa website placeforU.com. Ap
 
 C. Kegunaan
 Manfaat dari program pembuatan website PlaceforU.com adalah sebagai berikut:
+
 1.	Sebagai media publikasi persewaan tempat terpadu dan efisien (tepat sasaran), sehingga dapat memberikan kemudahan bagi para pengunjung (penyewa tempat) maupun pemilik persewaan dalam memenuhi tujuannya.
 
 2.	Penyewa tempat dapat melakukan transaksi (pemesanan tempat) secara online dan real-time tanpa harus mengunjungi lokasi tempat yang akan disewa. 
@@ -37,56 +38,3 @@ Manfaat dari program pembuatan website PlaceforU.com adalah sebagai berikut:
 3.	Para pemilik jasa persewaan tempat dapat meng-iklankan usahanya ke masyarakat umum dengan informasi yang lengkap di website PlaceforU.com.
 
 4.	Para pemilik jasa persewaan dapat mengatur administrasi keuangan ataupun manajemen pengelolaan pesanan pelanggannya. 
-
-D. Fitur
-Fitur – fitur yang akan disediakan oleh “Place for U” adalah sebagai berikut:
-
-1. Mengelola profil / informasi tempat
-   - Menuliskan informasi tempat
-
-   - Memperbarui informasi tempat
-
-   - Menghapus informasi tempat
-
-   - Melihat / mencari  informasi tempat
-2. Mengelola penyewaan tempat
-   - Menyewa tempat
-  
-   - Melakukan konfirmasi penyewaan 
-   
-   - Membatalkan penyewaan
-
-   - Menghapus daftar penyewaan tempat
-
-   - Melihat daftar penyewaan tempat
-
-   - Mengubah data penyewaan tempat
-3. Mengelola administasi penyewaan
-   - Melihat administrasi penyewaan
-
-   - Mengubah administrasi penyewaan
-
-   - Menambah administrasi penyewaan
-
-   - Menghapus administrasi penyewaan
-
-   - Melakukan konfirmasi pembayaran sewa
-4. Mengelola akun
-   - Menambah akun user baru
-
-   - Mengubah akun user
-
-   - Mengubah akun user (milik sendiri)
-
-   - Melihat semua akun user
-
-   - Melihat akun user (milik sendiri)
-
-   - Menghapus akun user
-
-   - Melakukan registrasi akun
-
-   - Melakukan konfirmasi registrasi akun
-5. Melakukan Login
-
-6. Melakukan Logout
