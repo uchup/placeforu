@@ -11,3 +11,7 @@ Domain model harus dibuat terlebih dulu daripada use case karena domain model me
 
 <h1> Aggregate vs Generalization relationship </h1>
 Sebenarnya saya ingin menjelaskannya melalui gambar, namun belum bisa caranya memasukkan gambar ke sini. Dalam kasus saya aggregate deskripsikan misalnya : *Gedung* memiliki *kategori gedung* dan *tipe gedung*. Jadi Relasi agregat merupakan relasi A has B, C, etc (A memiliki B.C, dst). Sedangkan relasi generalisasi adalah kasus akun yang telah saya jelaskan sebelumnya pada Domain Model vs Use Case bahwa *akun penyewa gedung, akun pemilik gedung, dan akun admnistrator* merupakan tipe / bagian dari *akun*. Jadi relasi generalisasi merupakan relasi _Both of B, C, etc are A_ .
+
+berikut ini adalah link dari domain model yang telah kami buat
+
+https://picasaweb.google.com/110978614194147123364/October102011#5661710896887400210
