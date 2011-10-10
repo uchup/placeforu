@@ -1,34 +1,65 @@
 #summary Use Case Aplikasi Web PlaceForU
 
 UC01	=	Menulis Informasi Gedung
+
 UC02	=	Mengubah  Informasi Gedung
+
 UC03	=	Menghapus  Informasi Gedung
+
 UC04	=	Melihat Informasi Gedung
+
 UC05	=	Menambah kategori gedung
+
 UC06	=	Mengubah kategori gedung
+
 UC07	=	Menghapus kategori gedung
+
 UC08	=	Melihat kategori gedung
+
 UC09	=	Menulis informasi sub gedung
+
 UC10	=	Mengubah informasi sub gedung
+
 UC11	=	Menghapus informasi sub gedung
+
 UC12	=	Menghapus informasi sub gedung
+
 UC13	=	Menyewa Gedung
+
 UC14	=	Melakukan konfirmasi penyewaan
+
 UC15	=	Membatalkan penyewaan
+
 UC16	=	Menghapus histori penyewaan
+
 UC17	=	Melihat histori penyewaan (pemilik gedung)
+
 UC18	=	Melihat histori penyewaan (penyewa gedung)
+
 UC19	=	Melihat administrasi penyewaan (pemilik gedung)
+
 UC20	=	Melihat administrasi penyewaan (penyewa gedung)
+
 UC21	=	Mengubah administrasi penyewaan
+
 UC22	=	Menambah administrasi penyewaan
+
 UC23	=	Menghapus administrasi penyewaan
+
 UC24	=	Melakukan konfirmasi pembayaran
+
 UC25	=	Melakukan registrasi akun
+
 UC26	=	Mengubah akun
+
 UC27	=	Melihat semua akun
+
 UC28	=	Melihat  akun sendiri
+
 UC29	=	Menghapus akun
+
 UC30	=	Melakukan konfirmasi registrasi akun
+
 UC31	=	Login
+
 UC32	=	Logout
