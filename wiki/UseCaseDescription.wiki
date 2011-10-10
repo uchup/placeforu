@@ -1,1 +1,6 @@
 #summary Use Case Description
+
+Sebelumnya sudah diupload oleh Ika di Comment pada Issue bagian UseCase
+Ini link untuk melihatnya di google code
+
+https://docs.google.com/document/d/1AN46zZf_UaUgx7c4QqFNANFZNxxiJaiE7ii2jzbZ-RM/edit?hl=en_US
