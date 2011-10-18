@@ -1,0 +1,43 @@
+.category {
+	font-size: 16px;
+	color: #FFFFCC;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.menucategory {font-family: Arial, Helvetica, sans-serif; font-size: 14px; }
+.productname {
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.specification {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.price {
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.cart {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+}
+.cart a:link {
+	color: #ffffff;
+}
+.cart a:visited {
+	color: #ffffff;
+}
+.button a:link {
+	color: #A8A8FF;
+}
+.button a:visited {
+	color: #A8A8FF;
+}
+a:link {
+	color: #000000;
+}
+a:visited {
+	color: #000000;
+}
