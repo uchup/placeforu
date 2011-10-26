@@ -1,5 +1,5 @@
 #labels Phase-Requirements,Phase-Design
-<h1> Daftar Use Case fix per 26 Oktober 2011 <h1>
+<h1> Daftar Use Case fix per 26 Oktober 2011 </h1>
 
 001	Melakukan registrasi akun baru
 002	Mengubah profil user (semua pengguna)
