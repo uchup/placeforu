@@ -1,10 +1,11 @@
 #labels Phase-Requirements,Phase-Design
 <h1> Daftar Use Case fix per 26 Oktober 2011 </h1>
 
-001	Melakukan registrasi akun baru
-002	Mengubah profil user (semua pengguna)
-003	Mengubah profil user (profil milik sendiri)
-004	Melihat semua profil user
-005	Melihat profil user (milik sendiri)
-006	Menghapus profil pengguna
-007	Melakukan konfirmasi registrasi pengguna
+
+UC001	Melakukan registrasi akun baru
+UC002	Mengubah profil user (semua pengguna)
+UC003	Mengubah profil user (profil milik sendiri)
+UC004	Melihat semua profil user
+UC005	Melihat profil user (milik sendiri)
+UC006	Menghapus profil pengguna
+UC007	Melakukan konfirmasi registrasi pengguna
