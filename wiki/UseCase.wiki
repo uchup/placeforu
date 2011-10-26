@@ -2,10 +2,10 @@
 <h1> Daftar Use Case fix per 26 Oktober 2011 </h1>
 
 
-UC001	Melakukan registrasi akun baru
-UC002	Mengubah profil user (semua pengguna)
-UC003	Mengubah profil user (profil milik sendiri)
-UC004	Melihat semua profil user
-UC005	Melihat profil user (milik sendiri)
-UC006	Menghapus profil pengguna
-UC007	Melakukan konfirmasi registrasi pengguna
+UC001	Melakukan registrasi akun baru <br>
+UC002	Mengubah profil user (semua pengguna) <br>
+UC003	Mengubah profil user (profil milik sendiri) <br>
+UC004	Melihat semua profil user <br>
+UC005	Melihat profil user (milik sendiri) <br>
+UC006	Menghapus profil pengguna <br>
+UC007	Melakukan konfirmasi registrasi pengguna <br>
