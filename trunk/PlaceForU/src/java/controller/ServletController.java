@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package controller;
+packagee controller;
 
 import dbase.DBcategory;
 import dbase.DBconnection;
