@@ -9,3 +9,5 @@ UC004	Melihat semua profil user <br>
 UC005	Melihat profil user (milik sendiri) <br>
 UC006	Menghapus profil pengguna <br>
 UC007	Melakukan konfirmasi registrasi pengguna <br>
+
+http://placeforu.googlecode.com/issues/attachment?aid=20007000&name=akun.xml&token=c91c2d376e7cc894c4667ee07fad9029
