@@ -11,12 +11,45 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Pendaftaran User</title>
     </head>
     <body>
         <h2>Pendaftaran User</h2>
         <form method='post' action='register'>
         <fieldset>
+<<<<<<< .mine
+        Nama            :
+        <input type='text' name='nama' />
+        <br><br>
+         <label>tipe pengguna
+        <select name="tipe" id="tipe">
+          <option>  </option>
+          <option>Pemilik Tempat</option>
+          <option>Penyewa Tempat</option>
+        </select>
+        </label>
+        <br><br>
+        Email:
+        <input type='text' name='email' />
+        <br><br>
+        Alamat:
+        <input type='text' name='alamat' />
+        <br><br>
+        No.Hp:
+        <input type='text' name='hape' />
+        <br><br>
+        No.Telp:
+        <input type='text' name='telp' />
+        <br><br>
+        Username:
+        <input type='text' name='usname' />
+        <br><br>
+        Password:
+        <input type='password' name='psword' />
+        <br><br>
+        <input type='submit' value='Daftar' />
+        </fieldset>
+=======
         <table>
             <tr>
                 <td>
@@ -93,6 +126,7 @@
                 </fieldset>
             </td>
         </tr>
+>>>>>>> .r54z
         </form>
     </body>
 </html>
