@@ -7,15 +7,15 @@ package servlet;
 
 import entity.User;
 import entity.DaftarUser;
-import jpa.UserJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +34,7 @@ public class Register extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+
         String nama = request.getParameter("nama");
         String tipe = request.getParameter("tipe");
         String email = request.getParameter("email");
@@ -59,12 +60,24 @@ public class Register extends HttpServlet {
 
 
 
-
         RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/index.jsp");
+       /* DaftarUser lihatDaftar = new DaftarUser();
+        lihatDaftar.getUsers(user);
+        List<User> users = lihatDaftar.getUsers();
+        Iterator<User> iterator = users.iterator();
+        while (iterator.hasNext()) {
+            User next = iterator.next();
+            System.out.println(next.getNama());
+            System.out.println(next.getUsername());*/
+
+        
+
+            /* request.getRequestDispatcher("/index.jsp");*/
         requestDispatcher.forward(request, response);
 
-    }
+
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
