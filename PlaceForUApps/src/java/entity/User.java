@@ -22,6 +22,12 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String nama;
+    private String tipe;
+    private String hape;
+    private String email;
+    private String telp;
+    private String alamat;
     private String username;
     private String password;
     private boolean loginStat;
@@ -57,6 +63,56 @@ public class User implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getHape() {
+        return hape;
+    }
+
+    public void setHape(String hape) {
+        this.hape = hape;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getTelp() {
+        return telp;
+    }
+
+    public void setTelp(String telp) {
+        this.telp = telp;
+    }
+
+    public String getTipe() {
+        return tipe;
+    }
+
+    public void setTipe(String tipe) {
+        this.tipe = tipe;
+    }
+
+    
 
     @Override
     public int hashCode() {

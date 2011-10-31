@@ -15,8 +15,26 @@
     </head>
     <body>
         <h2>Pendaftaran User</h2>
-        <form method='post' action='register'>
+         <form method='post' action='register'>
         <fieldset>
+        Nama            :
+        <input type='text' name='nama' />
+        <br><br>
+        tipe pengguna :
+        <input type='text' name='tipe' />
+        <br><br>
+        Email:
+        <input type='text' name='email' />
+        <br><br>
+        Alamat:
+        <input type='text' name='alamat' />
+        <br><br>
+        No.Hp:
+        <input type='text' name='hape' />
+        <br><br>
+        No.Telp:
+        <input type='text' name='telp' />
+        <br><br>
         Username:
         <input type='text' name='usname' />
         <br><br>
