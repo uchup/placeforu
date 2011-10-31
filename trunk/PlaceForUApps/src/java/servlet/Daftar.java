@@ -42,7 +42,7 @@ public class Daftar extends HttpServlet {
         String name = request.getParameter("usname");
         String pass = request.getParameter("psword");
 
-        DaftarUser lihatDaftar = new DaftarUser();
+       /* DaftarUser lihatDaftar = new DaftarUser();
         lihatDaftar.getUsers(user);
         List<User> users = lihatDaftar.getUsers();
         Iterator<User> iterator = users.iterator();
@@ -50,7 +50,7 @@ public class Daftar extends HttpServlet {
             User next = iterator.next();
             System.out.println(next.getNama());
             System.out.println(next.getUsername());
-    } }
+    }*/ }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
