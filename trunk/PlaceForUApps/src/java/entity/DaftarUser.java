@@ -59,4 +59,17 @@ public class DaftarUser {
         }
         return user;
     }
+
+    public void addUser(User user) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.persist(user);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
 }

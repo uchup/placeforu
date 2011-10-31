@@ -34,14 +34,31 @@ public class Register extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String nama = request.getParameter("nama");
+        String tipe = request.getParameter("tipe");
+        String email = request.getParameter("email");
+        String telp = request.getParameter("telp");
+        String alamat = request.getParameter("alamat");
+        String hape = request.getParameter("hape");
         String name = request.getParameter("usname");
         String pass = request.getParameter("psword");
 
         User user = new User();
+
+        user.setNama(nama);
+        user.setTipe(tipe);
+        user.setEmail(email);
+        user.setTelp(telp);
+        user.setAlamat(alamat);
+        user.setHape(hape);
         user.setUsername(name);
         user.setPassword(pass);
-        UserJpaController jpa = new UserJpaController();
-        jpa.create(user);
+
+        DaftarUser daftar = new DaftarUser();
+        daftar.addUser(user);
+
+
+
 
         RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/index.jsp");
