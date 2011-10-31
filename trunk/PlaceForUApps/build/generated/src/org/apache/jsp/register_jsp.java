@@ -11,7 +11,7 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.Vector _jspx_dependants;
 
-  private org.apache.jasper.runtime.ResourceInjector _jspx_resourceInjector;
+  private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public Object getDependants() {
     return _jspx_dependants;
@@ -29,7 +29,6 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
     JspWriter _jspx_out = null;
     PageContext _jspx_page_context = null;
 
-
     try {
       response.setContentType("text/html;charset=UTF-8");
       pageContext = _jspxFactory.getPageContext(this, request, response,
@@ -40,7 +39,7 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
       session = pageContext.getSession();
       out = pageContext.getOut();
       _jspx_out = out;
-      _jspx_resourceInjector = (org.apache.jasper.runtime.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
+      _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
       out.write("\n");
@@ -57,14 +56,82 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <h2>Pendaftaran User</h2>\n");
       out.write("        <form method='post' action='register'>\n");
       out.write("        <fieldset>\n");
-      out.write("        Username:\n");
-      out.write("        <input type='text' name='usname' />\n");
-      out.write("        <br><br>\n");
-      out.write("        Password:\n");
-      out.write("        <input type='password' name='psword' />\n");
-      out.write("        <br><br>\n");
-      out.write("        <input type='submit' value='Daftar' />\n");
-      out.write("        </fieldset>\n");
+      out.write("        <table>\n");
+      out.write("            <tr>\n");
+      out.write("                <td>\n");
+      out.write("                <fieldset>\n");
+      out.write("                <legend><h4>Profil</h4></legend>    \n");
+      out.write("                    <table>   \n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>Nama</td>\n");
+      out.write("                            <td>:</td>\n");
+      out.write("                            <td><input type='text' name='nama' /></td>\n");
+      out.write("                        </tr>\n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>Tipe pengguna</td>\n");
+      out.write("                            <td>:</td>\n");
+      out.write("                            <td>\n");
+      out.write("                                <select>\n");
+      out.write("                                    <option value=\"1\">Pemilik Tempat</option>\n");
+      out.write("                                    <option value=\"2\">Penyewa Tempat</option>\n");
+      out.write("                                </select>\n");
+      out.write("                            </td>\n");
+      out.write("                        </tr>\n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>Email</td>\n");
+      out.write("                            <td>:</td>\n");
+      out.write("                            <td><input type='text' name='email' /></td>\n");
+      out.write("                        </tr>\n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>Alamat</td>\n");
+      out.write("                            <td>:</td>\n");
+      out.write("                            <td><input type='text' name='alamat' /></td>\n");
+      out.write("                        </tr>\n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>No.Hp</td>\n");
+      out.write("                            <td>:</td>\n");
+      out.write("                            <td><input type='text' name='hape' /></td>\n");
+      out.write("                        </tr>       \n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>No.Telp</td>\n");
+      out.write("                            <td>:</td>\n");
+      out.write("                            <td><input type='text' name='telp' /></td>\n");
+      out.write("                        </tr>\n");
+      out.write("                        <tr>\n");
+      out.write("                            <td>Foto</td>\n");
+      out.write("                            <td>:</td>\n");
+      out.write("                            <td><input type='file' name='foto' /></td>\n");
+      out.write("                        </tr>\n");
+      out.write("                    </table> \n");
+      out.write("                </fieldset>\n");
+      out.write("                </td>\n");
+      out.write("            </tr>\n");
+      out.write("            <tr>\n");
+      out.write("                <td>\n");
+      out.write("                    <fieldset>\n");
+      out.write("                    <legend><h4>Akun Pengguna</h4></legend>\n");
+      out.write("                    <table>   \n");
+      out.write("                    <tr>\n");
+      out.write("                        <td>Username</td>\n");
+      out.write("                        <td>:</td>\n");
+      out.write("                        <td><input type='text' name='usname' /></td>\n");
+      out.write("                    </tr>\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td>Password</td>\n");
+      out.write("                        <td>:</td>\n");
+      out.write("                        <td><input type='password' name='psword' /></td>\n");
+      out.write("                    </tr>\n");
+      out.write("                    <tr>\n");
+      out.write("                        <td></td>\n");
+      out.write("                        <td></td>\n");
+      out.write("                        <td><input type='submit' value='Register' /></td>\n");
+      out.write("                    </tr>\n");
+      out.write("                    </table> \n");
+      out.write("                    </fieldset>\n");
+      out.write("                </table>\n");
+      out.write("                </fieldset>\n");
+      out.write("            </td>\n");
+      out.write("        </tr>\n");
       out.write("        </form>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
@@ -74,6 +141,7 @@ public final class register_jsp extends org.apache.jasper.runtime.HttpJspBase
         if (out != null && out.getBufferSize() != 0)
           out.clearBuffer();
         if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else throw new ServletException(t);
       }
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
