@@ -4,6 +4,8 @@
  */
 package entity;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -72,4 +74,22 @@ public class DaftarUser {
             em.close();
         }
     }
+    public List<User> getUsers() {
+        List<User> users = new ArrayList<User>();
+
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM User AS o");
+            users = q.getResultList();
+
+        } finally {
+            em.close();
+        }
+        return users;
+    }
+
+    public void getUsers(User user) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
 }
