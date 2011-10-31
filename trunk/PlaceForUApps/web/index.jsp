@@ -26,7 +26,7 @@
 	<div id="menu">
 		<ul>
 			<li class="current_page_item"><a href="#">Homepage</a></li>
-			<li><a href="#">Portfolio</a></li>
+			<li><a href="#">Informasi Gedung</a></li>
 			<li><a href="#">Services</a></li>
 			<li><a href="#">About</a></li>
 			<li><a href="#">Contact</a></li>
