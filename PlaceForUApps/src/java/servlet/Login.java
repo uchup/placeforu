@@ -45,7 +45,7 @@ public class Login extends HttpServlet {
         String username = user.getUsername();
         String password = user.getPassword();
 
-        if(name.equals("yuni") && pass.equals("yuni")){
+        if(name.equals(username) && pass.equals(password)){
             session.setAttribute("user",username);
             dis = request.getRequestDispatcher("/backend/home.jsp");
             dis.forward(request, response);

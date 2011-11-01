@@ -26,10 +26,6 @@
 	<div id="menu">
 		<ul>
 			<li class="current_page_item"><a href="#">Homepage</a></li>
-			<li><a href="#">Informasi Gedung</a></li>
-			<li><a href="#">Services</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Contact</a></li>
 		</ul>
 	</div>
 	<div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -82,19 +78,29 @@
 					<h2>Log In</h2>
 					<form method='post' action='login'>
                                             <fieldset>
-                                            Username:
-                                            <input type='text' name='uname' />
-                                            <br><br>
-                                            Password:
-                                            <input type='password' name='pass' />
-                                            <br><br>
-                                            <input type='submit' value='Login' />
-                                            <a href="/PlaceForUApps/register.jsp">Register</a>
+                                                <table>
+                                                    <tr>
+                                                        <td>Username :</td>  
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type='text' name='uname' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Password :</td>  
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type='password' name='pass' /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type='submit' value='Login' />
+                                                        <a href="/PlaceForUApps/register.jsp">Register</a></td>         
+                                                    </tr>
+                                                </table>
                                             </fieldset>
                                             </form>
 				</li>
 				<li>
-					<h2>Categories</h2>
+					<h2>Gedung Terbaru</h2>
 					<ul>
 						<li><a href="#">Aliquam libero</a></li>
 						<li><a href="#">Consectetuer adipiscing elit</a></li>
@@ -106,17 +112,6 @@
 				</li>
 				<li>
 					<h2>Blogroll</h2>
-					<ul>
-						<li><a href="#">Aliquam libero</a></li>
-						<li><a href="#">Consectetuer adipiscing elit</a></li>
-						<li><a href="#">Metus aliquam pellentesque</a></li>
-						<li><a href="#">Suspendisse iaculis mauris</a></li>
-						<li><a href="#">Urnanet non molestie semper</a></li>
-						<li><a href="#">Proin gravida orci porttitor</a></li>
-					</ul>
-				</li>
-				<li>
-					<h2>Archives</h2>
 					<ul>
 						<li><a href="#">Aliquam libero</a></li>
 						<li><a href="#">Consectetuer adipiscing elit</a></li>
