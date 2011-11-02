@@ -25,6 +25,10 @@
         <servlet-name>Daftar</servlet-name>
         <servlet-class>servlet.Daftar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewServlet</servlet-name>
+        <servlet-class>servlet.NewServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CobaServlet</servlet-name>
         <url-pattern>/CobaServlet</url-pattern>
@@ -48,6 +52,10 @@
     <servlet-mapping>
         <servlet-name>Daftar</servlet-name>
         <url-pattern>/Daftar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewServlet</servlet-name>
+        <url-pattern>/NewServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
