@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : Oct 29, 2011, 1:26:33 PM
     Author     : Widiasa
@@ -80,20 +80,20 @@
                                             <fieldset>
                                                 <table>
                                                     <tr>
-                                                        <td>Username :</td>  
+                                                        <td>Username :</td>
                                                     </tr>
                                                     <tr>
                                                         <td><input type='text' name='uname' /></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Password :</td>  
+                                                        <td>Password :</td>
                                                     </tr>
                                                     <tr>
                                                         <td><input type='password' name='pass' /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><input type='submit' value='Login' />
-                                                        <a href="/PlaceForUApps/register.jsp">Register</a></td>         
+                                                        <a href="/PlaceForUApps/register.jsp">Register</a></td>
                                                     </tr>
                                                 </table>
                                             </fieldset>
