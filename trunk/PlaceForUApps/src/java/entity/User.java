@@ -22,11 +22,12 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nama;
-    private String tipe;
+    private int tipe;
     private String hape;
     private String email;
     private String telp;
     private String alamat;
+    private int status;
     private String username;
     private String password;
     private boolean loginStat;
@@ -103,15 +104,25 @@ public class User implements Serializable {
         this.telp = telp;
     }
 
-    public String getTipe() {
+    public int getTipe() {
         return tipe;
     }
 
-    public void setTipe(String tipe) {
+    public void setTipe(int tipe) {
         this.tipe = tipe;
     }
 
-    
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+
+
+
 
     @Override
     public int hashCode() {
