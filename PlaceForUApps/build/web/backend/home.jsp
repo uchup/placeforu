@@ -16,7 +16,7 @@
     <body>
         <h1>Halaman Utama</h1>
         <br>
-        <h3><a href="logout">Logout</a></h3>
+        <h3><a href="controller?page=logout">Log Out</a></h3>
     </body>
 </html>
 

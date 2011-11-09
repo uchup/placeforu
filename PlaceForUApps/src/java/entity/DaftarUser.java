@@ -45,6 +45,22 @@ public class DaftarUser {
         return result;
     }
 
+    public boolean checkUser(String username) {
+        boolean result = false;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT count(o) FROM User AS o WHERE o.username=:usr");
+            q.setParameter("usr", username);
+            int jumlahUser = ((Long) q.getSingleResult()).intValue();
+            if (jumlahUser > 0) {
+                result = true;
+            }
+        } finally {
+            em.close();
+        }
+        return result;
+    }
+
     public User getUser(String username, String password) {
         User user = null;
         EntityManager em = getEntityManager();

@@ -57,13 +57,19 @@ public class Register extends HttpServlet {
         user.setPassword(pass);
         user.setStatus(status);
 
+        RequestDispatcher page = null;
         DaftarUser daftar = new DaftarUser();
-        daftar.addUser(user);
+
+
+            daftar.addUser(user);
+            page = request.getRequestDispatcher("/index.jsp");
+            page.forward(request, response);
 
 
 
-        RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/index.jsp");
+
+        
+               
        /* DaftarUser lihatDaftar = new DaftarUser();
         lihatDaftar.getUsers(user);
         List<User> users = lihatDaftar.getUsers();
@@ -76,7 +82,7 @@ public class Register extends HttpServlet {
 
 
             /* request.getRequestDispatcher("/index.jsp");*/
-        requestDispatcher.forward(request, response);
+        
 
 
         }

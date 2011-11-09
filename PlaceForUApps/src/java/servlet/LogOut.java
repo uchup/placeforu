@@ -36,10 +36,11 @@ public class LogOut extends HttpServlet {
         HttpSession session = request.getSession();
         if (session.getAttribute("user") != null){
             session.removeAttribute("user");
-            session.invalidate();
+            session.invalidate();    
         }
-        dis = request.getRequestDispatcher("/home");
+        dis = request.getRequestDispatcher("index.jsp");
         dis.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

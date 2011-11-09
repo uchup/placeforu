@@ -40,6 +40,22 @@ public class Login extends HttpServlet {
         String pass = request.getParameter("pass");
 
         DaftarUser daftarUser = new DaftarUser();
+        User users = daftarUser.getUser(name,pass);
+        if (users != null) {
+            if (users.getUsername().equals(name) && users.getPassword().equals(pass) ) {
+                session.setAttribute("sessionusername", name);
+                dis = request.getRequestDispatcher("/backend/home.jsp");
+                dis.forward(request, response);
+            }
+            else {
+                out.println("Password Invalid");
+            }
+        }
+        else {
+            dis = request.getRequestDispatcher("/successsaving.jsp");
+            dis.forward(request, response);
+        }
+    }
         /*User user = daftarUser.getUser(name,pass);
 
         String username = user.getUsername();
@@ -65,30 +81,17 @@ out.println("Hallo" + session.getAttribute("sessionusername"));
 } else {out.println("Password Invalid");}
 else {out.println("Username Invalid");}}*/
 //UsersJpaController ujc = new UsersJpaController();
-User users = daftarUser.getUser(name,pass);
-users=daftarUser.getUser(name,pass);
 
-if (users != null) {
-if (users.getUsername().equals(name) && users.getPassword().equals(pass) ) {
-session.setAttribute("sessionusername", name);
-dis = request.getRequestDispatcher("/backend/home.jsp");
-            dis.forward(request, response);
+
+
 //out.println("Hallo" + session.getAttribute("sessionusername"));
-} else {
-out.println("Password Invalid");
-}}
 
-else {
-dis = request.getRequestDispatcher("/successsaving.jsp");
-            dis.forward(request, response);
-
+    
     //out.println("Username Invalid");
 
-}
-
-}
 
 
+   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
