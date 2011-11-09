@@ -6,12 +6,12 @@
         <servlet-class>servlet.CobaServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>LogOut</servlet-name>
+        <servlet-name>logout</servlet-name>
         <servlet-class>servlet.LogOut</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Home</servlet-name>
-        <servlet-class>servlet.Home</servlet-class>
+        <servlet-name>index</servlet-name>
+        <servlet-class>servlet.Index</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>register</servlet-name>
@@ -22,24 +22,16 @@
         <servlet-class>servlet.Login</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Daftar</servlet-name>
-        <servlet-class>servlet.Daftar</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>NewServlet</servlet-name>
-        <servlet-class>servlet.NewServlet</servlet-class>
+        <servlet-name>controller</servlet-name>
+        <servlet-class>controller.ServletController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CobaServlet</servlet-name>
         <url-pattern>/CobaServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LogOut</servlet-name>
+        <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Home</servlet-name>
-        <url-pattern>/home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>register</servlet-name>
@@ -50,12 +42,12 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Daftar</servlet-name>
-        <url-pattern>/Daftar</url-pattern>
+        <servlet-name>controller</servlet-name>
+        <url-pattern>/controller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>NewServlet</servlet-name>
-        <url-pattern>/NewServlet</url-pattern>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

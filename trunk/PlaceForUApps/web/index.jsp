@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : Oct 29, 2011, 1:26:33 PM
     Author     : Widiasa
@@ -76,24 +76,24 @@
 				</li>
 				<li>
 					<h2>Log In</h2>
-					<form method='post' action='login'>
+					<form method='post' action='controller?page=login'>
                                             <fieldset>
                                                 <table>
                                                     <tr>
-                                                        <td>Username :</td>  
+                                                        <td>Username :</td>
                                                     </tr>
                                                     <tr>
                                                         <td><input type='text' name='uname' /></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Password :</td>  
+                                                        <td>Password :</td>
                                                     </tr>
                                                     <tr>
                                                         <td><input type='password' name='pass' /></td>
                                                     </tr>
                                                     <tr>
                                                         <td><input type='submit' value='Login' />
-                                                        <a href="/PlaceForUApps/register.jsp">Register</a></td>         
+                                                        <a href="controller?page=register">Register</a></td>
                                                     </tr>
                                                 </table>
                                             </fieldset>
@@ -151,7 +151,7 @@
 	</div>
 </div>
 <div id="footer">
-	<p>Copyright (c) 2011 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a>.</p>
+	<p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
 </div>
 </div>
 <!-- end #footer -->

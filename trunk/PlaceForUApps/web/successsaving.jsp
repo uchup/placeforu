@@ -11,13 +11,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Success Saving</title>
+        <title>Incomplete Field</title>
     </head>
     <body>
-        <h1>Success Saving</h1>
+        <h1>Login Gagal</h1>
         
-        <form method='post' action='Daftar'>
-        <input type='submit' value='Daftar User' />
-        </form>
+        <h3><a href="register.jsp">back</a></h3>
     </body>
 </html>
