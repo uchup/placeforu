@@ -34,6 +34,10 @@ public class Register extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        RequestDispatcher dis = null;
+        String jenisError;
+        String message = null;
+        Object Message = null;
 
         String nama = request.getParameter("nama");
         int tipe = Integer.parseInt(request.getParameter("tipe"));
@@ -41,7 +45,7 @@ public class Register extends HttpServlet {
         String telp = request.getParameter("telp");
         String alamat = request.getParameter("alamat");
         String hape = request.getParameter("hape");
-        String name = request.getParameter("usname");
+        String usname = request.getParameter("usname");
         String pass = request.getParameter("psword");
         int status = 0;
 
@@ -53,10 +57,19 @@ public class Register extends HttpServlet {
         user.setTelp(telp);
         user.setAlamat(alamat);
         user.setHape(hape);
-        user.setUsername(name);
+        user.setUsername(usname);
         user.setPassword(pass);
         user.setStatus(status);
-
+        
+        if (nama.equals("") || email.equals("") || telp.equals("")
+                || alamat.equals("") || usname.equals("") || pass.equals("")) {
+          RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("/error_page.jsp");
+                message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
+                request.setAttribute("message", message);
+             requestDispatcher.forward(request, response);  
+        }
+        else{
         RequestDispatcher page = null;
         DaftarUser daftar = new DaftarUser();
 
@@ -64,6 +77,7 @@ public class Register extends HttpServlet {
             daftar.addUser(user);
             page = request.getRequestDispatcher("/index.jsp");
             page.forward(request, response);
+        }
 
 
 
