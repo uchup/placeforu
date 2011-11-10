@@ -103,6 +103,21 @@ public class DaftarUser {
         }
         return users;
     }
+    // get username list
+    public List<User> getUsername(String username) {
+        List<User> users = new ArrayList<User>();
+
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.username=:usr");
+            q.setParameter("usr", username);
+            users = q.getResultList();
+
+        } finally {
+            em.close();
+        }
+        return users;
+    }
 
     public void getUsers(User user) {
         throw new UnsupportedOperationException("Not yet implemented");
