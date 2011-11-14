@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
         if (users != null) {
             if (users.getUsername().equals(name) && users.getPassword().equals(pass) ) {
                 session.setAttribute("sessionusername", name);
-                dis = request.getRequestDispatcher("/backend/home.jsp");
+                dis = request.getRequestDispatcher("home.jsp");
                 dis.forward(request, response);
             }
             else {
@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
             }
         }
         else {
-            dis = request.getRequestDispatcher("/successsaving.jsp");
+            dis = request.getRequestDispatcher("gagallogin.jsp");
             dis.forward(request, response);
         }
     }
