@@ -1,13 +1,17 @@
 #labels Phase-Requirements,Phase-Design
 <h1> Daftar Use Case fix per 26 Oktober 2011 </h1>
 
+<h2> Login Logout </h2>
+UC001	Login <br>
+UC002	Logout <br>
+
 <h2> Manajemen Akun </h2>
-UC001	Melakukan registrasi akun baru <br>
-UC002	Mengubah profil user (semua pengguna) <br>
-UC003	Mengubah profil user (profil milik sendiri) <br>
-UC004	Melihat semua profil user <br>
-UC005	Melihat profil user (milik sendiri) <br>
-UC006	Menghapus profil pengguna <br>
-UC007	Melakukan konfirmasi registrasi pengguna <br>
+UC003	Melakukan registrasi akun baru <br>
+UC004	Mengubah profil user (semua pengguna) <br>
+UC005	Mengubah profil user (profil milik sendiri) <br>
+UC006	Melihat semua profil user <br>
+UC007	Melihat profil user (milik sendiri) <br>
+UC008	Menghapus profil pengguna <br>
+UC009	Melakukan konfirmasi registrasi pengguna <br>
 
 http://placeforu.googlecode.com/issues/attachment?aid=20007000&name=akun.xml&token=c91c2d376e7cc894c4667ee07fad9029
