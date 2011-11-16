@@ -35,11 +35,7 @@ public class Register extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
-        String jenisError;
         String message = null;
-        Object Message = null;
-        String message2 = null;
-        Object Message2 = null;
 
         String nama = request.getParameter("nama");
         int tipe = Integer.parseInt(request.getParameter("tipe"));
@@ -55,40 +51,39 @@ public class Register extends HttpServlet {
         RequestDispatcher page = null;
         DaftarUser daftar = new DaftarUser();
 
-         if (nama.equals("") || email.equals("") || telp.equals("")
+        if (nama.equals("") || email.equals("") || telp.equals("")
                 || alamat.equals("") || usname.equals("") || pass.equals("")) {
-          RequestDispatcher requestDispatcher =
+            RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/error_page.jsp");
                 message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
                 request.setAttribute("message", message);
-             requestDispatcher.forward(request, response);
+                requestDispatcher.forward(request, response);
         }
         else{
-                boolean hasilCheck = daftar.checkUser(usname);
-                if (!hasilCheck) {
-
-                   user.setNama(nama);
-                    user.setTipe(tipe);
-                    user.setEmail(email);
-                    user.setTelp(telp);
-                    user.setAlamat(alamat);
-                    user.setHape(hape);
-                    user.setUsername(usname);
-                    user.setPassword(pass);
-                    user.setStatus(status);
-                    daftar.addUser(user);
-                    page = request.getRequestDispatcher("index.jsp");
-                    page.forward(request, response);
-                } else {
+            boolean hasilCheck = daftar.checkUser(usname);
+            if (!hasilCheck) {
+                user.setNama(nama);
+                user.setTipe(tipe);
+                user.setEmail(email);
+                user.setTelp(telp);
+                user.setAlamat(alamat);
+                user.setHape(hape);
+                user.setUsername(usname);
+                user.setPassword(pass);
+                user.setStatus(status);
+                daftar.addUser(user);
+                page = request.getRequestDispatcher("index.jsp");
+                page.forward(request, response);
+            } else {
                    //out.println("Username telah terdaftar");
-                    message2 ="Username telah terdaftar, ulangi lagi ";
-                    request.setAttribute("message2", message2);
-                    page = request.getRequestDispatcher("/error_page2.jsp");
+                message ="Username telah terdaftar, ulangi lagi ";
+                request.setAttribute("message", message);
+                page = request.getRequestDispatcher("/error_page.jsp");
                     page.forward(request, response);
-                }
+            }
 
         }
-        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -101,7 +96,11 @@ public class Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String destination = "/register.jsp";
+
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
+        rd.forward(request, response);
+
     }
 
     /**

@@ -39,6 +39,7 @@
 <div id="footer">
 	<p>Design by Kelompok 9</p>
 </div>
+</div>
 <!-- end #footer -->
 </body>
 </html>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : home
-    Created on : Nov 9, 2011, 10:49:50 PM
-    Author     : Yuni
+    Created on : Nov 16, 2011, 7:52:40 AM
+    Author     : Widiasa
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -25,13 +25,11 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="controller?page=home">Homepage</a></li>
-		</ul>
-            <ul>
-			<li class="current_page_item"><a href="controller?page=home">Manajemen User</a></li>
-		</ul>
-            <ul>
-			<li class="current_page_item"><a href="controller?page=logout">LogOut</a></li>
+			<li class="current_page_item"><a href="pemilik">Homepage</a></li>
+			<li class="current_page_item"><a href="#">Manajemen Informasi Gedung</a></li>
+			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+			<li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+			<li class="current_page_item"><a href="logout">Log Out</a></li>
 		</ul>
 	</div>
 	<div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -40,7 +38,7 @@
 	<div id="page-bgtop">
 		<div id="content">
 			<div class="post">
-				<h2 class="title"><a href="#">Selamat Datang,  ${sessionusername}
+				<h2 class="title"><a href="#">Selamat Datang, ${sessionusername}
                                     </a></h2>
 
 				<p class="meta"><span class="date">April 10, 2011</span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
@@ -115,4 +113,3 @@
 <!-- end #footer -->
 </body>
 </html>
-

@@ -228,7 +228,7 @@ a:hover {
 
 .post .title {
 	padding: 0px 0px 10px 0px;
-	text-transform: lowercase;
+	/*text-transform: lowercase;*/
 	font-family: Georgia, "Times New Roman", Times, serif;
 	letter-spacing: -1px;
 }
