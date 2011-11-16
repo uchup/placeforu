@@ -21,9 +21,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Widiasa
  */
-public class Home extends HttpServlet {
-
-    /**
+public class HomePemilik extends HttpServlet {
+   
+    /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -44,14 +44,14 @@ public class Home extends HttpServlet {
             boolean hasilCheck = du.checkUser(username);
             if (hasilCheck) {
                 u = du.getUserFromName(username);
-                if (u.getTipe() == 0) {
+                if (u.getTipe() == 1) {
                     request.setAttribute("user", u);
-                    dis = request.getRequestDispatcher("home.jsp");
+                    dis = request.getRequestDispatcher("admin/home.jsp");
                     dis.forward(request, response);
                 } else {
-                    request.setAttribute("user", u);
-                    dis = request.getRequestDispatcher("home.jsp");
-                    dis.forward(request, response);
+                    dis = request.getRequestDispatcher("index");
+                    dis.include(request, response);
+                    out.close();
                 }
             }
             else{
@@ -65,10 +65,10 @@ public class Home extends HttpServlet {
             dis.include(request, response);
             out.close();
             }
-    }
+    } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -78,10 +78,13 @@ public class Home extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
-    }
+        String destination = "/pemilik/home.jsp";
 
-    /**
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
+        rd.forward(request, response);
+    } 
+
+    /** 
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -94,7 +97,7 @@ public class Home extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
@@ -104,4 +107,3 @@ public class Home extends HttpServlet {
     }// </editor-fold>
 
 }
-

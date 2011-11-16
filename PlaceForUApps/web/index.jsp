@@ -76,7 +76,7 @@
 				</li>
 				<li>
 					<h2>Log In</h2>
-					<form method='post' action='controller?page=login'>
+					<form method='post' action='login'>
                                             <fieldset>
                                                 <table>
                                                     <tr>
@@ -93,7 +93,7 @@
                                                     </tr>
                                                     <tr>
                                                         <td><input type='submit' value='Login' />
-                                                        <a href="controller?page=register">Register</a></td>
+                                                        <a href="register">Register</a></td>
                                                     </tr>
                                                 </table>
                                             </fieldset>

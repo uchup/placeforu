@@ -78,6 +78,22 @@ public class DaftarUser {
         return user;
     }
 
+    public User getUserFromName(String username) {
+        User user = null;
+        EntityManager em = getEntityManager();
+        try {
+            boolean hasilCheck = this.checkUser(username);
+            if (hasilCheck) {
+                Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.username=:usr");
+                q.setParameter("usr", username);
+                user = (User) q.getSingleResult();
+            }
+        } finally {
+            em.close();
+        }
+        return user;
+    }
+
     public void addUser(User user) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();

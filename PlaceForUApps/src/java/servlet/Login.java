@@ -36,25 +36,48 @@ public class Login extends HttpServlet {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         RequestDispatcher dis = null;
+        DaftarUser daftarUser = new DaftarUser();
+        String message = null;
+
         String name = request.getParameter("uname");
         String pass = request.getParameter("pass");
-
-        DaftarUser daftarUser = new DaftarUser();
         User users = daftarUser.getUser(name,pass);
-        if (users != null) {
-            if (users.getUsername().equals(name) && users.getPassword().equals(pass) ) {
-                session.setAttribute("sessionusername", name);
-                dis = request.getRequestDispatcher("home.jsp");
-                dis.forward(request, response);
-            }
-            else {
-                out.println("Password Invalid");
-            }
+        
+        if (name.equals("") || pass.equals("") ) {
+            RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("/error_page.jsp");
+                message ="Username atau password kosong!";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
+        }
+        else{
+            if (users != null) {
+                    session.setAttribute("sessionusername", name);
+                    if (users.getTipe() == 0) {
+                        request.setAttribute("user", users);
+                        dis = request.getRequestDispatcher("admin/home.jsp");
+                        dis.forward(request, response);
+                    }
+                    else if(users.getTipe() == 1) {
+                        request.setAttribute("user", users);
+                        dis = request.getRequestDispatcher("pemilik/home.jsp");
+                        dis.forward(request, response);
+                    }
+                    else{
+                        request.setAttribute("user", users);
+                        dis = request.getRequestDispatcher("penyewa/home.jsp");
+                        dis.forward(request, response);
+                    }
+                
+                
         }
         else {
-            dis = request.getRequestDispatcher("gagallogin.jsp");
-            dis.forward(request, response);
-        }
+            RequestDispatcher requestDispatcher =
+                    request.getRequestDispatcher("/error_page.jsp");
+                    message ="Username atau password tidak cocok!";
+                    request.setAttribute("message", message);
+                    requestDispatcher.forward(request, response);
+        }}
     }
         /*User user = daftarUser.getUser(name,pass);
 
