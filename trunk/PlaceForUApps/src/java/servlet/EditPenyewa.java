@@ -5,9 +5,8 @@
 
 package servlet;
 
-import entity.User;
 import entity.DaftarUser;
-
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -19,52 +18,51 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Widiasa
+ * @author Yuni
  */
-public class HomePenyewa extends HttpServlet {
+public class EditPenyewa extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     *kelas ini digunakan untuk melakukan edit profil penyewa
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        RequestDispatcher dis = null;
-        HttpSession session = request.getSession();
-        DaftarUser du = new DaftarUser();
-        User u = new User();
+        String message = null;
+        String nama = request.getParameter("nama");
+        int tipe = Integer.parseInt(request.getParameter("tipe"));
+        String email = request.getParameter("email");
+        String telp = request.getParameter("telp");
+        String alamat = request.getParameter("alamat");
+        String hape = request.getParameter("hape");
+        String usname = request.getParameter("usname");
+        String pass = request.getParameter("psword");
+        int status = 0;
 
-        if (session.getAttribute("sessionusername") != null){
-            String username = (String) session.getAttribute("sessionusername");
-            boolean hasilCheck = du.checkUser(username);
-            if (hasilCheck) {
-                u = du.getUserFromName(username);
-                if (u.getTipe() == 2) {
-                    request.setAttribute("penyewa", u);
-                    dis = request.getRequestDispatcher("/penyewa/home.jsp");
-                    dis.include(request, response);
-                } else {
-                    dis = request.getRequestDispatcher("index");
-                    dis.forward(request, response);
-                    out.close();
-                }
-            }
-            else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
-            }
+        User user = new User();
+        RequestDispatcher page = null;
+        DaftarUser a = new DaftarUser();
+        HttpSession session = request.getSession();
+        user = a.getUserFromName(usname);
+
+        user.setNama(nama);
+                user.setTipe(tipe);
+                user.setEmail(email);
+                user.setTelp(telp);
+                user.setAlamat(alamat);
+                user.setHape(hape);
+                user.setUsername(usname);
+                user.setPassword(pass);
+                 session.setAttribute("penyewa", user);
+        try {
+            a.editUser(user);
+             page = request.getRequestDispatcher("/penyewa/editProfil.jsp");
+                page.forward(request, response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
-            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -36,6 +36,26 @@
         <servlet-name>penyewa</servlet-name>
         <servlet-class>servlet.HomePenyewa</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>profilPemilik</servlet-name>
+        <servlet-class>servlet.ProfilPemilik</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProfilPenyewa</servlet-name>
+        <servlet-class>servlet.ProfilPenyewa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditPemilik</servlet-name>
+        <servlet-class>servlet.EditPemilik</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditPenyewa</servlet-name>
+        <servlet-class>servlet.EditPenyewa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HomePenyewa1</servlet-name>
+        <servlet-class>servlet.HomePenyewa1</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CobaServlet</servlet-name>
         <url-pattern>/CobaServlet</url-pattern>
@@ -71,6 +91,26 @@
     <servlet-mapping>
         <servlet-name>penyewa</servlet-name>
         <url-pattern>/penyewa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>profilPemilik</servlet-name>
+        <url-pattern>/pemilik/profil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProfilPenyewa</servlet-name>
+        <url-pattern>/penyewa/profil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditPemilik</servlet-name>
+        <url-pattern>/pemilik/editPemilik</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditPenyewa</servlet-name>
+        <url-pattern>/penyewa/editPenyewa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomePenyewa1</servlet-name>
+        <url-pattern>/HomePenyewa1</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

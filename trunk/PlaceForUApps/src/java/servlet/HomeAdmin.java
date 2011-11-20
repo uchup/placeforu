@@ -39,30 +39,30 @@ public class HomeAdmin extends HttpServlet {
         DaftarUser du = new DaftarUser();
         User u = new User();
 
-        if (session.getAttribute("user") != null){
-            String username = (String) session.getAttribute("user");
+        if (session.getAttribute("sessionusername") != null){
+            String username = (String) session.getAttribute("sessionusername");
             boolean hasilCheck = du.checkUser(username);
             if (hasilCheck) {
                 u = du.getUserFromName(username);
                 if (u.getTipe() == 0) {
-                    request.setAttribute("user", u);
-                    dis = request.getRequestDispatcher("admin/home.jsp");
-                    dis.forward(request, response);
+                    request.setAttribute("admin", u);
+                    dis = request.getRequestDispatcher("/admin/home.jsp");
+                    dis.include(request, response);
                 } else {
                     dis = request.getRequestDispatcher("index");
-                    dis.include(request, response);
+                    dis.forward(request, response);
                     out.close();
                 }
             }
             else{
             dis = request.getRequestDispatcher("index");
-            dis.include(request, response);
+            dis.forward(request, response);
             out.close();
             }
         }
         else{
             dis = request.getRequestDispatcher("index");
-            dis.include(request, response);
+            dis.forward(request, response);
             out.close();
             }
     }
@@ -78,10 +78,7 @@ public class HomeAdmin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String destination = "/admin/home.jsp";
-
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
-        rd.forward(request, response);
+        processRequest(request, response);
     } 
 
     /** 
