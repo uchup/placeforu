@@ -25,7 +25,8 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="pemilik">Homepage</a></li>
+			<li class="current_page_item"><a href="pemilik">HomepagePemilik</a></li>
+                        <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Informasi Gedung</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
@@ -38,7 +39,7 @@
 	<div id="page-bgtop">
 		<div id="content">
 			<div class="post">
-				<h2 class="title"><a href="#">Selamat Datang, ${sessionusername}
+				<h2 class="title"><a href="#">Selamat Datang, ${pemilik.username}
                                     </a></h2>
 
 				<p class="meta"><span class="date">April 10, 2011</span><span class="posted">Posted by <a href="#">Administrator</a></span></p>

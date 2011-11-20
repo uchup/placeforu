@@ -25,7 +25,7 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="admin">Homepage</a></li>
+			<li class="current_page_item"><a href="admin">HomepageAdmin</a></li>
 			<li class="current_page_item"><a href="#">Manajemen User</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Informasi Tempat</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>

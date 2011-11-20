@@ -78,6 +78,8 @@ public class DaftarUser {
         return user;
     }
 
+    //   method untuk mengambil satu baris user berdasarkan parameter username
+
     public User getUserFromName(String username) {
         User user = null;
         EntityManager em = getEntityManager();
@@ -92,6 +94,20 @@ public class DaftarUser {
             em.close();
         }
         return user;
+    }
+
+    //method untuk mengganti nilai atribut pada baris yang sudah ada pada tabel users
+     public void editUser(User user) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        try { //jik tdk ada error
+            em.merge(user);
+            em.getTransaction().commit();
+        } catch (Exception e){//jk eerror
+            em.getTransaction().rollback();
+        }finally {
+            em.close();
+        }
     }
 
     public void addUser(User user) {

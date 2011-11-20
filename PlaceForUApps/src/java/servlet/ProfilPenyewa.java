@@ -3,51 +3,68 @@
  * and open the template in the editor.
  */
 
-package controller;
+package servlet;
 
+import entity.DaftarUser;
+import entity.User;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import servlet.*;
-
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Widiasa
+ * @author Yuni
  */
-public class ServletController extends HttpServlet {
+public class ProfilPenyewa extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * kelas ini digunakan untuk melihat profil penyewa dengan kondisi session todak boleh null
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String page = request.getParameter("page");
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
-        if(page != null){
-            if(page.equals("index")){
-                dis = request.getRequestDispatcher("index");
-            } else if(page.equals("register")){
-                dis = request.getRequestDispatcher("register.jsp");
-            } else if (page.equals("login")) {
-                dis = request.getRequestDispatcher("login");
-            } else if(page.equals("home")){
-                dis = request.getRequestDispatcher("home.jsp");
-            } else if(page.equals("logout")){
-                dis = request.getRequestDispatcher("logout");
+        HttpSession session = request.getSession();
+        DaftarUser du = new DaftarUser();
+        User u = new User();
+
+        //untuk mendapatkan session dari user yang telah login
+        if (session.getAttribute("sessionusername") != null){
+            String username = (String) session.getAttribute("sessionusername");
+            //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
+            boolean hasilCheck = du.checkUser(username);
+            if (hasilCheck) {
+                 //mengambil user berdasarkan username dari Daftar User
+                u = du.getUserFromName(username);
+                 //username merupakan penyewa tempat
+                if (u.getTipe() == 2) {
+                    request.setAttribute("penyewa", u);
+                    //diarahkan ke halaman profil penyewa tempat
+                    dis = request.getRequestDispatcher("/penyewa/profil.jsp");
+                    dis.include(request, response);
+                } else {
+                    dis = request.getRequestDispatcher("index");
+                    dis.forward(request, response);
+                    out.close();
+                }
             }
-        else {
+            else{
             dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
+            out.close();
+            }
         }
-        dis.forward(request, response);
-        }
+        else{
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
+            out.close();
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -61,7 +78,8 @@ public class ServletController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+processRequest(request, response);
+
     }
 
     /**
