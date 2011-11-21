@@ -54,11 +54,11 @@ public class EditPemilik extends HttpServlet {
                 user.setHape(hape);
                 user.setUsername(usname);
                 user.setPassword(pass);
-                 session.setAttribute("pemilik", user);
+                session.setAttribute("pemilik", user);
         try {
-            a.editUser(user);
-             page = request.getRequestDispatcher("/pemilik/editProfil.jsp");
-                page.forward(request, response);
+             a.editUser(user);
+             page = request.getRequestDispatcher("/pemilik/profil");
+             page.forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +76,10 @@ public class EditPemilik extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String destination = "/pemilik/editProfil.jsp";
+
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
+        rd.forward(request, response);
     } 
 
     /** 
