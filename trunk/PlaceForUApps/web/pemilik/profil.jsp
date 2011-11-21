@@ -43,7 +43,7 @@
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
                                 <fieldset>
-                                    <form method='post'  action='editPemilik'>
+                                    <form method='post'>
                                     <table>
                                         <tr>
                                             <td>
@@ -114,7 +114,7 @@
                      <tr>
                        
 
-                        <td><input type='submit' value='Edit' /></td>
+                        <td><a href="../pemilik/editProfil">Edit</a></td>
                     </tr>
                    
 

@@ -43,7 +43,7 @@
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
                                 <fieldset>
-                                    <form method='post'  action='editPemilik'>
+                                    <form method='post'  action='editProfil'>
                                     <table>
                                         <tr>
                                             <td>
