@@ -18,54 +18,51 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Widiasa
+ * @author Ika
  */
-public class ProfilPemilik extends HttpServlet {
+public class EditAkun extends HttpServlet {
    
     /** 
-     kelas ini digunakan untuk melihat profil penyewa dengan kondisi session todak boleh null
+     *kelas ini digunakan untuk melakukan edit profil pemilik
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        RequestDispatcher dis = null;
-        HttpSession session = request.getSession();
-        DaftarUser du = new DaftarUser();
-        User u = new User();
+        String message = null;
+        String nama = request.getParameter("nama");
+        int tipe = Integer.parseInt(request.getParameter("tipe"));
+        String email = request.getParameter("email");
+        String telp = request.getParameter("telp");
+        String alamat = request.getParameter("alamat");
+        String hape = request.getParameter("hape");
+        String usname = request.getParameter("usname");
+        String pass = request.getParameter("psword");
+        int status = 0;
 
-        //untuk mendapatkan session dari user yang telah login
-        if (session.getAttribute("sessionusername") != null){
-            String username = (String) session.getAttribute("sessionusername");
-            //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
-            boolean hasilCheck = du.checkUser(username);
-            if (hasilCheck) {
-                //mengambil user berdasarkan username dari Daftar User
-                u = du.getUserFromName(username);
-                //username merupakan pemilik tempat
-                if (u.getTipe() == 1) {
-                    request.setAttribute("pemilik", u);
-                    //diarahkan ke halaman profil pemilik tempat
-                    dis = request.getRequestDispatcher("/pemilik/profil.jsp");
-                    dis.include(request, response);
-                } 
-                else {
-                    dis = request.getRequestDispatcher("index");
-                    dis.forward(request, response);
-                    out.close();
-                }
-            }
-            else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
-            }
+        User user = new User();
+        RequestDispatcher page = null;
+        DaftarUser a = new DaftarUser();
+        HttpSession session = request.getSession();
+        user = a.getUserFromName(usname);
+
+        user.setNama(nama);
+                user.setTipe(tipe);
+                user.setEmail(email);
+                user.setTelp(telp);
+                user.setAlamat(alamat);
+                user.setHape(hape);
+                user.setUsername(usname);
+                user.setPassword(pass);
+                session.setAttribute("pemilik", user);
+        try {
+             a.editUser(user);
+             page = request.getRequestDispatcher("/pemilik/profil");
+             page.forward(request, response);
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
-            }
     } 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -79,8 +76,10 @@ public class ProfilPemilik extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-processRequest(request, response);
+        String destination = "/pemilik/editProfil.jsp";
 
+        RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
+        rd.forward(request, response);
     } 
 
     /** 

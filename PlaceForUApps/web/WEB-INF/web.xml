@@ -56,6 +56,18 @@
         <servlet-name>HomePenyewa1</servlet-name>
         <servlet-class>servlet.HomePenyewa1</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DaftarPengguna</servlet-name>
+        <servlet-class>servlet.DaftarPengguna</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DaftarAkun</servlet-name>
+        <servlet-class>servlet.DaftarAkun</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditAkun</servlet-name>
+        <servlet-class>servlet.EditAkun</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CobaServlet</servlet-name>
         <url-pattern>/CobaServlet</url-pattern>
@@ -111,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>editPemilik</servlet-name>
         <url-pattern>/pemilik/editProfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DaftarPengguna</servlet-name>
+        <url-pattern>/DaftarPengguna</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DaftarAkun</servlet-name>
+        <url-pattern>/DaftarAkun</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAkun</servlet-name>
+        <url-pattern>/EditAkun</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

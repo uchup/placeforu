@@ -55,7 +55,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("sessionusername", name);
                     if (users.getTipe() == 0) {
                         request.setAttribute("user", users);
-                        dis = request.getRequestDispatcher("admin/home.jsp");
+                        dis = request.getRequestDispatcher("admin/admin_home.jsp");
                         dis.forward(request, response);
                     }
                     else if(users.getTipe() == 1) {
