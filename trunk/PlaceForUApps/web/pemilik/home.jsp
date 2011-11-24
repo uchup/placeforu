@@ -39,7 +39,7 @@
 	<div id="page-bgtop">
 		<div id="content">
 			<div class="post">
-				<h2 class="title"><a href="#">Selamat Datang, ${pemilik.username}
+				<h2 class="title"><a href="#">Selamat Datang, ${sessionusername}
                                     </a></h2>
 
 				<p class="meta"><span class="date">April 10, 2011</span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
