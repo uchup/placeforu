@@ -48,8 +48,7 @@ public class ProfilPemilik extends HttpServlet {
                     //diarahkan ke halaman profil pemilik tempat
                     dis = request.getRequestDispatcher("/pemilik/profil.jsp");
                     dis.include(request, response);
-                } 
-                else {
+                } else {
                     dis = request.getRequestDispatcher("index");
                     dis.forward(request, response);
                     out.close();

@@ -41,7 +41,7 @@
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
                                 <fieldset>
-                                        <form method='post'  action='editPenyewa'>
+                                    <form method='post'  action='editPenyewa'>
                                     <table>
                                         <tr>
                                             <td>
@@ -51,27 +51,26 @@
                                                     <tr>
                                                                 <td>Nama Lengkap</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='nama' value='${penyewa.nama}' /></td>
+                                                                <td><input type='text' name='nama' value='${penyewa.nama}'/></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Tipe pengguna</td>
                                                                 <td>:</td>
                                                                 <td>
                                                                     <select name="tipe">
-                                                                        <option value="1">Pemilik Tempat</option>
-                                                                        <option value="2">Penyewa Tempat</option>
+                                                                        <option value="2" >Penyewa Tempat</option>
                                                                     </select>
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Email</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='email' value='${penyewa.email}' /></td>
+                                                                <td><input type='text' name='email' value='${penyewa.email}'/></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='alamat' value='${penyewa.alamat}' /></td>
+                                                                <td><input type='text' name='alamat' value='${penyewa.alamat}'/></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Hp</td>
@@ -100,26 +99,29 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type='text' name='usname' value='${penyewa.username}'  /></td>
+                        <td><input type='text' name='usname' value='${penyewa.username}' /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
                         <td><input type='password' name='psword' value='${penyewa.password}'/></td>
+
                     </tr>
 
-                    <tr>
+                     <tr>
 
 
                         <td><input type='submit' value='Simpan' /></td>
                     </tr>
 
+
                     </table>
+
                     </fieldset>
                     </td>
         </tr>
                 </table>
-                                        </form>
+                        </form>
                 </fieldset>
 
 				</div>

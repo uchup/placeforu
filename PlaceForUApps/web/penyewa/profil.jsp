@@ -112,8 +112,9 @@
                      <tr>
 
 
-                        <td><input type='submit' value='Edit' /></td>
+                        <td><a href="../penyewa/editPenyewa">Edit</a></td>
                     </tr>
+
 
                     </table>
 

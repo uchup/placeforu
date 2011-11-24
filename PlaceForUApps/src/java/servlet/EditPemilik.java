@@ -76,10 +76,41 @@ public class EditPemilik extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String destination = "/pemilik/editProfil.jsp";
-
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
-        rd.forward(request, response);
+        PrintWriter out = response.getWriter();
+	RequestDispatcher dis = null;
+        HttpSession session = request.getSession();
+        DaftarUser du = new DaftarUser();
+        User u = new User();
+       
+        if (session.getAttribute("sessionusername") != null){
+            String username = (String) session.getAttribute("sessionusername");
+        
+            boolean hasilCheck = du.checkUser(username);
+            if (hasilCheck) {
+                //mengambil user berdasarkan username dari Daftar User
+                u = du.getUserFromName(username);
+                if (u.getTipe() == 1) {
+                    request.setAttribute("pemilik", u);
+                    dis = request.getRequestDispatcher("/pemilik/editProfil.jsp");
+                    dis.include(request, response);
+                } else {
+                    dis = request.getRequestDispatcher("index");
+                    dis.forward(request, response);
+                 
+                }
+            }
+            else{
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
+           
+            }
+        }
+        else{
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
+           
+            }
+        
     } 
 
     /** 

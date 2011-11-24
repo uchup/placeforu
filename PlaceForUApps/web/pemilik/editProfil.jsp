@@ -61,7 +61,7 @@
                                                                 <td>
                                                                     <select name="tipe">
                                                                         <option value="1">Pemilik Tempat</option>
-                                                                        <option value="2" >Penyewa Tempat</option>
+                                                
                                                                     </select>
                                                                 </td>
                                                             </tr>

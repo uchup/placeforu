@@ -25,7 +25,7 @@ public class EditPenyewa extends HttpServlet {
     /**
      *kelas ini digunakan untuk melakukan edit profil penyewa
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -54,17 +54,16 @@ public class EditPenyewa extends HttpServlet {
                 user.setHape(hape);
                 user.setUsername(usname);
                 user.setPassword(pass);
-                 session.setAttribute("penyewa", user);
+                session.setAttribute("penyewa", user);
         try {
-            a.editUser(user);
-             page = request.getRequestDispatcher("/penyewa/editProfil.jsp");
-                page.forward(request, response);
+             a.editUser(user);
+             page = request.getRequestDispatcher("/penyewa/profil");
+             page.forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -76,16 +75,43 @@ public class EditPenyewa extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        PrintWriter out = response.getWriter();
+	RequestDispatcher dis = null;
+        HttpSession session = request.getSession();
+        DaftarUser du = new DaftarUser();
+        User u = new User();
+
+        if (session.getAttribute("sessionusername") != null){
+            String username = (String) session.getAttribute("sessionusername");
+
+            boolean hasilCheck = du.checkUser(username);
+            if (hasilCheck) {
+                //mengambil user berdasarkan username dari Daftar User
+                u = du.getUserFromName(username);
+                if (u.getTipe() == 2) {
+                    request.setAttribute("penyewa", u);
+                    dis = request.getRequestDispatcher("/penyewa/editProfil.jsp");
+                    dis.include(request, response);
+                } else {
+                    dis = request.getRequestDispatcher("index");
+                    dis.forward(request, response);
+
+                }
+            }
+            else{
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
+
+            }
+        }
+        else{
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
+
+            }
+
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
