@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarUser;
@@ -21,17 +20,17 @@ import javax.servlet.http.HttpSession;
  * @author Ika
  */
 public class EditAkun extends HttpServlet {
-   
+
     /** 
      *kelas ini digunakan untuk melakukan edit profil pemilik
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String message = null;
         String nama = request.getParameter("nama");
-        int tipe = Integer.parseInt(request.getParameter("tipe"));
+        //int tipe = Integer.parseInt(request.getParameter("tipe"));
         String email = request.getParameter("email");
         String telp = request.getParameter("telp");
         String alamat = request.getParameter("alamat");
@@ -44,26 +43,47 @@ public class EditAkun extends HttpServlet {
         RequestDispatcher page = null;
         DaftarUser a = new DaftarUser();
         HttpSession session = request.getSession();
-        user = a.getUserFromName(usname);
 
-        user.setNama(nama);
-                user.setTipe(tipe);
-                user.setEmail(email);
-                user.setTelp(telp);
-                user.setAlamat(alamat);
-                user.setHape(hape);
-                user.setUsername(usname);
-                user.setPassword(pass);
-                session.setAttribute("pemilik", user);
+
         try {
-             a.editUser(user);
-             page = request.getRequestDispatcher("/pemilik/profil");
-             page.forward(request, response);
+            if (nama.equals("") || email.equals("") || telp.equals("")
+                    || alamat.equals("") || usname.equals("") || pass.equals("")) {
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/error_page.jsp");
+                message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
+            } else {
+                if (user.getPassword() != pass) {
+                    RequestDispatcher requestDispatcher =
+                            request.getRequestDispatcher("/error_page.jsp");
+                    message = "Password Salah";
+                    request.setAttribute("message", message);
+                    requestDispatcher.forward(request, response);
+                } else {
+
+                    user = a.getUserFromName(usname);
+
+                    user.setNama(nama);
+                    //user.setTipe(tipe);
+                    user.setEmail(email);
+                    user.setTelp(telp);
+                    user.setAlamat(alamat);
+                    user.setHape(hape);
+                    //user.setUsername(usname);
+                    user.setPassword(pass);
+                    a.editUser(user);
+
+                }
+                page = request.getRequestDispatcher("daftarAkun");
+                page.forward(request, response);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-    } 
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -75,12 +95,21 @@ public class EditAkun extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        String destination = "/pemilik/editProfil.jsp";
+            throws ServletException, IOException {
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
-        rd.forward(request, response);
-    } 
+        PrintWriter out = response.getWriter();
+        RequestDispatcher dis = null;
+        HttpSession session = request.getSession();
+        DaftarUser du = new DaftarUser();
+        User u = new User();
+
+        //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
+        String usname = request.getParameter("usname");
+        u = du.getUserFromName(usname);
+        request.setAttribute("akun", u);
+        dis = request.getRequestDispatcher("/admin/editAkun.jsp");
+        dis.include(request, response);
+    }
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -91,7 +120,7 @@ public class EditAkun extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -103,5 +132,4 @@ public class EditAkun extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

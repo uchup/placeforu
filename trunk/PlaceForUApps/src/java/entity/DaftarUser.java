@@ -12,6 +12,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -153,6 +154,19 @@ public class DaftarUser {
 
     public void getUsers(User user) {
         throw new UnsupportedOperationException("Not yet implemented");
+    }
+    
+    public void removeUser(User user) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        try { //jik tdk ada error
+            em.remove(user);
+            em.getTransaction().commit();
+        } catch (Exception e){//jk eerror
+            em.getTransaction().rollback();
+        }finally {
+            em.close();
+        }
     }
 
 }

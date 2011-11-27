@@ -44,6 +44,7 @@
                                 <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
+                                    <form method='post'  action='HapusAkun'>
                                     <table border="1">
                                         <tr>
                                             <td>ID User</td>
@@ -77,10 +78,11 @@
                                                 tipe = "penyewa";
                                             }
                                             %>
-                                            <td><a href="../controller?page=admin_daftar_user">Ubah</a> / Hapus</td>
+                                            <td><a href="EditAkun?usname=<%=user.getUsername()%>">Ubah</a> / <input type="submit" value="Hapus"></td>
                                         </tr>
                                         <%}%>
                                     </table>
+                                    </form>
 				</div>
 			</div>
 			

@@ -68,6 +68,10 @@
         <servlet-name>EditAkun</servlet-name>
         <servlet-class>servlet.EditAkun</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HapusAkun</servlet-name>
+        <servlet-class>servlet.HapusAkun</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CobaServlet</servlet-name>
         <url-pattern>/CobaServlet</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>EditAkun</servlet-name>
         <url-pattern>/EditAkun</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HapusAkun</servlet-name>
+        <url-pattern>/HapusAkun</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
