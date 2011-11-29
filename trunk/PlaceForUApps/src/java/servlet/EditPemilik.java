@@ -46,7 +46,75 @@ public class EditPemilik extends HttpServlet {
         HttpSession session = request.getSession();
         user = a.getUserFromName(usname);
 
-        user.setNama(nama);
+       try {
+            if (nama.equals("") || email.equals("") || telp.equals("")
+                    || alamat.equals("") || pass.equals("")) {
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/error_page.jsp");
+                message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
+            } else if (user.getUsername().equals(usname) != user.getPassword().equals(pass)) {
+                    RequestDispatcher requestDispatcher =
+                            request.getRequestDispatcher("/error_page.jsp");
+                    message = "Password Salah";
+                    request.setAttribute("message", message);
+                    requestDispatcher.forward(request, response);
+                } else {
+
+                    user = a.getUserFromName(usname);
+
+                    user.setNama(nama);
+                    //user.setTipe(tipe);
+                    user.setEmail(email);
+                    user.setTelp(telp);
+                    user.setAlamat(alamat);
+                    user.setHape(hape);
+                    user.setUsername(usname);
+                    user.setPassword(pass);
+                    a.editUser(user);
+
+                }
+                page = request.getRequestDispatcher("/pemilik/profil");
+                page.forward(request, response);
+            }
+
+         catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* if (nama.equals("") || email.equals("") || telp.equals("") || alamat.equals("") ) {
+            
+            user = a.getUserFromName(usname);
+                 page = request.getRequestDispatcher("/pemilik/profil");
+                   message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
+                request.setAttribute("message", message);
+                 page.include(request, response);
+        }
+        
+        else if(user.getUsername().equals(usname) != user.getPassword().equals(pass)){
+              user = a.getUserFromName(usname);
+             
+                request.getRequestDispatcher("editProfil.jsp");
+                message ="Password yang anda masukkan tidak Cocok ";
+               request.setAttribute("message", message);
+                  page.include(request, response);
+        
+        }
+        else {
+                user.setNama(nama);
                 user.setTipe(tipe);
                 user.setEmail(email);
                 user.setTelp(telp);
@@ -55,15 +123,27 @@ public class EditPemilik extends HttpServlet {
                 user.setUsername(usname);
                 user.setPassword(pass);
                 session.setAttribute("pemilik", user);
-        try {
-             a.editUser(user);
+                a.editUser(user);
              page = request.getRequestDispatcher("/pemilik/profil");
              page.forward(request, response);
+            }
 
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-    } 
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -96,7 +176,6 @@ public class EditPemilik extends HttpServlet {
                 } else {
                     dis = request.getRequestDispatcher("index");
                     dis.forward(request, response);
-                 
                 }
             }
             else{

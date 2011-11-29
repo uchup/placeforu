@@ -46,21 +46,40 @@ public class EditPenyewa extends HttpServlet {
         HttpSession session = request.getSession();
         user = a.getUserFromName(usname);
 
-        user.setNama(nama);
-                user.setTipe(tipe);
-                user.setEmail(email);
-                user.setTelp(telp);
-                user.setAlamat(alamat);
-                user.setHape(hape);
-                user.setUsername(usname);
-                user.setPassword(pass);
-                session.setAttribute("penyewa", user);
         try {
-             a.editUser(user);
-             page = request.getRequestDispatcher("/penyewa/profil");
-             page.forward(request, response);
+            if (nama.equals("") || email.equals("") || telp.equals("")
+                    || alamat.equals("") || pass.equals("")) {
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/error_page.jsp");
+                message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
+            } else if (user.getUsername().equals(usname) != user.getPassword().equals(pass)) {
+                    RequestDispatcher requestDispatcher =
+                            request.getRequestDispatcher("/error_page.jsp");
+                    message = "Password Salah";
+                    request.setAttribute("message", message);
+                    requestDispatcher.forward(request, response);
+                } else {
 
-        } catch (Exception e) {
+                    user = a.getUserFromName(usname);
+
+                    user.setNama(nama);
+                    //user.setTipe(tipe);
+                    user.setEmail(email);
+                    user.setTelp(telp);
+                    user.setAlamat(alamat);
+                    user.setHape(hape);
+                    user.setUsername(usname);
+                    user.setPassword(pass);
+                    a.editUser(user);
+
+                }
+                page = request.getRequestDispatcher("/penyewa/profil");
+                page.forward(request, response);
+            }
+
+         catch (Exception e) {
             e.printStackTrace();
         }
     }
