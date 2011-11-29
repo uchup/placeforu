@@ -68,7 +68,7 @@
                                             <fieldset>
                                                 <table>
                                                     <tr>
-                                                        <td><a href="controller?page=register">Daftarkan user baru</a></td>
+                                                        <td><a href="register">Daftarkan user baru</a></td>
                                                     </tr>
                            
                                                 </table>

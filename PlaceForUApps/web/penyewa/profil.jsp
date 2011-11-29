@@ -52,37 +52,32 @@
                                                     <tr>
                                                                 <td>Nama Lengkap</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='nama' value='${penyewa.nama}'  readonly='readonly' /></td>
+                                                                <td>${penyewa.nama}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Tipe pengguna</td>
                                                                 <td>:</td>
-                                                                <td>
-                                                                    <select name="tipe">
-                                                                        <option value="1">Pemilik Tempat</option>
-                                                                        <option value="2">Penyewa Tempat</option>
-                                                                    </select>
-                                                                </td>
+                                                                Penyewa Tempat
                                                             </tr>
                                                             <tr>
                                                                 <td>Email</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='email' value='${penyewa.email}'  readonly='readonly'/></td>
+                                                                <td>${penyewa.email}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='alamat' value='${penyewa.alamat}'  readonly='readonly' /></td>
+                                                                <td>${penyewa.alamat}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Hp</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='hape'value='${penyewa.hape}'  readonly='readonly' /></td>
+                                                                <td>${penyewa.hape}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Telp</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='telp' value='${penyewa.telp}'  readonly='readonly'/></td>
+                                                                <td>${penyewa.telp}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Foto</td>
@@ -101,18 +96,19 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type='text' name='usname' value='${penyewa.username}' readonly='readonly'/></td>
+                        <td>${penyewa.username}</td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        <td><input type='password' name='psword' value='${penyewa.password}'  readonly='readonly' /></td>
+                        ******
                     </tr>
 
                      <tr>
 
 
-                        <td><a href="../penyewa/editPenyewa">Edit</a></td>
+                        <td>
+                               <h4> <a href="../pemilik/editProfil">Edit</a> </h4></td>
                     </tr>
 
 

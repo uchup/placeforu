@@ -102,12 +102,12 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type='text' name='usname' value='${pemilik.username}' /></td>
+                        <td><input type='text' name='usname' value='${pemilik.username}'  /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        <td><input type='password' name='psword' value='${pemilik.password}'/></td>
+                        <td><input type='password' name='psword' value=''/></td>
 
                     </tr>
 
@@ -116,6 +116,7 @@
 
                         <td><input type='submit' value='Simpan' /></td>
                     </tr>
+                   
 
 
                     </table>
@@ -123,9 +124,13 @@
                     </fieldset>
                     </td>
         </tr>
-                </table>
+
+
+
+                                    </table>
                         </form>
                 </fieldset>
+
 
 				</div>
 			</div>

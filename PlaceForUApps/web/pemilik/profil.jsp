@@ -53,37 +53,38 @@
                                                     <tr>
                                                                 <td>Nama Lengkap</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='nama' value='${pemilik.nama}' readonly='readonly'/></td>
+                                                                <td>${pemilik.nama}</td>
+                                                                
                                                             </tr>
                                                             <tr>
                                                                 <td>Tipe pengguna</td>
                                                                 <td>:</td>
-                                                                <td>
-                                                                    <select name="tipe">
-                                                                        <option value="1">Pemilik Tempat</option>
-                                                                        <option value="2">Penyewa Tempat</option>
-                                                                    </select>
-                                                                </td>
+                                                                <td>Pemilik Tempat</td>
+                                                                
                                                             </tr>
                                                             <tr>
                                                                 <td>Email</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='email' value='${pemilik.email}' readonly='readonly'/></td>
+                                                                <td>${pemilik.email}</td>
+                                                                
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='alamat' value='${pemilik.alamat}' readonly='readonly'/></td>
+                                                                <td>${pemilik.alamat}</td>
+                                                                
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Hp</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='hape'value='${pemilik.hape}' readonly='readonly' /></td>
+                                                                <td>${pemilik.hape}</td>
+                                                               
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Telp</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='telp' value='${pemilik.telp}' readonly='readonly'/></td>
+                                                                <td>${pemilik.telp}</td>
+                                                              
                                                             </tr>
                                                             <tr>
                                                                 <td>Foto</td>
@@ -102,19 +103,27 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type='text' name='usname' value='${pemilik.username}' readonly='readonly' /></td>
+                        <td>${pemilik.username}</td>
+                        
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        <td><input type='password' name='psword' value='${pemilik.password}' readonly='readonly'/></td>
+                        <td>******</td>
                    
                     </tr>
+
+                     <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
                   
                      <tr>
-                       
-
-                        <td><a href="../pemilik/editProfil">Edit</a></td>
+                     <br>
+ 
+                        <td>
+                               <h4> <a href="../pemilik/editProfil">Edit</a> </h4></td>
                     </tr>
                    
 
