@@ -8,6 +8,7 @@ import entity.DaftarUser;
 import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -42,9 +43,16 @@ public class EditAkun extends HttpServlet {
         User user = new User();
         RequestDispatcher page = null;
         DaftarUser a = new DaftarUser();
-        HttpSession session = request.getSession();
+        user = a.getUserFromName(usname);
 
-
+        user.setNama(nama);
+        user.setEmail(email);
+        user.setTelp(telp);
+        user.setAlamat(alamat);
+        user.setHape(hape);
+        user.setUsername(usname);
+        user.setPassword(pass);
+        request.setAttribute("admin", user);
         try {
             if (nama.equals("") || email.equals("") || telp.equals("")
                     || alamat.equals("") || usname.equals("") || pass.equals("")) {
@@ -61,28 +69,64 @@ public class EditAkun extends HttpServlet {
                     request.setAttribute("message", message);
                     requestDispatcher.forward(request, response);
                 } else {
-
-                    user = a.getUserFromName(usname);
-
-                    user.setNama(nama);
-                    //user.setTipe(tipe);
-                    user.setEmail(email);
-                    user.setTelp(telp);
-                    user.setAlamat(alamat);
-                    user.setHape(hape);
-                    //user.setUsername(usname);
-                    user.setPassword(pass);
                     a.editUser(user);
-
+                    List<User> users = a.getUsers();       
+                    users.add(4, user);
+                    users.add(6, user);
+                    users.add(5, user);
+                    
+                    request.setAttribute("admin", users);
+                    //diarahkan ke halaman profil penyewa tempat
+                    page = request.getRequestDispatcher("/admin/daftarPengguna.jsp");
+                    page.include(request, response);
+                    
+                    
                 }
-                page = request.getRequestDispatcher("daftarAkun");
-                page.forward(request, response);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        /*
+        try {
+        if (nama.equals("") || email.equals("") || telp.equals("")
+        || alamat.equals("") || usname.equals("") || pass.equals("")) {
+        RequestDispatcher requestDispatcher =
+        request.getRequestDispatcher("/error_page.jsp");
+        message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
+        request.setAttribute("message", message);
+        requestDispatcher.forward(request, response);
+        } else {
+        if (user.getPassword() != pass) {
+        RequestDispatcher requestDispatcher =
+        request.getRequestDispatcher("/error_page.jsp");
+        message = "Password Salah";
+        request.setAttribute("message", message);
+        requestDispatcher.forward(request, response);
+        } else {
+        
+        user = a.getUserFromName(usname);
+        
+        user.setNama(nama);
+        //user.setTipe(tipe);
+        user.setEmail(email);
+        user.setTelp(telp);
+        user.setAlamat(alamat);
+        user.setHape(hape);
+        //user.setUsername(usname);
+        user.setPassword(pass);
+        a.editUser(user);
+        
+        }
+        page = request.getRequestDispatcher("daftarAkun");
+        page.forward(request, response);
+        }
+        
+        } catch (Exception e) {
+        e.printStackTrace();
+        }
+         */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -102,7 +102,7 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type='text' name='usname' value='${akun.username}' disabled />*</td>
+                        <td><input type='text' name='usname' value='${akun.username}' readonly="readonly"/>*</td>
                     </tr>
                     <tr>
                         <td>Password</td>
