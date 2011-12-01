@@ -40,55 +40,6 @@ public class DaftarUserTest {
     public void tearDown() {
     }
     
-    /**
-     * Test of getEntityManager method, of class DaftarUser.
-     
-    @Test
-    public void testGetEntityManager() {
-        System.out.println("getEntityManager");
-        DaftarUser instance = new DaftarUser();
-        EntityManager expResult = null;
-        EntityManager result = instance.getEntityManager();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of check method, of class DaftarUser.
-     
-    @Test
-    public void testCheck() {
-        System.out.println("check");
-        String username = "";
-        String password = "";
-        DaftarUser instance = new DaftarUser();
-        boolean expResult = false;
-        boolean result = instance.check(username, password);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getUser method, of class DaftarUser.
-    
-    @Test
-    public void testGetUser() {
-        System.out.println("getUser");
-        String username = "";
-        String password = "";
-        DaftarUser instance = new DaftarUser();
-        User expResult = null;
-        User result = instance.getUser(username, password);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addUser method, of class DaftarUser.
-     */
     @Test
     public void testAddUser() {
         
@@ -100,8 +51,8 @@ public class DaftarUserTest {
         user1.setTelp("085733523276");
         user1.setAlamat("Pacet");
         user1.setHape("085733523276");
-        user1.setUsername("rindang");
-        user1.setPassword("rindang");
+        user1.setUsername("amalia");
+        user1.setPassword("amalia");
         
         user2 = new User();
         user2.setNama("Ika");
@@ -110,8 +61,8 @@ public class DaftarUserTest {
         user2.setTelp("085733523276");
         user2.setAlamat("Pacet");
         user2.setHape("085733523276");
-        user2.setUsername("rindang");
-        user2.setPassword("rindang");
+        user2.setUsername("amalia");
+        user2.setPassword("amalia");
         
         DaftarUser daftar = new DaftarUser();
         daftar.addUser(user1);
@@ -132,31 +83,4 @@ public class DaftarUserTest {
         
     }
 
-    /**
-     * Test of getUsers method, of class DaftarUser.
-     
-    @Test
-    public void testGetUsers_0args() {
-        System.out.println("getUsers");
-        DaftarUser instance = new DaftarUser();
-        List expResult = null;
-        List result = instance.getUsers();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getUsers method, of class DaftarUser.
-     
-    @Test
-    public void testGetUsers_User() {
-        System.out.println("getUsers");
-        User user = null;
-        DaftarUser instance = new DaftarUser();
-        instance.getUsers(user);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-     * */
 }

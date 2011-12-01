@@ -72,6 +72,10 @@
         <servlet-name>HapusAkun</servlet-name>
         <servlet-class>servlet.HapusAkun</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>KonfirmasiRegistrasi</servlet-name>
+        <servlet-class>servlet.KonfirmasiRegistrasi</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CobaServlet</servlet-name>
         <url-pattern>/CobaServlet</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>HapusAkun</servlet-name>
         <url-pattern>/HapusAkun</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KonfirmasiRegistrasi</servlet-name>
+        <url-pattern>/KonfirmasiRegistrasi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

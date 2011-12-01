@@ -1,5 +1,5 @@
 <%-- 
-    Document   : error_page
+    Document   : Registration Confirmation 
     Created on : Oct 29, 2011, 1:26:33 PM
     Author     : Ika
 --%>
@@ -29,7 +29,9 @@
 			<div class="post">
 				<div class="entry">
                                     <p><font color="red"><%=  request.getAttribute("message")  %></font></p>
-                                    <a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Kembali</a>
+                                    <a href="KonfirmasiRegistrasi">Konfirmasi Registrasi Lainnya</a> || 
+                                    <a href="DaftarAkun">Ke Daftar Pengguna</a>
+               
 				</div>
 			</div>
 			

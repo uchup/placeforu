@@ -44,7 +44,8 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='HapusAkun'>
+                                <form method='post'  action='KonfirmasiRegistrasi'>
+                                    
                                     <table border="1">
                                         <tr>
                                             <td>ID User</td>
@@ -53,6 +54,7 @@
                                             <td>Password</td>
                                             <td>Tipe</td>
                                             <td>Ubah / Hapus </td>
+                                            <td>Konfirm</td>
                                         </tr>
                                         <%Iterator itr;%>
                                         <% List users_list = (List) request.getAttribute("admin");
@@ -60,25 +62,35 @@
                                                 entity.User user = (entity.User) itr.next();
                                         %>
                                         <tr>
-                                        <input type="hidden" name="username" value="<%=user.getUsername()%>">
-                                        <td>ID User</td>
-                                        <td><%=user.getNama()%></td>
-                                        <td><%=user.getUsername()%></td>
-                                        <td><%=user.getPassword()%></td>
-                                        <td><%=user.getTipe()%></td>
-                                        <%
-                                            String tipe = "";
-                                            if (user.getTipe() == 0) {
-                                                tipe = "admin";
-                                            } else if (user.getTipe() == 1) {
-                                                tipe = "pemilik";
-                                            } else {
-                                                tipe = "penyewa";
-                                            }
-                                        %>
-                                        <td><a href="EditAkun?usname=<%=user.getUsername()%>">Ubah</a> / <input type="submit" value="Hapus"></td>
+
+                                            <td>ID User</td>
+                                            <td><%=user.getNama()%></td>
+                                            <td><%=user.getUsername()%></td>
+                                            <td><%=user.getPassword()%></td>
+                                            <td><%=user.getTipe()%></td>
+                                            <%
+                                                String tipe = "";
+                                                if (user.getTipe() == 0) {
+                                                    tipe = "admin";
+                                                } else if (user.getTipe() == 1) {
+                                                    tipe = "pemilik";
+                                                } else {
+                                                    tipe = "penyewa";
+                                                }
+                                            %>
+                                            <td>
+                                                <select name="konfirm">
+                                                    <option value="1">Terima</option>
+                                                    <option value="2">Tolak</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input type="hidden" name="usname" value="<%=user.getUsername()%>">
+                                                <input type="submit" value="Konfirm" name="konfirmasi">
+                                            </td>
                                         </tr>
                                         <%}%>
+                                        
                                     </table>
                                 </form>
                             </div>

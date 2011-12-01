@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 public class EditAkun extends HttpServlet {
 
     /** 
-     *kelas ini digunakan untuk melakukan edit profil pemilik
+     *kelas ini digunakan untuk melakukan edit profil akun
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -31,7 +31,6 @@ public class EditAkun extends HttpServlet {
         PrintWriter out = response.getWriter();
         String message = null;
         String nama = request.getParameter("nama");
-        //int tipe = Integer.parseInt(request.getParameter("tipe"));
         String email = request.getParameter("email");
         String telp = request.getParameter("telp");
         String alamat = request.getParameter("alamat");
@@ -71,10 +70,6 @@ public class EditAkun extends HttpServlet {
                 } else {
                     a.editUser(user);
                     List<User> users = a.getUsers();       
-                    users.add(4, user);
-                    users.add(6, user);
-                    users.add(5, user);
-                    
                     request.setAttribute("admin", users);
                     //diarahkan ke halaman profil penyewa tempat
                     page = request.getRequestDispatcher("/admin/daftarPengguna.jsp");
@@ -87,46 +82,6 @@ public class EditAkun extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        /*
-        try {
-        if (nama.equals("") || email.equals("") || telp.equals("")
-        || alamat.equals("") || usname.equals("") || pass.equals("")) {
-        RequestDispatcher requestDispatcher =
-        request.getRequestDispatcher("/error_page.jsp");
-        message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
-        request.setAttribute("message", message);
-        requestDispatcher.forward(request, response);
-        } else {
-        if (user.getPassword() != pass) {
-        RequestDispatcher requestDispatcher =
-        request.getRequestDispatcher("/error_page.jsp");
-        message = "Password Salah";
-        request.setAttribute("message", message);
-        requestDispatcher.forward(request, response);
-        } else {
-        
-        user = a.getUserFromName(usname);
-        
-        user.setNama(nama);
-        //user.setTipe(tipe);
-        user.setEmail(email);
-        user.setTelp(telp);
-        user.setAlamat(alamat);
-        user.setHape(hape);
-        //user.setUsername(usname);
-        user.setPassword(pass);
-        a.editUser(user);
-        
-        }
-        page = request.getRequestDispatcher("daftarAkun");
-        page.forward(request, response);
-        }
-        
-        } catch (Exception e) {
-        e.printStackTrace();
-        }
-         */
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
