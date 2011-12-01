@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
@@ -113,6 +114,7 @@ public class DaftarUser {
 
     public void addUser(User user) {
         EntityManager em = getEntityManager();
+        
         em.getTransaction().begin();
         try {
             em.persist(user);
@@ -125,10 +127,11 @@ public class DaftarUser {
     }
     public List<User> getUsers() {
         List<User> users = new ArrayList<User>();
-
+        int stat = 1;
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM User AS o");
+            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.status=:stat"); 
+            q.setParameter("stat", stat);
             users = q.getResultList();
 
         } finally {
@@ -156,17 +159,40 @@ public class DaftarUser {
         throw new UnsupportedOperationException("Not yet implemented");
     }
     
-    public void removeUser(User user) {
-        EntityManager em = getEntityManager();
-        em.getTransaction().begin();
-        try { //jik tdk ada error
+    //remove a user
+    public void removeUser(User user) throws NonexistentEntityException {
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+          //  User user;
+            try {
+                user = em.getReference(User.class, user);
+            } catch (EntityNotFoundException enfe) {
+                throw new NonexistentEntityException("User sudah tidak ada", enfe);
+            }
             em.remove(user);
             em.getTransaction().commit();
-        } catch (Exception e){//jk eerror
-            em.getTransaction().rollback();
-        }finally {
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    public List<User> getUnconfirmedUsers() {
+       List<User> users = new ArrayList<User>();
+        int stat = 0;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.status=:stat"); 
+            q.setParameter("stat", stat);
+            users = q.getResultList();
+
+        } finally {
             em.close();
         }
+        return users;
     }
 
 }

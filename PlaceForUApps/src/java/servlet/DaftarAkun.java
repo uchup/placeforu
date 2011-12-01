@@ -52,11 +52,7 @@ public class DaftarAkun extends HttpServlet {
                  //username merupakan penyewa tempat
                 if (u.getTipe() == 0) {                    
                     //menyimpan daftar pengguna ke dalam list
-                    List<User> users = du.getUsers();       
-                    users.add(4, u);
-                    users.add(6, u);
-                    users.add(5, u);
-                    
+                    List<User> users = du.getUsers();            
                     request.setAttribute("admin", users);
                     //diarahkan ke halaman profil penyewa tempat
                     dis = request.getRequestDispatcher("/admin/daftarPengguna.jsp");

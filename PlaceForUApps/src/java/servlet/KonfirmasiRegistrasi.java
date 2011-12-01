@@ -23,43 +23,50 @@ import jpa.exceptions.NonexistentEntityException;
  *
  * @author Ika
  */
-public class HapusAkun extends HttpServlet {
+public class KonfirmasiRegistrasi extends HttpServlet {
 
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+    /**
+     * kelas ini digunakan untuk melihat profil penyewa dengan kondisi session todak boleh null
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, NonexistentEntityException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String usname = request.getParameter("username");
-
-        User user = new User();
-        RequestDispatcher page = null;
+        String usname = request.getParameter("usname");
+        int konfirm = Integer.parseInt(request.getParameter("konfirm"));
+        RequestDispatcher dis = null;
+        String message = null;
         DaftarUser a = new DaftarUser();
+        User user = new User();
         user = a.getUserFromName(usname);
-
         try {
-            //remove user
-            a.removeUser(user);
+            //if registration is accepted
+            if (konfirm == 1) {
+                user.setStatus(1);
+                a.editUser(user);
 
-            List<User> users = a.getUsers();
-            request.setAttribute("admin", users);
-            //redirect to daftarPengguna.jsp
-            page = request.getRequestDispatcher("/admin/daftarPengguna.jsp");
-            page.include(request, response);
+                RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("/successConfirmation.jsp");
+                message ="Registrasi berhasil disetujui";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
 
-        } finally {
-            out.close();
+            } //if registration is rejected
+            else {
+                a.removeUser(user);
+                RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("/successConfirmation.jsp");
+                message ="Registrasi berhasil ditolak";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
+            } 
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -69,31 +76,28 @@ public class HapusAkun extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+        DaftarUser du = new DaftarUser();
+        RequestDispatcher dis = null;
+        User u = new User();
+        List<User> users = du.getUnconfirmedUsers();
+        request.setAttribute("admin", users);
+        //diarahkan ke halaman profil penyewa tempat
+        dis = request.getRequestDispatcher("/admin/konfirmasiRegistrasi.jsp");
+        dis.include(request, response);
     }
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(KonfirmasiRegistrasi.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
