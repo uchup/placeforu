@@ -6,6 +6,8 @@ package entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
@@ -81,7 +83,6 @@ public class DaftarUser {
     }
 
     //   method untuk mengambil satu baris user berdasarkan parameter username
-
     public User getUserFromName(String username) {
         User user = null;
         EntityManager em = getEntityManager();
@@ -99,38 +100,47 @@ public class DaftarUser {
     }
 
     //method untuk mengganti nilai atribut pada baris yang sudah ada pada tabel users
-     public void editUser(User user) {
+    public void editUser(User user) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try { //jik tdk ada error
             em.merge(user);
             em.getTransaction().commit();
-        } catch (Exception e){//jk eerror
+        } catch (Exception e) {//jk eerror
             em.getTransaction().rollback();
-        }finally {
+        } finally {
             em.close();
         }
     }
 
     public void addUser(User user) {
         EntityManager em = getEntityManager();
-        
-        em.getTransaction().begin();
-        try {
-            em.persist(user);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
+        boolean hasilCheck1 = checkUser(user.getUsername());
+        if (!hasilCheck1) {
+            em.getTransaction().begin();
+            try {
+                em.persist(user);
+                em.getTransaction().commit();
+            } catch (Exception e) {
+                em.getTransaction().rollback();
+            } finally {
+                em.close();
+            }
+        } else {
+            try {
+                throw new MyException("Username telah ada");
+            } catch (MyException ex) {
+                Logger.getLogger(DaftarUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
+
     public List<User> getUsers() {
         List<User> users = new ArrayList<User>();
         int stat = 1;
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.status=:stat"); 
+            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.status=:stat");
             q.setParameter("stat", stat);
             users = q.getResultList();
 
@@ -140,6 +150,7 @@ public class DaftarUser {
         return users;
     }
     // get username list
+
     public List<User> getUsername(String username) {
         List<User> users = new ArrayList<User>();
 
@@ -158,14 +169,14 @@ public class DaftarUser {
     public void getUsers(User user) {
         throw new UnsupportedOperationException("Not yet implemented");
     }
-    
+
     //remove a user
     public void removeUser(User user) throws NonexistentEntityException {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-          //  User user;
+            //  User user;
             try {
                 user = em.getReference(User.class, user);
             } catch (EntityNotFoundException enfe) {
@@ -181,11 +192,11 @@ public class DaftarUser {
     }
 
     public List<User> getUnconfirmedUsers() {
-       List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<User>();
         int stat = 0;
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.status=:stat"); 
+            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.status=:stat");
             q.setParameter("stat", stat);
             users = q.getResultList();
 
@@ -194,5 +205,4 @@ public class DaftarUser {
         }
         return users;
     }
-
 }
