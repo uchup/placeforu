@@ -52,34 +52,23 @@
 
 		</div>
 		<div id="sidebar">
-			<ul>
-				<li>
-					<div id="search" >
-						<form method="get" action="#">
-							<div>
-								<input type="text" name="s" id="search-text" value="" />
-								<input type="submit" id="search-submit" value="GO" />
-							</div>
-						</form>
-					</div>
-					<div style="clear: both;">&nbsp;</div>
-				</li>
-				<li>
-					<h2>Gedung Terbaru</h2>
-					<ul>
-						<li><a href="#">Aliquam libero</a></li>
-						<li><a href="#">Consectetuer adipiscing elit</a></li>
-						<li><a href="#">Metus aliquam pellentesque</a></li>
-						<li><a href="#">Suspendisse iaculis mauris</a></li>
-						<li><a href="#">Urnanet non molestie semper</a></li>
-						<li><a href="#">Proin gravida orci porttitor</a></li>
-					</ul>
-				</li>
-				<li>
-
-				</li>
-			</ul>
-		</div>
+                        <ul>
+                            <li>
+                                <div id="search" >
+                                    <form method="get" action="#">
+                                        <div>
+                                            <input type="text" name="s" id="search-text" value="" />
+                                            <input type="submit" id="search-submit" value="GO" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div style="clear: both;">&nbsp;</div>
+                            </li>
+                            <li>
+                                <h2> </h2>
+                            </li>
+                        </ul>
+                    </div>
 	</div>
 </div>
 <div id="footer-bg">
