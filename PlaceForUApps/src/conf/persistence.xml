@@ -4,11 +4,15 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entity.User</class>
     <class>entity.NewEntity</class>
+    <class>entity.Gedung</class>
+    <class>entity.CobaAja</class>
+    <class>entity.User1</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tes"/>
       <property name="javax.persistence.jdbc.password" value=""/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
 </persistence>
