@@ -66,7 +66,7 @@
                                         <td><%=gedung.getNamaGedung()%></td>
                                         <td><%=gedung.getIdPemilik()%></td>
                                         <td><a href="ListSubGedung">>>Lihat List Subgedung</a></td>
-                                        <td><a href="EditGedung?id_gedung=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?id_gedung=<%=gedung.getId()%>">Detail<input type="submit" value="Hapus"></td>
+                                        <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?id_gedung=<%=gedung.getId()%>">Detail<input type="submit" value="Hapus"></td>
                                         </tr>
                                         <%}%> 
                                     </table>
