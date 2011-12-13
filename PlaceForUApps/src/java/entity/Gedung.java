@@ -20,17 +20,17 @@ public class Gedung implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int id_pemilik;
-    private String nama_gedung;
-    private int tipe_gedung;
-    private int kategori_gedung;
-    private String propinsi_gedung;
-    private String kota_gedung;
-    private String alamat_gedung;
-    private String deskripsi_gedung;
-    private String fasilitas_gedung;
-    private String no_telp_gedung;
-    private String email_gedung;
+    private int idPemilik;
+    private String namaGedung;
+    private int tipeGedung;
+    private int kategoriGedung;
+    private String propinsiGedung;
+    private String kotaGedung;
+    private String alamatGedung;
+    private String deskripsiGedung;
+    private String fasilitasGedung;
+    private String noTelpGedung;
+    private String emailGedung;
 
     public Long getId() {
         return id;
@@ -42,112 +42,112 @@ public class Gedung implements Serializable {
     
     //getting Nama Gedung
     public String getNamaGedung(){
-        return nama_gedung;
+        return namaGedung;
     }    
 
     //setting Nama Gedung
-    public void setNamaGedung(String nama_gedung){
-        this.nama_gedung = nama_gedung;
+    public void setNamaGedung(String namaGedung){
+        this.namaGedung = namaGedung;
     }
     
     //getting Tipe Gedung
     public int getTipeGedung(){
-        return tipe_gedung;
+        return tipeGedung;
     }    
 
     //setting Tipe Gedung
-    public void setTipeGedung(int tipe_gedung){
-        this.tipe_gedung = tipe_gedung;
+    public void setTipeGedung(int tipeGedung){
+        this.tipeGedung = tipeGedung;
     }
     
     //getting Kategori Gedung
     public int getKategoriGedung(){
-        return kategori_gedung;
+        return kategoriGedung;
     }    
 
     //setting Kategori Gedung
-    public void setKategoriGedung(int kategori_gedung){
-        this.kategori_gedung = kategori_gedung;
+    public void setKategoriGedung(int kategoriGedung){
+        this.kategoriGedung = kategoriGedung;
     }
     
     //getting Propinsi Gedung
     public String getPropinsiGedung(){
-        return propinsi_gedung;
+        return propinsiGedung;
     }    
 
     //setting Propinsi Gedung
-    public void setPropinsiGedung(String propinsi_gedung){
-        this.propinsi_gedung = propinsi_gedung;
+    public void setPropinsiGedung(String propinsiGedung){
+        this.propinsiGedung = propinsiGedung;
     }
     
     //getting Kota Gedung
     public String getKotaGedung(){
-        return kota_gedung;
+        return kotaGedung;
     }    
 
     //setting Kota Gedung
-    public void setKotaGedung(String kota_gedung){
-        this.kota_gedung = kota_gedung;
+    public void setKotaGedung(String kotaGedung){
+        this.kotaGedung = kotaGedung;
     }
     
     //getting Alamat Gedung
     public String getAlamatGedung(){
-        return alamat_gedung;
+        return alamatGedung;
     }    
 
     //setting Kota Gedung
-    public void setAlamatGedung(String alamat_gedung){
-        this.alamat_gedung = alamat_gedung;
+    public void setAlamatGedung(String alamatGedung){
+        this.alamatGedung = alamatGedung;
     }
     
     //getting Deskripsi Gedung
     public String getDeskripsiGedung(){
-        return deskripsi_gedung;
+        return deskripsiGedung;
     }    
 
     //setting Deskripsi Gedung
-    public void setDeskripsiGedung(String deskripsi_gedung){
-        this.deskripsi_gedung = deskripsi_gedung;
+    public void setDeskripsiGedung(String deskripsiGedung){
+        this.deskripsiGedung = deskripsiGedung;
     }
     
     //getting Fasilitas Gedung
     public String getFasilitasGedung(){
-        return fasilitas_gedung;
+        return fasilitasGedung;
     }    
 
     //setting Fasilitas Gedung
-    public void setFasilitasGedung(String fasilitas_gedung){
-        this.fasilitas_gedung = fasilitas_gedung;
+    public void setFasilitasGedung(String fasilitasGedung){
+        this.fasilitasGedung = fasilitasGedung;
     }
     
     //getting No Telp Gedung
     public String getTelpGedung(){
-        return no_telp_gedung;
+        return noTelpGedung;
     }    
 
     //setting No Telp Gedung
-    public void setTelpGedung(String no_telp_gedung){
-        this.no_telp_gedung = no_telp_gedung;
+    public void setTelpGedung(String noTelpGedung){
+        this.noTelpGedung = noTelpGedung;
     }
     
     //getting email Gedung
     public String getEmailGedung(){
-        return email_gedung;
+        return emailGedung;
     }    
 
     //setting Email Gedung
-    public void setEmailGedung(String email_gedung){
-        this.email_gedung = email_gedung;
+    public void setEmailGedung(String emailGedung){
+        this.emailGedung = emailGedung;
     }
     
     //getting Deskripsi Gedung
     public int getIdPemilik(){
-        return id_pemilik;
+        return idPemilik;
     }    
 
     //setting Deskripsi Gedung
-    public void setIdPemilik(int id_pemilik){
-        this.id_pemilik = id_pemilik;
+    public void setIdPemilik(int idPemilik){
+        this.idPemilik = idPemilik;
     }
     
     @Override

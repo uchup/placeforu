@@ -68,17 +68,44 @@ public class DaftarGedung {
         return daftarGedung;
     }
 
-    public List<Gedung> getGedungfromId(Long id) {
-        Gedung gedung = null;
+    public Gedung getGedung(Long id) {
+        Gedung gedung= null;
         EntityManager em = getEntityManager();
         try {
-                Query q = em.createQuery("SELECT object(o)FROM Gedung AS o WHERE o.id=:id_gedung");
+                Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.id=:id_gedung");
                 q.setParameter("id_gedung", id);
                 gedung = (Gedung) q.getSingleResult();
             
         } finally {
             em.close();
         }
-        return (List<Gedung>) gedung;
+        return gedung;
     }
+    
+    public void editGedung(Gedung gedung) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        try { //jik tdk ada error
+            em.merge(gedung);
+            em.getTransaction().commit();
+        } catch (Exception e) {//jk eerror
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
+    
+//    public List<Gedung> getGedungfromId(Long id) {
+//        Gedung gedung = null;
+//        EntityManager em = getEntityManager();
+//        try {
+//                Query q = em.createQuery("SELECT object(o)FROM Gedung AS o WHERE o.id=:id_gedung");
+//                q.setParameter("id_gedung", id);
+//                gedung = (Gedung) q.getSingleResult();
+//            
+//        } finally {
+//            em.close();
+//        }
+//        return (List<Gedung>) gedung;
+//    }
 }

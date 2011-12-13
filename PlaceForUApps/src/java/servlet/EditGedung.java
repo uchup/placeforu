@@ -31,20 +31,62 @@ public class EditGedung extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
+        String message = null;
+        String namaGedung = request.getParameter("nama_gedung");
+        String tipe = request.getParameter("tipe_gedung");
+        String kategori = request.getParameter("kategori_gedung");
+        int tipeGedung = Integer.parseInt(request.getParameter("tipe_gedung"));
+        int kategoriGedung = Integer.parseInt(request.getParameter("kategori_gedung"));
+        String propinsiGedung = request.getParameter("propinsi_gedung");
+        String kotaGedung = request.getParameter("kota_gedung");
+        String alamatGedung = request.getParameter("alamat_gedung");
+        String deskripsiGedung = request.getParameter("deskripsi_gedung");
+        String fasilitasGedung = request.getParameter("fasilitas_gedung");
+        String emailGedung = request.getParameter("email_gedung");
+        String telpGedung = request.getParameter("telp_gedung");
+        Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
+        int status = 0;
+
+        Gedung gd = new Gedung();
+        RequestDispatcher page = null;
+        DaftarGedung dg = new DaftarGedung();
+        gd = dg.getGedung(idGedung);
+
+        gd.setNamaGedung(namaGedung);
+        gd.setTipeGedung(status);
+        gd.setKategoriGedung(kategoriGedung);
+        gd.setPropinsiGedung(propinsiGedung);
+        gd.setKotaGedung(propinsiGedung);
+        gd.setAlamatGedung(alamatGedung);
+        gd.setDeskripsiGedung(deskripsiGedung);
+        gd.setFasilitasGedung(fasilitasGedung);
+        gd.setEmailGedung(emailGedung);
+        gd.setTelpGedung(telpGedung);
+        request.setAttribute("pemilik", gd);
         try {
-            /* TODO output your page here
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditGedung</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditGedung at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-             */
-        } finally {            
-            out.close();
+            if (namaGedung.equals("") || tipe.equals("") || kategori.equals("")
+                    || propinsiGedung.equals("") || kotaGedung.equals("") || alamatGedung.equals("") || deskripsiGedung.equals("") || telpGedung.equals("")) {
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/error_page.jsp");
+                message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
+            } else {
+
+                dg.editGedung(gd);
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/successUpdating.jsp");
+                message = "Data berhasil diubah ";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
+
+
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -59,14 +101,14 @@ public class EditGedung extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
-        
+
         Long id_gedung = Long.parseLong(request.getParameter("id"));
-        gd = (Gedung) dg.getGedungfromId(id_gedung);
+        gd = (Gedung) dg.getGedung(id_gedung);
         request.setAttribute("gedung", gd);
         dis = request.getRequestDispatcher("/pemilik/editGedung.jsp");
         dis.include(request, response);
