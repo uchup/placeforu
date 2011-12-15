@@ -26,8 +26,8 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">HomepagePemilik</a></li>
-                        <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="pemilik">Homepage Pemilik</a></li>
+                        <li class="current_page_item"><a href="pemilik/profil">Manajemen Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
@@ -58,7 +58,7 @@
                                             <td>Tipe Gedung Gedung <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                                
+
                                                 <input type="radio" name="tipe_gedung" value="1" /> Indoor<br />
                                                 <input type="radio" name="tipe_gedung" value="2" /> Outdoor<br />
 
@@ -173,8 +173,7 @@
                                     <table>
                                         <tr>
                                             <td><a href="TambahGedung">Tambah Gedung</a></td>
-                                        </tr>
-
+                                        </tr>                                 
                                     </table>
                                 </fieldset>
 

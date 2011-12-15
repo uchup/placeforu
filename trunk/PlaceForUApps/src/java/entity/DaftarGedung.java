@@ -95,6 +95,28 @@ public class DaftarGedung {
         }
     }
     
+    public void deleteGedung(Long id) throws NonexistentEntityException {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        try {
+            Gedung gedung;
+            try {
+               gedung = em.find(Gedung.class, id);
+            } catch (EntityNotFoundException enfe) {
+                throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
+            }
+            em.remove(gedung);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    
 //    public List<Gedung> getGedungfromId(Long id) {
 //        Gedung gedung = null;
 //        EntityManager em = getEntityManager();

@@ -18,33 +18,34 @@ import static org.junit.Assert.*;
  * @author Ika
  */
 public class DaftarUserTest {
-
+    
     private User user1;
     private User user2;
-
+    DaftarUser daftar = new DaftarUser();
+    
     public DaftarUserTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
-
+    
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-
+    
     @Before
     public void setUp() {
     }
-
+    
     @After
     public void tearDown() {
     }
-
+    
     @Test
     public void testAddUser() {
-
-
+        
+        
         user1 = new User();
         user1.setNama("Ika");
         user1.setTipe(1);
@@ -54,7 +55,7 @@ public class DaftarUserTest {
         user1.setHape("085733523276");
         user1.setUsername("ling");
         user1.setPassword("amalia");
-
+        
         user2 = new User();
         user2.setNama("Ika");
         user2.setTipe(1);
@@ -64,13 +65,13 @@ public class DaftarUserTest {
         user2.setHape("085733523276");
         user2.setUsername("ling");
         user2.setPassword("amalia");
-
-
-        DaftarUser daftar = new DaftarUser();
+        
+        
+        
         daftar.addUser(user1);
-
+        
         assertEquals(1, daftar.getUsername("ling").size());
-
+        
         try {
             //Checking the duplication of username
             DaftarUser daftarLagi = new DaftarUser();
@@ -80,5 +81,20 @@ public class DaftarUserTest {
         }
         // TODO review the generated test code and remove the default call to fail.
 
+    }
+    
+    public void testCheck() {
+        String usr = "ling";
+        String pwd = "amalia";
+        
+        daftar.check(usr, pwd);
+        assertEquals(1,daftar.check(usr, pwd));
+    }
+    
+    public void testGetUser(){
+        String usr = "ling";
+        String pwd = "amalia";
+        
+        assertEquals(1,daftar.getUser(usr, pwd));
     }
 }

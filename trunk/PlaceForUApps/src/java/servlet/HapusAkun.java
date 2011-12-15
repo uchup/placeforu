@@ -36,26 +36,26 @@ public class HapusAkun extends HttpServlet {
             throws ServletException, IOException, NonexistentEntityException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String usname = request.getParameter("username");
-
+        String message;
+        String page;
+        Long userid = Long.parseLong(request.getParameter("userid"));
+        
         User user = new User();
-        RequestDispatcher page = null;
+        //RequestDispatcher page = null;
         DaftarUser a = new DaftarUser();
-        user = a.getUserFromName(usname);
+        HttpSession session = request.getSession();
 
-        try {
-            //remove user
-            a.removeUser(user);
-
-            List<User> users = a.getUsers();
-            request.setAttribute("admin", users);
-            //redirect to daftarPengguna.jsp
-            page = request.getRequestDispatcher("/admin/daftarPengguna.jsp");
-            page.include(request, response);
-
-        } finally {
-            out.close();
-        }
+            a.deleteUser(userid);
+            RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("/successDeleting.jsp");
+                page = "ListGedung";
+                message ="Data berhasil dihapus";
+                request.setAttribute("message", message);
+                request.setAttribute("page", page);
+                requestDispatcher.forward(request, response);
+            
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
