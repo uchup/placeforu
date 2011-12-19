@@ -1,7 +1,7 @@
 <%--
     Document   : index
     Created on : Oct 29, 2011, 1:26:33 PM
-    Author     : Ika
+    Author     : Yuni
 --%>
 
 <%@page import="java.util.List"%>
@@ -46,27 +46,29 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='HapusGedung'>
+                                <form method='post'>
                                     <table>
                                         <tr>
-                                            <td>ID Gedung</td>
-                                            <td>Nama Gedung</td>
-                                            <td>Nama Pemilik</td>
-                                            <td>Lihat Subgedung</td>
+                                            <td>ID Sub Gedung</td>
+                                            <td>Nama Sub Gedung</td>
+                                            <td>Tipe Sub Gedung</td>
+                                            <td>Status</td>
+                                            <td>Lihat</td>
                                             <td>Ubah / Hapus </td>
                                         </tr>
                                         <%Iterator itr;%>
                                         <% List gedung_list = (List) request.getAttribute("pemilik");
                                             for (itr = gedung_list.iterator(); itr.hasNext();) {
-                                                entity.Gedung gedung = (entity.Gedung) itr.next();
+                                                entity.SubGedung subgedung = (entity.SubGedung) itr.next();
                                         %>
                                         <tr>
-                                        <input type="hidden" name="id_gedung" value="<%=gedung.getId()%>">
-                                        <td><%=gedung.getId()%></td>
-                                        <td><%=gedung.getNamaGedung()%></td>
-                                        <td><%=gedung.getIdPemilik()%></td>
-                                        <td><a href="ListSubGedung">>>Lihat List Subgedung</a></td>
-                                        <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?id_gedung=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
+                                        <input type="hidden" name="id_sub_gedung" value="<%=subgedung.getId()%>">
+                                        <td><%=subgedung.getId()%></td>
+                                        <td><%=subgedung.getNama_sub_gedung()%></td>
+                                        <td><%=subgedung.getTipe_sub_gedung()%></td>
+                                        <td><%=subgedung.getStatus()%></td>
+                                        <td><a href="DetailGedung?id_sub_gedung=<%=subgedung.getId()%>">Detail</a></td>
+                                        <td><a href="EditGedung?id=<%=subgedung.getId()%>">Ubah</a> /<a href="DetailGedung?id_gedung=<%=subgedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=subgedung.getId()%>">Hapus</a></td>
                                                     </tr>
                                                     <%}%>
                                                     </table>
@@ -94,7 +96,7 @@
                                                                 <fieldset>
                                                                     <table>
                                                                         <tr>
-                                                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
+                                                                            <td><a href="TambahSubGedung">Tambah Sub Gedung</a></td>
                                                                         </tr>
 
                                                                     </table>
