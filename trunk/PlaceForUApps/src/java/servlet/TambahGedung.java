@@ -5,7 +5,9 @@
 package servlet;
 
 import entity.DaftarGedung;
+import entity.DaftarUser;
 import entity.Gedung;
+import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,9 +36,15 @@ public class TambahGedung extends HttpServlet {
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
         String message = null;
+        String page;
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
-
+        HttpSession session = request.getSession();
+        DaftarUser du = new DaftarUser();
+        User u = new User();
+        
+        String username = (String) session.getAttribute("sessionusername");
+        u = du.getUserFromName(username);
         String nama_gedung = request.getParameter("nama_gedung");
         int tipe_gedung = Integer.parseInt(request.getParameter("tipe_gedung"));
         int kategori_gedung = Integer.parseInt(request.getParameter("kategori_gedung"));
@@ -46,7 +55,7 @@ public class TambahGedung extends HttpServlet {
         String deskripsi_gedung = request.getParameter("deskripsi_gedung");
         String email_gedung = request.getParameter("email_gedung");
         String telp_gedung = request.getParameter("telp_gedung");
-        int id_pemilik=851;
+        long id_pemilik= u.getId();
         
         if (nama_gedung.equals("") || tipe_gedung==0 || kategori_gedung==0
                 || propinsi_gedung.equals("") || kota_gedung.equals("") || deskripsi_gedung.equals("") || telp_gedung.equals("")) {
@@ -73,7 +82,9 @@ public class TambahGedung extends HttpServlet {
                 RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successSaving.jsp");
                 message ="Gedung berhasil ditambahkan";
+                page = "ListGedung";
                 request.setAttribute("message", message);
+                request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
         }
         

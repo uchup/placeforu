@@ -68,20 +68,35 @@ public class DaftarGedung {
         return daftarGedung;
     }
 
-    public Gedung getGedung(Long id) {
-        Gedung gedung= null;
+    public List<Gedung> getDaftarGedung(long idpemilik) {
+        List<Gedung> daftarGedung = new ArrayList<Gedung>();
+        int stat = 0;
         EntityManager em = getEntityManager();
         try {
-                Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.id=:id_gedung");
-                q.setParameter("id_gedung", id);
-                gedung = (Gedung) q.getSingleResult();
-            
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.idPemilik=:idpemilik");
+            q.setParameter("idpemilik", idpemilik);
+            daftarGedung = q.getResultList();
+
+        } finally {
+            em.close();
+        }
+        return daftarGedung;
+    }
+
+    public Gedung getGedung(long id) {
+        Gedung gedung = null;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.id=:id_gedung");
+            q.setParameter("id_gedung", id);
+            gedung = (Gedung) q.getSingleResult();
+
         } finally {
             em.close();
         }
         return gedung;
     }
-    
+
     public void editGedung(Gedung gedung) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -94,14 +109,14 @@ public class DaftarGedung {
             em.close();
         }
     }
-    
+
     public void deleteGedung(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             Gedung gedung;
             try {
-               gedung = em.find(Gedung.class, id);
+                gedung = em.find(Gedung.class, id);
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
             }
@@ -115,8 +130,6 @@ public class DaftarGedung {
             }
         }
     }
-
-    
 //    public List<Gedung> getGedungfromId(Long id) {
 //        Gedung gedung = null;
 //        EntityManager em = getEntityManager();
