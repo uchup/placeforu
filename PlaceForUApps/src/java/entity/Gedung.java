@@ -20,7 +20,7 @@ public class Gedung implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int idPemilik;
+    private Long idPemilik;
     private String namaGedung;
     private int tipeGedung;
     private int kategoriGedung;
@@ -141,12 +141,12 @@ public class Gedung implements Serializable {
     }
     
     //getting Deskripsi Gedung
-    public int getIdPemilik(){
+    public Long getIdPemilik(){
         return idPemilik;
     }    
 
     //setting Deskripsi Gedung
-    public void setIdPemilik(int idPemilik){
+    public void setIdPemilik(Long idPemilik){
         this.idPemilik = idPemilik;
     }
     

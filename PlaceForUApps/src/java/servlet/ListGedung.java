@@ -55,11 +55,13 @@ public class ListGedung extends HttpServlet {
             if (hasilCheck) {
                  //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
+                long idPemilik= u.getId();
                  //username merupakan penyewa tempat
                 if (u.getTipe() == 0 || u.getTipe() == 1 ) {                    
                     //menyimpan daftar pengguna ke dalam list
-                    List<Gedung> daftar_gedung = dg.getDaftarGedung();           
+                    List<Gedung> daftar_gedung = dg.getDaftarGedung(idPemilik);           
                     request.setAttribute("pemilik", daftar_gedung);
+                    request.setAttribute("akun", u);
                     //diarahkan ke halaman profil penyewa tempat
                     dis = request.getRequestDispatcher("/pemilik/daftarGedung.jsp");
                     dis.include(request, response);

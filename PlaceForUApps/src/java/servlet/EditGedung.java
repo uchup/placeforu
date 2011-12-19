@@ -49,7 +49,7 @@ public class EditGedung extends HttpServlet {
         int status = 0;
 
         Gedung gd = new Gedung();
-        RequestDispatcher page = null;
+        //RequestDispatcher page = null;
         DaftarGedung dg = new DaftarGedung();
         gd = dg.getGedung(idGedung);
 
@@ -78,7 +78,9 @@ public class EditGedung extends HttpServlet {
                 RequestDispatcher requestDispatcher =
                         request.getRequestDispatcher("/successUpdating.jsp");
                 message = "Data berhasil diubah ";
+                String page = "ListGedung";
                 request.setAttribute("message", message);
+                request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
 
 
