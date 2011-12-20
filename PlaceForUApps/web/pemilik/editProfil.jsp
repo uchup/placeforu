@@ -25,10 +25,10 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../pemilik">Homepage</a></li>
+			<li class="current_page_item"><a href="../pemilik">Home (Pemilik)</a></li>
                         <li class="current_page_item"><a href="../pemilik/profil">Profil</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Informasi Gedung</a></li>
-			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+			<li class="current_page_item"><a href="#">Manajemen pemilikan</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
 			<li class="current_page_item"><a href="../logout">Log Out</a></li>
 		</ul>
@@ -43,9 +43,11 @@
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
                                 <fieldset>
-                                    <form method='post'  action='editProfil'>
+
                                     <table>
+                                         <form method='post'  action='editprofil'>
                                         <tr>
+
                                             <td>
                                                 <fieldset>
                                                     <legend><h4>Profil</h4></legend>
@@ -60,8 +62,7 @@
                                                                 <td>:</td>
                                                                 <td>
                                                                     <select name="tipe">
-                                                                        <option value="1">Pemilik Tempat</option>
-                                                
+                                                                        <option value="1" >Pemilik Tempat</option>
                                                                     </select>
                                                                 </td>
                                                             </tr>
@@ -85,15 +86,13 @@
                                                                 <td>:</td>
                                                                 <td><input type='text' name='telp' value='${pemilik.telp}'/></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Foto</td>
-                                                                <td>:</td>
-                                                                <td><input type='file' name='foto' /></td>
-                                                            </tr>
+
                                                         </table>
                                                     </fieldset>
                                                 </td>
+
                                             </tr>
+
                                             <tr>
                                                 <td>
                                                     <fieldset>
@@ -102,12 +101,12 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type='text' name='usname' value='${pemilik.username}'  /></td>
+                        <td><input type='text' name='usname' value='${pemilik.username}' /></td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        <td><input type='password' name='psword' value=''/></td>
+                        <td><input type='password' name='psword' value='${pemilik.password}'/></td>
 
                     </tr>
 
@@ -116,7 +115,6 @@
 
                         <td><input type='submit' value='Simpan' /></td>
                     </tr>
-                   
 
 
                     </table>
@@ -124,13 +122,40 @@
                     </fieldset>
                     </td>
         </tr>
+        </form>
+        <tr>
+                                                <td>
+                                                    <fieldset>
+                                                        <legend><h4>Upload Foto</h4></legend>
+                                                        <table>
+                                                             <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
+                                                            <tr>
+                        <td>Foto</td>
+                        <td>:</td>
+                        <td><input type="file" name="foto"></td>
+                        <td><input type="Submit" value="Upload"><td>
+                    </tr>
+                                                             </form>
+
+                     <tr>
 
 
 
-                                    </table>
-                        </form>
+                    </tr>
+
+
+
+                    </table>
+
+                    </fieldset>
+                    </td>
+        </tr>
+                </table>
+
+
+
+
                 </fieldset>
-
 
 				</div>
 			</div>

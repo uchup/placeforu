@@ -53,10 +53,6 @@
         <servlet-class>servlet.DaftarPengguna</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DaftarAkun</servlet-name>
-        <servlet-class>servlet.DaftarAkun</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>editpengguna</servlet-name>
         <servlet-class>servlet.EditPengguna</servlet-class>
     </servlet>
@@ -123,10 +119,6 @@
     <servlet-mapping>
         <servlet-name>editpengguna</servlet-name>
         <url-pattern>/admin/editpengguna</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DaftarAkun</servlet-name>
-        <url-pattern>/DaftarAkun</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditAkun</servlet-name>

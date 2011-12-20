@@ -4,7 +4,11 @@
     Author     : Widiasa
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Date"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -33,33 +37,47 @@
 <div id="page">
 	<div id="page-bgtop">
 		<div id="content">
-			<div class="post">
-				<h2 class="title"><a href="#">Selamat Datang di PlaceForU </a></h2>
-				<p class="meta"><span class="date">April 10, 2011</span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
+                    <div class="post">
+				<h2 class="title"><a href="#">Selamat Datang di PlaceForU
+                                    </a></h2>
+
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
-					<p>This is <strong>Gastropoda </strong>, a free, fully standards-compliant CSS template designed by FreeCssTemplates<a href="http://www.nodethirtythree.com/"></a> for <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.  Photo used in this template is from <a href="http://www.pdphoto.org">PDPhoto.org</a>. This free template is released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attributions 2.5</a> license, so you’re pretty much free to do whatever you want with it (even use it commercially) provided you keep the links in the footer intact. Aside from that, have fun with it :)</p>
-					<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
+					<p> <strong>PlaceForU</strong>, merupakan aplikasi berbasis web yang dirancang untuk memudahkan Anda dalam mencari dan menyewa tempat untuk momen spesial Anda. </p><p><strong>Daftar segera dan rasakan kemudahannya!</strong></p>
+
 				</div>
 			</div>
-			<div class="post">
-				<h2 class="title"><a href="#">Lorem ipsum sed aliquam</a></h2>
-				<p class="meta"><span class="date">April 10, 2011</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
-				<div style="clear: both;">&nbsp;</div>
-				<div class="entry">
-					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus placerat consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque  orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
-					<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
-				</div>
-			</div>
-			<div class="post">
-				<h2 class="title"><a href="#">Consecteteur hendrerit </a></h2>
-				<p class="meta"><span class="date">April 10, 2011</span><span class="posted">Posted by <a href="#">Someone</a></span></p>
-				<div style="clear: both;">&nbsp;</div>
-				<div class="entry">
-					<p>Sed lacus. Donec lectus. Nullam pretium nibh ut turpis. Nam bibendum. In nulla tortor, elementum vel, tempor at, varius non, purus. Mauris vitae nisl nec metus  consectetuer. Donec ipsum. Proin imperdiet est. Phasellus <a href="#">dapibus semper urna</a>. Pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut  nisl felis ac diam. Etiam non felis. Donec ut ante. In id eros. Suspendisse lacus turpis, cursus egestas at sem.  Mauris quam enim, molestie in, rhoncus ut, lobortis a, est.</p>
-					<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
-				</div>
-			</div>
+			<h1 class="title">
+Daftar Gedung
+</h1>
+                <ul class="listing">
+                    <%Iterator itr;%>
+                                        <% List gedung_list = (List) request.getAttribute("gedung");
+                                            for (itr = gedung_list.iterator(); itr.hasNext();) {
+                                                entity.Gedung gedung = (entity.Gedung) itr.next();
+                                        %>
+                    <li>
+                        <div class="listinfo">
+                            <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
+                            <h3><%=gedung.getNamaGedung()%></h3>
+                            <p><%=gedung.getDeskripsiGedung()%></p>
+                            Harga Sewa: <span class="price">Rp0 </span>
+                             </div>
+                        <div class="listingbtns">
+                            <span class="listbuttons">
+                                <a href="#">Lihat Detail</a></span><span class="listbuttons">
+                                    <a href="#">Lihat Subgedung</a>
+                               </span></div>
+                        <div class="clear">&nbsp;</div>
+                    </li>
+<%}%>
+
+
+
+
+
+
+                </ul>
 		</div>
 		<div id="sidebar">
 			<ul>
