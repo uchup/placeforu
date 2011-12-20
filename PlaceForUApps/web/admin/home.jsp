@@ -29,7 +29,7 @@
 			<li class="current_page_item"><a href="#">Manajemen User</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Informasi Tempat</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="admin/daftarpengguna">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
 		</ul>
 	</div>
