@@ -64,6 +64,10 @@
         <servlet-name>hapuspengguna</servlet-name>
         <servlet-class>servlet.HapusPengguna</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>listgedung</servlet-name>
+        <servlet-class>servlet.ListGedung</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -109,10 +113,6 @@
         <url-pattern>/penyewa/editPenyewa</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>editpemilik</servlet-name>
-        <url-pattern>/pemilik/editProfil</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>daftarpengguna</servlet-name>
         <url-pattern>/admin/daftarpengguna</url-pattern>
     </servlet-mapping>
@@ -131,6 +131,14 @@
     <servlet-mapping>
         <servlet-name>konfirm</servlet-name>
         <url-pattern>/admin/konfirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>listgedung</servlet-name>
+        <url-pattern>/pemilik/listgedung</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editpemilik</servlet-name>
+        <url-pattern>/pemilik/editprofil</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
