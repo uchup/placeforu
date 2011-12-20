@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
-        <servlet-name>CobaServlet</servlet-name>
-        <servlet-class>servlet.CobaServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>logout</servlet-name>
         <servlet-class>servlet.LogOut</servlet-class>
     </servlet>
@@ -41,41 +37,37 @@
         <servlet-class>servlet.ProfilPemilik</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>ProfilPenyewa</servlet-name>
+        <servlet-name>profilpenyewa</servlet-name>
         <servlet-class>servlet.ProfilPenyewa</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>editPemilik</servlet-name>
+        <servlet-name>editpemilik</servlet-name>
         <servlet-class>servlet.EditPemilik</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditPenyewa</servlet-name>
+        <servlet-name>editpenyewa</servlet-name>
         <servlet-class>servlet.EditPenyewa</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>daftarPengguna</servlet-name>
+        <servlet-name>daftarpengguna</servlet-name>
         <servlet-class>servlet.DaftarPengguna</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DaftarAkun</servlet-name>
         <servlet-class>servlet.DaftarAkun</servlet-class>
     </servlet>
-	<servlet>
-        <servlet-name>editPengguna</servlet-name>
+    <servlet>
+        <servlet-name>editpengguna</servlet-name>
         <servlet-class>servlet.EditPengguna</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>HapusAkun</servlet-name>
-        <servlet-class>servlet.HapusAkun</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>KonfirmasiRegistrasi</servlet-name>
+        <servlet-name>konfirm</servlet-name>
         <servlet-class>servlet.KonfirmasiRegistrasi</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>CobaServlet</servlet-name>
-        <url-pattern>/CobaServlet</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>hapuspengguna</servlet-name>
+        <servlet-class>servlet.HapusPengguna</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -113,23 +105,23 @@
         <url-pattern>/pemilik/profil</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ProfilPenyewa</servlet-name>
+        <servlet-name>profilpenyewa</servlet-name>
         <url-pattern>/penyewa/profil</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>EditPenyewa</servlet-name>
+        <servlet-name>editpenyewa</servlet-name>
         <url-pattern>/penyewa/editPenyewa</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>editPemilik</servlet-name>
+        <servlet-name>editpemilik</servlet-name>
         <url-pattern>/pemilik/editProfil</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>daftarPengguna</servlet-name>
+        <servlet-name>daftarpengguna</servlet-name>
         <url-pattern>/admin/daftarpengguna</url-pattern>
     </servlet-mapping>
-	<servlet-mapping>
-        <servlet-name>editPengguna</servlet-name>
+    <servlet-mapping>
+        <servlet-name>editpengguna</servlet-name>
         <url-pattern>/admin/editpengguna</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
@@ -141,12 +133,12 @@
         <url-pattern>/EditAkun</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>HapusAkun</servlet-name>
-        <url-pattern>/HapusAkun</url-pattern>
+        <servlet-name>hapuspengguna</servlet-name>
+        <url-pattern>/admin/hapuspengguna</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>KonfirmasiRegistrasi</servlet-name>
-        <url-pattern>/KonfirmasiRegistrasi</url-pattern>
+        <servlet-name>konfirm</servlet-name>
+        <url-pattern>/admin/konfirm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

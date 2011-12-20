@@ -14,7 +14,7 @@
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>PlaceForU - Cara Cepat Sewa Tempat dengan Cepat</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="wrapper">
@@ -25,15 +25,15 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../pemilik">Homepage</a></li>
-                        <li class="current_page_item"><a href="../pemilik/profil">Profil</a></li>
-			<li class="current_page_item"><a href="#">Manajemen Informasi Gedung</a></li>
-			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
-			<li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
-			<li class="current_page_item"><a href="../logout">Log Out</a></li>
+			<li class="current_page_item"><a href="admin">Home (Admin)</a></li>
+			<li class="current_page_item"><a href="#">Manajemen Informasi</a></li>
+                        <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="admin/daftarpengguna">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="logout">Log Out</a></li>
 		</ul>
 	</div>
-	<div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
+	<div id="gallery"><img src="../images/img03.jpg" width="692" height="340" alt="" /></div>
 </div>
 <div id="page">
     <div id="page-bgtop">
@@ -43,7 +43,7 @@
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
                                 <fieldset>
-                                    <form method='post'  action='EditAkun'>
+                                    <form method='post'  action='editpengguna'>
                                     <table>
                                         <tr>
                                             <td>
@@ -53,7 +53,7 @@
                                                     <tr>
                                                                 <td>Nama Lengkap</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='nama' value='${akun.nama}'/>*</td>
+                                                                <td><input type='text' name='nama' value='${pengguna.nama}'/>*</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Tipe pengguna</td>
@@ -68,27 +68,22 @@
                                                             <tr>
                                                                 <td>Email</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='email' value='${akun.email}'/>*</td>
+                                                                <td><input type='text' name='email' value='${pengguna.email}'/>*</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='alamat' value='${akun.alamat}'/>*</td>
+                                                                <td><input type='text' name='alamat' value='${pengguna.alamat}'/>*</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Hp</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='hape'value='${akun.hape}'  />*</td>
+                                                                <td><input type='text' name='hape'value='${pengguna.hape}'  />*</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Telp</td>
                                                                 <td>:</td>
-                                                                <td><input type='text' name='telp' value='${akun.telp}'/>*</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Foto</td>
-                                                                <td>:</td>
-                                                                <td><input type='file' name='foto' /></td>
+                                                                <td><input type='text' name='telp' value='${pengguna.telp}'/>*</td>
                                                             </tr>
                                                         </table>
                                                     </fieldset>
@@ -102,19 +97,20 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type='text' name='usname' value='${akun.username}' readonly="readonly"/>*</td>
+                        <td><input type='text' name='usname' value='${pengguna.username}' disabled />*</td>
+
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        <td><input type='password' name='psword' value='${akun.password}'/>*</td>
+                        <td><input type='password' name='psword' value='${pengguna.password}'/>*</td>
 
                     </tr>
 
                      <tr>
 
-
-                         <td><input type='submit' value='Simpan' /><a href="DaftarAkun">Batalkan</a></td>
+                        <input type='hidden' name='uname' value='${pengguna.username}' />
+                         <td><input type='submit' value='Simpan' /><a href="daftarpengguna">Batalkan</a></td>
                     </tr>
 
 

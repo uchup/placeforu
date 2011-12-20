@@ -4,6 +4,7 @@
  */
 package entity;
 
+import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -11,7 +12,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import jpa.exceptions.NonexistentEntityException;
 
 /**
  * @author Widiasa
@@ -211,16 +211,15 @@ public class DaftarUser {
      *
      * method untuk menghapus satu data pengguna di tabel User
      */
-    public void deleteUser(String usname) throws NonexistentEntityException {
+    public void deleteUser(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             User user;
             try {
-                user = em.getReference(User.class, usname);
-                user.getUsername();
+               user = em.find(User.class, id);
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The user with id " + usname + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
             }
             em.remove(user);
             em.getTransaction().commit();

@@ -31,6 +31,7 @@ public class User implements Serializable {
     private String username;
     private String password;
     private boolean loginStat;
+    private String foto;
 
     public boolean isLoginStat() {
         return loginStat;
@@ -120,8 +121,13 @@ public class User implements Serializable {
         this.status = status;
     }
 
+    public String getFoto() {
+        return foto;
+    }
 
-
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
 
     @Override

@@ -1,4 +1,4 @@
-package jpa.exceptions;
+package entity.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

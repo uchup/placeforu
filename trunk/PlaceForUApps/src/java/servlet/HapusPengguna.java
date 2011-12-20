@@ -6,6 +6,7 @@ package servlet;
 
 import entity.DaftarUser;
 import entity.User;
+import entity.exceptions.NonexistentEntityException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -17,13 +18,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
  * @author Ika
  */
-public class HapusAkun extends HttpServlet {
+public class HapusPengguna extends HttpServlet {
 
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -36,23 +36,19 @@ public class HapusAkun extends HttpServlet {
             throws ServletException, IOException, NonexistentEntityException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String message;
-        String page;
+
         Long userid = Long.parseLong(request.getParameter("userid"));
         
         User user = new User();
-        //RequestDispatcher page = null;
+        RequestDispatcher page = null;
         DaftarUser a = new DaftarUser();
         HttpSession session = request.getSession();
 
             a.deleteUser(userid);
-            RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successDeleting.jsp");
-                page = "ListGedung";
-                message ="Data berhasil dihapus";
-                request.setAttribute("message", message);
-                request.setAttribute("page", page);
-                requestDispatcher.forward(request, response);
+            List<User> users = a.getUsers();  
+            request.setAttribute("pengguna", users);
+          //diarahkan ke halaman profil penyewa tempat
+            response.sendRedirect("/PlaceForUApps/admin/daftarpengguna");
             
         
         
@@ -72,7 +68,7 @@ public class HapusAkun extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HapusPengguna.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,7 +85,7 @@ public class HapusAkun extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HapusPengguna.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

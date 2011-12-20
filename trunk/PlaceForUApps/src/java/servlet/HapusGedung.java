@@ -8,6 +8,7 @@ import entity.DaftarGedung;
 import entity.DaftarUser;
 import entity.Gedung;
 import entity.User;
+import entity.exceptions.NonexistentEntityException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -19,7 +20,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -72,7 +72,7 @@ public class HapusGedung extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }
 
@@ -89,7 +89,7 @@ public class HapusGedung extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
+           
         }
     }
 

@@ -33,7 +33,7 @@
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="../admin/daftarpengguna">Manajemen User</a></li>
-                        <li class="current_page_item"><a href="logout">Log Out</a></li>
+                        <li class="current_page_item"><a href="../logout">Log Out</a></li>
 		</ul>
 	</div>
 	<div id="gallery"><img src="../images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -46,7 +46,7 @@
                                 <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
-                                    <form method='post' action='hapuspengguna'>
+
                                     <table border="1">
                                         <tr>
                                             <td>ID User</td>
@@ -62,12 +62,12 @@
                                                 entity.User user = (entity.User) itr.next();
                                         %>
                                         <tr>
-                                        <input type="hidden" name="username" value="<%=user.getUsername()%>">
-                                        <td>ID User</td>
+                                        <input type='hidden' name='username' value='<%=user.getUsername()%>'>
+                                        <td><%=user.getId()%></td>
                                         <td><%=user.getNama()%></td>
                                         <td><%=user.getUsername()%></td>
                                         <td><%=user.getPassword()%></td>
-                                        <td><%=user.getTipe()%></td>
+
                                         <%
                                             String tipe = "";
                                             if (user.getTipe() == 0) {
@@ -77,15 +77,18 @@
                                             } else {
                                                 tipe = "penyewa";
                                             }
-                                        %>
-                                        <td><a href="../admin/editpengguna?usname=<%=user.getUsername()%>">Ubah</a> / <input type="submit" value="Hapus"></td>
+                                         %>
+                                        <td><%out.print(tipe);%></td>
+
+                                        <td><a href="../admin/editpengguna?usname=<%=user.getUsername()%>">Ubah</a> /
+                                            <a href="../admin/hapuspengguna?userid=<%=user.getId()%>">Hapus</a></td>
                                         </tr>
                                         <%}%>
                                     </table>
-                                </form>
+
 				</div>
 			</div>
-			
+
 		</div>
 		<div id="sidebar">
 			<ul>
@@ -102,18 +105,18 @@
 				</li>
 				<li>
 					<h2> </h2>
-					
+
                                             <fieldset>
                                                 <table>
                                         <tr>
-                                            <td><a href="#">Tambah pengguna baru</a></td>
+                                            <td><a href="tambahpengguna">Tambah pengguna baru</a></td>
                                         </tr>
                                         <tr>
                                             <td><a href="konfirm">Konfirmasi pendaftaran</a></td>
                                         </tr>
                                     </table>
                                             </fieldset>
-                                           
+
 				</li>
 			</ul>
 		</div>
