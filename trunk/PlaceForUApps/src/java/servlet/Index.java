@@ -5,8 +5,11 @@
 
 package servlet;
 
+import entity.DaftarGedung;
+import entity.Gedung;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +22,8 @@ import javax.servlet.http.HttpSession;
  * @author Widiasa
  */
 public class Index extends HttpServlet {
-   
-    /** 
+
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -31,17 +34,19 @@ public class Index extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        DaftarGedung dg = new DaftarGedung();
         try {
-            HttpSession session = request.getSession();
+            List<Gedung> daftar_gedung = dg.getDaftarGedung();
+            request.setAttribute("gedung", daftar_gedung);
             RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
-            dis.forward(request, response);
-        } finally { 
+            dis.include(request, response);
+        } finally {
             out.close();
         }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -52,9 +57,9 @@ public class Index extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -67,7 +72,7 @@ public class Index extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

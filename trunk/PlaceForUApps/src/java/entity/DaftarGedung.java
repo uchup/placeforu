@@ -68,7 +68,7 @@ public class DaftarGedung {
         return daftarGedung;
     }
 
-    public List<Gedung> getDaftarGedung(long idpemilik) {
+    public List<Gedung> getDaftarGedungPemilik(long idpemilik) {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
         int stat = 0;
         EntityManager em = getEntityManager();
