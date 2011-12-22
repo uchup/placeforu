@@ -4,11 +4,10 @@
     Author     : Widiasa
 --%>
 
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Date"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -51,16 +50,16 @@
 Daftar Gedung
 </h1>
                 <ul class="listing">
-                    <%Iterator itr;%>
-                                        <% List gedung_list = (List) request.getAttribute("gedung");
+                    <%--Iterator itr;--%>
+                                        <%-- List gedung_list = (List) request.getAttribute("gedung");
                                             for (itr = gedung_list.iterator(); itr.hasNext();) {
                                                 entity.Gedung gedung = (entity.Gedung) itr.next();
-                                        %>
+                                        --%>
                     <li>
                         <div class="listinfo">
                             <img src="images/imageholder.jpg" alt="Listing Image" class="listingimage" />
-                            <h3><%=gedung.getNamaGedung()%></h3>
-                            <p><%=gedung.getDeskripsiGedung()%></p>
+                            <h3><%--=gedung.getNamaGedung()--%></h3>
+                            <p><%--=gedung.getDeskripsiGedung()--%></p>
                             Harga Sewa: <span class="price">Rp0 </span>
                              </div>
                         <div class="listingbtns">
@@ -70,7 +69,7 @@ Daftar Gedung
                                </span></div>
                         <div class="clear">&nbsp;</div>
                     </li>
-<%}%>
+<%--}--%>
 
 
 
