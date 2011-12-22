@@ -5,10 +5,17 @@
 package entity;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -19,8 +26,7 @@ public class Gedung implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private Long idPemilik;
+    private Long idGedung;
     private String namaGedung;
     private int tipeGedung;
     private int kategoriGedung;
@@ -31,13 +37,23 @@ public class Gedung implements Serializable {
     private String fasilitasGedung;
     private String noTelpGedung;
     private String emailGedung;
+    private String fotoUtamaGedung;
+    private String foto1Gedung;
+    private String foto2Gedung;
+    private String foto3Gedung;
+    private long hargaSewaGedung;
+    private int statusSewaGedung;
 
-    public Long getId() {
-        return id;
+    @ManyToOne
+    @JoinColumn(name="IDPEMILIK",referencedColumnName="ID")
+    private User user;
+
+    public Long getIdGedung() {
+        return idGedung;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdGedung(Long idGedung) {
+        this.idGedung = idGedung;
     }
     
     //getting Nama Gedung
@@ -139,21 +155,67 @@ public class Gedung implements Serializable {
     public void setEmailGedung(String emailGedung){
         this.emailGedung = emailGedung;
     }
-    
-    //getting Deskripsi Gedung
-    public Long getIdPemilik(){
-        return idPemilik;
-    }    
 
-    //setting Deskripsi Gedung
-    public void setIdPemilik(Long idPemilik){
-        this.idPemilik = idPemilik;
+    public String getFoto1Gedung() {
+        return foto1Gedung;
+    }
+
+    public void setFoto1Gedung(String foto1Gedung) {
+        this.foto1Gedung = foto1Gedung;
+    }
+
+    public String getFoto2Gedung() {
+        return foto2Gedung;
+    }
+
+    public void setFoto2Gedung(String foto2Gedung) {
+        this.foto2Gedung = foto2Gedung;
+    }
+
+    public String getFoto3Gedung() {
+        return foto3Gedung;
+    }
+
+    public void setFoto3Gedung(String foto3Gedung) {
+        this.foto3Gedung = foto3Gedung;
+    }
+
+    public String getFotoUtamaGedung() {
+        return fotoUtamaGedung;
+    }
+
+    public void setFotoUtamaGedung(String fotoUtamaGedung) {
+        this.fotoUtamaGedung = fotoUtamaGedung;
+    }
+
+    public long getHargaSewaGedung() {
+        return hargaSewaGedung;
+    }
+
+    public void setHargaSewaGedung(long hargaSewaGedung) {
+        this.hargaSewaGedung = hargaSewaGedung;
+    }
+
+    public int getStatusSewaGedung() {
+        return statusSewaGedung;
+    }
+
+    public void setStatusSewaGedung(int statusSewaGedung) {
+        this.statusSewaGedung = statusSewaGedung;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idGedung != null ? idGedung.hashCode() : 0);
         return hash;
     }
 
@@ -164,7 +226,7 @@ public class Gedung implements Serializable {
             return false;
         }
         Gedung other = (Gedung) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idGedung == null && other.idGedung != null) || (this.idGedung != null && !this.idGedung.equals(other.idGedung))) {
             return false;
         }
         return true;
@@ -172,7 +234,7 @@ public class Gedung implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Gedung[ id=" + id + " ]";
+        return "entity.Gedung[ id=" + idGedung + " ]";
     }
     
 }

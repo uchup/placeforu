@@ -59,9 +59,9 @@ public class ListGedung extends HttpServlet {
                  //username merupakan penyewa tempat
                 if (u.getTipe() == 0 || u.getTipe() == 1 ) {                    
                     //menyimpan daftar pengguna ke dalam list
-                    List<Gedung> daftar_gedung = dg.getDaftarGedungPemilik(idPemilik);
-                    request.setAttribute("pemilik", daftar_gedung);
-                    request.setAttribute("akun", u);
+                    List<Gedung> daftar_gedung = dg.getDaftarGedungPemilik(u);
+                    request.setAttribute("gedung", daftar_gedung);
+                    request.setAttribute("pemilik", u);
                     //diarahkan ke halaman profil penyewa tempat
                     dis = request.getRequestDispatcher("/pemilik/daftarGedung.jsp");
                     dis.include(request, response);

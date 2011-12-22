@@ -5,7 +5,9 @@
 package servlet;
 
 
+import entity.DaftarGedung;
 import entity.DaftarSubGedung;
+import entity.Gedung;
 import entity.SubGedung;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,7 +42,7 @@ public class TambahSubGedung extends HttpServlet {
         String nama_sub_gedung = request.getParameter("nama_sub_gedung");
         int tipe_sub_gedung = Integer.parseInt(request.getParameter("tipe_sub_gedung"));
         String harga = request.getParameter("harga");
-        int satuan = Integer.parseInt(request.getParameter("satuan"));
+        
         String kapasitas = request.getParameter("kapasitas");
         String luas = request.getParameter("luas");
         String fasilitas_sub = request.getParameter("fasilitas_sub");
@@ -58,18 +60,9 @@ public class TambahSubGedung extends HttpServlet {
                 requestDispatcher.forward(request, response);
         }
         else{
-                sub.setNama_sub_gedung(nama_sub_gedung);
-                sub.setTipe_sub_gedung(tipe_sub_gedung);
-                sub.setDeskripsi_sub(deskripsi_sub);
-                sub.setFasilitas_sub(fasilitas_sub);
-                sub.setHarga(harga);
-                sub.setKapasitas(kapasitas);
-                sub.setLuas(luas);
-                sub.setStatus(status);
-                sub.setSatuan(satuan);
-                sub.setId_pemilik(id_pemilik);
-                sub.setId_gedung(id_gedung);
-                a.addSubGedung(sub);
+                sub.setDeskripsiSubGedung(deskripsi_sub);
+                sub.setFasilitasSubGedung(fasilitas_sub);
+                sub.setGedung(null);
                 RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successSaving.jsp");
                 message ="Sub Gedung berhasil ditambahkan";
@@ -92,10 +85,13 @@ public class TambahSubGedung extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       // long idGedung = Long.parseLong(sessio));
+        DaftarGedung dg = new DaftarGedung();
+        Gedung gedung = new Gedung();
+        //gedung = dg.getGedung(idGedung);
         String destination = "/pemilik/entriInformasiSub.jsp";
-
         RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
-        rd.forward(request, response);
+        rd.include(request, response);
     }
 
     /**

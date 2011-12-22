@@ -63,12 +63,12 @@ public class DaftarSubGedung {
         return daftarSubGedung;
     }
 
-    public List<SubGedung> getSubGedungfromId(Long id) {
+    public List<SubGedung> getSubGedungFromId(Long idSubGedung) {
         SubGedung subgedung = null;
         EntityManager em = getEntityManager();
         try {
-                Query q = em.createQuery("SELECT object(o)FROM SubGedung AS o WHERE o.id=:id_sub_gedung");
-                q.setParameter("id_sub_gedung", id);
+                Query q = em.createQuery("SELECT object(o)FROM SubGedung AS o WHERE o.idsubgedung=:idsubgedung");
+                q.setParameter("idsubgedung", idSubGedung);
                 subgedung = (SubGedung) q.getSingleResult();
             
         } finally {
@@ -77,16 +77,31 @@ public class DaftarSubGedung {
         return (List<SubGedung>) subgedung;
     }
 
+    public List<SubGedung> getDaftarSubGedungFromGedung(Gedung gedung) {
+        List<SubGedung> daftarSubGedung = new ArrayList<SubGedung>();
+
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM SubGedung AS o WHERE o.gedung=:gedung");
+             q.setParameter("gedung", gedung);
+            daftarSubGedung = q.getResultList();
+
+        } finally {
+            em.close();
+        }
+        return daftarSubGedung;
+    }
+
     //method utk menghapus sub gedung
-     public void deleteSubGedung(Long id) throws NonexistentEntityException {
+     public void deleteSubGedung(Long idSubGedung) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             SubGedung subgedung;
             try {
-               subgedung = em.find(SubGedung.class, id);
+               subgedung = em.find(SubGedung.class, idSubGedung);
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The user with id " + idSubGedung + " no longer exists.", enfe);
             }
             em.remove(subgedung);
             em.getTransaction().commit();

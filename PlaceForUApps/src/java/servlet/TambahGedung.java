@@ -55,7 +55,6 @@ public class TambahGedung extends HttpServlet {
         String deskripsi_gedung = request.getParameter("deskripsi_gedung");
         String email_gedung = request.getParameter("email_gedung");
         String telp_gedung = request.getParameter("telp_gedung");
-        long id_pemilik= u.getId();
         
         if (nama_gedung.equals("") || tipe_gedung==0 || kategori_gedung==0
                 || propinsi_gedung.equals("") || kota_gedung.equals("") || deskripsi_gedung.equals("") || telp_gedung.equals("")) {
@@ -77,7 +76,7 @@ public class TambahGedung extends HttpServlet {
                 gd.setTelpGedung(telp_gedung);
                 gd.setDeskripsiGedung(deskripsi_gedung);
                 gd.setFasilitasGedung(fasilitas_gedung);
-                gd.setIdPemilik(id_pemilik);
+                gd.setUser(u);
                 dg.addGedung(gd);
                 RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successSaving.jsp");
