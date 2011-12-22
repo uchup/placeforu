@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : entriInformasiSub
     Created on : Dec 19, 2011, 6:17:27 PM
     Author     : Yuni
@@ -46,16 +46,17 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='TambahSubGedung'>
+                                <form method='post'  action='EditSubGedung'>
                                     <table>
-                                        
+
                                         <tr>
-                                        <input type="hidden" name="id_gedung" value='${gedung.id}'>
+                                        <input type="hidden" name="id_sub_gedung" value='${subgedung.id}'>
                                         </tr>
+                                        
                                         <tr>
                                             <td>Nama SubGedung <font color="red">*</font></td>
                                             <td>:</td>
-                                            <td><input type="text" name="nama_sub_gedung"></td>
+                                            <td><input type="text" name="nama_sub_gedung" value="${subgedung.nama_sub_gedung}"></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
@@ -72,11 +73,11 @@
                                         </tr>
                                         <tr><td>Harga Sewa /jam<font color="red">*</font></td>
                                             <td>:</td>
-                                            <td><input type="text" name="harga">
-                                            
+                                            <td><input type="text" name="harga" value="${subgedung.harga}">
+
                                             Satuan
                                             :
-                                            
+
                                                 <select name="satuan">
                                                     <option value="1">IDR</option>
                                                     <option value="2">USD</option>
@@ -86,14 +87,14 @@
                                         </tr>
                                         <tr><td>Kapasitas</td>
                                             <td>:</td>
-                                            <td><input type="text" name="kapasitas">
-                                            
+                                            <td><input type="text" name="kapasitas" value="${subgedung.kapasitas}">
+
                                              orang</td>
                                         </tr>
                                         <tr><td>Luas </td>
                                             <td>:</td>
-                                            <td><input type="text" name="luas">
-                                            
+                                            <td><input type="text" name="luas" value="${subgedung.luas}">
+
                                             meter persegi</td>
                                         </tr>
                                         <tr>
@@ -102,7 +103,7 @@
                                             </td>
                                             <td>:</td>
                                             <td>
-                                                <textarea name="fasilitas_sub"></textarea>
+                                                <textarea name="fasilitas_sub" value="${subgedung.nama_sub_gedung}">${subgedung.fasilitas_sub}</textarea>
                                             </td>
                                         </tr>
                                         <tr><td></td><td></td>
@@ -110,14 +111,14 @@
                                                 <font color="red">*Pisahkan tiap fasilitas dengan tanda titik (.)</font>
                                             </td>
                                         </tr>
-                                       
+
                                          <tr>
                                             <td>
                                                 Deskripsi Sub Gedung<font color="red">*</font>
                                             </td>
                                             <td>:</td>
                                             <td>
-                                                <textarea name="deskripsi_sub"></textarea>
+                                                <textarea name="deskripsi_sub" value="${subgedung.nama_sub_gedung}">${subgedung.deskripsi_sub}></textarea>
                                             </td>
                                         </tr>
                                         <tr><td>Status Sewa <font color="red">*</font></td>

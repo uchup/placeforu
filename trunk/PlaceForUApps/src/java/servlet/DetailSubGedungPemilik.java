@@ -2,15 +2,15 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package servlet;
 
-import entity.DaftarGedung;
+import entity.DaftarSubGedung;
 import entity.DaftarUser;
-import entity.Gedung;
+import entity.SubGedung;
 import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,52 +20,41 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Ika
+ * @author Widiasa
  */
-public class ListGedung extends HttpServlet {
+public class DetailSubGedungPemilik extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     kelas ini digunakan untuk melihat profil penyewa dengan kondisi session todak boleh null
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
         HttpSession session = request.getSession();
-        DaftarUser du = new DaftarUser();
-        DaftarGedung dg = new DaftarGedung();
-        User u = new User();
+        DaftarSubGedung a = new DaftarSubGedung();
+        SubGedung sub = new SubGedung();
+        User ad = new User();
+        DaftarUser b = new DaftarUser();
 
-
-
-        RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("pemilik/daftarGedung.jsp");
-        System.out.println(requestDispatcher);
 
         //untuk mendapatkan session dari user yang telah login
         if (session.getAttribute("sessionusername") != null){
             String username = (String) session.getAttribute("sessionusername");
             //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
-            boolean hasilCheck = du.checkUser(username);
+            boolean hasilCheck = b.checkUser(username);
             if (hasilCheck) {
-                 //mengambil user berdasarkan username dari Daftar User
-                u = du.getUserFromName(username);
-                long idPemilik= u.getId();
-                 //username merupakan penyewa tempat
-                if (u.getTipe() == 0 || u.getTipe() == 1 ) {
-                    //menyimpan daftar pengguna ke dalam list
-                    List<Gedung> daftar_gedung = dg.getDaftarGedungPemilik(idPemilik);
-                    request.setAttribute("pemilik", daftar_gedung);
-                    request.setAttribute("akun", u);
-                    //diarahkan ke halaman profil penyewa tempat
-                    dis = request.getRequestDispatcher("/pemilik/daftarGedung.jsp");
-                    dis.include(request, response);
+                //mengambil user berdasarkan username dari Daftar User
+                ad = b.getUserFromName(username);
+                //username merupakan pemilik tempat
+                if (ad.getTipe() == 1) {
+                    request.setAttribute("pemilik", b);
+                  
 
+                    //diarahkan ke halaman detail sub gedung
+                    dis = request.getRequestDispatcher("/pemilik/DetailSubGedung.jsp");
+                    dis.include(request, response);
                 } else {
                     dis = request.getRequestDispatcher("index");
                     dis.forward(request, response);
@@ -95,8 +84,9 @@ public class ListGedung extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+    throws ServletException, IOException {
+processRequest(request, response);
+
     }
 
     /**
@@ -108,7 +98,7 @@ public class ListGedung extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -120,4 +110,5 @@ public class ListGedung extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

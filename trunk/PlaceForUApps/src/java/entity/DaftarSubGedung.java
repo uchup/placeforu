@@ -4,7 +4,6 @@
  */
 package entity;
 
-import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,7 +15,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
+import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -32,6 +31,21 @@ public class DaftarSubGedung {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
+    public SubGedung getSubGedung(Long id) {
+        SubGedung subgedung= null;
+        EntityManager em = getEntityManager();
+        try {
+                Query q = em.createQuery("SELECT object(o) FROM SubGedung AS o WHERE o.id=:id_sub_gedung");
+                q.setParameter("id_sub_gedung", id);
+                subgedung = (SubGedung) q.getSingleResult();
+            
+        } finally {
+            em.close();
+        }
+        return subgedung;
+    }
+
 
     //method utk menambah Sub Gedung baru
     public void addSubGedung(SubGedung subgedung) {
@@ -63,12 +77,12 @@ public class DaftarSubGedung {
         return daftarSubGedung;
     }
 
-    public List<SubGedung> getSubGedungFromId(Long idSubGedung) {
+    public List<SubGedung> getSubGedungfromId(int id) {
         SubGedung subgedung = null;
         EntityManager em = getEntityManager();
         try {
-                Query q = em.createQuery("SELECT object(o)FROM SubGedung AS o WHERE o.idsubgedung=:idsubgedung");
-                q.setParameter("idsubgedung", idSubGedung);
+                Query q = em.createQuery("SELECT object(o)FROM SubGedung AS o WHERE o.id=:id_sub_gedung");
+                q.setParameter("id_sub_gedung", id);
                 subgedung = (SubGedung) q.getSingleResult();
             
         } finally {
@@ -77,31 +91,16 @@ public class DaftarSubGedung {
         return (List<SubGedung>) subgedung;
     }
 
-    public List<SubGedung> getDaftarSubGedungFromGedung(Gedung gedung) {
-        List<SubGedung> daftarSubGedung = new ArrayList<SubGedung>();
-
-        EntityManager em = getEntityManager();
-        try {
-            Query q = em.createQuery("SELECT object(o) FROM SubGedung AS o WHERE o.gedung=:gedung");
-             q.setParameter("gedung", gedung);
-            daftarSubGedung = q.getResultList();
-
-        } finally {
-            em.close();
-        }
-        return daftarSubGedung;
-    }
-
     //method utk menghapus sub gedung
-     public void deleteSubGedung(Long idSubGedung) throws NonexistentEntityException {
+     public void deleteSubGedung(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             SubGedung subgedung;
             try {
-               subgedung = em.find(SubGedung.class, idSubGedung);
+               subgedung = em.find(SubGedung.class, id);
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The user with id " + idSubGedung + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
             }
             em.remove(subgedung);
             em.getTransaction().commit();
@@ -113,4 +112,41 @@ public class DaftarSubGedung {
             }
         }
     }
+     public void editSubGedung(SubGedung subgedung) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        try { //jik tdk ada error
+            em.merge(subgedung);
+            em.getTransaction().commit();
+        } catch (Exception e) {//jk eerror
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
+
+
+
+
+
+
+
+       public List<SubGedung> getDaftarSubGedung(long id_gedung) {
+        List<SubGedung> daftarSubGedung = new ArrayList<SubGedung>();
+        int stat = 0;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM SubGedung AS o WHERE o.id_gedung=:id_gedung");
+            q.setParameter("id_gedung", id_gedung);
+            daftarSubGedung = q.getResultList();
+
+        } finally {
+            em.close();
+        }
+        return daftarSubGedung;
+    }
+
+    
+
+
 }
