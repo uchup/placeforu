@@ -65,7 +65,7 @@
                                         <td><%=gedung.getId()%></td>
                                         <td><%=gedung.getNamaGedung()%></td>
                                         <td><%=gedung.getIdPemilik()%></td>
-                                        <td><a href="ListSubGedung">>>Lihat List Subgedung</a></td>
+                                        <td><a href="ListSubGedung?id=<%=gedung.getId()%>">>>Lihat List Subgedung</a></td>
                                         <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?id_gedung=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
                                                     </tr>
                                                     <%}%>
