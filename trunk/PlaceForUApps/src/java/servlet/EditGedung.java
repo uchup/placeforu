@@ -36,8 +36,8 @@ public class EditGedung extends HttpServlet {
         String namaGedung = request.getParameter("nama_gedung");
         String tipe = request.getParameter("tipe_gedung");
         String kategori = request.getParameter("kategori_gedung");
-        int tipeGedung = Integer.parseInt(request.getParameter("tipe_gedung"));
-        int kategoriGedung = Integer.parseInt(request.getParameter("kategori_gedung"));
+        String tipeGedung = request.getParameter("tipe_gedung");
+        String kategoriGedung = request.getParameter("kategori_gedung");
         String propinsiGedung = request.getParameter("propinsi_gedung");
         String kotaGedung = request.getParameter("kota_gedung");
         String alamatGedung = request.getParameter("alamat_gedung");
@@ -54,7 +54,7 @@ public class EditGedung extends HttpServlet {
         gd = dg.getGedung(idGedung);
 
         gd.setNamaGedung(namaGedung);
-        gd.setTipeGedung(status);
+        gd.setTipeGedung(tipeGedung);
         gd.setKategoriGedung(kategoriGedung);
         gd.setPropinsiGedung(propinsiGedung);
         gd.setKotaGedung(propinsiGedung);
@@ -63,7 +63,7 @@ public class EditGedung extends HttpServlet {
         gd.setFasilitasGedung(fasilitasGedung);
         gd.setEmailGedung(emailGedung);
         gd.setTelpGedung(telpGedung);
-        request.setAttribute("pemilik", gd);
+        request.setAttribute("gedung", gd);
         try {
             if (namaGedung.equals("") || tipe.equals("") || kategori.equals("")
                     || propinsiGedung.equals("") || kotaGedung.equals("") || alamatGedung.equals("") || deskripsiGedung.equals("") || telpGedung.equals("")) {
@@ -73,18 +73,13 @@ public class EditGedung extends HttpServlet {
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
             } else {
-
                 dg.editGedung(gd);
-                RequestDispatcher requestDispatcher =
-                        request.getRequestDispatcher("/successUpdating.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("../successUpdating.jsp");
                 message = "Data berhasil diubah ";
-                String page = "ListGedung";
+                String page = "../pemilik/listgedung";
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
-
-
-
             }
 
         } catch (Exception e) {
@@ -109,8 +104,8 @@ public class EditGedung extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
 
-        Long id_gedung = Long.parseLong(request.getParameter("id"));
-        gd = (Gedung) dg.getGedung(id_gedung);
+        Long idGedung = Long.parseLong(request.getParameter("idGedung"));
+        gd = (Gedung) dg.getGedung(idGedung);
         request.setAttribute("gedung", gd);
         dis = request.getRequestDispatcher("/pemilik/editGedung.jsp");
         dis.include(request, response);

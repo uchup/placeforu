@@ -23,8 +23,8 @@ public class Gedung implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idGedung;
     private String namaGedung;
-    private int tipeGedung;
-    private int kategoriGedung;
+    private String tipeGedung;
+    private String kategoriGedung;
     private String propinsiGedung;
     private String kotaGedung;
     private String alamatGedung;
@@ -60,22 +60,22 @@ public class Gedung implements Serializable {
     }
     
     //getting Tipe Gedung
-    public int getTipeGedung(){
+    public String getTipeGedung(){
         return tipeGedung;
     }    
 
     //setting Tipe Gedung
-    public void setTipeGedung(int tipeGedung){
+    public void setTipeGedung(String tipeGedung){
         this.tipeGedung = tipeGedung;
     }
     
     //getting Kategori Gedung
-    public int getKategoriGedung(){
+    public String getKategoriGedung(){
         return kategoriGedung;
     }    
 
     //setting Kategori Gedung
-    public void setKategoriGedung(int kategoriGedung){
+    public void setKategoriGedung(String kategoriGedung){
         this.kategoriGedung = kategoriGedung;
     }
     

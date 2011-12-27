@@ -92,6 +92,18 @@
         <servlet-name>tambahpengguna</servlet-name>
         <servlet-class>servlet.TambahPengguna</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>detailgedung</servlet-name>
+        <servlet-class>servlet.DetailGedung</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>uploadfotogedung</servlet-name>
+        <servlet-class>servlet.UploadFotoGedung</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>detailgedungpemilik</servlet-name>
+        <servlet-class>servlet.DetailGedungPemilik</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -183,6 +195,18 @@
     <servlet-mapping>
         <servlet-name>tambahpengguna</servlet-name>
         <url-pattern>/admin/tambahpengguna</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>detailgedung</servlet-name>
+        <url-pattern>/detailgedung</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>uploadfotogedung</servlet-name>
+        <url-pattern>/uploadfotogedung</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>detailgedungpemilik</servlet-name>
+        <url-pattern>/pemilik/detailgedung</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

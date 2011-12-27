@@ -40,18 +40,18 @@ public class HapusGedung extends HttpServlet {
         PrintWriter out = response.getWriter();
         String message;
         String page;
-        Long gedungid = Long.parseLong(request.getParameter("gedungid"));
+        Long idGedung = Long.valueOf(request.getParameter("idGedung"));
         
         Gedung gd = new Gedung();
         //RequestDispatcher page = null;
         DaftarGedung dg = new DaftarGedung();
         HttpSession session = request.getSession();
 
-            dg.deleteGedung(gedungid);
+            dg.deleteGedung(idGedung);
             
             RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successDeleting.jsp");
-                page = "ListGedung";
+                request.getRequestDispatcher("../successDeleting.jsp");
+                page = "../pemilik/listgedung";
                 message ="Data berhasil dihapus";
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);

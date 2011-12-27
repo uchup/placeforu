@@ -135,14 +135,13 @@ public class DaftarGedung {
         return daftarGedung;
     }
 
-    public Gedung getGedung(long idGedung) {
+    public Gedung getGedung(Long idGedung) {
         Gedung gedung = null;
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.idgedung=:idgedung");
-            q.setParameter("idgedung", idGedung);
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.idGedung=:idGedung");
+            q.setParameter("idGedung", idGedung);
             gedung = (Gedung) q.getSingleResult();
-
         } finally {
             em.close();
         }

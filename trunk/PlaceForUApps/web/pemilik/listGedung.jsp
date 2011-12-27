@@ -31,12 +31,12 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">Homepage Pemilik</a></li>
-                        <li class="current_page_item"><a href="pemilik/profil">Manajemen Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="../pemilik">Home (Pemilik)</a></li>
+                        <li class="current_page_item"><a href="../pemilik/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="../pemilik/listgedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="logout">Log Out</a></li>
+                        <li class="current_page_item"><a href="../logout">Log Out</a></li>
                     </ul>
                 </div>
                 <div id="gallery"><img src="../images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -49,12 +49,12 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='HapusGedung'>
+                                
                                     <table>
                                         <tr>
                                             <td>ID Gedung</td>
                                             <td>Nama Gedung</td>
-                                            <td>Nama Pemilik</td>
+
                                             <td>Lihat Subgedung</td>
                                             <td>Ubah / Hapus </td>
                                         </tr>
@@ -71,11 +71,11 @@
                                         <td><%=gedung.getIdGedung()%></td>
                                         <td><%=gedung.getNamaGedung()%></td>
                                         <td><a href="ListSubGedung?id=<%=gedung.getIdGedung()%>">>>Lihat List Subgedung</a></td>
-                                        <td><a href="EditGedung?id=<%=gedung.getIdGedung()%>">Ubah</a> /<a href="DetailGedung?id_gedung=<%=gedung.getIdGedung()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getIdGedung()%>">Hapus</a></td>
+                                        <td><a href="../pemilik/editgedung?idGedung=<%=gedung.getIdGedung()%>">Ubah</a> /<a href="../pemilik/detailgedung?idGedung=<%=gedung.getIdGedung()%>">Detail </a>/ <a href="../pemilik/hapusgedung?idGedung=<%=gedung.getIdGedung()%>">Hapus</a></td>
                                                     </tr>
                                                     <%}}%>
                                                     </table>
-                                                    </form>
+                                                    
                                                     </div>
                                                     </div>
 

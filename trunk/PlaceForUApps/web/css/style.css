@@ -525,4 +525,7 @@ table tbody  tr:hover {background: #EAECEE; color: #111;}
 
 table tfoot td, table tfoot th, table tfoot tr {text-align: left; font: 120%  "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; text-transform: uppercase; background: #fff; padding: 10px;}
 
-
+.page-big-image{padding: 0 0 10px 0; text-align:center;}
+.page-big-image img, .page-thumb-image img{border: 1px solid #bbb; padding: 2px; height: 300px; width: 450px;}
+.page-thumb-image{margin-bottom:10px;}
+.page-thumb-image a{display: block; padding: 0 0 10px 0; width:130px; height:100px; float:left;}
