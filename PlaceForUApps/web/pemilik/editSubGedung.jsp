@@ -46,8 +46,16 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
+                                <fieldset>
+                                                        <legend><h4>Informasi Sub Gedung</h4></legend>
+
                                 <form method='post'  action='EditSubGedung'>
                                     <table>
+
+                                        <tr>
+                                        <input type="hidden" name="id_gedung" value='${subgedung.id_gedung}'>
+                                        </tr>
+                                        
 
                                         <tr>
                                         <input type="hidden" name="id_sub_gedung" value='${subgedung.id}'>
@@ -138,14 +146,19 @@
                                         </tr>
                                     </table>
                                 </form>
+                                            </fieldset>
 
                                 <tr>
                                                 <td>
                                                     <fieldset>
                                                         <legend><h4>Upload Gambar Sub Gedung</h4></legend>
                                                         <table>
-                                                             <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
+                                                             <form action="uploadfotosub" enctype="multipart/form-data" method="POST">
                                                             <tr>
+                                        <input type="hidden" name="id_sub_gedung" value='${subgedung.id}'>
+                                        </tr>
+
+                                                                 <tr>
                         <td>Gambar 1</td>
                         <td>:</td>
                         <td><input type="file" name="foto"></td>
@@ -154,7 +167,7 @@
                     <tr>
                         <td>Gambar 2</td>
                         <td>:</td>
-                        <td><input type="file" name="foto"></td>
+                        <td><input type="file" name="fotoh"></td>
                         <td><input type="Submit" value="Upload"><td>
                     </tr>
                                                              </form>
@@ -204,14 +217,7 @@
                             <li>
                                 <h2> </h2>
 
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            <td><a href="TambahSubGedung">Tambah Sub Gedung</a></td>
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
+                               
 
                             </li>
                         </ul>
@@ -231,7 +237,7 @@
                 <div id="footer">
                     <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
                 </div>
-            </div></div>
+            </div>
             <!-- end #footer -->
     </body>
 </html>

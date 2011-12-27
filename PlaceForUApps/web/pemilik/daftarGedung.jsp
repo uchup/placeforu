@@ -1,15 +1,12 @@
 <%--
     Document   : index
     Created on : Oct 29, 2011, 1:26:33 PM
-    Author     : Yuni
+    Author     : Ika
 --%>
 
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Date"%>
-<%@page import="entity.SubGedung"%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
@@ -49,58 +46,31 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'>
+                                <form method='post'  action='HapusGedung'>
                                     <table>
                                         <tr>
                                             <td>ID Gedung</td>
-
-                                            <td>ID Sub Gedung</td>
-                                            <td>Nama Sub Gedung</td>
-                                            <td>Tipe Sub Gedung</td>
-                                            <td>Status</td>
-                                            <td>Lihat</td>
+                                            <td>Nama Gedung</td>
+                                            <td>Nama Pemilik</td>
+                                            <td>Lihat Subgedung</td>
                                             <td>Ubah / Hapus </td>
                                         </tr>
                                         <%Iterator itr;%>
-                                        <% List subgedung_list = (List) request.getAttribute("gedung");
-                                            for (itr = subgedung_list.iterator(); itr.hasNext();) {
-                                                entity.SubGedung subgedung = (entity.SubGedung) itr.next();
+                                        <% List gedung_list = (List) request.getAttribute("pemilik");
+                                            for (itr = gedung_list.iterator(); itr.hasNext();) {
+                                                entity.Gedung gedung = (entity.Gedung) itr.next();
                                         %>
                                         <tr>
-                                        <input type="hidden" name="id_gedung" value="<%=subgedung.getId_gedung()%>">
-                                        <td><%=subgedung.getId_gedung()%></td>
-                                        <input type="hidden" name="id_sub_gedung" value="<%=subgedung.getId()%>">
-                                        <td><%=subgedung.getId()%></td>
-                                        <td><%=subgedung.getNama_sub_gedung()%></td>
-                                         <%
-                                            String tipe_sub_gedung = "";
-                                            if (subgedung.getTipe_sub_gedung() == 0)
-                                            {
-                                                tipe_sub_gedung = " ";
-                                            } else if (subgedung.getTipe_sub_gedung() == 1) {
-                                                tipe_sub_gedung = "Indoor";
-                                            } else {
-                                                tipe_sub_gedung = "Outdoor";
-                                            }
-                                         %>
-                                        <td><%out.print(tipe_sub_gedung);%></td>
-
-                                        <%
-                                            String status = "";
-                                            if (subgedung.getStatus() == 0)
-                                            {
-                                                status = " ";
-                                            } else if (subgedung.getStatus() == 1) {
-                                                status = "Disewa";
-                                            } else {
-                                                status = "Belum Disewa";
-                                            }
-                                         %>
-                                        <td><%out.print(status);%></td>
-                                        <td><a href="DetailSubGedungPemilik?idsub=<%=subgedung.getId()%>">Detail</a></td>
-                                        <td><a href="EditSubGedung?idsub=<%=subgedung.getId()%>">Ubah</a> / <a href="HapusSub?idsub=<%=subgedung.getId()%>">Hapus</a></td>
+                                        <input type="hidden" name="id_gedung" value="<%=gedung.getId()%>">
+                                        <td><%=gedung.getId()%></td>
+                                        <td><%=gedung.getNamaGedung()%></td>
+                                        <td><%=gedung.getIdPemilik()%></td>
+                                        <td><a href="ListSubGedung?id=<%=gedung.getId()%>">>>Lihat List Subgedung</a>
+                                            <br>
+                                        <a href="TambahSubGedung?id=<%=gedung.getId()%>">>>Tambah Sub Gedung</a>
+                                        </td>
+                                        <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?id_gedung=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
                                                     </tr>
-                                                    
                                                     <%}%>
                                                     </table>
                                                     </form>
@@ -126,11 +96,8 @@
 
                                                                 <fieldset>
                                                                     <table>
-<%SubGedung sg = new SubGedung ();%>
-
                                                                         <tr>
-                                                                            <td><a href="TambahSubGedung?id=${gedungid.id}">Tambah Sub Gedung</a></td>
-
+                                                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
                                                                         </tr>
 
                                                                     </table>

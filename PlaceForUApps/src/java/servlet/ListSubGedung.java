@@ -47,11 +47,26 @@ public class ListSubGedung extends HttpServlet {
         Gedung g = new Gedung();
 
         Long id_gedung = Long.parseLong(request.getParameter("id"));
-      //g = (Gedung) dg.getGedung(id_gedung);
         List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
         request.setAttribute("gedung", daftar_sub_gedung);
-        request.setAttribute("ged", daftar_sub_gedung);
+        
+        //Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
+         Gedung gd = new Gedung();
+         gd = dg.getGedung(id_gedung);
+         request.setAttribute("gedungid", gd);
+
+
+
+        //request.setAttribute("ged", daftar_sub_gedung);
         request.setAttribute("akun", u);
+
+
+        //SubGedung gd = new SubGedung();
+        //Long id_sub = Long.parseLong(request.getParameter("idsub"));
+        //gd = (SubGedung) sub.getSubGedung(id_sub);
+        //request.setAttribute("subg", gd);
+
+
         dis = request.getRequestDispatcher("/pemilik/ListSubGedung.jsp");
         dis.include(request, response);
 
