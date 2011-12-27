@@ -17,7 +17,7 @@
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>PlaceForU - Cara Cepat Sewa Tempat dengan Cepat</title>
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
         <div id="wrapper">
@@ -28,25 +28,25 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">HomepagePemilik</a></li>
-                        <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="../pemilik">Home (Pemilik)</a></li>
+                        <li class="current_page_item"><a href="../pemilik/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="../pemilik/listgedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="logout">Log Out</a></li>
+                        <li class="current_page_item"><a href="../logout">Log Out</a></li>
                     </ul>
                 </div>
-                <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
+                <div id="gallery"><img src="../images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
             <div id="page">
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Halaman Administrator</a></h2>
+                            <h2 class="title"><a href="#">Entri Informasi Gedung</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='TambahGedung'>
+                                <form method='post'  action='tambahgedung'>
                                     <table>
                                         <tr>
                                             <td>Nama Gedung <font color="red">*</font></td>
@@ -56,7 +56,7 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td>Tipe Gedung Gedung <font color="red">*</font></td>
+                                            <td>Tipe Gedung <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
                                                 <input type="radio" name="tipe_gedung" value="1" /> Indoor<br />
@@ -84,22 +84,21 @@
                                             <td>Alamat Gedung <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
+                                                <textarea name="alamat_gedung" rows="2" cols="10"></textarea>
+                                            </td>
+                                        <tr>Kota<td></td><td>:</td>
+                                            <td>
+                                                <input type="text" name="kota_gedung">
+                                            </td>
+                                        </tr>
+                                        <tr>Propinsi<td></td><td>:</td>
+                                            <td>                                            
                                                 <select name="propinsi_gedung">
                                                     <option value="" selected>Propinsi</option>
                                                     <option value="Jawa Barat">Jawa Barat</option>
                                                     <option value="Jawa Timur">Jawa Timur</option>
                                                     <option value="Jawa Tengah">Jawa Tengah</option>
-                                                </select> 
-                                            </td>
-                                        <tr><td></td><td></td>
-                                            <td>
-                                                <input type="text" name="kota_gedung">
-                                            </td>
-                                        </tr>
-                                        <tr><td></td><td></td>
-                                            <td>
-                                                <input name="alamat_gedung" type="text">
-
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr>
@@ -123,13 +122,6 @@
                                         <tr><td></td><td></td>
                                             <td>
                                                 <font color="red">*Pisahkan tiap fasilitas dengan tanda titik (.)</font>
-                                            </td>
-                                        </tr>
-                                        <tr><td>
-                                                Foto
-                                            </td>
-                                            <td>:</td>
-                                            <td><input type="file" name="foto_gedung">
                                             </td>
                                         </tr>
                                         <tr><td>Email</td>
@@ -172,7 +164,7 @@
                                 <fieldset>
                                     <table>
                                         <tr>
-                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
+                                            <td></td>
                                         </tr>
 
                                     </table>
@@ -196,7 +188,7 @@
                 <div id="footer">
                     <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
                 </div>
-            </div>
+            </div></div>
             <!-- end #footer -->
     </body>
 </html>

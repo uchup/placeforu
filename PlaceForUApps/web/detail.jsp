@@ -88,11 +88,11 @@ Daftar Gedung
 					</div>
 					<div style="clear: both;">&nbsp;</div>
 				</li>
-				
+
                                 <li>
                                     <h2>Log In</h2>
-                             
-					
+
+
 					<form method='post' action='login'>
                                             <fieldset>
                                                 <table>

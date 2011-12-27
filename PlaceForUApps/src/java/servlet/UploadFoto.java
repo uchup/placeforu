@@ -114,12 +114,14 @@ public class UploadFoto extends HttpServlet {
                                                 message ="Foto berhasil diupload!";
                                                 request.setAttribute("message", message);
                                                 response.sendRedirect("../PlaceForUApps/pemilik/editprofil");
+                                                page.forward(request,response);
                                                 
                                         }
                                         else {
                                                 message ="Foto berhasil diupload!";
                                                 request.setAttribute("message", message);
                                                 response.sendRedirect("../PlaceForUApps/penyewa/editprofil");
+                                                page.forward(request,response);
                                         }
 				}
 				out.close();

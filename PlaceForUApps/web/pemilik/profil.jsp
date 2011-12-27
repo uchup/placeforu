@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : profil
     Created on : Nov 16, 2011, 6:44:34 PM
     Author     : Yuni
@@ -25,7 +25,7 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../pemilik">Homepage</a></li>
+			<li class="current_page_item"><a href="../pemilik">Home (Pemilik)</a></li>
                         <li class="current_page_item"><a href="../pemilik/profil">Profil</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Informasi Gedung</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
@@ -42,8 +42,8 @@
                     <h2 class="title"><a href="#">Profil User</a></h2>
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
-                                <fieldset>
-                                    <form method='post'>
+                                  <fieldset>
+
                                     <table>
                                         <tr>
                                             <td>
@@ -54,42 +54,38 @@
                                                                 <td>Nama Lengkap</td>
                                                                 <td>:</td>
                                                                 <td>${pemilik.nama}</td>
-                                                                
+                                                                <td rowspan=6> <img src="../foto/${pemilik.foto}" width="150" height="200" alt="" /></td>
+
                                                             </tr>
                                                             <tr>
                                                                 <td>Tipe pengguna</td>
                                                                 <td>:</td>
                                                                 <td>Pemilik Tempat</td>
-                                                                
+
                                                             </tr>
                                                             <tr>
                                                                 <td>Email</td>
                                                                 <td>:</td>
                                                                 <td>${pemilik.email}</td>
-                                                                
+
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
                                                                 <td>:</td>
                                                                 <td>${pemilik.alamat}</td>
-                                                                
+
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Hp</td>
                                                                 <td>:</td>
                                                                 <td>${pemilik.hape}</td>
-                                                               
+
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Telp</td>
                                                                 <td>:</td>
                                                                 <td>${pemilik.telp}</td>
-                                                              
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Foto</td>
-                                                                <td>:</td>
-                                                                <td><input type='file' name='foto' /></td>
+
                                                             </tr>
                                                         </table>
                                                     </fieldset>
@@ -104,13 +100,13 @@
                         <td>Username</td>
                         <td>:</td>
                         <td>${pemilik.username}</td>
-                        
+
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
                         <td>******</td>
-                   
+
                     </tr>
 
                      <tr>
@@ -118,14 +114,14 @@
                                                                 <td></td>
                                                                 <td></td>
                                                             </tr>
-                  
+
                      <tr>
                      <br>
- 
+
                         <td>
-                               <h4> <a href="../pemilik/editProfil">Edit</a> </h4></td>
+                            <strong> <a href="../pemilik/editprofil">Edit</a> </strong></td>
                     </tr>
-                   
+
 
                     </table>
 
@@ -133,9 +129,8 @@
                     </td>
         </tr>
                 </table>
-                        </form>
-                </fieldset>
 
+                </fieldset>
 				</div>
 			</div>
 		</div>

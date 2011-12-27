@@ -1,4 +1,4 @@
-/* 
+/*
     Document   : style
     Created on : Oct 31, 2011, 8:58:06 PM
     Author     : Widiasa
@@ -6,7 +6,7 @@
         Purpose of the stylesheet follows.
 */
 
-/* 
+/*
    TODO customize this sample style
    Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
@@ -16,7 +16,7 @@ body {
 	padding: 0;
 	background: #FFFFFF;
 	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 14px;
+	font-size: 12px;
 	color: #5E5A3F;
 }
 
@@ -25,11 +25,11 @@ h1, h2, h3 {
 	padding: 0;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-weight: normal;
-	color: #F0E9E9;
+	color: #625E48;
 }
 
 h1 {
-	font-size: 2em;
+	font-size: 2.4em;
 }
 
 h2 {
@@ -37,7 +37,7 @@ h2 {
 }
 
 h3 {
-	font-size: 1.6em;
+	font-size: 2em;
 }
 
 p, ul, ol {
@@ -51,6 +51,10 @@ ul, ol {
 a {
 	text-decoration: none;
 	color: #84B700;
+}
+
+fieldset {
+    background: #F3F5F7;
 }
 
 a:hover {
@@ -135,6 +139,7 @@ a:hover {
 	margin: 0;
 	padding: 0;
 	border: none;
+
 }
 
 #search-text {
@@ -170,7 +175,7 @@ a:hover {
 
 #menu ul {
 	margin: 0;
-	padding: 50px 0px 0px 0px;
+	padding: 25px 0px 0px 0px;
 	list-style: none;
 	line-height: normal;
 }
@@ -216,6 +221,61 @@ a:hover {
 }
 
 /* Content */
+
+.listing {
+
+}
+.listing li {
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 8px;
+    background: #f8f8f8;
+    border: 1px solid #eee;
+}
+
+.price {
+    display: inline-block;
+    font-weight: bold;
+    color:red;
+}
+
+.listing .listinfo {
+    width: 385px;
+    float: left;
+}
+.listinfo .listingimage {
+    display: block;
+    float: left;
+    border: 5px solid #a5a192;
+    margin-right: 15px;
+}
+.listingbtns {
+    float: right;
+    width: 125px;
+    clip: rect(auto,auto,auto,auto);
+    margin-top: 10px;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+.listinfo h3 {
+    color: #006600;
+    font: bold 16px "Trebuchet MS", Arial, sans-serif;
+    margin-bottom: 5px;
+}
+.listingbtns .listbuttons {
+    background: url(images1/listingbuttons.jpg) no-repeat;
+    display: block;
+    height: 18px;
+    width: 121px;
+    padding-top: 4px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.listingbtns .listbuttons a {
+    color: #0099CC;
+    text-decoration: none;
+}
 
 #content {
 	float: right;
@@ -438,4 +498,31 @@ ul.style1 a {
 ul.style1 a:hover {
 	text-decoration: underline;
 }
+
+table {font: 100% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;padding: 0; margin: 0; border-collapse: collapse; color: #333; background: #F3F5F7;}
+
+table a {color: #3A4856; text-decoration: none; border-bottom: 1px solid #C6C8CB;}
+
+table a:visited {color: #777;}
+
+table a:hover {color: #000;}
+
+table caption {text-align: left; text-transform: uppercase;  padding-bottom: 10px; font: 200% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;}
+
+table thead th {background: #3A4856; padding: 15px 10px; color: #fff; text-align: left; font-weight: normal;}
+
+table tbody, table thead {border-left: 1px solid #EAECEE; border-right: 1px solid #EAECEE;}
+
+table tbody {border-bottom: 1px solid #EAECEE;}
+
+table tbody td, table tbody th {padding: 5px; background: url("http://www.klavina.com/csstablegallery/td_back.gif") repeat-x; text-align: left;}
+
+table tbody tr {background: #F3F5F7;}
+
+table tbody tr.odd {background: #F0F2F4;}
+
+table tbody  tr:hover {background: #EAECEE; color: #111;}
+
+table tfoot td, table tfoot th, table tfoot tr {text-align: left; font: 120%  "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; text-transform: uppercase; background: #fff; padding: 10px;}
+
 

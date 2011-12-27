@@ -77,17 +77,17 @@ public class TambahSubGedung extends HttpServlet {
                 requestDispatcher.forward(request, response);
         }
         else{
-                sub.setNama_sub_gedung(nama_sub_gedung);
-                sub.setTipe_sub_gedung(tipe_sub_gedung);
-                sub.setDeskripsi_sub(deskripsi_sub);
-                sub.setFasilitas_sub(fasilitas_sub);
-                sub.setHarga(harga);
-                sub.setKapasitas(kapasitas);
-                sub.setLuas(luas);
-                sub.setStatus(status);
-                sub.setSatuan(satuan);
-                sub.setId_pemilik(id_pemilik);
-                sub.setId_gedung(id_gedung);
+//                sub.setNama_sub_gedung(nama_sub_gedung);
+//                sub.setTipe_sub_gedung(tipe_sub_gedung);
+//                sub.setDeskripsi_sub(deskripsi_sub);
+//                sub.setFasilitas_sub(fasilitas_sub);
+//                sub.setHarga(harga);
+//                sub.setKapasitas(kapasitas);
+//                sub.setLuas(luas);
+//                sub.setStatus(status);
+//                sub.setSatuan(satuan);
+//                sub.setId_pemilik(id_pemilik);
+//                sub.setId_gedung(id_gedung);
                 a.addSubGedung(sub);
                 RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successSaving.jsp");

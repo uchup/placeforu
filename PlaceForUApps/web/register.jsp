@@ -37,7 +37,7 @@
                     <h2 class="title"><a href="#">Pendaftaran User</a></h2>
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
-                            <form method='post' action='register'>
+                            <form method="post" action="register" >
                                 <fieldset>
                                     <table>
                                         <tr>
@@ -79,11 +79,6 @@
                                                                 <td>No.Telp</td>
                                                                 <td>:</td>
                                                                 <td><input type='text' name='telp' /></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Foto</td>
-                                                                <td>:</td>
-                                                                <td><input type='file' name='foto' /></td>
                                                             </tr>
                                                         </table>
                                                     </fieldset>

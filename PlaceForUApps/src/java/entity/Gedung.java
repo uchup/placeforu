@@ -5,17 +5,12 @@
 package entity;
 
 import java.io.Serializable;
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 
 /**
  *
@@ -41,8 +36,6 @@ public class Gedung implements Serializable {
     private String foto1Gedung;
     private String foto2Gedung;
     private String foto3Gedung;
-    private long hargaSewaGedung;
-    private int statusSewaGedung;
 
     @ManyToOne
     @JoinColumn(name="IDPEMILIK",referencedColumnName="ID")
@@ -186,22 +179,6 @@ public class Gedung implements Serializable {
 
     public void setFotoUtamaGedung(String fotoUtamaGedung) {
         this.fotoUtamaGedung = fotoUtamaGedung;
-    }
-
-    public long getHargaSewaGedung() {
-        return hargaSewaGedung;
-    }
-
-    public void setHargaSewaGedung(long hargaSewaGedung) {
-        this.hargaSewaGedung = hargaSewaGedung;
-    }
-
-    public int getStatusSewaGedung() {
-        return statusSewaGedung;
-    }
-
-    public void setStatusSewaGedung(int statusSewaGedung) {
-        this.statusSewaGedung = statusSewaGedung;
     }
 
     public User getUser() {
