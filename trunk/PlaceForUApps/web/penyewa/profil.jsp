@@ -25,8 +25,9 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../penyewa">HomepagePenyewa</a></li>
-			<li class="current_page_item"><a href="../penyewa/profil">Profil</a></li>
+			<li class="current_page_item"><a href="../penyewa">Home (Penyewa)</a></li>
+                        <li class="current_page_item"><a href="../penyewa/profil">Profil</a></li>
+			<li class="current_page_item"><a href="#">Daftar Gedung</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
 			<li class="current_page_item"><a href="../logout">Log Out</a></li>
 		</ul>
@@ -40,49 +41,50 @@
                     <h2 class="title"><a href="#">Profil User</a></h2>
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
-                                <fieldset>
-                                    <form method='post'  action='editPenyewa'>
+                                  <fieldset>
+
                                     <table>
                                         <tr>
                                             <td>
                                                 <fieldset>
-
                                                     <legend><h4>Profil</h4></legend>
                                                     <table>
                                                     <tr>
                                                                 <td>Nama Lengkap</td>
                                                                 <td>:</td>
                                                                 <td>${penyewa.nama}</td>
+                                                                <td rowspan=6> <img src="../foto/${penyewa.foto}" width="150" height="200" alt="" /></td>
+
                                                             </tr>
                                                             <tr>
                                                                 <td>Tipe pengguna</td>
                                                                 <td>:</td>
-                                                                Penyewa Tempat
+                                                                <td>Pemilik Tempat</td>
+
                                                             </tr>
                                                             <tr>
                                                                 <td>Email</td>
                                                                 <td>:</td>
                                                                 <td>${penyewa.email}</td>
+
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
                                                                 <td>:</td>
                                                                 <td>${penyewa.alamat}</td>
+
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Hp</td>
                                                                 <td>:</td>
                                                                 <td>${penyewa.hape}</td>
+
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Telp</td>
                                                                 <td>:</td>
                                                                 <td>${penyewa.telp}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Foto</td>
-                                                                <td>:</td>
-                                                                <td><input type='file' name='foto' /></td>
+
                                                             </tr>
                                                         </table>
                                                     </fieldset>
@@ -97,31 +99,37 @@
                         <td>Username</td>
                         <td>:</td>
                         <td>${penyewa.username}</td>
+
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        ******
+                        <td>******</td>
+
                     </tr>
 
                      <tr>
+                                                                <td></td>
+                                                                <td></td>
+                                                                <td></td>
+                                                            </tr>
 
+                     <tr>
+                     <br>
 
                         <td>
-                               <h4> <a href="../pemilik/editProfil">Edit</a> </h4></td>
+                            <strong> <a href="../penyewa/editprofil">Edit</a> </strong></td>
                     </tr>
 
 
                     </table>
 
-
                     </fieldset>
                     </td>
         </tr>
                 </table>
-                      </form>
-                </fieldset>
 
+                </fieldset>
 				</div>
 			</div>
 		</div>

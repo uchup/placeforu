@@ -7,6 +7,7 @@ package servlet;
 
 import entity.DaftarSubGedung;
 import entity.SubGedung;
+import entity.exceptions.NonexistentEntityException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import jpa.exceptions.NonexistentEntityException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -86,7 +87,7 @@ public class HapusSub extends HttpServlet {
           try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
-            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HapusSub.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

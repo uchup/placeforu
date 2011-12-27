@@ -4,6 +4,7 @@
  */
 package entity;
 
+import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -15,7 +16,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -124,12 +124,6 @@ public class DaftarSubGedung {
             em.close();
         }
     }
-
-
-
-
-
-
 
        public List<SubGedung> getDaftarSubGedung(long id_gedung) {
         List<SubGedung> daftarSubGedung = new ArrayList<SubGedung>();

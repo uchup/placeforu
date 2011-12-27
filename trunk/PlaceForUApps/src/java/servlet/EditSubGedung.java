@@ -61,16 +61,16 @@ public class EditSubGedung extends HttpServlet {
         //Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
         
        // gd = ds.getSubGedung(id_sub_gedung);
-        gd.setId_gedung(id_gedung);
-        gd.setDeskripsi_sub(deskripsi_sub);
-        gd.setFasilitas_sub(fasilitas_sub);
-        gd.setHarga(harga);
-        gd.setKapasitas(kapasitas);
-        gd.setLuas(luas);
-        gd.setNama_sub_gedung(nama_sub_gedung);
-        gd.setSatuan(satuan);
-        gd.setStatus(status);
-        gd.setTipe_sub_gedung(tipe_sub_gedung);
+//        gd.setId_gedung(id_gedung);
+//        gd.setDeskripsi_sub(deskripsi_sub);
+//        gd.setFasilitas_sub(fasilitas_sub);
+//        gd.setHarga(harga);
+//        gd.setKapasitas(kapasitas);
+//        gd.setLuas(luas);
+//        gd.setNama_sub_gedung(nama_sub_gedung);
+//        gd.setSatuan(satuan);
+//        gd.setStatus(status);
+//        gd.setTipe_sub_gedung(tipe_sub_gedung);
         request.setAttribute("pemilik", gd);
         try {
            if (nama_sub_gedung.equals("") || tipe_sub_gedung==0 || harga.equals("")

@@ -36,8 +36,10 @@ public class Index extends HttpServlet {
         PrintWriter out = response.getWriter();
         DaftarGedung dg = new DaftarGedung();
         try {
-//            List<Gedung> daftar_gedung = dg.getDaftarGedung();
-//            request.setAttribute("gedung", daftar_gedung);
+            if(dg.cekGedung()){
+                List<Gedung> daftar_gedung = dg.getDaftarGedung();
+                request.setAttribute("gedung", daftar_gedung);
+            }
             RequestDispatcher dis = request.getRequestDispatcher("index.jsp");
             dis.include(request, response);
         } finally {

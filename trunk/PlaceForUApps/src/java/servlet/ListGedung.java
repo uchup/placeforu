@@ -41,12 +41,6 @@ public class ListGedung extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         User u = new User();
 
-
-
-        RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("pemilik/daftarGedung.jsp");
-        System.out.println(requestDispatcher);
-
         //untuk mendapatkan session dari user yang telah login
         if (session.getAttribute("sessionusername") != null){
             String username = (String) session.getAttribute("sessionusername");
@@ -55,15 +49,16 @@ public class ListGedung extends HttpServlet {
             if (hasilCheck) {
                  //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
-                long idPemilik= u.getId();
                  //username merupakan penyewa tempat
                 if (u.getTipe() == 0 || u.getTipe() == 1 ) {
                     //menyimpan daftar pengguna ke dalam list
-                    List<Gedung> daftar_gedung = dg.getDaftarGedungPemilik(idPemilik);
-                    request.setAttribute("pemilik", daftar_gedung);
-                    request.setAttribute("akun", u);
-                    //diarahkan ke halaman profil penyewa tempat
-                    dis = request.getRequestDispatcher("/pemilik/daftarGedung.jsp");
+                    if(dg.cekGedung()){
+                        List<Gedung> daftar_gedung = dg.getDaftarGedungPemilik(u);
+                        request.setAttribute("gedung", daftar_gedung);
+                    }
+                    request.setAttribute("pemilik", u);
+                    //diarahkan ke halaman profil pemilik tempat
+                    dis = request.getRequestDispatcher("/pemilik/listGedung.jsp");
                     dis.include(request, response);
 
                 } else {
