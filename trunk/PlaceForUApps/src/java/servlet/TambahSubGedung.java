@@ -40,7 +40,7 @@ public class TambahSubGedung extends HttpServlet {
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
         String message = null;
-         String page;
+        String page;
         DaftarSubGedung a = new DaftarSubGedung();
         SubGedung sub = new SubGedung();
         Gedung ged =new Gedung();
@@ -52,7 +52,7 @@ public class TambahSubGedung extends HttpServlet {
          String username = (String) session.getAttribute("sessionusername");
         //Long id_gedung1 = Long.parseLong(request.getParameter("id"));
          u = du.getUserFromName(username);
-      // ged = dg.getGedung(id_gedung1);
+        // ged = dg.getGedung(id_gedung1);
 
         String nama_sub_gedung = request.getParameter("nama_sub_gedung");
         int tipe_sub_gedung = Integer.parseInt(request.getParameter("tipe_sub_gedung"));
@@ -65,8 +65,13 @@ public class TambahSubGedung extends HttpServlet {
         int status = Integer.parseInt(request.getParameter("status"));
         long id_pemilik=  u.getId();
         
-        //Long id_gedung = Long.parseLong(request.getParameter("id_gedung"));
-        int id_gedung = 301;//ged.getId();
+         Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
+         Gedung gd = new Gedung();
+         gd = dg.getGedung(idGedung);
+         request.setAttribute("gedung", gd);
+
+       
+
 
         if (nama_sub_gedung.equals("") || tipe_sub_gedung==0 || harga.equals("")
                 || deskripsi_sub.equals("") || fasilitas_sub.equals("")||status==0) {
@@ -77,24 +82,25 @@ public class TambahSubGedung extends HttpServlet {
                 requestDispatcher.forward(request, response);
         }
         else{
-//                sub.setNama_sub_gedung(nama_sub_gedung);
-//                sub.setTipe_sub_gedung(tipe_sub_gedung);
-//                sub.setDeskripsi_sub(deskripsi_sub);
-//                sub.setFasilitas_sub(fasilitas_sub);
-//                sub.setHarga(harga);
-//                sub.setKapasitas(kapasitas);
-//                sub.setLuas(luas);
-//                sub.setStatus(status);
-//                sub.setSatuan(satuan);
-//                sub.setId_pemilik(id_pemilik);
-//                sub.setId_gedung(id_gedung);
+                sub.setNama_sub_gedung(nama_sub_gedung);
+                sub.setTipe_sub_gedung(tipe_sub_gedung);
+                sub.setDeskripsi_sub(deskripsi_sub);
+                sub.setFasilitas_sub(fasilitas_sub);
+                sub.setHarga(harga);
+                sub.setKapasitas(kapasitas);
+                sub.setLuas(luas);
+                sub.setStatus(status);
+                sub.setSatuan(satuan);
+                sub.setId_pemilik(id_pemilik);
+                sub.setId_gedung(idGedung);
                 a.addSubGedung(sub);
+                
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successSaving.jsp");
+                request.getRequestDispatcher("/successSaving2.jsp");
                 message ="Sub Gedung berhasil ditambahkan";
-                 page = "ListSubGedung";
+                page = "ListSubGedung";
                 request.setAttribute("message", message);
-                 request.setAttribute("page", page);
+                request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
         }
 
@@ -113,10 +119,41 @@ public class TambahSubGedung extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String destination = "/pemilik/entriInformasiSub.jsp";
 
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
-        rd.forward(request, response);
+        PrintWriter out = response.getWriter();
+        RequestDispatcher dis = null;
+        DaftarGedung dg = new DaftarGedung();
+        Gedung gd = new Gedung();
+
+        Long id_gedung = Long.parseLong(request.getParameter("id"));
+        gd = (Gedung) dg.getGedung(id_gedung);
+        request.setAttribute("gedung", gd);
+        dis = request.getRequestDispatcher("/pemilik/entriInformasiSub.jsp");
+        dis.include(request, response);
+
+
+
+
+
+        /*PrintWriter out = response.getWriter();
+        RequestDispatcher dis = null;
+        DaftarSubGedung ds = new DaftarSubGedung();
+        SubGedung gd = new SubGedung();
+
+        Long id_sub_gedung = Long.parseLong(request.getParameter("idsub"));
+        gd = (SubGedung) ds.getSubGedung(id_sub_gedung);
+        request.setAttribute("subgedung", gd);
+        dis = request.getRequestDispatcher("/pemilik/entriInformasiSub.jsp");
+        dis.include(request, response);
+*/
+
+
+
+
+       String destination = "/pemilik/entriInformasiSub.jsp";
+
+       RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
+       rd.forward(request, response);
     }
 
     /**

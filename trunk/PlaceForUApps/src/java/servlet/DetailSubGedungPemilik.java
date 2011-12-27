@@ -30,48 +30,19 @@ public class DetailSubGedungPemilik extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+   PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
-        HttpSession session = request.getSession();
-        DaftarSubGedung a = new DaftarSubGedung();
-        SubGedung sub = new SubGedung();
-        User ad = new User();
-        DaftarUser b = new DaftarUser();
+        DaftarSubGedung ds = new DaftarSubGedung();
+        SubGedung gd = new SubGedung();
+
+        Long id_sub_gedung = Long.parseLong(request.getParameter("idsub"));
+        gd = (SubGedung) ds.getSubGedung(id_sub_gedung);
+        request.setAttribute("subgedung", gd);
+        dis = request.getRequestDispatcher("/pemilik/informasiSub.jsp");
+        dis.include(request, response);
 
 
-        //untuk mendapatkan session dari user yang telah login
-        if (session.getAttribute("sessionusername") != null){
-            String username = (String) session.getAttribute("sessionusername");
-            //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
-            boolean hasilCheck = b.checkUser(username);
-            if (hasilCheck) {
-                //mengambil user berdasarkan username dari Daftar User
-                ad = b.getUserFromName(username);
-                //username merupakan pemilik tempat
-                if (ad.getTipe() == 1) {
-                    request.setAttribute("pemilik", b);
-                  
-
-                    //diarahkan ke halaman detail sub gedung
-                    dis = request.getRequestDispatcher("/pemilik/DetailSubGedung.jsp");
-                    dis.include(request, response);
-                } else {
-                    dis = request.getRequestDispatcher("index");
-                    dis.forward(request, response);
-                    out.close();
-                }
-            }
-            else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
-            }
-        }
-        else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
-            }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -86,7 +57,6 @@ public class DetailSubGedungPemilik extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 processRequest(request, response);
-
     }
 
     /**

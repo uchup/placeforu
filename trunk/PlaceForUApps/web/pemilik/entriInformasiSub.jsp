@@ -203,14 +203,7 @@
                             <li>
                                 <h2> </h2>
 
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            <td><a href="TambahSubGedung">Tambah Sub Gedung</a></td>
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
+                                
 
                             </li>
                         </ul>
