@@ -46,8 +46,8 @@ public class TambahGedung extends HttpServlet {
         String username = (String) session.getAttribute("sessionusername");
         u = du.getUserFromName(username);
         String nama_gedung = request.getParameter("nama_gedung");
-        int tipe_gedung = Integer.parseInt(request.getParameter("tipe_gedung"));
-        int kategori_gedung = Integer.parseInt(request.getParameter("kategori_gedung"));
+        String tipe_gedung = request.getParameter("tipe_gedung");
+        String kategori_gedung = request.getParameter("kategori_gedung");
         String propinsi_gedung = request.getParameter("propinsi_gedung");
         String kota_gedung = request.getParameter("kota_gedung");
         String alamat_gedung = request.getParameter("alamat_gedung");
@@ -56,7 +56,7 @@ public class TambahGedung extends HttpServlet {
         String email_gedung = request.getParameter("email_gedung");
         String telp_gedung = request.getParameter("telp_gedung");
         
-        if (nama_gedung.equals("") || tipe_gedung==0 || kategori_gedung==0
+        if (nama_gedung.equals("") || tipe_gedung.equals("") || kategori_gedung.equals("")
                 || propinsi_gedung.equals("") || kota_gedung.equals("") || deskripsi_gedung.equals("") || telp_gedung.equals("")) {
             RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/error_page.jsp");
@@ -78,10 +78,9 @@ public class TambahGedung extends HttpServlet {
                 gd.setFasilitasGedung(fasilitas_gedung);
                 gd.setUser(u);
                 dg.addGedung(gd);
-                RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successSaving.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/successSaving.jsp");
                 message ="Gedung berhasil ditambahkan";
-                page = "ListGedung";
+                page = "../pemilik/listgedung";
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);

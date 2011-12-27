@@ -59,8 +59,8 @@
                                             <td>Tipe Gedung <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                                <input type="radio" name="tipe_gedung" value="1" /> Indoor<br />
-                                                <input type="radio" name="tipe_gedung" value="2" /> Outdoor<br />
+                                                <input type="radio" name="tipe_gedung" value="Indoor" /> Indoor<br />
+                                                <input type="radio" name="tipe_gedung" value="Outdoor" /> Outdoor<br />
 
                                             </td>
                                             <td></td>
@@ -71,10 +71,10 @@
                                             <td>:</td>
                                             <td>
                                                 <select name="kategori_gedung">
-                                                    <option value="1">Pernikahan</option>
-                                                    <option value="2">Seminar</option>
-                                                    <option value="3">Serba Guna</option>
-                                                    <option value="4">Olahraga</option>
+                                                    <option value="Pernikahan">Pernikahan</option>
+                                                    <option value="Seminar"></option>
+                                                    <option value="Serba Guna"></option>
+                                                    <option value="Olahraga">Olahraga</option>
                                                 </select>
                                             </td>
                                             <td></td>
@@ -86,12 +86,13 @@
                                             <td>
                                                 <textarea name="alamat_gedung" rows="2" cols="10"></textarea>
                                             </td>
-                                        <tr>Kota<td></td><td>:</td>
+                                        </tr>
+                                        <tr><td>Kota</td><td>:</td>
                                             <td>
                                                 <input type="text" name="kota_gedung">
                                             </td>
                                         </tr>
-                                        <tr>Propinsi<td></td><td>:</td>
+                                        <tr><td>Propinsi</td><td>:</td>
                                             <td>                                            
                                                 <select name="propinsi_gedung">
                                                     <option value="" selected>Propinsi</option>

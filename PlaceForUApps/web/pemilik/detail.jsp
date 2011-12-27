@@ -18,7 +18,7 @@
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>PlaceForU - Cara Cepat Sewa Tempat dengan Cepat</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="wrapper">
@@ -32,7 +32,7 @@
 			<li class="current_page_item"><a href="#">Homepage</a></li>
 		</ul>
 	</div>
-	<div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
+	<div id="gallery"><img src="../images/img03.jpg" width="692" height="340" alt="" /></div>
 </div>
 <div id="page">
 	<div id="page-bgtop">
@@ -41,7 +41,7 @@
                         <div class="inside">
 				                              
                                 <h1>${gedung.namaGedung}</h1>
-<div class="page-big-image"><img src="gedung/${gedung.fotoUtamaGedung}" alt="" id="page-big-image"></div>
+<div class="page-big-image"><img src="../gedung/${gedung.fotoUtamaGedung}" alt="" id="page-big-image"></div>
 <div class="clear"></div>
 <div class="page-info-table">
 

@@ -67,7 +67,9 @@ Daftar Gedung
                              </div>
                         <div class="listingbtns">
                             <span class="listbuttons">
-                                <a href="#">Lihat Detail</a></span><span class="listbuttons">
+                                <a href="detailgedung?idgedung=<%=gedung.getIdGedung()%>">Lihat Detail</a>
+                            </span>
+                            <span class="listbuttons">
                                     <a href="#">Lihat Subgedung</a>
                                </span></div>
                         <div class="clear">&nbsp;</div>
