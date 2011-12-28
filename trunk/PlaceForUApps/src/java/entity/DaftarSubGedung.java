@@ -46,6 +46,20 @@ public class DaftarSubGedung {
         return subgedung;
     }
 
+    public SubGedung getSubGedung(String nama_sub_gedung) {
+        SubGedung subgedung= null;
+        EntityManager em = getEntityManager();
+        try {
+                Query q = em.createQuery("SELECT object(o) FROM SubGedung AS o WHERE o.nama_sub_gedung=:namasubgedung");
+                q.setParameter("namasubgedung", nama_sub_gedung);
+                subgedung = (SubGedung) q.getSingleResult();
+
+        } finally {
+            em.close();
+        }
+        return subgedung;
+    }
+
 
     //method utk menambah Sub Gedung baru
     public void addSubGedung(SubGedung subgedung) {

@@ -49,7 +49,7 @@ public class DaftarUserTest extends TestCase {
         user2.setTelp("085733523276");
         user2.setAlamat("Pacet");
         user2.setHape("085733523276");
-        user2.setUsername("ling1");
+        user2.setUsername("ling2");
         user2.setPassword("amalia");
 
 // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambah user
