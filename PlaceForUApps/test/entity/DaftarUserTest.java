@@ -18,13 +18,13 @@ import static org.junit.Assert.*;
  *
  * @author Ika
  */
-public class DaftarUserTest1 extends TestCase {
+public class DaftarUserTest extends TestCase {
     
     private User user1;
     private User user2;
     DaftarUser daftar = new DaftarUser();
     
-    public DaftarUserTest1(String testName) {
+    public DaftarUserTest(String testName) {
         super(testName);
     }
 
@@ -49,7 +49,7 @@ public class DaftarUserTest1 extends TestCase {
         user2.setTelp("085733523276");
         user2.setAlamat("Pacet");
         user2.setHape("085733523276");
-        user2.setUsername("ling2");
+        user2.setUsername("ling1");
         user2.setPassword("amalia");
 
 // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambah user
@@ -83,6 +83,7 @@ public class DaftarUserTest1 extends TestCase {
         super.tearDown();
 // bagian ini dilakukan pengetesan pada method deleteUser()--> metod yg dipakai utk menghapus pegguna
         daftar.deleteUser(daftar.getUserFromName(user1.getUsername()).getId());
+        
         user1 = null;
         user2 = null;
     }
