@@ -53,11 +53,6 @@
                                     <table>
 
                                         <tr>
-                                        <input type="hidden" name="id_gedung" value='${subgedung.id_gedung}'>
-                                        </tr>
-                                        
-
-                                        <tr>
                                         <input type="hidden" name="id_sub_gedung" value='${subgedung.id}'>
                                         </tr>
                                         
@@ -72,9 +67,12 @@
                                             <td>Tipe Sub Gedung <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                                <input type="radio" name="tipe_sub_gedung" value="1" /> Indoor<br />
-                                                <input type="radio" name="tipe_sub_gedung" value="2" /> Outdoor<br />
-
+                                               <select name="tipe_sub_gedung">
+                                                    <option value="">Pilih tipe gedung</option>
+                                                    <option value="Outdoor">Outdoor</option>
+                                                    <option value="Indoor">Indoor</option>
+                                                    <option value="Outdoor&Indoor">Outdoor&Indoor</option>
+                                                </select>
                                             </td>
                                             <td></td>
                                             <td></td>
@@ -87,9 +85,9 @@
                                             :
 
                                                 <select name="satuan">
-                                                    <option value="1">IDR</option>
-                                                    <option value="2">USD</option>
-                                                    <option value="3">EURO</option>
+                                                    <option value="IDR">IDR</option>
+                                                    <option value="USD">USD</option>
+                                                    <option value="EURO">EURO</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -133,9 +131,9 @@
                                             <td>:</td>
                                             <td>
                                                 <select name="status">
-                                                    <option value="0">    </option>
-                                                    <option value="1">Disewa</option>
-                                                    <option value="2">Belum Disewa</option>
+                                                    <option value="">    </option>
+                                                    <option value="Tersedia">Tersedia</option>
+                                                    <option value="Telah Disewa">Telah Disewa</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -153,12 +151,8 @@
                                                     <fieldset>
                                                         <legend><h4>Upload Gambar Sub Gedung</h4></legend>
                                                         <table>
-                                                             <form action="uploadfotosub" enctype="multipart/form-data" method="POST">
+                                                             <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
                                                             <tr>
-                                        <input type="hidden" name="id_sub_gedung" value='${subgedung.id}'>
-                                        </tr>
-
-                                                                 <tr>
                         <td>Gambar 1</td>
                         <td>:</td>
                         <td><input type="file" name="foto"></td>
@@ -167,7 +161,7 @@
                     <tr>
                         <td>Gambar 2</td>
                         <td>:</td>
-                        <td><input type="file" name="fotoh"></td>
+                        <td><input type="file" name="foto"></td>
                         <td><input type="Submit" value="Upload"><td>
                     </tr>
                                                              </form>
@@ -217,7 +211,14 @@
                             <li>
                                 <h2> </h2>
 
-                               
+                                <fieldset>
+                                    <table>
+                                        <tr>
+                                            <td><a href="TambahSubGedung">Tambah Sub Gedung</a></td>
+                                        </tr>
+
+                                    </table>
+                                </fieldset>
 
                             </li>
                         </ul>

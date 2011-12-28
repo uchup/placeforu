@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  */
 public class TambahGedung extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -42,7 +42,7 @@ public class TambahGedung extends HttpServlet {
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
         User u = new User();
-        
+
         String username = (String) session.getAttribute("sessionusername");
         u = du.getUserFromName(username);
         String nama_gedung = request.getParameter("nama_gedung");
@@ -55,17 +55,18 @@ public class TambahGedung extends HttpServlet {
         String deskripsi_gedung = request.getParameter("deskripsi_gedung");
         String email_gedung = request.getParameter("email_gedung");
         String telp_gedung = request.getParameter("telp_gedung");
-        
+        long id_pemilik = u.getId();
+
         if (nama_gedung.equals("") || tipe_gedung.equals("") || kategori_gedung.equals("")
                 || propinsi_gedung.equals("") || kota_gedung.equals("") || deskripsi_gedung.equals("") || telp_gedung.equals("")) {
             RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/error_page.jsp");
-                message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
-                request.setAttribute("message", message);
-                requestDispatcher.forward(request, response);
-        }
-        else{
-            
+                    request.getRequestDispatcher("/error_page.jsp");
+            message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
+            request.setAttribute("message", message);
+            requestDispatcher.forward(request, response);
+        } else {
+            boolean hasilCheck = dg.checkGedung(nama_gedung,id_pemilik);
+            if (!hasilCheck) {
                 gd.setNamaGedung(nama_gedung);
                 gd.setTipeGedung(tipe_gedung);
                 gd.setKategoriGedung(kategori_gedung);
@@ -76,22 +77,31 @@ public class TambahGedung extends HttpServlet {
                 gd.setTelpGedung(telp_gedung);
                 gd.setDeskripsiGedung(deskripsi_gedung);
                 gd.setFasilitasGedung(fasilitas_gedung);
-                gd.setUser(u);
+                gd.setIdPemilik(id_pemilik);
                 dg.addGedung(gd);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/successSaving.jsp");
-                message ="Gedung berhasil ditambahkan";
-                page = "../pemilik/listgedung";
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/successSaving.jsp");
+                message = "Gedung berhasil ditambahkan";
+                page = "ListGedung";
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
+            }
+            else{
+              RequestDispatcher requestDispatcher =
+                    request.getRequestDispatcher("/error_page.jsp");
+            message = "Gedung sudah ditambahkan sebelumnya, silahkan masukkan gedung lainnya ";
+            request.setAttribute("message", message);
+            requestDispatcher.forward(request, response);
+            }
         }
-        
 
-        
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -107,7 +117,7 @@ public class TambahGedung extends HttpServlet {
         rd.forward(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -120,7 +130,7 @@ public class TambahGedung extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class EditGedung extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -63,7 +63,7 @@ public class EditGedung extends HttpServlet {
         gd.setFasilitasGedung(fasilitasGedung);
         gd.setEmailGedung(emailGedung);
         gd.setTelpGedung(telpGedung);
-        request.setAttribute("gedung", gd);
+        request.setAttribute("pemilik", gd);
         try {
             if (namaGedung.equals("") || tipe.equals("") || kategori.equals("")
                     || propinsiGedung.equals("") || kotaGedung.equals("") || alamatGedung.equals("") || deskripsiGedung.equals("") || telpGedung.equals("")) {
@@ -73,13 +73,18 @@ public class EditGedung extends HttpServlet {
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
             } else {
+
                 dg.editGedung(gd);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("../successUpdating.jsp");
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/successUpdating.jsp");
                 message = "Data berhasil diubah ";
-                String page = "../pemilik/listgedung";
+                String page = "ListGedung";
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
+
+
+
             }
 
         } catch (Exception e) {
@@ -88,7 +93,7 @@ public class EditGedung extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -104,14 +109,14 @@ public class EditGedung extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
 
-        Long idGedung = Long.parseLong(request.getParameter("idGedung"));
-        gd = (Gedung) dg.getGedung(idGedung);
+        Long id_gedung = Long.parseLong(request.getParameter("id"));
+        gd = (Gedung) dg.getGedung(id_gedung);
         request.setAttribute("gedung", gd);
         dis = request.getRequestDispatcher("/pemilik/editGedung.jsp");
         dis.include(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -124,7 +129,7 @@ public class EditGedung extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

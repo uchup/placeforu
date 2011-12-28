@@ -73,6 +73,11 @@ public class EditPemilik extends HttpServlet {
                     user.setUsername(usname);
                     user.setPassword(pass);
                     a.editUser(user);
+                    RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("/successUpdating.jsp");
+                message ="Data berhasil diubah";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
 
                 }
                 page = request.getRequestDispatcher("/pemilik/profil");

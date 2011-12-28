@@ -49,17 +49,20 @@ public class ProfilPemilik extends HttpServlet {
                     dis = request.getRequestDispatcher("/pemilik/profil.jsp");
                     dis.include(request, response);
                 } else {
-                    response.sendRedirect("../PlaceForUApps");
+                    dis = request.getRequestDispatcher("index");
+                    dis.forward(request, response);
                     out.close();
                 }
             }
             else{
-            response.sendRedirect("../PlaceForUApps");
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
             out.close();
             }
         }
         else{
-            response.sendRedirect("../PlaceForUApps");
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
             out.close();
             }
     } 

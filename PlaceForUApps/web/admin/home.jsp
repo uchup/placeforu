@@ -1,10 +1,9 @@
-<%--
-    Document   : index
-    Created on : Oct 29, 2011, 1:26:33 PM
+<%-- 
+    Document   : home
+    Created on : Nov 16, 2011, 7:52:29 AM
     Author     : Widiasa
 --%>
 
-<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,9 +25,9 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-                        <li class="current_page_item"><a href="admin">Home (Admin)</a></li>
-                        <li class="current_page_item"><a href="admin/daftarpengguna">Manajemen User</a></li>
-			<li class="current_page_item"><a href="#">Manajemen Gedung</a></li>
+			<li class="current_page_item"><a href="admin">HomepageAdmin</a></li>
+			<li class="current_page_item"><a href="#">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="#">Manajemen Informasi Tempat</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
@@ -40,13 +39,14 @@
 	<div id="page-bgtop">
 		<div id="content">
 			<div class="post">
-				<h2 class="title"><a href="#">Halaman Administrator</a></h2>
-                                <p class="meta"><span class="date"><% new java.util.Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
+				<h2 class="title"><a href="#">Selamat Datang, ${sessionusername}
+                                    </a></h2>
+
+				<p class="meta"><span class="date">April 10, 2011</span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
-                                    <table border="1">
-
-                                    </table>
+					<p>This is <strong>Gastropoda </strong>, a free, fully standards-compliant CSS template designed by FreeCssTemplates<a href="http://www.nodethirtythree.com/"></a> for <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.  Photo used in this template is from <a href="http://www.pdphoto.org">PDPhoto.org</a>. This free template is released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attributions 2.5</a> license, so you’re pretty much free to do whatever you want with it (even use it commercially) provided you keep the links in the footer intact. Aside from that, have fun with it :)</p>
+					<p class="links"><a href="#">Read More</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Comments</a></p>
 				</div>
 			</div>
 
@@ -65,7 +65,17 @@
 					<div style="clear: both;">&nbsp;</div>
 				</li>
 				<li>
-					<h2> </h2>
+					<h2>Gedung Terbaru</h2>
+					<ul>
+						<li><a href="#">Aliquam libero</a></li>
+						<li><a href="#">Consectetuer adipiscing elit</a></li>
+						<li><a href="#">Metus aliquam pellentesque</a></li>
+						<li><a href="#">Suspendisse iaculis mauris</a></li>
+						<li><a href="#">Urnanet non molestie semper</a></li>
+						<li><a href="#">Proin gravida orci porttitor</a></li>
+					</ul>
+				</li>
+				<li>
 
 				</li>
 			</ul>
@@ -104,4 +114,3 @@
 <!-- end #footer -->
 </body>
 </html>
-

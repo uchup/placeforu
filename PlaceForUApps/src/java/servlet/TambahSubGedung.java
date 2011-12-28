@@ -52,29 +52,29 @@ public class TambahSubGedung extends HttpServlet {
          String username = (String) session.getAttribute("sessionusername");
         //Long id_gedung1 = Long.parseLong(request.getParameter("id"));
          u = du.getUserFromName(username);
-        // ged = dg.getGedung(id_gedung1);
+      // ged = dg.getGedung(id_gedung1);
 
         String nama_sub_gedung = request.getParameter("nama_sub_gedung");
-        int tipe_sub_gedung = Integer.parseInt(request.getParameter("tipe_sub_gedung"));
+        String tipe_sub_gedung = request.getParameter("tipe_sub_gedung");
         String harga = request.getParameter("harga");
-        int satuan = Integer.parseInt(request.getParameter("satuan"));
+        String satuan = request.getParameter("satuan");
         String kapasitas = request.getParameter("kapasitas");
         String luas = request.getParameter("luas");
         String fasilitas_sub = request.getParameter("fasilitas_sub");
         String deskripsi_sub = request.getParameter("deskripsi_sub");
-        int status = Integer.parseInt(request.getParameter("status"));
+        String status = request.getParameter("status");
         long id_pemilik=  u.getId();
         
          Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
          Gedung gd = new Gedung();
          gd = dg.getGedung(idGedung);
-         request.setAttribute("gedung", gd);
+         request.setAttribute("subgedung", gd);
 
        
 
 
-        if (nama_sub_gedung.equals("") || tipe_sub_gedung==0 || harga.equals("")
-                || deskripsi_sub.equals("") || fasilitas_sub.equals("")||status==0) {
+        if (nama_sub_gedung.equals("") || tipe_sub_gedung.equals("") || harga.equals("")
+                || deskripsi_sub.equals("") || fasilitas_sub.equals("")||status.equals("")) {
             RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/error_page.jsp");
                 message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
@@ -82,6 +82,8 @@ public class TambahSubGedung extends HttpServlet {
                 requestDispatcher.forward(request, response);
         }
         else{
+            boolean hasilCheck = dg.checkGedung(nama_sub_gedung,idGedung);
+            if (!hasilCheck) {
                 sub.setNama_sub_gedung(nama_sub_gedung);
                 sub.setTipe_sub_gedung(tipe_sub_gedung);
                 sub.setDeskripsi_sub(deskripsi_sub);
@@ -102,6 +104,14 @@ public class TambahSubGedung extends HttpServlet {
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
+            }
+             else{
+              RequestDispatcher requestDispatcher =
+                    request.getRequestDispatcher("/error_page.jsp");
+            message = "Sub Gedung sudah ditambahkan sebelumnya, silahkan masukkan sub gedung lainnya ";
+            request.setAttribute("message", message);
+            requestDispatcher.forward(request, response);
+            }
         }
 
 
@@ -125,7 +135,7 @@ public class TambahSubGedung extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
 
-        Long id_gedung = Long.parseLong(request.getParameter("id"));
+        Long id_gedung = Long.parseLong(request.getParameter("id_gedung"));
         gd = (Gedung) dg.getGedung(id_gedung);
         request.setAttribute("gedung", gd);
         dis = request.getRequestDispatcher("/pemilik/entriInformasiSub.jsp");

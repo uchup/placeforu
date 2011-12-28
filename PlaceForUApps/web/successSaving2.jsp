@@ -29,7 +29,7 @@
 			<div class="post">
 				<div class="entry">
                                     <p><font color="red"><%=  request.getAttribute("message")  %></font></p>
-                                    <a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Kembali</a> ||<a href="ListSubGedung?id=${gedung.id}"> Ke Daftar </a>
+                                    <a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Kembali</a> ||<a href="ListSubGedung?id=${subgedung.id}"> Ke Daftar </a>
 				</div>
 			</div>
 

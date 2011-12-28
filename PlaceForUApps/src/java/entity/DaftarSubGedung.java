@@ -4,7 +4,6 @@
  */
 package entity;
 
-import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +15,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -31,7 +31,25 @@ public class DaftarSubGedung {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
+    
+    //check whether any Gedung with idGedung & namaSubGedung saved in Daftar Gedung before
+    public boolean checkSubGedung(String namaSubGedung, long idGedung) {
+        boolean result = false;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT count(o) FROM SubGedung AS o WHERE o.nama_sub_gedung=:namaSubGedung AND o.id_gedung=:idGedung");
+            q.setParameter("nama_sub_gedung", namaSubGedung);
+            q.setParameter("id_gedung", idGedung);
+            int jumlahSubGedung = ((Long) q.getSingleResult()).intValue();
+            if (jumlahSubGedung > 0) {
+                result = true;
+            }
+        } finally {
+            em.close();
+        }
+        return result;
+    }
+    
     public SubGedung getSubGedung(Long id) {
         SubGedung subgedung= null;
         EntityManager em = getEntityManager();
@@ -40,20 +58,6 @@ public class DaftarSubGedung {
                 q.setParameter("id_sub_gedung", id);
                 subgedung = (SubGedung) q.getSingleResult();
             
-        } finally {
-            em.close();
-        }
-        return subgedung;
-    }
-
-    public SubGedung getSubGedung(String nama_sub_gedung) {
-        SubGedung subgedung= null;
-        EntityManager em = getEntityManager();
-        try {
-                Query q = em.createQuery("SELECT object(o) FROM SubGedung AS o WHERE o.nama_sub_gedung=:namasubgedung");
-                q.setParameter("namasubgedung", nama_sub_gedung);
-                subgedung = (SubGedung) q.getSingleResult();
-
         } finally {
             em.close();
         }
@@ -138,6 +142,12 @@ public class DaftarSubGedung {
             em.close();
         }
     }
+
+
+
+
+
+
 
        public List<SubGedung> getDaftarSubGedung(long id_gedung) {
         List<SubGedung> daftarSubGedung = new ArrayList<SubGedung>();

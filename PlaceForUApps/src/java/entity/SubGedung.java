@@ -25,24 +25,24 @@ public class SubGedung implements Serializable {
     private Long id_pemilik;
     private Long id_gedung ;
     private String nama_sub_gedung;
-    private int tipe_sub_gedung;
+    private String tipe_sub_gedung;
     private String harga;
-    private int satuan;
+    private String satuan;
     private String kapasitas;
     private String  luas;
     private String fasilitas_sub;
     private String gambar_sub;
     private String deskripsi_sub;
-    private int status;
-    private String foto;
+    private String status;
+    private String foto1;
     private String foto2;
 
-    public String getFoto() {
-        return foto;
+    public String getFoto1() {
+        return foto1;
     }
 
-    public void setFoto(String foto) {
-        this.foto = foto;
+    public void setFoto1(String foto1) {
+        this.foto1 = foto1;
     }
 
     public String getFoto2() {
@@ -131,29 +131,29 @@ public class SubGedung implements Serializable {
         this.nama_sub_gedung = nama_sub_gedung;
     }
 
-    public int getSatuan() {
+    public String getSatuan() {
         return satuan;
     }
 
-    public void setSatuan(int satuan) {
+    public void setSatuan(String satuan) {
         this.satuan = satuan;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
     
 
-    public int getTipe_sub_gedung() {
+    public String getTipe_sub_gedung() {
         return tipe_sub_gedung;
     }
 
-    public void setTipe_sub_gedung(int tipe_sub_gedung) {
+    public void setTipe_sub_gedung(String tipe_sub_gedung) {
         this.tipe_sub_gedung = tipe_sub_gedung;
     }
 

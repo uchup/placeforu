@@ -8,7 +8,6 @@ import entity.DaftarGedung;
 import entity.DaftarUser;
 import entity.Gedung;
 import entity.User;
-import entity.exceptions.NonexistentEntityException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -40,18 +40,18 @@ public class HapusGedung extends HttpServlet {
         PrintWriter out = response.getWriter();
         String message;
         String page;
-        Long idGedung = Long.valueOf(request.getParameter("idGedung"));
+        Long gedungid = Long.parseLong(request.getParameter("gedungid"));
         
         Gedung gd = new Gedung();
         //RequestDispatcher page = null;
         DaftarGedung dg = new DaftarGedung();
         HttpSession session = request.getSession();
 
-            dg.deleteGedung(idGedung);
+            dg.deleteGedung(gedungid);
             
             RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("../successDeleting.jsp");
-                page = "../pemilik/listgedung";
+                request.getRequestDispatcher("/successDeleting.jsp");
+                page = "ListGedung";
                 message ="Data berhasil dihapus";
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
@@ -72,7 +72,7 @@ public class HapusGedung extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
-            
+            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,7 +89,7 @@ public class HapusGedung extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
-           
+            Logger.getLogger(HapusAkun.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

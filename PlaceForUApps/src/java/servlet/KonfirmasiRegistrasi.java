@@ -6,7 +6,6 @@ package servlet;
 
 import entity.DaftarUser;
 import entity.User;
-import entity.exceptions.NonexistentEntityException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -18,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -32,35 +32,34 @@ public class KonfirmasiRegistrasi extends HttpServlet {
             throws ServletException, IOException, NonexistentEntityException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String usname = request.getParameter("uname");
-        Long userid = Long.parseLong(request.getParameter("userid"));
+        String usname = request.getParameter("usname");
         int konfirm = Integer.parseInt(request.getParameter("konfirm"));
         RequestDispatcher dis = null;
         String message = null;
         DaftarUser a = new DaftarUser();
         User user = new User();
         user = a.getUserFromName(usname);
-        user.setStatus(1);
         try {
             //if registration is accepted
             if (konfirm == 1) {
+                user.setStatus(1);
                 a.editUser(user);
 
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("../konfirmasiSukses.jsp");
+                request.getRequestDispatcher("/successConfirmation.jsp");
                 message ="Registrasi berhasil disetujui";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
 
             } //if registration is rejected
             else {
-                a.deleteUser(userid);
+                a.removeUser(user);
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("konfirmasisukses.jsp");
+                request.getRequestDispatcher("/successConfirmation.jsp");
                 message ="Registrasi berhasil ditolak";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
-            }
+            } 
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,7 +81,7 @@ public class KonfirmasiRegistrasi extends HttpServlet {
         RequestDispatcher dis = null;
         User u = new User();
         List<User> users = du.getUnconfirmedUsers();
-        request.setAttribute("pengguna", users);
+        request.setAttribute("admin", users);
         //diarahkan ke halaman profil penyewa tempat
         dis = request.getRequestDispatcher("/admin/konfirmasiRegistrasi.jsp");
         dis.include(request, response);

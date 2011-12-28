@@ -42,7 +42,7 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Halaman Administrator</a></h2>
+                            <h2 class="title"><a href="#">Daftar Gedung</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
@@ -64,12 +64,12 @@
                                         <input type="hidden" name="id_gedung" value="<%=gedung.getId()%>">
                                         <td><%=gedung.getId()%></td>
                                         <td><%=gedung.getNamaGedung()%></td>
-                                        <td><%=gedung.getIdPemilik()%></td>
+                                        <td>${akun.nama}</td>
                                         <td><a href="ListSubGedung?id=<%=gedung.getId()%>">>>Lihat List Subgedung</a>
                                             <br>
                                         <a href="TambahSubGedung?id=<%=gedung.getId()%>">>>Tambah Sub Gedung</a>
                                         </td>
-                                        <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?id_gedung=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
+                                        <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?id=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
                                                     </tr>
                                                     <%}%>
                                                     </table>
