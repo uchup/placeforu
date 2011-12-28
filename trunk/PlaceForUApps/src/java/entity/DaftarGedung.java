@@ -47,6 +47,7 @@ public class DaftarGedung {
         }
     }
 
+
     public boolean cekGedung() {
         boolean result = false;
         EntityManager em = getEntityManager();
@@ -147,6 +148,20 @@ public class DaftarGedung {
         }
         return gedung;
     }
+
+    public Gedung getGedung(String namaGedung) {
+        Gedung gedung = null;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.namaGedung=:ged");
+            q.setParameter("ged", namaGedung);
+            gedung = (Gedung) q.getSingleResult();
+        } finally {
+            em.close();
+        }
+        return gedung;
+    }
+
 
     public void editGedung(Gedung gedung) {
         EntityManager em = getEntityManager();
