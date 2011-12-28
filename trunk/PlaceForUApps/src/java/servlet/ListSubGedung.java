@@ -4,7 +4,6 @@
  */
 package servlet;
 
-
 import entity.DaftarGedung;
 import entity.DaftarSubGedung;
 import entity.DaftarUser;
@@ -46,29 +45,50 @@ public class ListSubGedung extends HttpServlet {
         User u = new User();
         Gedung g = new Gedung();
 
-        Long id_gedung = Long.parseLong(request.getParameter("id"));
-        List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
-        request.setAttribute("gedung", daftar_sub_gedung);
-        
-        //Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
-         Gedung gd = new Gedung();
-         gd = dg.getGedung(id_gedung);
-         request.setAttribute("gedungid", gd);
 
-
-
-        //request.setAttribute("ged", daftar_sub_gedung);
-        request.setAttribute("akun", u);
-
-
-        //SubGedung gd = new SubGedung();
-        //Long id_sub = Long.parseLong(request.getParameter("idsub"));
-        //gd = (SubGedung) sub.getSubGedung(id_sub);
-        //request.setAttribute("subg", gd);
-
-
-        dis = request.getRequestDispatcher("/pemilik/ListSubGedung.jsp");
-        dis.include(request, response);
+        if (session.getAttribute("sessionusername") != null) {
+            String username = (String) session.getAttribute("sessionusername");
+            //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
+            boolean hasilCheck = du.checkUser(username);
+            if (hasilCheck) {
+                //mengambil user berdasarkan username dari Daftar User
+                u = du.getUserFromName(username);
+                long idPemilik = u.getId();
+                
+                //jika pengguna merupakan pemilik
+                if (u.getTipe() == 1) {
+                    Long id_gedung = Long.parseLong(request.getParameter("id"));
+                    List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
+                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("akun", u);
+                    g = (Gedung) dg.getGedung(id_gedung);
+                    request.setAttribute("gd", g);
+                    dis = request.getRequestDispatcher("/pemilik/ListSubGedung.jsp");
+                    dis.include(request, response);
+                }
+                ////jika pengguna merupakan penyewa        
+                else if(u.getTipe() == 2) {
+                    Long id_gedung = Long.parseLong(request.getParameter("id"));
+                    List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
+                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("akun", u);
+                    g = (Gedung) dg.getGedung(id_gedung);
+                    request.setAttribute("gd", g);
+                    dis = request.getRequestDispatcher("/penyewa/listSubGedung.jsp");
+                    dis.include(request, response);
+                }
+                else if(u.getTipe() == 0) {
+                    Long id_gedung = Long.parseLong(request.getParameter("id"));
+                    List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
+                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("akun", u);
+                    g = (Gedung) dg.getGedung(id_gedung);
+                    request.setAttribute("gd", g);
+                    dis = request.getRequestDispatcher("/admin/listSubGedung.jsp");
+                    dis.include(request, response);
+                }
+            }
+        }
 
 
     }
@@ -84,8 +104,63 @@ public class ListSubGedung extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         processRequest(request, response);
-       
+        PrintWriter out = response.getWriter();
+        RequestDispatcher dis = null;
+        HttpSession session = request.getSession();
+        DaftarUser du = new DaftarUser();
+        DaftarGedung dg = new DaftarGedung();
+        DaftarSubGedung sub = new DaftarSubGedung();
+        User u = new User();
+        Gedung g = new Gedung();
+
+
+        if (session.getAttribute("sessionusername") != null) {
+            String username = (String) session.getAttribute("sessionusername");
+            //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
+            boolean hasilCheck = du.checkUser(username);
+            if (hasilCheck) {
+                //mengambil user berdasarkan username dari Daftar User
+                u = du.getUserFromName(username);
+                long idPemilik = u.getId();
+                
+                //jika pengguna merupakan pemilik
+                if (u.getTipe() == 1) {
+                    Long id_gedung = Long.parseLong(request.getParameter("id"));
+                    List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
+                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("akun", u);
+                    g = (Gedung) dg.getGedung(id_gedung);
+                    request.setAttribute("gd", g);
+                    dis = request.getRequestDispatcher("/pemilik/ListSubGedung.jsp");
+                    dis.include(request, response);
+                }
+                ////jika pengguna merupakan penyewa        
+                else if(u.getTipe() == 2) {
+                    Long id_gedung = Long.parseLong(request.getParameter("id"));
+                    List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
+                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("akun", u);
+                    g = (Gedung) dg.getGedung(id_gedung);
+                    request.setAttribute("gd", g);
+                    dis = request.getRequestDispatcher("/penyewa/listSubGedung.jsp");
+                    dis.include(request, response);
+                }
+                else if(u.getTipe() == 0) {
+                    Long id_gedung = Long.parseLong(request.getParameter("id"));
+                    List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
+                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("akun", u);
+                    g = (Gedung) dg.getGedung(id_gedung);
+                    request.setAttribute("gd", g);
+                    dis = request.getRequestDispatcher("/admin/listSubGedung.jsp");
+                    dis.include(request, response);
+                }
+            }
+        }
+
+
+
+
     }
 
     /**

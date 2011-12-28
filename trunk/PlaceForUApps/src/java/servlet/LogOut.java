@@ -7,6 +7,7 @@ package servlet;
 
 import entity.User;
 import entity.DaftarUser;
+import jpa.UserJpaController;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,11 +34,12 @@ public class LogOut extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         RequestDispatcher dis =null;
         HttpSession session = request.getSession();
-        if (session.getAttribute("sessionusername") != null){
-            session.removeAttribute("sessionusername");
+        if (session.getAttribute("user") != null){
+            session.removeAttribute("user");
             session.invalidate();    
         }
-        response.sendRedirect("../PlaceForUApps");
+        dis = request.getRequestDispatcher("index.jsp");
+        dis.forward(request, response);
         
     }
 

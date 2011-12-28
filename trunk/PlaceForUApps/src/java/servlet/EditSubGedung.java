@@ -33,30 +33,25 @@ public class EditSubGedung extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        RequestDispatcher dis = null;
+
         String message = null;
-        String page;
         String nama_sub_gedung = request.getParameter("nama_sub_gedung");
-        int tipe_sub_gedung = Integer.parseInt(request.getParameter("tipe_sub_gedung"));
+        String tipe_sub_gedung = request.getParameter("tipe_sub_gedung");
         String harga = request.getParameter("harga");
-        int satuan = Integer.parseInt(request.getParameter("satuan"));
+        String satuan = request.getParameter("satuan");
         String kapasitas = request.getParameter("kapasitas");
         String luas = request.getParameter("luas");
         String fasilitas_sub = request.getParameter("fasilitas_sub");
         String deskripsi_sub = request.getParameter("deskripsi_sub");
-        int status = Integer.parseInt(request.getParameter("status"));
+        String status = request.getParameter("status");
         Long id = Long.parseLong(request.getParameter("id_sub_gedung"));
-        Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
+        
 
         DaftarSubGedung ds = new DaftarSubGedung();
+        //RequestDispatcher page = null;
         SubGedung gd = new SubGedung();
         gd = ds.getSubGedung(id);
-        Gedung ged = new Gedung();
-        DaftarGedung dg = new DaftarGedung();
-        ged = dg.getGedung(idGedung);
-        request.setAttribute("gedung", ged);
-
- 
+        
         gd.setDeskripsi_sub(deskripsi_sub);
         gd.setFasilitas_sub(fasilitas_sub);
         gd.setHarga(harga);
@@ -68,8 +63,8 @@ public class EditSubGedung extends HttpServlet {
         gd.setTipe_sub_gedung(tipe_sub_gedung);
         request.setAttribute("pemilik", gd);
         try {
-           if (nama_sub_gedung.equals("") || tipe_sub_gedung==0 || harga.equals("")
-                || deskripsi_sub.equals("") || fasilitas_sub.equals("")||status==0) {
+           if (nama_sub_gedung.equals("") || tipe_sub_gedung.equals("") || harga.equals("")
+                || deskripsi_sub.equals("") || fasilitas_sub.equals("")||status.equals("")) {
                 RequestDispatcher requestDispatcher =
                         request.getRequestDispatcher("/error_page.jsp");
                 message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
@@ -81,12 +76,10 @@ public class EditSubGedung extends HttpServlet {
                 RequestDispatcher requestDispatcher =
                         request.getRequestDispatcher("/successSaving2.jsp");
                 message = "Informasi Sub Gedung berhasil diubah ";
-                page = "ListSubGedung";
+                String page = "ListSubGedung?id="+gd.getId_gedung();
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
-
-
 
             }
 

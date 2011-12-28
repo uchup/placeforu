@@ -4,7 +4,7 @@
  */
 package entity;
 
-import entity.exceptions.NonexistentEntityException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,6 +16,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -31,7 +32,25 @@ public class DaftarGedung {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
+    
+    //check whether any Gedung with id_pemilik & namaGedung saved in Daftar Gedung
+    public boolean checkGedung(String namaGedung, long idPemilik) {
+        boolean result = false;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT count(o) FROM Gedung AS o WHERE o.namaGedung=:namaGedung AND o.idPemilik=:idPemilik");
+            q.setParameter("namaGedung", namaGedung);
+            q.setParameter("idPemilik", idPemilik);
+            int jumlahGedung = ((Long) q.getSingleResult()).intValue();
+            if (jumlahGedung > 0) {
+                result = true;
+            }
+        } finally {
+            em.close();
+        }
+        return result;
+    }
+    
     //add new Gedung
     public void addGedung(Gedung gedung) {
         EntityManager em = null;
@@ -47,38 +66,6 @@ public class DaftarGedung {
         }
     }
 
-
-    public boolean cekGedung() {
-        boolean result = false;
-        EntityManager em = getEntityManager();
-        try {
-            Query q = em.createQuery("SELECT count(o) FROM Gedung AS o");
-            int jumlahGedung = ((Long) q.getSingleResult()).intValue();
-            if (jumlahGedung > 0) {
-                result = true;
-            }
-        } finally {
-            em.close();
-        }
-        return result;
-    }
-
-    public boolean cekGedungFromUser(User user) {
-        boolean result = false;
-        EntityManager em = getEntityManager();
-        try {
-            Query q = em.createQuery("SELECT count(o) FROM Gedung AS o where o.user = :user");
-            q.setParameter("user", user);
-            int jumlahGedung = ((Long) q.getSingleResult()).intValue();
-            if (jumlahGedung > 0) {
-                result = true;
-            }
-        } finally {
-            em.close();
-        }
-        return result;
-    }
-
     //getting list of Gedung
     public List<Gedung> getDaftarGedung() {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
@@ -86,11 +73,6 @@ public class DaftarGedung {
         EntityManager em = getEntityManager();
         try {
             Query q = em.createQuery("SELECT object(o) FROM Gedung AS o");
-            //int jumlahGedung = ((Long) q.getSingleResult()).intValue();
-            //if (jumlahGedung < 0) {
-            // String pesan = "tidak ada daftar gedung tersimpan";
-            // daftarGedung = (List<Gedung>) q.setParameter("pesan", pesan);
-            // } else {
             daftarGedung = q.getResultList();
             // }
 
@@ -99,19 +81,13 @@ public class DaftarGedung {
         }
         return daftarGedung;
     }
-
-    public List<Gedung> getDaftarGedungFromKategori(int kategoriGedung) {
+    
+    public List<Gedung> getDaftarGedung(User user) {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
 
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o where o.kategoriGedung=:kategoriGedung");
-             q.setParameter("kategoriGedung", kategoriGedung);
-            //int jumlahGedung = ((Long) q.getSingleResult()).intValue();
-            //if (jumlahGedung < 0) {
-            // String pesan = "tidak ada daftar gedung tersimpan";
-            // daftarGedung = (List<Gedung>) q.setParameter("pesan", pesan);
-            // } else {
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o");
             daftarGedung = q.getResultList();
             // }
 
@@ -121,13 +97,13 @@ public class DaftarGedung {
         return daftarGedung;
     }
 
-    public List<Gedung> getDaftarGedungPemilik(User user) {
+    public List<Gedung> getDaftarGedungPemilik(long idpemilik) {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
         int stat = 0;
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.user=:user");
-            q.setParameter("user", user);
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.idPemilik=:idpemilik");
+            q.setParameter("idpemilik", idpemilik);
             daftarGedung = q.getResultList();
 
         } finally {
@@ -136,32 +112,19 @@ public class DaftarGedung {
         return daftarGedung;
     }
 
-    public Gedung getGedung(Long idGedung) {
+    public Gedung getGedung(long id) {
         Gedung gedung = null;
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.idGedung=:idGedung");
-            q.setParameter("idGedung", idGedung);
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.id=:id_gedung");
+            q.setParameter("id_gedung", id);
             gedung = (Gedung) q.getSingleResult();
+
         } finally {
             em.close();
         }
         return gedung;
     }
-
-    public Gedung getGedung(String namaGedung) {
-        Gedung gedung = null;
-        EntityManager em = getEntityManager();
-        try {
-            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.namaGedung=:ged");
-            q.setParameter("ged", namaGedung);
-            gedung = (Gedung) q.getSingleResult();
-        } finally {
-            em.close();
-        }
-        return gedung;
-    }
-
 
     public void editGedung(Gedung gedung) {
         EntityManager em = getEntityManager();
@@ -176,15 +139,15 @@ public class DaftarGedung {
         }
     }
 
-    public void deleteGedung(Long idGedung) throws NonexistentEntityException {
+    public void deleteGedung(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             Gedung gedung;
             try {
-                gedung = em.find(Gedung.class, idGedung);
+                gedung = em.find(Gedung.class, id);
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The user with id " + idGedung + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
             }
             em.remove(gedung);
             em.getTransaction().commit();
@@ -196,5 +159,17 @@ public class DaftarGedung {
             }
         }
     }
-
+//    public List<Gedung> getGedungfromId(Long id) {
+//        Gedung gedung = null;
+//        EntityManager em = getEntityManager();
+//        try {
+//                Query q = em.createQuery("SELECT object(o)FROM Gedung AS o WHERE o.id=:id_gedung");
+//                q.setParameter("id_gedung", id);
+//                gedung = (Gedung) q.getSingleResult();
+//
+//        } finally {
+//            em.close();
+//        }
+//        return (List<Gedung>) gedung;
+//    }
 }

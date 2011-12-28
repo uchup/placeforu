@@ -39,11 +39,8 @@ public class UploadFoto extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
-    // bisa diganti sesuai spesifikasi
-    private static final String TMP_DIR_PATH = "C:\\Documents and Settings\\Widiasa\\My Documents\\NetBeansProjects\\PlaceForUApps\\tmp";
+    private static final String TMP_DIR_PATH = "H:\\ika\\PlaceForUApps\\tmp";
     private File tmpDir;
-    // bisa diganti sesuai spesifikasi
     private static final String DESTINATION_DIR_PATH ="/foto";
     private File destinationDir;
 
@@ -71,6 +68,7 @@ public class UploadFoto extends HttpServlet {
 
         String username = (String) session.getAttribute("sessionusername");
         user = a.getUserFromName(username);
+        
 
 	DiskFileItemFactory  fileItemFactory = new DiskFileItemFactory ();
 		/*
@@ -114,14 +112,12 @@ public class UploadFoto extends HttpServlet {
                                                 message ="Foto berhasil diupload!";
                                                 request.setAttribute("message", message);
                                                 response.sendRedirect("../PlaceForUApps/pemilik/editprofil");
-                                                page.forward(request,response);
                                                 
                                         }
                                         else {
                                                 message ="Foto berhasil diupload!";
                                                 request.setAttribute("message", message);
                                                 response.sendRedirect("../PlaceForUApps/penyewa/editprofil");
-                                                page.forward(request,response);
                                         }
 				}
 				out.close();

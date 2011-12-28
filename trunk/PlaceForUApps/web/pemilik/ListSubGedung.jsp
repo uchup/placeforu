@@ -45,7 +45,7 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Halaman Administrator</a></h2>
+                            <h2 class="title"><a href="#">Daftar Sub Gedung</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
@@ -72,31 +72,8 @@
                                         <input type="hidden" name="id_sub_gedung" value="<%=subgedung.getId()%>">
                                         <td><%=subgedung.getId()%></td>
                                         <td><%=subgedung.getNama_sub_gedung()%></td>
-                                         <%
-                                            String tipe_sub_gedung = "";
-                                            if (subgedung.getTipe_sub_gedung() == 0)
-                                            {
-                                                tipe_sub_gedung = " ";
-                                            } else if (subgedung.getTipe_sub_gedung() == 1) {
-                                                tipe_sub_gedung = "Indoor";
-                                            } else {
-                                                tipe_sub_gedung = "Outdoor";
-                                            }
-                                         %>
-                                        <td><%out.print(tipe_sub_gedung);%></td>
-
-                                        <%
-                                            String status = "";
-                                            if (subgedung.getStatus() == 0)
-                                            {
-                                                status = " ";
-                                            } else if (subgedung.getStatus() == 1) {
-                                                status = "Disewa";
-                                            } else {
-                                                status = "Belum Disewa";
-                                            }
-                                         %>
-                                        <td><%out.print(status);%></td>
+                                        <td><%=subgedung.getTipe_sub_gedung()%></td>
+                                        <td><%=subgedung.getStatus()%></td>
                                         <td><a href="DetailSubGedungPemilik?idsub=<%=subgedung.getId()%>">Detail</a></td>
                                         <td><a href="EditSubGedung?idsub=<%=subgedung.getId()%>">Ubah</a> / <a href="HapusSub?idsub=<%=subgedung.getId()%>">Hapus</a></td>
                                                     </tr>
@@ -129,7 +106,7 @@
 <%SubGedung sg = new SubGedung ();%>
 
                                                                         <tr>
-                                                                            <td><a href="TambahSubGedung?id=${gedungid.id}">Tambah Sub Gedung</a></td>
+                                                                            <td><a href="TambahSubGedung?id_gedung=${gd.id}">Tambah Sub Gedung</a></td>
 
                                                                         </tr>
 

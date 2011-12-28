@@ -48,7 +48,7 @@
                             <div class="entry">
                                 <form method='post'  action='TambahSubGedung'>
                                     <table>
-                                        
+
                                         <tr>
                                         <input type="hidden" name="id_gedung" value='${gedung.id}'>
                                         </tr>
@@ -63,9 +63,12 @@
                                             <td>Tipe Sub Gedung <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                                <input type="radio" name="tipe_sub_gedung" value="1" /> Indoor<br />
-                                                <input type="radio" name="tipe_sub_gedung" value="2" /> Outdoor<br />
-
+                                                <select name="tipe_sub_gedung">
+                                                    <option value="">Pilih tipe gedung</option>
+                                                    <option value="Outdoor">Outdoor</option>
+                                                    <option value="Indoor">Indoor</option>
+                                                    <option value="Outdoor&Indoor">Outdoor&Indoor</option>
+                                                </select>
                                             </td>
                                             <td></td>
                                             <td></td>
@@ -73,28 +76,28 @@
                                         <tr><td>Harga Sewa /jam<font color="red">*</font></td>
                                             <td>:</td>
                                             <td><input type="text" name="harga">
-                                            
-                                            Satuan
-                                            :
-                                            
+
+                                                Satuan
+                                                :
+
                                                 <select name="satuan">
-                                                    <option value="1">IDR</option>
-                                                    <option value="2">USD</option>
-                                                    <option value="3">EURO</option>
+                                                    <option value="IDR">IDR</option>
+                                                    <option value="USD">USD</option>
+                                                    <option value="EURO">EURO</option>
                                                 </select>
                                             </td>
                                         </tr>
                                         <tr><td>Kapasitas</td>
                                             <td>:</td>
                                             <td><input type="text" name="kapasitas">
-                                            
-                                             orang</td>
+
+                                                orang</td>
                                         </tr>
                                         <tr><td>Luas </td>
                                             <td>:</td>
                                             <td><input type="text" name="luas">
-                                            
-                                            meter persegi</td>
+
+                                                meter persegi</td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -110,8 +113,8 @@
                                                 <font color="red">*Pisahkan tiap fasilitas dengan tanda titik (.)</font>
                                             </td>
                                         </tr>
-                                       
-                                         <tr>
+
+                                        <tr>
                                             <td>
                                                 Deskripsi Sub Gedung<font color="red">*</font>
                                             </td>
@@ -124,9 +127,9 @@
                                             <td>:</td>
                                             <td>
                                                 <select name="status">
-                                                    <option value="0">    </option>
-                                                    <option value="1">Disewa</option>
-                                                    <option value="2">Belum Disewa</option>
+                                                    <option value="">    </option>
+                                                    <option value="Tersedia">Tersedia</option>
+                                                    <option value="Telah Disewa">Telah Disewa</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -139,38 +142,38 @@
                                 </form>
 
                                 <tr>
-                                                <td>
-                                                    <fieldset>
-                                                        <legend><h4>Upload Gambar Sub Gedung</h4></legend>
-                                                        <table>
-                                                             <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
-                                                            <tr>
-                        <td>Gambar 1</td>
-                        <td>:</td>
-                        <td><input type="file" name="foto"></td>
-                        <td><input type="Submit" value="Upload"><td>
-                    </tr>
-                    <tr>
-                        <td>Gambar 2</td>
-                        <td>:</td>
-                        <td><input type="file" name="foto"></td>
-                        <td><input type="Submit" value="Upload"><td>
-                    </tr>
-                                                             </form>
+                                    <td>
+                                        <fieldset>
+                                            <legend><h4>Upload Gambar Sub Gedung</h4></legend>
+                                            <table>
+                                                <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
+                                                    <tr>
+                                                        <td>Gambar 1</td>
+                                                        <td>:</td>
+                                                        <td><input type="file" name="foto"></td>
+                                                        <td><input type="Submit" value="Upload"><td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Gambar 2</td>
+                                                        <td>:</td>
+                                                        <td><input type="file" name="foto"></td>
+                                                        <td><input type="Submit" value="Upload"><td>
+                                                    </tr>
+                                                </form>
 
-                     <tr>
-
-
-
-                    </tr>
+                                                <tr>
 
 
 
-                    </table>
+                                                </tr>
 
-                    </fieldset>
-                    </td>
-        </tr>
+
+
+                                            </table>
+
+                                        </fieldset>
+                                    </td>
+                                </tr>
 
 
 
@@ -203,7 +206,14 @@
                             <li>
                                 <h2> </h2>
 
-                                
+                                <fieldset>
+                                    <table>
+                                        <tr>
+                                            <td><a href="TambahSubGedung">Tambah Sub Gedung</a></td>
+                                        </tr>
+
+                                    </table>
+                                </fieldset>
 
                             </li>
                         </ul>

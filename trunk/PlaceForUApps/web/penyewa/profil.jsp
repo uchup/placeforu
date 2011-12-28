@@ -25,9 +25,8 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../penyewa">Home (Penyewa)</a></li>
-                        <li class="current_page_item"><a href="../penyewa/profil">Profil</a></li>
-			<li class="current_page_item"><a href="#">Daftar Gedung</a></li>
+			<li class="current_page_item"><a href="../penyewa">HomepagePenyewa</a></li>
+			<li class="current_page_item"><a href="../penyewa/profil">Profil</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
 			<li class="current_page_item"><a href="../logout">Log Out</a></li>
 		</ul>
@@ -41,50 +40,54 @@
                     <h2 class="title"><a href="#">Profil User</a></h2>
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
-                                  <fieldset>
-
+                                <fieldset>
+                                    <form method='post'  action='editPenyewa'>
                                     <table>
                                         <tr>
                                             <td>
                                                 <fieldset>
+
                                                     <legend><h4>Profil</h4></legend>
                                                     <table>
                                                     <tr>
                                                                 <td>Nama Lengkap</td>
                                                                 <td>:</td>
-                                                                <td>${penyewa.nama}</td>
-                                                                <td rowspan=6> <img src="../foto/${penyewa.foto}" width="150" height="200" alt="" /></td>
-
+                                                                <td><input type='text' name='nama' value='${penyewa.nama}'  readonly='readonly' /></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Tipe pengguna</td>
                                                                 <td>:</td>
-                                                                <td>Pemilik Tempat</td>
-
+                                                                <td>
+                                                                    <select name="tipe">
+                                                                        <option value="1">Pemilik Tempat</option>
+                                                                        <option value="2">Penyewa Tempat</option>
+                                                                    </select>
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Email</td>
                                                                 <td>:</td>
-                                                                <td>${penyewa.email}</td>
-
+                                                                <td><input type='text' name='email' value='${penyewa.email}'  readonly='readonly'/></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
                                                                 <td>:</td>
-                                                                <td>${penyewa.alamat}</td>
-
+                                                                <td><input type='text' name='alamat' value='${penyewa.alamat}'  readonly='readonly' /></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Hp</td>
                                                                 <td>:</td>
-                                                                <td>${penyewa.hape}</td>
-
+                                                                <td><input type='text' name='hape'value='${penyewa.hape}'  readonly='readonly' /></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Telp</td>
                                                                 <td>:</td>
-                                                                <td>${penyewa.telp}</td>
-
+                                                                <td><input type='text' name='telp' value='${penyewa.telp}'  readonly='readonly'/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Foto</td>
+                                                                <td>:</td>
+                                                                <td><input type='file' name='foto' /></td>
                                                             </tr>
                                                         </table>
                                                     </fieldset>
@@ -98,38 +101,31 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td>${penyewa.username}</td>
-
+                        <td><input type='text' name='usname' value='${penyewa.username}' readonly='readonly'/></td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        <td>******</td>
-
+                        <td><input type='password' name='psword' value='${penyewa.password}'  readonly='readonly' /></td>
                     </tr>
 
                      <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
 
-                     <tr>
-                     <br>
 
-                        <td>
-                            <strong> <a href="../penyewa/editprofil">Edit</a> </strong></td>
+                        <td><a href="../penyewa/editPenyewa">Edit</a></td>
                     </tr>
 
 
                     </table>
 
+
                     </fieldset>
                     </td>
         </tr>
                 </table>
-
+                      </form>
                 </fieldset>
+
 				</div>
 			</div>
 		</div>

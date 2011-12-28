@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : error_page
     Created on : Oct 29, 2011, 1:26:33 PM
     Author     : Ika
@@ -15,7 +15,7 @@
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>PlaceForU - Cara Cepat Sewa Tempat dengan Cepat</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="wrapper">
@@ -32,9 +32,9 @@
                                     <a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Kembali</a> || <a href="<%=  request.getAttribute("page")  %>"> Ke Daftar </a>
 				</div>
 			</div>
-			
+
 		</div>
-         </div>	
+         </div>
 </div>
 <div id="footer">
 	<p>Design by Kelompok 9</p>

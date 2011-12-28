@@ -49,19 +49,41 @@ public class ListGedung extends HttpServlet {
             if (hasilCheck) {
                  //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
-                 //username merupakan penyewa tempat
-                if (u.getTipe() == 0 || u.getTipe() == 1 ) {
-                    //menyimpan daftar pengguna ke dalam list
-                    if(dg.cekGedung()){
-                        List<Gedung> daftar_gedung = dg.getDaftarGedungPemilik(u);
-                        request.setAttribute("gedung", daftar_gedung);
-                    }
-                    request.setAttribute("pemilik", u);
-                    //diarahkan ke halaman profil pemilik tempat
-                    dis = request.getRequestDispatcher("/pemilik/listGedung.jsp");
+                long idPemilik= u.getId();
+                
+                 //jika pengguna merupakan pemilik tempat, maka akan diarahkan ke halaman daftar Gedung untuk pemilik
+                if (u.getTipe() == 1 ) {
+                    
+                    List<Gedung> daftar_gedung = dg.getDaftarGedungPemilik(idPemilik);
+                    request.setAttribute("pemilik", daftar_gedung);
+                    request.setAttribute("akun", u);
+                    //diarahkan ke halaman profil penyewa tempat
+                    dis = request.getRequestDispatcher("/pemilik/daftarGedung.jsp");
                     dis.include(request, response);
 
-                } else {
+                } 
+                //jika  pengguna merupakan administrator, maka akan diarahkan ke halaman daftar gedung untuk administrator
+                else if(u.getTipe() == 0 ) {
+                    
+                    List<Gedung> daftar_gedung = dg.getDaftarGedung();
+                    request.setAttribute("admin", daftar_gedung);
+                    request.setAttribute("akun", u);
+                    dis = request.getRequestDispatcher("/admin/daftarGedung.jsp");
+                    dis.include(request, response);
+                    
+                }
+                //jika  pengguna merupakan penyewa, maka akan diarahkan ke halaman daftar gedung untuk penyewa
+                else if(u.getTipe() == 2 ) {
+                    
+                    List<Gedung> daftar_gedung = dg.getDaftarGedung();
+                    request.setAttribute("penyewa", daftar_gedung);
+                    request.setAttribute("akun", u);
+                    //diarahkan ke halaman profil penyewa tempat
+                    dis = request.getRequestDispatcher("/penyewa/daftarGedungPenyewa.jsp");
+                    dis.include(request, response);
+                    
+                }
+                else {
                     dis = request.getRequestDispatcher("index");
                     dis.forward(request, response);
                     out.close();

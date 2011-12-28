@@ -4,28 +4,25 @@
  */
 package entity;
 
-import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import jpa.exceptions.NonexistentEntityException;
 
 /**
- * @author Widiasa
  *
- * Kelas ini berfungsi untuk mengelola fungsi yang dibutuhkan berkaitan dengan
- * modul Manajemen User, di mana fungsi tersebut dihubungkan dengan kelas entitas 
- * User yang merepresentasikan tabel User dalam database
+ * @author Noval54
  */
 public class DaftarUser {
 
-    /**
-     * method yang menghubungkan dengan database sesuai dengan
-     * konfigurasi pada persistence unit
-     */
     public DaftarUser() {
         emf = Persistence.createEntityManagerFactory("persistence");
     }
@@ -35,13 +32,6 @@ public class DaftarUser {
         return emf.createEntityManager();
     }
 
-    /**
-     * @param username String
-     * @param password String
-     *
-     * method yang digunakan untuk mengecek keberadaan pengguna
-     * pada tabel User berdasarkan parameter username dan password
-     */
     public boolean check(String username, String password) {
         boolean result = false;
         EntityManager em = getEntityManager();
@@ -59,12 +49,6 @@ public class DaftarUser {
         return result;
     }
 
-    /**
-     * @param username String
-     *
-     * method yang digunakan untuk mengecek keberadaan pengguna
-     * pada tabel User berdasarkan parameter username
-     */
     public boolean checkUser(String username) {
         boolean result = false;
         EntityManager em = getEntityManager();
@@ -81,14 +65,6 @@ public class DaftarUser {
         return result;
     }
 
-    /**
-     * @param username String
-     * @param password String
-     * @return User entity
-     * 
-     * method untuk mengambil data satu pengguna pada tabel User
-     * berdasarkan parameter username dan password
-     */
     public User getUser(String username, String password) {
         User user = null;
         EntityManager em = getEntityManager();
@@ -106,13 +82,7 @@ public class DaftarUser {
         return user;
     }
 
-    /**
-     * @param username String
-     * @return User entity
-     *
-     * method untuk mengambil data satu pengguna pada tabel User
-     * berdasarkan parameter username
-     */
+    //   method untuk mengambil satu baris user berdasarkan parameter username
     public User getUserFromName(String username) {
         User user = null;
         EntityManager em = getEntityManager();
@@ -128,55 +98,66 @@ public class DaftarUser {
         }
         return user;
     }
+    
+    // method untuk mengambil satu baris user berdasarkan parameter id
+    public User getUserFromId(long id) {
+        User user = null;
+        EntityManager em = getEntityManager();
+        try {
+            
+                Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.id=:id");
+                q.setParameter("id", id);
+                user = (User) q.getSingleResult();
+            
+        } finally {
+            em.close();
+        }
+        return user;
+    }
 
-    /**
-     * @param user User entity
-     *
-     * method untuk mengubah data pengguna
-     * yang sudah ada pada tabel users
-     */
-     public void editUser(User user) {
+    //method untuk mengganti nilai atribut pada baris yang sudah ada pada tabel users
+    public void editUser(User user) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try { //jik tdk ada error
             em.merge(user);
             em.getTransaction().commit();
-        } catch (Exception e){//jk eerror
-            em.getTransaction().rollback();
-        }finally {
-            em.close();
-        }
-    }
-
-    /**
-     * @param user User entity
-     *
-     * method untuk menambahkan data pengguna baru ke dalam tabel users
-     */
-    public void addUser(User user) {
-        EntityManager em = getEntityManager();
-        em.getTransaction().begin();
-        try {
-            em.persist(user);
-            em.getTransaction().commit();
-        } catch (Exception e) {
+        } catch (Exception e) {//jk eerror
             em.getTransaction().rollback();
         } finally {
             em.close();
         }
     }
 
-    /**
-     * @return List<User>
-     *
-     * method untuk menampilkan list/daftar pengguna dari tabel User
-     */
+    public void addUser(User user) {
+        EntityManager em = getEntityManager();
+        boolean hasilCheck1 = checkUser(user.getUsername());
+        if (!hasilCheck1) {
+            em.getTransaction().begin();
+            try {
+                em.persist(user);
+                em.getTransaction().commit();
+            } catch (Exception e) {
+                em.getTransaction().rollback();
+            } finally {
+                em.close();
+            }
+        } else {
+            try {
+                throw new MyException("Username telah ada");
+            } catch (MyException ex) {
+                Logger.getLogger(DaftarUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     public List<User> getUsers() {
         List<User> users = new ArrayList<User>();
-
+        int stat = 1;
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM User AS o");
+            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.status=:stat");
+            q.setParameter("stat", stat);
             users = q.getResultList();
 
         } finally {
@@ -184,13 +165,8 @@ public class DaftarUser {
         }
         return users;
     }
+    // get username list
 
-    /**
-     * @param user String
-     * @return List<User>
-     *
-     * method untuk menampilkan list/daftar username pengguna dari tabel User
-     */
     public List<User> getUsername(String username) {
         List<User> users = new ArrayList<User>();
 
@@ -206,27 +182,24 @@ public class DaftarUser {
         return users;
     }
 
-    /**
-     * @param usname String
-     *
-     * method untuk menghapus satu data pengguna di tabel User
-     */
+    public void getUsers(User user) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 
-    public void deleteUser(Long id) throws NonexistentEntityException {
-        EntityManager em = getEntityManager();
-        em.getTransaction().begin();
+    //remove a user
+    public void removeUser(User user) throws NonexistentEntityException {
+        EntityManager em = null;
         try {
-            User user;
+            em = getEntityManager();
+            em.getTransaction().begin();
+            //  User user;
             try {
-                user = em.getReference(User.class, id);
-                user.getId();
+                user = em.getReference(User.class, user);
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("User sudah tidak ada", enfe);
             }
             em.remove(user);
             em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
         } finally {
             if (em != null) {
                 em.close();
@@ -234,13 +207,6 @@ public class DaftarUser {
         }
     }
 
-
-    /**
-     * @return List<User>
-     *
-     * method untuk menampilkan list/daftar pengguna yang belum
-     * dikonfirmasi dari tabel User
-     */
     public List<User> getUnconfirmedUsers() {
         List<User> users = new ArrayList<User>();
         int stat = 0;
@@ -255,5 +221,4 @@ public class DaftarUser {
         }
         return users;
     }
-
 }
