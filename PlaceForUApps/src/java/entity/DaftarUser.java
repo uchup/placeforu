@@ -211,13 +211,15 @@ public class DaftarUser {
      *
      * method untuk menghapus satu data pengguna di tabel User
      */
+
     public void deleteUser(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
             User user;
             try {
-               user = em.find(User.class, id);
+                user = em.getReference(User.class, id);
+                user.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
             }
@@ -231,6 +233,7 @@ public class DaftarUser {
             }
         }
     }
+
 
     /**
      * @return List<User>
