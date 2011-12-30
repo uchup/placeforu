@@ -33,6 +33,9 @@ public class Gedung implements Serializable {
     private String fasilitasGedung;
     private String noTelpGedung;
     private String emailGedung;
+    private String fotoUtamaGedung;
+    private String fotoGedung1;
+    private String fotoGedung2;
     
     public Long getId() {
         return id;
@@ -40,6 +43,38 @@ public class Gedung implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getFotoGedung1() {
+        return fotoGedung1;
+    }
+
+    public void setFotoGedung1(String fotoGedung1) {
+        this.fotoGedung1 = fotoGedung1;
+    }
+
+    public String getFotoGedung2() {
+        return fotoGedung2;
+    }
+
+    public void setFotoGedung2(String fotoGedung2) {
+        this.fotoGedung2 = fotoGedung2;
+    }
+
+    public String getFotoUtamaGedung() {
+        return fotoUtamaGedung;
+    }
+
+    public void setFotoUtamaGedung(String fotoUtamaGedung) {
+        this.fotoUtamaGedung = fotoUtamaGedung;
+    }
+
+    public String getNoTelpGedung() {
+        return noTelpGedung;
+    }
+
+    public void setNoTelpGedung(String noTelpGedung) {
+        this.noTelpGedung = noTelpGedung;
     }
 
     //getting Nama Gedung

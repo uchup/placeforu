@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
  * @author Yuni
  */
 @Entity
-public class SubGedung implements Serializable {
+public class SubGedungvswidi implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -139,7 +139,7 @@ public class SubGedung implements Serializable {
         if (!(object instanceof SubGedung)) {
             return false;
         }
-        SubGedung other = (SubGedung) object;
+        SubGedungvswidi other = (SubGedungvswidi) object;
         if ((this.idSubGedung == null && other.idSubGedung != null) || (this.idSubGedung != null && !this.idSubGedung.equals(other.idSubGedung))) {
             return false;
         }

@@ -109,8 +109,8 @@ public class EditGedung extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
 
-        Long id_gedung = Long.parseLong(request.getParameter("id"));
-        gd = (Gedung) dg.getGedung(id_gedung);
+        Long id = Long.parseLong(request.getParameter("id"));
+        gd = (Gedung) dg.getGedung(id);
         request.setAttribute("gedung", gd);
         dis = request.getRequestDispatcher("/pemilik/editGedung.jsp");
         dis.include(request, response);

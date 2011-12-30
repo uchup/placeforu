@@ -5,6 +5,7 @@
 package entity;
 
 
+import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -16,7 +17,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import jpa.exceptions.NonexistentEntityException;
 
 /**
  *
@@ -41,6 +41,21 @@ public class DaftarGedung {
             Query q = em.createQuery("SELECT count(o) FROM Gedung AS o WHERE o.namaGedung=:namaGedung AND o.idPemilik=:idPemilik");
             q.setParameter("namaGedung", namaGedung);
             q.setParameter("idPemilik", idPemilik);
+            int jumlahGedung = ((Long) q.getSingleResult()).intValue();
+            if (jumlahGedung > 0) {
+                result = true;
+            }
+        } finally {
+            em.close();
+        }
+        return result;
+    }
+
+    public boolean cekGedung() {
+        boolean result = false;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT count(o) FROM Gedung AS o");
             int jumlahGedung = ((Long) q.getSingleResult()).intValue();
             if (jumlahGedung > 0) {
                 result = true;

@@ -28,7 +28,7 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">HomepagePemilik</a></li>
+                        <li class="current_page_item"><a href="pemilik">Home (Pemilik)</a></li>
                         <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
@@ -56,7 +56,7 @@
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td>Tipe Gedung Gedung <font color="red">*</font></td>
+                                            <td>Tipe Gedung<font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
                                                <select name="tipe_gedung">
@@ -88,22 +88,21 @@
                                             <td>Alamat Gedung <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                                <select name="propinsi_gedung">
-                                                    <option value="" selected>Propinsi</option>
-                                                    <option value="Jawa Barat">Jawa Barat</option>
-                                                    <option value="Jawa Timur">Jawa Timur</option>
-                                                    <option value="Jawa Tengah">Jawa Tengah</option>
-                                                </select> 
+                                               <input name="alamat_gedung" type="text">
                                             </td>
-                                        <tr><td></td><td></td>
+                                        <tr><td>Kota</td><td>:</td>
                                             <td>
                                                 <input type="text" name="kota_gedung">
                                             </td>
                                         </tr>
-                                        <tr><td></td><td></td>
+                                        <tr><td>Propinsi</td><td>:</td>
                                             <td>
-                                                <input name="alamat_gedung" type="text">
-
+                                                    <select name="propinsi_gedung">
+                                                    <option value="" selected>Propinsi</option>
+                                                    <option value="Jawa Barat">Jawa Barat</option>
+                                                    <option value="Jawa Timur">Jawa Timur</option>
+                                                    <option value="Jawa Tengah">Jawa Tengah</option>
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr>
@@ -193,7 +192,7 @@
                 </div>
                 <div id="footer">
                     <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
-                </div>
+                </div></div>
             </div>
             <!-- end #footer -->
     </body>

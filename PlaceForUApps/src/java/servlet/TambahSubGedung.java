@@ -135,16 +135,11 @@ public class TambahSubGedung extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
 
-        Long id_gedung = Long.parseLong(request.getParameter("id_gedung"));
+        Long id_gedung = Long.parseLong(request.getParameter("id"));
         gd = (Gedung) dg.getGedung(id_gedung);
         request.setAttribute("gedung", gd);
         dis = request.getRequestDispatcher("/pemilik/entriInformasiSub.jsp");
         dis.include(request, response);
-
-
-
-
-
         /*PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
         DaftarSubGedung ds = new DaftarSubGedung();
