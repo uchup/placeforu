@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
  */
 public class HapusPengguna extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -38,24 +38,24 @@ public class HapusPengguna extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         Long userid = Long.parseLong(request.getParameter("userid"));
-        
+
         User user = new User();
         RequestDispatcher page = null;
         DaftarUser a = new DaftarUser();
         HttpSession session = request.getSession();
 
             a.deleteUser(userid);
-            List<User> users = a.getUsers();  
+            List<User> users = a.getUsers();
             request.setAttribute("pengguna", users);
           //diarahkan ke halaman profil penyewa tempat
-            response.sendRedirect("/PlaceForUApps/admin/daftarpengguna");
-            
-        
-        
+            response.sendRedirect("/PlaceForUApps_28Nov/admin/daftarpengguna");
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -72,7 +72,7 @@ public class HapusPengguna extends HttpServlet {
         }
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -89,7 +89,7 @@ public class HapusPengguna extends HttpServlet {
         }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

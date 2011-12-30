@@ -7,7 +7,6 @@ package servlet;
 
 import entity.User;
 import entity.DaftarUser;
-import jpa.UserJpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -42,7 +41,7 @@ public class Login extends HttpServlet {
         String name = request.getParameter("uname");
         String pass = request.getParameter("pass");
         User users = daftarUser.getUser(name,pass);
-        
+
         if (name.equals("") || pass.equals("") ) {
             RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/error_page.jsp");
@@ -55,21 +54,26 @@ public class Login extends HttpServlet {
                     session.setAttribute("sessionusername", name);
                     if (users.getTipe() == 0) {
                         request.setAttribute("user", users);
-                        dis = request.getRequestDispatcher("admin/admin_home.jsp");
+                        dis = request.getRequestDispatcher("admin/home.jsp");
                         dis.forward(request, response);
                     }
-                    else if(users.getTipe() == 1) {
+                    else if(users.getTipe() == 1 && users.getStatus() == 1) {
                         request.setAttribute("user", users);
                         dis = request.getRequestDispatcher("pemilik/home.jsp");
                         dis.forward(request, response);
                     }
-                    else{
+                    else if(users.getStatus() == 1){
                         request.setAttribute("user", users);
                         dis = request.getRequestDispatcher("penyewa/home.jsp");
                         dis.forward(request, response);
                     }
-                
-                
+                    else{
+                      RequestDispatcher requestDispatcher =
+                    request.getRequestDispatcher("/error_page.jsp");
+                    message ="Maaf, pendaftaran Anda belum dikonfirmasi!";
+                    request.setAttribute("message", message);
+                    requestDispatcher.forward(request, response);
+                    }
         }
         else {
             RequestDispatcher requestDispatcher =
@@ -109,12 +113,12 @@ else {out.println("Username Invalid");}}*/
 
 //out.println("Hallo" + session.getAttribute("sessionusername"));
 
-    
+
     //out.println("Username Invalid");
 
 
 
-   
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

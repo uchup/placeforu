@@ -25,9 +25,10 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../penyewa">HomepagePenyewa</a></li>
+                        <li class="current_page_item"><a href="../penyewa">Home(Penyewa)</a></li>
 			<li class="current_page_item"><a href="../penyewa/profil">Profil</a></li>
-			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+			<li class="current_page_item"><a href="../ListGedung">Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="../ListGedung">Manajemen Penyewaan</a></li>
 			<li class="current_page_item"><a href="../logout">Log Out</a></li>
 		</ul>
 	</div>
@@ -41,9 +42,10 @@
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
                                 <fieldset>
-                                    <form method='post'  action='editPenyewa'>
                                     <table>
+                                         <form method='post'  action='editprofil'>
                                         <tr>
+
                                             <td>
                                                 <fieldset>
                                                     <legend><h4>Profil</h4></legend>
@@ -82,15 +84,13 @@
                                                                 <td>:</td>
                                                                 <td><input type='text' name='telp' value='${penyewa.telp}'/></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Foto</td>
-                                                                <td>:</td>
-                                                                <td><input type='file' name='foto' /></td>
-                                                            </tr>
+
                                                         </table>
                                                     </fieldset>
                                                 </td>
+
                                             </tr>
+
                                             <tr>
                                                 <td>
                                                     <fieldset>
@@ -99,7 +99,7 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td><input type='text' name='usname' value='${penyewa.username}' /></td>
+                        <td><input type='text' name='usname' value='${penyewa.username}' readonly="readonly"/></td>
                     </tr>
                     <tr>
                         <td>Password</td>
@@ -120,8 +120,35 @@
                     </fieldset>
                     </td>
         </tr>
+        </form>
+        <tr>
+                                                <td>
+                                                    <fieldset>
+                                                        <legend><h4>Upload Foto</h4></legend>
+                                                        <table>
+                                                             <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
+                                                            <tr>
+                        <td>Foto</td>
+                        <td>:</td>
+                        <td><input type="file" name="foto"></td>
+                        <td><input type="Submit" value="Upload"><td>
+                    </tr>
+                                                             </form>
+
+                     <tr>
+
+
+
+                    </tr>
+
+
+
+                    </table>
+
+                    </fieldset>
+                    </td>
+        </tr>
                 </table>
-                        </form>
                 </fieldset>
 
 				</div>

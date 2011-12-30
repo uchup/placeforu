@@ -21,8 +21,8 @@ import javax.servlet.http.HttpSession;
  * @author Yuni
  */
 public class EditPemilik extends HttpServlet {
-   
-    /** 
+
+    /**
      *kelas ini digunakan untuk melakukan edit profil pemilik
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -73,11 +73,6 @@ public class EditPemilik extends HttpServlet {
                     user.setUsername(usname);
                     user.setPassword(pass);
                     a.editUser(user);
-                    RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successUpdating.jsp");
-                message ="Data berhasil diubah";
-                request.setAttribute("message", message);
-                requestDispatcher.forward(request, response);
 
                 }
                 page = request.getRequestDispatcher("/pemilik/profil");
@@ -89,34 +84,23 @@ public class EditPemilik extends HttpServlet {
         }
 
     }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /* if (nama.equals("") || email.equals("") || telp.equals("") || alamat.equals("") ) {
-            
+     /* if (nama.equals("") || email.equals("") || telp.equals("") || alamat.equals("") ) {
+
             user = a.getUserFromName(usname);
                  page = request.getRequestDispatcher("/pemilik/profil");
                    message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
                 request.setAttribute("message", message);
                  page.include(request, response);
         }
-        
+
         else if(user.getUsername().equals(usname) != user.getPassword().equals(pass)){
               user = a.getUserFromName(usname);
-             
+
                 request.getRequestDispatcher("editProfil.jsp");
                 message ="Password yang anda masukkan tidak Cocok ";
                request.setAttribute("message", message);
                   page.include(request, response);
-        
+
         }
         else {
                 user.setNama(nama);
@@ -137,21 +121,8 @@ public class EditPemilik extends HttpServlet {
 
 */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -166,10 +137,10 @@ public class EditPemilik extends HttpServlet {
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
         User u = new User();
-       
+
         if (session.getAttribute("sessionusername") != null){
             String username = (String) session.getAttribute("sessionusername");
-        
+
             boolean hasilCheck = du.checkUser(username);
             if (hasilCheck) {
                 //mengambil user berdasarkan username dari Daftar User
@@ -186,18 +157,18 @@ public class EditPemilik extends HttpServlet {
             else{
             dis = request.getRequestDispatcher("index");
             dis.forward(request, response);
-           
+
             }
         }
         else{
             dis = request.getRequestDispatcher("index");
             dis.forward(request, response);
-           
-            }
-        
-    } 
 
-    /** 
+            }
+
+    }
+
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -210,7 +181,7 @@ public class EditPemilik extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
