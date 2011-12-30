@@ -25,8 +25,9 @@
 <div id="header">
 	<div id="menu">
 		<ul>
+                        <li class="current_page_item"><a href="penyewa">Home (Penyewa)</a></li>
+                        <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
 			<li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
-			<li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Manajemen Penyewaan</a></li>
 			<li class="current_page_item"><a href="logout">Log Out</a></li>
 		</ul>

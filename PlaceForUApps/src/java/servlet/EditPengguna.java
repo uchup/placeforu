@@ -67,7 +67,7 @@ public class EditPengguna extends HttpServlet {
                     a.editUser(user);
                     List<User> users = a.getUsers();
                     //diarahkan ke halaman profil penyewa tempat
-                    response.sendRedirect("/PlaceForUApps/admin/daftarpengguna");
+                    response.sendRedirect("/PlaceForUApps_28Nov/admin/daftarpengguna");
                 }
             }
 

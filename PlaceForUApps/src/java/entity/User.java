@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Noval54
+ * @author Widiasa
  */
 @Entity
 public class User implements Serializable {
@@ -31,9 +31,15 @@ public class User implements Serializable {
     private String username;
     private String password;
     private boolean loginStat;
-   
+    private String foto;
 
-    
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
 
     public boolean isLoginStat() {
         return loginStat;
@@ -122,10 +128,6 @@ public class User implements Serializable {
     public void setStatus(int status) {
         this.status = status;
     }
-
-
-
-
 
     @Override
     public int hashCode() {

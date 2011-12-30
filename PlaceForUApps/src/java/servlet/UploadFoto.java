@@ -39,7 +39,7 @@ public class UploadFoto extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private static final String TMP_DIR_PATH = "H:\\ika\\PlaceForUApps\\tmp";
+    private static final String TMP_DIR_PATH = "D:\\Project\\versiterbaru\\PlaceForUApps\\tmp";
     private File tmpDir;
     private static final String DESTINATION_DIR_PATH ="/foto";
     private File destinationDir;
@@ -68,7 +68,6 @@ public class UploadFoto extends HttpServlet {
 
         String username = (String) session.getAttribute("sessionusername");
         user = a.getUserFromName(username);
-        
 
 	DiskFileItemFactory  fileItemFactory = new DiskFileItemFactory ();
 		/*
@@ -109,15 +108,10 @@ public class UploadFoto extends HttpServlet {
 					item.write(file);
                                         a.editUser(user);
                                         if (user.getTipe()==1){
-                                                message ="Foto berhasil diupload!";
-                                                request.setAttribute("message", message);
-                                                response.sendRedirect("../PlaceForUApps/pemilik/editprofil");
-                                                
+                                                response.sendRedirect("../PlaceForUApps_28Nov/pemilik/editprofil");
                                         }
                                         else {
-                                                message ="Foto berhasil diupload!";
-                                                request.setAttribute("message", message);
-                                                response.sendRedirect("../PlaceForUApps/penyewa/editprofil");
+                                                response.sendRedirect("../PlaceForUApps_28Nov/penyewa/editprofil");
                                         }
 				}
 				out.close();
