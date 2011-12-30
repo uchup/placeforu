@@ -5,9 +5,15 @@
 
 package servlet;
 
-import entity.User;
+import entity.DaftarGedung;
+import entity.DaftarSubGedung;
 import entity.DaftarUser;
+import entity.Gedung;
+import entity.SubGedung;
+import entity.User;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Widiasa
  */
-public class LogOut extends HttpServlet {
+public class ListSubGedungUmum extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,14 +36,37 @@ public class LogOut extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher dis =null;
+
+        PrintWriter out = response.getWriter();
+        RequestDispatcher dis = null;
         HttpSession session = request.getSession();
-        if (session.getAttribute("sessionusername") != null){
-            session.removeAttribute("sessionusername");
-            session.invalidate();
-        }
-        response.sendRedirect("../PlaceForUApps_28Nov");
+        DaftarGedung dg = new DaftarGedung();
+        Gedung g = new Gedung();
+        DaftarSubGedung dsg = new DaftarSubGedung();
+        SubGedung  sg = new SubGedung();
+          
+
+        //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
+        if(dg.cekGedung() ){
+               //Long id_gedung = Long.parseLong(request.getParameter("id"));
+              // g = (Gedung) dg.getGedung(id_gedung);
+             //  sg = dsg.getSubGedungfromIDGedung(id_gedung);
+
+                Long id_gedung = Long.parseLong(request.getParameter("id"));
+        List<SubGedung> daftar_sub_gedung = dsg.getDaftarSubGedung(id_gedung);
+        request.setAttribute("gedung", daftar_sub_gedung);
+              
+
+
+
+
+
+               //request.setAttribute("gedung", g);
+               request.setAttribute("subgedung", sg);
+
+            }
+            dis = request.getRequestDispatcher("daftarSub.jsp");
+            dis.include(request, response);
 
     }
 
@@ -52,7 +81,8 @@ public class LogOut extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+      processRequest(request, response);
+
     }
 
     /**

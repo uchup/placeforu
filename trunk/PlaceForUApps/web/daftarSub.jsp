@@ -8,6 +8,8 @@
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Date"%>
 <%@page import="entity.DaftarGedung"%>
+<%@page import="entity.DaftarUser"%>
+<%@page import="entity.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -38,83 +40,54 @@
 	<div id="page-bgtop">
 		<div id="content">
                     <div class="post">
-                        <div class="inside">
-                            <div style="clear: both;">&nbsp;</div>
+
+<h2 class="title"><a href="#">Selamat Datang di PlaceForU
+                                    </a></h2>
+
+				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
+					<p> <strong>PlaceForU</strong>, merupakan aplikasi berbasis web yang dirancang untuk memudahkan Anda dalam mencari dan menyewa tempat untuk momen spesial Anda. </p><p><strong>Daftar segera dan rasakan kemudahannya!</strong></p>
 
-                                <h1> Detail Informasi Gedung ${subgedung.nama_sub_gedung}</h1>
-</div>
-<br>
-<div class="page-info-table">
-
-    <table border="0" cellpadding="0" cellspacing="0">
-        <tbody><tr>
-            <th colspan="3">Informasi Umum</th>
-        </tr>
-        <tr>
-            <td width="25%">Tipe Sub Gedung</td>
-            <td width="2%">:</td>
-            <td>${subgedung.tipe_sub_gedung}</td>
-        </tr>
-          <tr>
-            <td width="20%">Harga Sewa /jam</td>
-            <td width="2%">:</td>
-            <td>${subgedung.harga}  ${subgedung.satuan}</td>
-        </tr>
-        <tr>
-            <td>Kapasitas</td>
-            <td>:</td>
-            <td>${subgedung.kapasitas} orang</td>
-        </tr>
-        <tr>
-            <td>Luas </td>
-
-            <td>:</td>
-            <td>${subgedung.luas} meter persegi</td>
-        </tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-        </tr>
-        <tr>
-            <th colspan="3">Keterangan Lengkap</th>
-
-        </tr>
-        <tr>
-
-            <td>Deskripsi Sub Gedung</td>
-            <td>:</td>
-            <td>${subgedung.deskripsi_sub}
-
-</td>
-        </tr>
-        <tr>
-
-            <td>Fasilitas Sub Gedung</td>
-            <td>:</td>
-            <td>
- ${subgedung.fasilitas_sub}
-</td>
-        </tr>
-                <tr>
-
-            <td>Status Sub Gedung</td>
-            <td>:</td>
-            <td>${subgedung.status}
-
-</td>
-        </tr>
-        <tr>
-        <tr>
-            <td colspan="3">&nbsp;</td>
-        </tr>
-
-
-    </tbody></table>
-            <br>
-        <a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Kembali</a>
-
-</div>			</div>
+				</div>
 			</div>
+			<h3 class="title">
+Daftar Sub Gedung 
+</h3>
+                    <br>
+                <ul class="listing">
+                                                                     
+
+                                       <%Iterator itr;%>
+                                        <% List subgedung_list = (List) request.getAttribute("gedung");
+                                            for (itr = subgedung_list.iterator(); itr.hasNext();) {
+                                                entity.SubGedung subgedung = (entity.SubGedung) itr.next();
+                                        %>
+                                        
+                                         <li>
+                        <div class="listinfo">
+                            <img src="images/imageholder2.jpg" alt="Listing Image" class="listingimage" />
+                            <h3><%=subgedung.getNama_sub_gedung()%></h3>
+                            
+                            <%=subgedung.getTipe_sub_gedung()%>
+                            <br>
+                            Harga Sewa: <span class="price">Rp <%=subgedung.getHarga()%></span>
+                            <br>
+                             Kapasitas: <span class="text"><%=subgedung.getKapasitas()%> orang</span>
+                             </div>
+                        <div class="listingbtns">
+                            <span class="listbuttons">
+                                <a href="DetailSubGedung?id=<%=subgedung.getId()%>">Lihat Detail</a>
+                            </span>
+                            </div>
+
+                        <div class="clear">&nbsp;</div>
+                    </li>
+
+                                            <hr>
+                                        
+                                        <%}%>
+                                         </ul>
+                                         <a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Kembali</a>
 		</div>
 		<div id="sidebar">
 			<ul>
@@ -171,7 +144,7 @@
 					</ul>
 				</li>
 				<li>
-					<h2>Blogroll</h2>
+					<h2>Gedung Terlaris</h2>
 					<ul>
 						<li><a href="#">Aliquam libero</a></li>
 						<li><a href="#">Consectetuer adipiscing elit</a></li>
@@ -218,3 +191,5 @@
 </body>
 </html>
 
+
+    

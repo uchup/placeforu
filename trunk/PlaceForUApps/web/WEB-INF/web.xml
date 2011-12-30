@@ -124,6 +124,14 @@
         <servlet-name>UploadFotoGedung</servlet-name>
         <servlet-class>servlet.UploadFotoGedung</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListSubGedungUmum</servlet-name>
+        <servlet-class>servlet.ListSubGedungUmum</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DetailSubGedung</servlet-name>
+        <servlet-class>servlet.DetailSubGedung</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -247,6 +255,14 @@
     <servlet-mapping>
         <servlet-name>UploadFotoGedung</servlet-name>
         <url-pattern>/uploadfotogedung</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListSubGedungUmum</servlet-name>
+        <url-pattern>/ListSubGedungUmum</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailSubGedung</servlet-name>
+        <url-pattern>/DetailSubGedung</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
