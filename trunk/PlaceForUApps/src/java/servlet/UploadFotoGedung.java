@@ -43,7 +43,7 @@ public class UploadFotoGedung extends HttpServlet {
      */
 
     // bisa diganti sesuai spesifikasi
-    private static final String TMP_DIR_PATH = "C:\\Documents and Settings\\Widiasa\\My Documents\\NetBeansProjects\\PlaceForUApps\\tmp";
+    private static final String TMP_DIR_PATH = "D:\\Project\\versiterbaru\\PlaceForUApps\\tmp";
     private File tmpDir;
     // bisa diganti sesuai spesifikasi
     private static final String DESTINATION_DIR_PATH ="/gedung";
@@ -70,8 +70,8 @@ public class UploadFotoGedung extends HttpServlet {
         HttpSession session = request.getSession();
         String message = null;
 
-        Long idGedung = Long.valueOf(request.getParameter("idGedung")) ;
-        gedung = dg.getGedung(idGedung);
+        Long id = Long.valueOf(request.getParameter("id")) ;
+        gedung = dg.getGedung(id);
 
 	DiskFileItemFactory  fileItemFactory = new DiskFileItemFactory ();
 		/*
@@ -112,7 +112,7 @@ public class UploadFotoGedung extends HttpServlet {
 					item.write(file);
                                         dg.editGedung(gedung);
                                         
-                                        response.sendRedirect("../PlaceForUApps/pemilik/editgedung?idGedung="+idGedung+"");
+                                        response.sendRedirect("../PlaceForUApps_28Nov/EditGedung?id="+id+"");
 				}
 				out.close();
 			}

@@ -41,9 +41,9 @@ public class UploadFotoSub extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private static final String TMP_DIR_PATH = "H:\\ika\\PlaceForUApps\\tmp";
+    private static final String TMP_DIR_PATH = "D:\\Project\\ika\\PlaceForUApps\\tmp";
     private File tmpDir;
-    private static final String DESTINATION_DIR_PATH ="/foto";
+    private static final String DESTINATION_DIR_PATH ="/sub";
     private File destinationDir;
 
     public void init(ServletConfig config) throws ServletException {
@@ -112,7 +112,7 @@ public class UploadFotoSub extends HttpServlet {
                                 } else {
 					//Handle Uploaded files.
                                         //user.setFoto(item.getName());
-                                    sg.setFoto(item.getName());
+                                    sg.setFoto1(item.getName());
 //					out.println("Field Name = "+item.getFieldName()+
 //						", File Name = "+item.getName()+
 //						", Content type = "+item.getContentType()+

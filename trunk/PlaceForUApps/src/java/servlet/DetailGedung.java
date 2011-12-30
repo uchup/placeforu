@@ -52,7 +52,7 @@ public class DetailGedung extends HttpServlet {
         Long id_gedung = Long.parseLong(request.getParameter("id"));
         gd = (Gedung) dg.getGedung(id_gedung);
         request.setAttribute("gedung", gd);
-        dis = request.getRequestDispatcher("/pemilik/detailGedung.jsp");
+        dis = request.getRequestDispatcher("/pemilik/detail.jsp");
         dis.include(request, response);
     }
 
