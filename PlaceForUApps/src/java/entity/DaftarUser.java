@@ -129,6 +129,21 @@ public class DaftarUser {
         return user;
     }
 
+     public User getUserFromId(long id) {
+        User user = null;
+        EntityManager em = getEntityManager();
+        try {
+
+                Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.id=:id");
+                q.setParameter("id", id);
+                user = (User) q.getSingleResult();
+
+        } finally {
+            em.close();
+        }
+        return user;
+    }
+
     /**
      * @param user User entity
      *

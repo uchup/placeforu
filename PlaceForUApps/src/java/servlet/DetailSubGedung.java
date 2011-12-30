@@ -5,9 +5,15 @@
 
 package servlet;
 
-import entity.User;
+import entity.DaftarGedung;
+import entity.DaftarSubGedung;
 import entity.DaftarUser;
+import entity.Gedung;
+import entity.SubGedung;
+import entity.User;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +25,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Widiasa
  */
-public class LogOut extends HttpServlet {
+public class DetailSubGedung extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,14 +36,24 @@ public class LogOut extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher dis =null;
+
+        PrintWriter out = response.getWriter();
+        RequestDispatcher dis = null;
         HttpSession session = request.getSession();
-        if (session.getAttribute("sessionusername") != null){
-            session.removeAttribute("sessionusername");
-            session.invalidate();
-        }
-        response.sendRedirect("../PlaceForUApps_28Nov");
+        DaftarGedung dg = new DaftarGedung();
+        Gedung g = new Gedung();
+        DaftarSubGedung dsg = new DaftarSubGedung();
+        SubGedung  sg = new SubGedung();
+      
+
+        //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
+        if(dsg.cekSubGedung()){
+               Long idSubGedung = Long.valueOf(request.getParameter("id"));
+               sg = dsg.getSubGedung(idSubGedung);
+               request.setAttribute("subgedung", sg);
+            }
+            dis = request.getRequestDispatcher("detailSub.jsp");
+            dis.include(request, response);
 
     }
 
@@ -52,7 +68,8 @@ public class LogOut extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+      processRequest(request, response);
+
     }
 
     /**

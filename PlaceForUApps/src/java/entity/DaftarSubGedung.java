@@ -49,6 +49,20 @@ public class DaftarSubGedung {
         }
         return result;
     }
+    public boolean cekSubGedung() {
+        boolean result = false;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT count(o) FROM SubGedung AS o");
+            int jumlahGedung = ((Long) q.getSingleResult()).intValue();
+            if (jumlahGedung > 0) {
+                result = true;
+            }
+        } finally {
+            em.close();
+        }
+        return result;
+    }
     
     public SubGedung getSubGedung(Long id) {
         SubGedung subgedung= null;
@@ -58,6 +72,20 @@ public class DaftarSubGedung {
                 q.setParameter("id_sub_gedung", id);
                 subgedung = (SubGedung) q.getSingleResult();
             
+        } finally {
+            em.close();
+        }
+        return subgedung;
+    }
+
+      public SubGedung getSubGedungfromIDGedung(Long id_gedung) {
+        SubGedung subgedung= null;
+        EntityManager em = getEntityManager();
+        try {
+                Query q = em.createQuery("SELECT object(o) FROM SubGedung AS o WHERE o.id_gedung=:id_gedung");
+                q.setParameter("id_gedung", id_gedung);
+                subgedung = (SubGedung) q.getSingleResult();
+
         } finally {
             em.close();
         }
