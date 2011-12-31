@@ -37,7 +37,7 @@ public class HistoriSewa extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
         RequestDispatcher dis = null;
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
@@ -47,59 +47,64 @@ public class HistoriSewa extends HttpServlet {
         Sewa s = new Sewa();
 
         //untuk mendapatkan session dari user yang telah login
-        if (session.getAttribute("sessionusername") != null){
+        if (session.getAttribute("sessionusername") != null) {
             String username = (String) session.getAttribute("sessionusername");
-            
+
             //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
             boolean hasilCheck = du.checkUser(username);
             if (hasilCheck) {
-                 //mengambil user berdasarkan username dari Daftar User
+                //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
-                long idPenyewa= u.getId();
+                long idAkun = u.getId();
                 
+
                 //jika  pengguna merupakan administrator, maka akan diarahkan ke halaman daftar gedung untuk administrator
-                if(u.getTipe() == 0 ) {
+                if (u.getTipe() == 0) {
                     
-                    List<Gedung> daftar_gedung = dg.getDaftarGedung();
-                    request.setAttribute("admin", daftar_gedung);
-                    request.setAttribute("akun", u);
+                    //menampilkan semua histori penyewaan
+                    List<Sewa> daftar_sewa = ds.getAllSewa_Confirmed();
+                    request.setAttribute("penyewaan_1", daftar_sewa);
+
+                    List<Sewa> daftar_sewa2 = ds.getAllSewa_Unconfirmed();
+                    request.setAttribute("penyewaan_0", daftar_sewa2);
+
+
                     dis = request.getRequestDispatcher("/admin/historiSewa.jsp");
                     dis.include(request, response);
-                    
-                }
-                //jika  pengguna merupakan penyewa, maka akan diarahkan ke halaman daftar gedung untuk penyewa
-                else if(u.getTipe() == 1 ) {
-                    
-                    List<Gedung> daftar_gedung = dg.getDaftarGedung();
-                    request.setAttribute("penyewa", daftar_gedung);
-                    request.setAttribute("akun", u);
-                    //diarahkan ke halaman profil penyewa tempat
-                    dis = request.getRequestDispatcher("/pemilik/historiSewa.jsp");
+
+                } //jika  pengguna merupakan penyewa, maka akan diarahkan ke halaman daftar gedung untuk penyewa
+                else if (u.getTipe() == 1) {
+
+                    List<Sewa> daftar_minta_sewa = ds.getDaftarSewaPemilik_Unconfirmed(idAkun);
+                    request.setAttribute("pemilik_0", daftar_minta_sewa);
+
+                    List<Sewa> daftar_minta_sewa2 = ds.getDaftarSewaPemilik_Confirmed(idAkun);
+                    request.setAttribute("pemilik_1", daftar_minta_sewa2);
+
+                    dis = request.getRequestDispatcher("/pemilik/historiPermintaanSewa.jsp");
                     dis.include(request, response);
-                    
-                }
-                        
-                //jika pengguna merupakan pemilik tempat, maka akan diarahkan ke halaman daftar Gedung untuk pemilik
-                else if (u.getTipe() == 2 ) {
-                    
-                    List<Sewa> daftar_sewa = ds.getDaftarSewaPenyewa(idPenyewa);
-                    request.setAttribute("penyewa", daftar_sewa);
-                    request.setAttribute("akun", u);
-                    //diarahkan ke halaman profil penyewa tempat
+
+                } //jika pengguna merupakan pemilik tempat, maka akan diarahkan ke halaman daftar Gedung untuk pemilik
+                else if (u.getTipe() == 2) {
+
+                    List<Sewa> daftar_sewa = ds.getDaftarSewaPenyewa_Unconfirmed(idAkun);
+                    request.setAttribute("penyewa_0", daftar_sewa);
+
+                    List<Sewa> daftar_sewa2 = ds.getDaftarSewaPenyewa_Confirmed(idAkun);
+                    request.setAttribute("penyewa_1", daftar_sewa2);
+
                     dis = request.getRequestDispatcher("/penyewa/historiSewa.jsp");
                     dis.include(request, response);
 
-                } 
-                else {
+                } else {
                     dis = request.getRequestDispatcher("index");
                     dis.forward(request, response);
                     out.close();
                 }
-            }
-            else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
+            } else {
+                dis = request.getRequestDispatcher("index");
+                dis.forward(request, response);
+                out.close();
             }
         }
     }
