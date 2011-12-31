@@ -1,4 +1,5 @@
 
+<%@page import="entity.DaftarUser"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="entity.DaftarGedung"%>
 <%@page import="entity.Gedung"%>
@@ -32,14 +33,13 @@
             </div>
             <div id="header">
                 <div id="menu">
-                    <ul>
-                        <ul>
-                            <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
-                            <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
-                            <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
-                            <li class="current_page_item"><a href="logout">Log Out</a></li>
-                        </ul>
-                    </ul>
+                <ul>
+			<li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="logout">Logout</a></li>
+		</ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -52,24 +52,26 @@
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
                                 <form method='post'>
-                                    <p> <h4><b>Daftar Penyewaan (Menunggu Konfirmasi) </b></h4></p>
+                                    <p> <h4><b>Histori Penyewaan (Telah dikonfirmasi) </b></h4></p>
                                     <table>
                                         <tr>
-                                            <td>ID Sewa</td>
+                                            
                                             <td>Gedung</td>
                                             <td>Sub Gedung</td>
+                                            <td>Pemilik</td>
+                                            <td>Penyewa</td>
                                             <td>Total Harga Sewa</td>
                                             <td>Waktu Sewa</td>
-
+                                            <td>Sisa Pembayaran</td>
                                             <td></td>
                                         </tr>
                                         <%Iterator itr;%>
-                                        <% List sewa_list = (List) request.getAttribute("penyewa_0");
+                                        <% List sewa_list = (List) request.getAttribute("penyewaan_1");
                                             for (itr = sewa_list.iterator(); itr.hasNext();) {
                                                 entity.Sewa sewa = (entity.Sewa) itr.next();
                                         %>
                                         <tr>
-                                            <td><%=sewa.getIdSewa()%></td>
+                                            
                                             <%
                                                 entity.Gedung g = new Gedung();
                                                 entity.DaftarGedung dg = new DaftarGedung();
@@ -86,31 +88,47 @@
                                                 String namaSubGedung = sg.getNama_sub_gedung();
                                             %>
                                             <td><%out.println(namaSubGedung);%></td>
+                                            <%
+                                                entity.User u = new User();
+                                                entity.User u1 = new User();
+                                                entity.DaftarUser du = new DaftarUser();
+                                                Long idPemilik = sewa.getIdPemilik();
+                                                Long idPenyewa = sewa.getIdPenyewa();
+                                                u = du.getUserFromId(idPemilik);
+                                                String namaPemilik = u.getNama();
+                                                u1 = du.getUserFromId(idPenyewa);
+                                                String namaPenyewa = u1.getNama();
+                                            %>
+                                            <td><%out.println(namaPemilik);%></td>
+                                            <td><%out.println(namaPenyewa);%></td>
                                             <td><%=sewa.getTotalHargaSewa()%></td>
                                             <td><%=sewa.getMulai()%> s/d <%=sewa.getSampai()%></td>
-                                            <td><a href="BatalSewa?idSewa=<%=sewa.getIdSewa()%>">Batalkan</a></td>
+                                            <td>Sisa Pembayaran</td>
+                                            <td><a href="HapusHistoriSewa?idSewa=<%=sewa.getIdSewa()%>">Hapus Histori</a></td>
                                         </tr>
                                         <%}%>
                                     </table>
                                 <br>
-                                    <p> <h4><b>Daftar Penyewaan (Telah Disetujui) </b></h4></p>
+                                    <p> <h4><b>Daftar Penyewaan (Menunggu Konfirmasi) </b></h4></p>
                                     <table>
                                         <tr>
-                                            <td>ID Sewa</td>
+                                            
                                             <td>Gedung</td>
                                             <td>Sub Gedung</td>
+                                            <td>Pemilik</td>
+                                            <td>Penyewa</td>
                                             <td>Total Harga Sewa</td>
                                             <td>Waktu Sewa</td>
-
-                                            <td></td>
+                                            
+                                            
                                         </tr>
                                         <%Iterator itr2;%>
-                                        <% List sewa_list2 = (List) request.getAttribute("penyewa_1");
+                                        <% List sewa_list2 = (List) request.getAttribute("penyewaan_0");
                                             for (itr2 = sewa_list2.iterator(); itr2.hasNext();) {
                                                 entity.Sewa sewa = (entity.Sewa) itr2.next();
                                         %>
                                         <tr>
-                                            <td><%=sewa.getIdSewa()%></td>
+                                            
                                             <%
                                                 entity.Gedung g = new Gedung();
                                                 entity.DaftarGedung dg = new DaftarGedung();
@@ -127,9 +145,22 @@
                                                 String namaSubGedung = sg.getNama_sub_gedung();
                                             %>
                                             <td><%out.println(namaSubGedung);%></td>
+                                            <%
+                                                entity.User u = new User();
+                                                entity.User u1 = new User();
+                                                entity.DaftarUser du = new DaftarUser();
+                                                Long idPemilik = sewa.getIdPemilik();
+                                                Long idPenyewa = sewa.getIdPemilik();
+                                                u = du.getUserFromId(idPemilik);
+                                                String namaPemilik = u.getNama();
+                                                u1 = du.getUserFromId(idPenyewa);
+                                                String namaPenyewa = u1.getNama();
+                                            %>
+                                            <td><%out.println(namaPemilik);%></td>
+                                            <td><%out.println(namaPenyewa);%></td>
                                             <td><%=sewa.getTotalHargaSewa()%></td>
                                             <td><%=sewa.getMulai()%> s/d <%=sewa.getSampai()%></td>
-                                            <td>Lihat Administrasi</td>
+                                            <td><a href="HapusHistoriSewa?idSewa=<%=sewa.getIdSewa()%>">Hapus Histori</a></td>
                                         </tr>
                                         <%}%>
                                     </table>

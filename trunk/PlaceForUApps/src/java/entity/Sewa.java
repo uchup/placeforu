@@ -32,6 +32,7 @@ public class Sewa implements Serializable {
     private Date sampai;
     private int status;
     private int totalHargaSewa;
+    private int sisaBayar;
 
     public Long getIdSewa() {
         return idSewa;
@@ -102,6 +103,14 @@ public class Sewa implements Serializable {
 
     public void setTotalHargaSewa(int TotalSewa) {
         this.totalHargaSewa = TotalSewa;
+    }
+    
+    public int getSisaBayar() {
+        return sisaBayar;
+    }
+
+    public void setSisaBayar(int SisaBayar) {
+        this.sisaBayar = SisaBayar;
     }
     
     @Override
