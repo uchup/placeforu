@@ -26,10 +26,11 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
+                        <li class="current_page_item"><a href="admin">Home (Admin)</a></li>
+			<li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
                         <li class="current_page_item"><a href="logout">Logout</a></li>
 		</ul>
 	</div>
@@ -62,20 +63,7 @@
 						</form>
 					</div>
 					<div style="clear: both;">&nbsp;</div>
-				</li>
-				<li>
-					<h2> </h2>
-
-                                            <fieldset>
-                                                <table>
-                                                    <tr>
-                                                        <td><a href="register">Daftarkan user baru</a></td>
-                                                    </tr>
-
-                                                </table>
-                                            </fieldset>
-
-				</li>
+                                </li>
 			</ul>
 		</div>
 	</div>

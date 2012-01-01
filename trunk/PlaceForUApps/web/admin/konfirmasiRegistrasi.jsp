@@ -28,10 +28,12 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="backend_admin/admin_info.jsp">Manajemen Informasi</a></li>
-                        <li class="current_page_item"><a href="backend_admin/admin_sewa.jsp">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="backend_admin/admin_administrasi">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="admin">Home (Admin)</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="logout">Logout</a></li>
                     </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -40,44 +42,42 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Halaman Administrator</a></h2>
+                            <h2 class="title"><a href="#">Konfirmasi Pendaftaran User</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='KonfirmasiRegistrasi'>
+                                <form method='post' action='KonfirmasiRegistrasi'>
 
                                     <table border="1">
                                         <tr>
-                                            <td>ID User</td>
+                                            <td>ID </td>
                                             <td>Nama</td>
                                             <td>Username</td>
-                                            <td>Password</td>
                                             <td>Tipe</td>
                                             <td>Ubah / Hapus </td>
                                             <td>Konfirm</td>
                                         </tr>
                                         <%Iterator itr;%>
-                                        <% List users_list = (List) request.getAttribute("admin");
+                                        <% List users_list = (List) request.getAttribute("pengguna");
                                             for (itr = users_list.iterator(); itr.hasNext();) {
                                                 entity.User user = (entity.User) itr.next();
                                         %>
                                         <tr>
 
-                                            <td>ID User</td>
+                                            <td><%=user.getId()%></td>
                                             <td><%=user.getNama()%></td>
                                             <td><%=user.getUsername()%></td>
-                                            <td><%=user.getPassword()%></td>
-                                            <td><%=user.getTipe()%></td>
                                             <%
-                                                String tipe = "";
-                                                if (user.getTipe() == 0) {
-                                                    tipe = "admin";
-                                                } else if (user.getTipe() == 1) {
-                                                    tipe = "pemilik";
-                                                } else {
-                                                    tipe = "penyewa";
-                                                }
+                                            String tipe = "";
+                                            if (user.getTipe() == 0) {
+                                                tipe = "admin";
+                                            } else if (user.getTipe() == 1) {
+                                                tipe = "pemilik";
+                                            } else {
+                                                tipe = "penyewa";
+                                            }
                                             %>
+                                            <td><%out.print(tipe);%></td>
                                             <td>
                                                 <select name="konfirm">
                                                     <option value="1">Terima</option>
@@ -85,8 +85,10 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="hidden" name="id" value="<%=user.getId()%>">
-                                                <input type="submit" value="Konfirm" name="konfirmasi">
+
+                                                <input type='hidden' name='uname' value='<%=user.getUsername()%>'>
+                                                <input type='hidden' name='userid' value='<%=user.getId()%>'>
+                                                <input type='submit' value='Konfirm'>
                                             </td>
                                         </tr>
                                         <%}%>
@@ -113,16 +115,7 @@
                             <li>
                                 <h2> </h2>
 
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            <td><a href="register">Daftarkan user baru</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="KonfirmasiRegistrasi">Konfirmasi Pengguna</a></td>
-                                        </tr>
-                                    </table>
-                                </fieldset>
+
 
                             </li>
                         </ul>

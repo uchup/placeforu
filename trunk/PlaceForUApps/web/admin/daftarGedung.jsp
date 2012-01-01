@@ -4,6 +4,8 @@
     Author     : Ika
 --%>
 
+<%@page import="entity.DaftarUser"%>
+<%@page import="entity.User"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Date"%>
@@ -28,10 +30,11 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="admin">Home (Admin)</a></li>
+			<li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
                         <li class="current_page_item"><a href="logout">Logout</a></li>
                     </ul>
                 </div>
@@ -63,7 +66,9 @@
                                         <input type="hidden" name="id_gedung" value="<%=gedung.getId()%>">
                                         <td><%=gedung.getId()%></td>
                                         <td><%=gedung.getNamaGedung()%></td>
-                                        <td><%=gedung.getIdPemilik()%></td>
+                                        <% entity.DaftarUser du= new DaftarUser();%>
+                                        <% entity.User user=du.getUserFromId(gedung.getIdPemilik()) ;%>
+                                        <td><%=user.getNama()%></td>
                                         
                                         <td><a href="ListSubGedung?id=<%=gedung.getId()%>">>>Lihat List Subgedung</a>
                                             <br>
@@ -90,19 +95,6 @@
                                     </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
-                            </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
                             </li>
                         </ul>
                     </div>

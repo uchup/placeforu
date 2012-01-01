@@ -28,10 +28,12 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="backend_admin/admin_info.jsp">Manajemen Informasi</a></li>
-                        <li class="current_page_item"><a href="backend_admin/admin_sewa.jsp">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="backend_admin/admin_administrasi">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="admin">Home  (Admin)</a></li>
+			<li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="logout">Logout</a></li>
                     </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -40,7 +42,7 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Halaman Administrator</a></h2>
+                            <h2 class="title"><a href="#">Daftar Pengguna</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
@@ -49,13 +51,13 @@
                                         <tr>
                                             <td>ID User</td>
                                             <td>Nama</td>
+                                            <td>Email</td>
                                             <td>Username</td>
-                                            <td>Password</td>
                                             <td>Tipe</td>
                                             <td>Ubah / Hapus </td>
                                         </tr>
                                         <%Iterator itr;%>
-                                        <% List users_list = (List) request.getAttribute("admin");
+                                        <% List users_list = (List) request.getAttribute("pengguna");
                                             for (itr = users_list.iterator(); itr.hasNext();) {
                                                 entity.User user = (entity.User) itr.next();
                                         %>
@@ -63,9 +65,8 @@
                                         <input type="hidden" name="username" value="<%=user.getUsername()%>">
                                         <td><%=user.getId()%></td>
                                         <td><%=user.getNama()%></td>
+                                        <td><%=user.getEmail()%></td>
                                         <td><%=user.getUsername()%></td>
-                                        <td><%=user.getPassword()%></td>
-                                        <td><%=user.getTipe()%></td>
                                         <%
                                             String tipe = "";
                                             if (user.getTipe() == 0) {
@@ -75,8 +76,9 @@
                                             } else {
                                                 tipe = "penyewa";
                                             }
-                                        %>
-                                        <td><a href="EditAkun?usname=<%=user.getUsername()%>">Ubah</a> / <a href="HapusAkun?id=<%=user.getId()%>">Hapus</a></td>
+                                         %>
+                                        <td><%out.print(tipe);%></td>
+                                        <td><a href="EditPengguna?usname=<%=user.getUsername()%>">Ubah</a> / <a href="HapusPengguna?userid=<%=user.getId()%>">Hapus</a></td>
                                         </tr>
                                         <%}%>
                                     </table>
@@ -104,7 +106,7 @@
                                 <fieldset>
                                     <table>
                                         <tr>
-                                            <td><a href="register">Daftarkan user baru</a></td>
+                                            <td><a href="TambahPengguna">Tambah Pengguna Baru</a></td>
                                         </tr>
                                         <tr>
                                             <td><a href="KonfirmasiRegistrasi">Konfirmasi Pengguna</a></td>

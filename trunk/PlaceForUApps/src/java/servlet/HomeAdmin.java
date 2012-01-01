@@ -45,7 +45,7 @@ public class HomeAdmin extends HttpServlet {
                 u = du.getUserFromName(username);
                 if (u.getTipe() == 0) {
                     request.setAttribute("admin", u);
-                    dis = request.getRequestDispatcher("/admin/home.jsp");
+                    dis = request.getRequestDispatcher("/admin/admin_home.jsp");
                     dis.include(request, response);
                 } else {
                     dis = request.getRequestDispatcher("index");

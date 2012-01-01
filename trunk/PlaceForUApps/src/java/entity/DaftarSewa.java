@@ -4,18 +4,14 @@
  */
 package entity;
 
+import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import jpa.exceptions.NonexistentEntityException;
 
 /**
  *

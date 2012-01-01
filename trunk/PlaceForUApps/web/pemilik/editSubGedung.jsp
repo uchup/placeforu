@@ -28,11 +28,11 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">HomepagePemilik</a></li>
+                        <li class="current_page_item"><a href="pemilik">Home (Pemilik)</a></li>
                         <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
                     </ul>
                 </div>
@@ -233,7 +233,7 @@
                             <li><a href="#">Aenean elementum facilisis ligula</a></li>
                             <li><a href="#">Ut tincidunt elit vitae augue</a></li>
                         </ul>
-                    </div>
+                    </div></div>
                 </div>
                 <div id="footer">
                     <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>

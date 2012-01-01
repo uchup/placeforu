@@ -45,10 +45,6 @@ public class DetailGedung extends HttpServlet {
 
         //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
         if(dg.cekGedung()){
-
-            Long id = Long.valueOf(request.getParameter("idgedung"));
-             u = du.getUserFromId(id);
-             long idPemilik= u.getId();
                Long idGedung = Long.valueOf(request.getParameter("idgedung"));
                g = dg.getGedung(idGedung);
                request.setAttribute("gedung", g);
