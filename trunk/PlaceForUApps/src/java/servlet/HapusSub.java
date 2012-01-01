@@ -48,7 +48,7 @@ public class HapusSub extends HttpServlet {
         dg.deleteSubGedung(id);
 
             RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successDeleting.jsp");
+                request.getRequestDispatcher("/successDeleting2.jsp");
                 page = "ListSubGedung";
                 message ="Data berhasil dihapus";
                 request.setAttribute("message", message);

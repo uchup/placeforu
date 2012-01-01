@@ -4,6 +4,8 @@
     Author     : Ika
 --%>
 
+<%@page import="entity.DaftarUser"%>
+<%@page import="entity.User"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Date"%>
@@ -28,11 +30,12 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="backend_admin/admin_info.jsp">Manajemen Informasi</a></li>
-                        <li class="current_page_item"><a href="backend_admin/admin_sewa.jsp">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="backend_admin/admin_administrasi">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
-                    </ul>
+			<li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
+			<li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Administrasi</a></li>
+			<li class="current_page_item"><a href="logout">Log Out</a></li>
+		</ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -40,43 +43,48 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Halaman Administrator</a></h2>
-                            <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
+                            <h2 class="title"><a href="#">Daftar Gedung</a></h2>
+                            <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a 
+                                        href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='HapusAkun'>
-                                    <table border="1">
-                                        <tr>
-                                            <td>ID User</td>
-                                            <td>Nama</td>
-                                            <td>Username</td>
-                                            <td>Password</td>
-                                            <td>Tipe</td>
-                                            <td>Ubah / Hapus </td>
-                                        </tr>
+                                <form method='post'  action='HapusGedung'>
+                                    <table>
+
                                         <%Iterator itr;%>
-                                        <% List users_list = (List) request.getAttribute("admin");
-                                            for (itr = users_list.iterator(); itr.hasNext();) {
-                                                entity.User user = (entity.User) itr.next();
+                                        <% List gedung_list = (List) request.getAttribute("penyewa");
+                                            for (itr = gedung_list.iterator(); itr.hasNext();) {
+                                                entity.Gedung gedung = (entity.Gedung) itr.next();
                                         %>
                                         <tr>
-                                        <input type="hidden" name="username" value="<%=user.getUsername()%>">
-                                        <td><%=user.getId()%></td>
-                                        <td><%=user.getNama()%></td>
-                                        <td><%=user.getUsername()%></td>
-                                        <td><%=user.getPassword()%></td>
-                                        <td><%=user.getTipe()%></td>
-                                        <%
-                                            String tipe = "";
-                                            if (user.getTipe() == 0) {
-                                                tipe = "admin";
-                                            } else if (user.getTipe() == 1) {
-                                                tipe = "pemilik";
-                                            } else {
-                                                tipe = "penyewa";
-                                            }
-                                        %>
-                                        <td><a href="EditAkun?usname=<%=user.getUsername()%>">Ubah</a> / <a href="HapusAkun?id=<%=user.getId()%>">Hapus</a></td>
+                                            <table>
+                                            <tr>
+                                                <td>Nama Gedung</td>
+                                                <td>:</td>
+                                                <td><%=gedung.getNamaGedung()%></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tipe Gedung</td>
+                                                <td>:</td>
+                                                <td><%=gedung.getTipeGedung()%></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kategori Gedung</td>
+                                                <td>:</td>
+                                                <td><%=gedung.getKategoriGedung()%></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Alamat Gedung</td>
+                                                <td>:</td>
+                                                <td><%=gedung.getAlamatGedung()%> , <%=gedung.getKotaGedung()%> - <%=gedung.getPropinsiGedung()%></td>
+                                            </tr> 
+                                            <tr>
+                                                <td><a href="ListSubGedung?id=<%=gedung.getId()%>">>>Lihat Detail</a></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                            <hr>        
                                         </tr>
                                         <%}%>
                                     </table>
@@ -104,11 +112,9 @@
                                 <fieldset>
                                     <table>
                                         <tr>
-                                            <td><a href="register">Daftarkan user baru</a></td>
+                                            
                                         </tr>
-                                        <tr>
-                                            <td><a href="KonfirmasiRegistrasi">Konfirmasi Pengguna</a></td>
-                                        </tr>
+
                                     </table>
                                 </fieldset>
 
@@ -143,7 +149,8 @@
                 </div>
             </div>
             <div id="footer">
-                <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
+                <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a 
+                        href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
             </div>
         </div>
         <!-- end #footer -->

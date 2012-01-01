@@ -132,34 +132,46 @@ public class TambahSubGedung extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
+         HttpSession session = request.getSession();
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
+        DaftarUser du = new DaftarUser();
+        User u = new User();
 
-        Long id_gedung = Long.parseLong(request.getParameter("id"));
+        if (session.getAttribute("sessionusername") != null) {
+            String username = (String) session.getAttribute("sessionusername");
+            //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
+            boolean hasilCheck = du.checkUser(username);
+            if (hasilCheck) {
+                //mengambil user berdasarkan username dari Daftar User
+                u = du.getUserFromName(username);
+                long idPemilik = u.getId();
+
+                //jika pengguna merupakan pemilik
+                if (u.getTipe() == 1) {
+                 Long id_gedung = Long.parseLong(request.getParameter("id"));
         gd = (Gedung) dg.getGedung(id_gedung);
         request.setAttribute("gedung", gd);
         dis = request.getRequestDispatcher("/pemilik/entriInformasiSub.jsp");
         dis.include(request, response);
-        /*PrintWriter out = response.getWriter();
-        RequestDispatcher dis = null;
-        DaftarSubGedung ds = new DaftarSubGedung();
-        SubGedung gd = new SubGedung();
 
-        Long id_sub_gedung = Long.parseLong(request.getParameter("idsub"));
-        gd = (SubGedung) ds.getSubGedung(id_sub_gedung);
-        request.setAttribute("subgedung", gd);
-        dis = request.getRequestDispatcher("/pemilik/entriInformasiSub.jsp");
+                } else if (u.getTipe() == 0) {
+                    Long id_gedung = Long.parseLong(request.getParameter("id"));
+        gd = (Gedung) dg.getGedung(id_gedung);
+        request.setAttribute("gedung", gd);
+        dis = request.getRequestDispatcher("/admin/entriInformasiSub.jsp");
         dis.include(request, response);
-*/
 
+                }
+            } else {
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("index.jsp");
+                requestDispatcher.forward(request, response);
+            }
+        }
 
-
-
-       String destination = "/pemilik/entriInformasiSub.jsp";
-
-       RequestDispatcher rd = getServletContext().getRequestDispatcher(destination);
-       rd.forward(request, response);
     }
+
 
     /**
      * Handles the HTTP <code>POST</code> method.

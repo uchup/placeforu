@@ -72,8 +72,7 @@ public class Register extends HttpServlet {
                 user.setPassword(pass);
                 user.setStatus(status);
                 daftar.addUser(user);
-                page = request.getRequestDispatcher("index.jsp");
-                page.forward(request, response);
+                   response.sendRedirect("../PlaceForUApps_28Nov");
             } else {
                    //out.println("Username telah terdaftar");
                 message ="Username telah terdaftar, ulangi lagi ";
