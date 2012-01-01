@@ -87,7 +87,7 @@ public class EditAdministrasi extends HttpServlet {
                         int sisa_bayar_db = sw.getSisaBayar();
                         int SisaBayar = sisa_bayar_db - sisa_bayar;
                         sw.setSisaBayar(SisaBayar);
-                        ds.editSewa(sw);
+                        //ds.editSewa(sw);
                         
                         RequestDispatcher requestDispatcher =
                                 request.getRequestDispatcher("/successUpdating.jsp");

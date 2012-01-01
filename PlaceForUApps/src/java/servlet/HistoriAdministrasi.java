@@ -90,8 +90,8 @@ public class HistoriAdministrasi extends HttpServlet {
                 } //jika pengguna merupakan pemilik tempat, maka akan diarahkan ke halaman daftar Gedung untuk pemilik
                 else if (u.getTipe() == 2) {
 
-                    List<Sewa> daftar_sewa2 = ds.getUtangPenyewa(idAkun);
-                    request.setAttribute("penyewa_1", daftar_sewa2);
+                    //List<Sewa> daftar_sewa2 = ds.getUtangPenyewa(idAkun);
+                    //request.setAttribute("penyewa_1", daftar_sewa2);
 
                     dis = request.getRequestDispatcher("/penyewa/historiAdministrasi.jsp");
                     dis.include(request, response);

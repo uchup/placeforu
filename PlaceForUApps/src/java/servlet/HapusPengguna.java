@@ -44,14 +44,24 @@ public class HapusPengguna extends HttpServlet {
         DaftarUser a = new DaftarUser();
         HttpSession session = request.getSession();
 
+        try {
+            //remove user
             a.deleteUser(userid);
-            List<User> users = a.getUsers();
-            request.setAttribute("pengguna", users);
-          //diarahkan ke halaman profil penyewa tempat
-            response.sendRedirect("/PlaceForUApps_28Nov/admin/daftarpengguna");
+            String message;
+            String pages;
+            RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("/successDeleting.jsp");
+                message ="Akun pengguna berhasil dihapus";
+                pages = "DaftarAkun";
+                List<User> users = a.getUsers();
+                request.setAttribute("pengguna", users);
+                request.setAttribute("message", message);
+                request.setAttribute("page", pages);
+                requestDispatcher.forward(request, response);
 
-
-
+        } finally {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

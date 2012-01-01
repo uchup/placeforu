@@ -53,7 +53,7 @@ public class KonfirmasiPermintaanSewa extends HttpServlet {
 
             } //if registration is rejected
             else {
-                a.removeSewa(sewa);
+                a.removeSewa(sewa.getIdSewa());
                 RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successConfirmation.jsp");
                 message ="Penyewaan berhasil ditolak";

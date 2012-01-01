@@ -141,12 +141,12 @@
         <servlet-class>servlet.SewaBaru</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DaftarAkun</servlet-name>
-        <servlet-class>servlet.DaftarAkun</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>HistoriSewa</servlet-name>
         <servlet-class>servlet.HistoriSewa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TambahPengguna</servlet-name>
+        <servlet-class>servlet.TambahPengguna</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
@@ -253,22 +253,6 @@
         <url-pattern>/pemilik/editprofil</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DaftarPengguna</servlet-name>
-        <url-pattern>/admin/daftarpengguna</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditPengguna</servlet-name>
-        <url-pattern>/admin/editpengguna</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>HapusPengguna</servlet-name>
-        <url-pattern>/admin/hapuspengguna</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>KonfirmasiRegistrasi</servlet-name>
-        <url-pattern>/admin/konfirm</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>UploadFotoGedung</servlet-name>
         <url-pattern>/uploadfotogedung</url-pattern>
     </servlet-mapping>
@@ -289,12 +273,28 @@
         <url-pattern>/Sewa</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>DaftarAkun</servlet-name>
-        <url-pattern>/DaftarAkun</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>HistoriSewa</servlet-name>
         <url-pattern>/HistoriSewa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TambahPengguna</servlet-name>
+        <url-pattern>/TambahPengguna</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KonfirmasiRegistrasi</servlet-name>
+        <url-pattern>/KonfirmasiRegistrasi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditPengguna</servlet-name>
+        <url-pattern>/EditPengguna</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HapusPengguna</servlet-name>
+        <url-pattern>/HapusPengguna</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DaftarPengguna</servlet-name>
+        <url-pattern>/DaftarPengguna</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

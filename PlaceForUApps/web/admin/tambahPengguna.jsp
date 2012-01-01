@@ -14,7 +14,7 @@
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>PlaceForU - Cara Cepat Sewa Tempat dengan Cepat</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="wrapper">
@@ -25,24 +25,24 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			 <li class="current_page_item"><a href="admin">Home (Admin)</a></li>
-                        <li class="current_page_item"><a href="../admin/daftarpengguna">Manajemen User</a></li>
-			<li class="current_page_item"><a href="#">Manajemen Informasi</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+			<li class="current_page_item"><a href="admin">Home (Admin)</a></li>
+			<li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="../logout">Log Out</a></li>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="logout">Logout</a></li>
 		</ul>
 	</div>
-	<div id="gallery"><img src="../images/img03.jpg" width="692" height="340" alt="" /></div>
+	<div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
 </div>
 <div id="page">
     <div id="page-bgtop">
             <div id="content">
                 <div class="post">
-                    <h2 class="title"><a href="#">Pendaftaran User</a></h2>
+                    <h2 class="title"><a href="#">Tambah Pengguna Baru</a></h2>
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
-                            <form method='post' action='tambahpengguna'>
+                            <form method='post' action='TambahPengguna'>
                                 <fieldset>
                                     <table>
                                         <tr>

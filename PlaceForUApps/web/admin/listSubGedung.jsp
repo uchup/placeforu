@@ -31,10 +31,11 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="admin">Home</a></li>
+			<li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
                         <li class="current_page_item"><a href="logout">Logout</a></li>
                     </ul>
                 </div>
@@ -48,7 +49,7 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'>
+                                <form method='post' action=''>
                                     <table>
                                         <tr>
                                             <td>ID Gedung</td>
@@ -66,17 +67,16 @@
                                                 entity.SubGedung subgedung = (entity.SubGedung) itr.next();
                                         %>
                                         <tr>
-                                        <input type="hidden" name="id_gedung" value="<%=subgedung.getId_gedung()%>">
-                                        <td><%=subgedung.getId_gedung()%></td>
-                                        <input type="hidden" name="id_sub_gedung" value="<%=subgedung.getId()%>">
-                                        <td><%=subgedung.getId()%></td>
-                                        <td><%=subgedung.getNama_sub_gedung()%></td>
-                                        <td><%=subgedung.getTipe_sub_gedung()%></td>
-                                        <td><%=subgedung.getStatus()%></td>
-                                        <td><a href="DetailSubGedungPemilik?idsub=<%=subgedung.getId()%>">Detail</a></td>
-                                        <td><a href="EditSubGedung?idsub=<%=subgedung.getId()%>">Ubah</a> / <a href="HapusSub?idsub=<%=subgedung.getId()%>">Hapus</a></td>
-                                                    </tr>
-                                                    
+                                            <input type="hidden" name="id_gedung" value="<%=subgedung.getId_gedung()%>">
+                                            <td><%=subgedung.getId_gedung()%></td>
+                                            <input type="hidden" name="id_sub_gedung" value="<%=subgedung.getId()%>">
+                                            <td><%=subgedung.getId()%></td>
+                                            <td><%=subgedung.getNama_sub_gedung()%></td>
+                                            <td><%=subgedung.getTipe_sub_gedung()%></td>
+                                            <td><%=subgedung.getStatus()%></td>
+                                            <td><a href="DetailSubGedungPemilik?idsub=<%=subgedung.getId()%>">Detail</a></td>
+                                            <td><a href="EditSubGedung?idsub=<%=subgedung.getId()%>">Ubah</a> / <a href="HapusSub?idsub=<%=subgedung.getId()%>">Hapus</a></td>
+
                                                     <%}%>
                                                     </table>
                                                     </form>

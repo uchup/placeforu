@@ -30,7 +30,7 @@
 				<div class="entry">
                                     <p><font color="red"><%=  request.getAttribute("message")  %></font></p>
                                     <a href="KonfirmasiRegistrasi">Konfirmasi Registrasi Lainnya</a> || 
-                                    <a href="DaftarAkun">Ke Daftar Pengguna</a>
+                                    <a href="DaftarPengguna">Ke Daftar Pengguna</a>
                
 				</div>
 			</div>

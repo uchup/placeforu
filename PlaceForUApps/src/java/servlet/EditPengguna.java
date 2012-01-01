@@ -66,8 +66,15 @@ public class EditPengguna extends HttpServlet {
                 } else {
                     a.editUser(user);
                     List<User> users = a.getUsers();
+                    request.setAttribute("pengguna", users);
                     //diarahkan ke halaman profil penyewa tempat
-                    response.sendRedirect("/PlaceForUApps_28Nov/admin/daftarpengguna");
+                     RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/successUpdating.jsp");
+                message = "Data Pengguna berhasil diubah";
+                String page = "DaftarPengguna";
+                request.setAttribute("message", message);
+                request.setAttribute("page", page);
+                requestDispatcher.forward(request, response);
                 }
             }
 

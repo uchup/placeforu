@@ -49,12 +49,12 @@ public class TambahPengguna extends HttpServlet {
         int status = Integer.parseInt(request.getParameter("status"));
 
         User user = new User();
-        RequestDispatcher page = null;
         DaftarUser daftar = new DaftarUser();
+        RequestDispatcher requestDispatcher = null;
 
         if (nama.equals("") || email.equals("") || telp.equals("")
                 || alamat.equals("") || usname.equals("") || pass.equals("")) {
-            RequestDispatcher requestDispatcher =
+            requestDispatcher =
                 request.getRequestDispatcher("/error_page.jsp");
                 message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
                 request.setAttribute("message", message);
@@ -76,13 +76,19 @@ public class TambahPengguna extends HttpServlet {
                 List<User> users = daftar.getUsers();
             request.setAttribute("pengguna", users);
           //diarahkan ke halaman profil penyewa tempat
-            response.sendRedirect("/PlaceForUApps/admin/daftarpengguna");
+            requestDispatcher =
+                        request.getRequestDispatcher("/successSaving.jsp");
+                message = "Pengguna baru berhasil ditambahkan.";
+                String page = "DaftarPengguna";
+                request.setAttribute("message", message);
+                request.setAttribute("page", page);
+                requestDispatcher.forward(request, response);
             } else {
                    //out.println("Username telah terdaftar");
                 message ="Username telah terdaftar, ulangi lagi ";
                 request.setAttribute("message", message);
-                page = request.getRequestDispatcher("/error_page.jsp");
-                    page.forward(request, response);
+                requestDispatcher = request.getRequestDispatcher("/error_page.jsp");
+                    requestDispatcher.forward(request, response);
             }
 
         }

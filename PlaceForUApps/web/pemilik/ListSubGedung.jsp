@@ -31,11 +31,11 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">Homepage Pemilik</a></li>
-                        <li class="current_page_item"><a href="pemilik/profil">Manajemen Profil</a></li>
+                        <li class="current_page_item"><a href="pemilik">Home (Pemilik)</a></li>
+                        <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
                     </ul>
                 </div>
@@ -76,7 +76,7 @@
                                         <td><%=subgedung.getStatus()%></td>
                                         <td><a href="DetailSubGedungPemilik?idsub=<%=subgedung.getId()%>">Detail</a></td>
                                         <td><a href="EditSubGedung?idsub=<%=subgedung.getId()%>">Ubah</a> / <a href="HapusSub?idsub=<%=subgedung.getId()%>">Hapus</a></td>
-                                                    </tr>
+                                                   
                                                     
                                                     <%}%>
                                                     </table>
