@@ -54,23 +54,23 @@ public class ListSubGedung extends HttpServlet {
                 //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
                 long idPemilik = u.getId();
-                
+
                 //jika pengguna merupakan pemilik
                 if (u.getTipe() == 1) {
                     Long id_gedung = Long.parseLong(request.getParameter("id"));
                     List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
-                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("gedung", daftar_sub_gedung);
                     request.setAttribute("akun", u);
                     g = (Gedung) dg.getGedung(id_gedung);
                     request.setAttribute("gd", g);
-                    dis = request.getRequestDispatcher("/pemilik/ListSubGedung.jsp");
+                    dis = request.getRequestDispatcher("/pemilik/listSubGedung.jsp");
                     dis.include(request, response);
                 }
-                ////jika pengguna merupakan penyewa        
+                ////jika pengguna merupakan penyewa
                 else if(u.getTipe() == 2) {
                     Long id_gedung = Long.parseLong(request.getParameter("id"));
                     List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
-                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("gedung", daftar_sub_gedung);
                     request.setAttribute("akun", u);
                     g = (Gedung) dg.getGedung(id_gedung);
                     request.setAttribute("gd", g);
@@ -80,7 +80,7 @@ public class ListSubGedung extends HttpServlet {
                 else if(u.getTipe() == 0) {
                     Long id_gedung = Long.parseLong(request.getParameter("id"));
                     List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
-                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("gedung", daftar_sub_gedung);
                     request.setAttribute("akun", u);
                     g = (Gedung) dg.getGedung(id_gedung);
                     request.setAttribute("gd", g);
@@ -122,23 +122,23 @@ public class ListSubGedung extends HttpServlet {
                 //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
                 long idPemilik = u.getId();
-                
+
                 //jika pengguna merupakan pemilik
                 if (u.getTipe() == 1) {
                     Long id_gedung = Long.parseLong(request.getParameter("id"));
                     List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
-                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("gedung", daftar_sub_gedung);
                     request.setAttribute("akun", u);
                     g = (Gedung) dg.getGedung(id_gedung);
                     request.setAttribute("gd", g);
                     dis = request.getRequestDispatcher("/pemilik/ListSubGedung.jsp");
                     dis.include(request, response);
                 }
-                ////jika pengguna merupakan penyewa        
+                ////jika pengguna merupakan penyewa
                 else if(u.getTipe() == 2) {
                     Long id_gedung = Long.parseLong(request.getParameter("id"));
                     List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
-                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("gedung", daftar_sub_gedung);
                     request.setAttribute("akun", u);
                     g = (Gedung) dg.getGedung(id_gedung);
                     request.setAttribute("gd", g);
@@ -148,7 +148,7 @@ public class ListSubGedung extends HttpServlet {
                 else if(u.getTipe() == 0) {
                     Long id_gedung = Long.parseLong(request.getParameter("id"));
                     List<SubGedung> daftar_sub_gedung = sub.getDaftarSubGedung(id_gedung);
-                    request.setAttribute("gedung", daftar_sub_gedung);          
+                    request.setAttribute("gedung", daftar_sub_gedung);
                     request.setAttribute("akun", u);
                     g = (Gedung) dg.getGedung(id_gedung);
                     request.setAttribute("gd", g);

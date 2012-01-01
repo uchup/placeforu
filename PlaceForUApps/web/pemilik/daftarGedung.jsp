@@ -69,7 +69,7 @@
                                             <br>
                                         <a href="TambahSubGedung?id=<%=gedung.getId()%>">>>Tambah Sub Gedung</a>
                                         </td>
-                                        <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?id=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
+                                        <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedungPemilik?id=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
                                                     </tr>
                                                     <%}%>
                                                     </table>

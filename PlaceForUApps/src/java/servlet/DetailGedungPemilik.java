@@ -40,7 +40,7 @@ public class DetailGedungPemilik extends HttpServlet {
 
         //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
         if(dg.cekGedung()){
-               Long idGedung = Long.valueOf(request.getParameter("idGedung"));
+               Long idGedung = Long.valueOf(request.getParameter("id"));
                g = dg.getGedung(idGedung);
                request.setAttribute("gedung", g);
             }

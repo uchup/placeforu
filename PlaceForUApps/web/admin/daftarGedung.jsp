@@ -28,10 +28,11 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="backend_admin/admin_info.jsp">Manajemen Informasi</a></li>
-                        <li class="current_page_item"><a href="backend_admin/admin_sewa.jsp">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="backend_admin/admin_administrasi">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
+                        <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="logout">Logout</a></li>
                     </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -44,39 +45,31 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='HapusAkun'>
-                                    <table border="1">
+                                <form method='post'  action='HapusGedung'>
+                                    <table>
                                         <tr>
-                                            <td>ID User</td>
-                                            <td>Nama</td>
-                                            <td>Username</td>
-                                            <td>Password</td>
-                                            <td>Tipe</td>
+                                            <td>ID Gedung</td>
+                                            <td>Nama Gedung</td>
+                                            <td>Nama Pemilik</td>
+                                            <td>Lihat Subgedung</td>
                                             <td>Ubah / Hapus </td>
                                         </tr>
                                         <%Iterator itr;%>
-                                        <% List users_list = (List) request.getAttribute("admin");
-                                            for (itr = users_list.iterator(); itr.hasNext();) {
-                                                entity.User user = (entity.User) itr.next();
+                                        <% List gedung_list = (List) request.getAttribute("admin");
+                                            for (itr = gedung_list.iterator(); itr.hasNext();) {
+                                                entity.Gedung gedung = (entity.Gedung) itr.next();
                                         %>
                                         <tr>
-                                        <input type="hidden" name="username" value="<%=user.getUsername()%>">
-                                        <td><%=user.getId()%></td>
-                                        <td><%=user.getNama()%></td>
-                                        <td><%=user.getUsername()%></td>
-                                        <td><%=user.getPassword()%></td>
-                                        <td><%=user.getTipe()%></td>
-                                        <%
-                                            String tipe = "";
-                                            if (user.getTipe() == 0) {
-                                                tipe = "admin";
-                                            } else if (user.getTipe() == 1) {
-                                                tipe = "pemilik";
-                                            } else {
-                                                tipe = "penyewa";
-                                            }
-                                        %>
-                                        <td><a href="EditAkun?usname=<%=user.getUsername()%>">Ubah</a> / <a href="HapusAkun?id=<%=user.getId()%>">Hapus</a></td>
+                                        <input type="hidden" name="id_gedung" value="<%=gedung.getId()%>">
+                                        <td><%=gedung.getId()%></td>
+                                        <td><%=gedung.getNamaGedung()%></td>
+                                        <td><%=gedung.getIdPemilik()%></td>
+                                        
+                                        <td><a href="ListSubGedung?id=<%=gedung.getId()%>">>>Lihat List Subgedung</a>
+                                            <br>
+                                            <a href="TambahSubGedung?id=<%=gedung.getId()%>">>>Tambah Sub Gedung</a>
+                                        </td>
+                                        <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedung?idgedung=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
                                         </tr>
                                         <%}%>
                                     </table>
@@ -104,11 +97,9 @@
                                 <fieldset>
                                     <table>
                                         <tr>
-                                            <td><a href="register">Daftarkan user baru</a></td>
+                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
                                         </tr>
-                                        <tr>
-                                            <td><a href="KonfirmasiRegistrasi">Konfirmasi Pengguna</a></td>
-                                        </tr>
+
                                     </table>
                                 </fieldset>
 

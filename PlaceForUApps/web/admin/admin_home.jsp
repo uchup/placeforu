@@ -26,12 +26,11 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-                        <li class="current_page_item"><a href="admin">Home (Admin)</a></li>
-                        <li class="current_page_item"><a href="admin/daftarpengguna">Manajemen User</a></li>
-			<li class="current_page_item"><a href="#">Manajemen Gedung</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
+			<li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="logout">Log Out</a></li>
+                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="logout">Logout</a></li>
 		</ul>
 	</div>
 	<div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -41,7 +40,7 @@
 		<div id="content">
 			<div class="post">
 				<h2 class="title"><a href="#">Halaman Administrator</a></h2>
-                                <p class="meta"><span class="date"><% new java.util.Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
+                                <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
 				<div style="clear: both;">&nbsp;</div>
 				<div class="entry">
                                     <table border="1">
@@ -66,6 +65,15 @@
 				</li>
 				<li>
 					<h2> </h2>
+
+                                            <fieldset>
+                                                <table>
+                                                    <tr>
+                                                        <td><a href="register">Daftarkan user baru</a></td>
+                                                    </tr>
+
+                                                </table>
+                                            </fieldset>
 
 				</li>
 			</ul>

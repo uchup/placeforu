@@ -5,9 +5,7 @@
 
 package servlet;
 
-import entity.DaftarGedung;
 import entity.DaftarUser;
-import entity.Gedung;
 import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,42 +19,63 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Widiasa
+ * @author Ika
  */
-public class DetailGedung extends HttpServlet {
+public class DaftarAkun extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * kelas ini digunakan untuk melihat profil penyewa dengan kondisi session todak boleh null
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
         HttpSession session = request.getSession();
-        User u = new User();
         DaftarUser du = new DaftarUser();
-        DaftarGedung dg = new DaftarGedung();
-        Gedung g = new Gedung();
-
-        //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
-        if(dg.cekGedung()){
-
-            Long id = Long.valueOf(request.getParameter("idgedung"));
-             u = du.getUserFromId(id);
-             long idPemilik= u.getId();
-               Long idGedung = Long.valueOf(request.getParameter("idgedung"));
-               g = dg.getGedung(idGedung);
-               request.setAttribute("gedung", g);
+        User u = new User();
+        
+        
+        
+        RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("backend_admin/admin_daftarakun.jsp");
+        System.out.println(requestDispatcher);
+        
+        //untuk mendapatkan session dari user yang telah login
+        if (session.getAttribute("sessionusername") != null){
+            String username = (String) session.getAttribute("sessionusername");
+            //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
+            boolean hasilCheck = du.checkUser(username);
+            if (hasilCheck) {
+                 //mengambil user berdasarkan username dari Daftar User
+                u = du.getUserFromName(username);
+                 //username merupakan penyewa tempat
+                if (u.getTipe() == 0) {                    
+                    //menyimpan daftar pengguna ke dalam list
+                    List<User> users = du.getUsers();            
+                    request.setAttribute("admin", users);
+                    //diarahkan ke halaman profil penyewa tempat
+                    dis = request.getRequestDispatcher("/admin/daftarPengguna.jsp");
+                    dis.include(request, response);
+                    
+                } else {
+                    dis = request.getRequestDispatcher("index");
+                    dis.forward(request, response);
+                    out.close();
+                }
             }
-            dis = request.getRequestDispatcher("detail.jsp");
-            dis.include(request, response);
-
-    } 
+            else{
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
+            out.close();
+            }
+        }
+        else{
+            dis = request.getRequestDispatcher("index");
+            dis.forward(request, response);
+            out.close();
+            }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -69,7 +88,8 @@ public class DetailGedung extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+processRequest(request, response);
+
     }
 
     /**

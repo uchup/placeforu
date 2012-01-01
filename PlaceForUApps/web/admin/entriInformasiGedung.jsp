@@ -1,7 +1,7 @@
-<%-- 
-    Document   : entriInformasiSub
-    Created on : Dec 19, 2011, 6:17:27 PM
-    Author     : Yuni
+<%--
+    Document   : index
+    Created on : Oct 29, 2011, 1:26:33 PM
+    Author     : Ika
 --%>
 
 <%@page import="java.util.List"%>
@@ -28,7 +28,7 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">HomepagePemilik</a></li>
+                        <li class="current_page_item"><a href="pemilik">Home (Pemilik)</a></li>
                         <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
                         <li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
@@ -46,24 +46,20 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'  action='TambahSubGedung'>
+                                <form method='post'  action='TambahGedung'>
                                     <table>
-
                                         <tr>
-                                        <input type="hidden" name="id_gedung" value='${gedung.id}'>
-                                        </tr>
-                                        <tr>
-                                            <td>Nama SubGedung <font color="red">*</font></td>
+                                            <td>Nama Gedung <font color="red">*</font></td>
                                             <td>:</td>
-                                            <td><input type="text" name="nama_sub_gedung"></td>
+                                            <td><input type="text" name="nama_gedung"></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
                                         <tr>
-                                            <td>Tipe Sub Gedung <font color="red">*</font></td>
+                                            <td>Tipe Gedung<font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                                <select name="tipe_sub_gedung">
+                                               <select name="tipe_gedung">
                                                     <option value="">Pilih tipe gedung</option>
                                                     <option value="Outdoor">Outdoor</option>
                                                     <option value="Indoor">Indoor</option>
@@ -73,39 +69,58 @@
                                             <td></td>
                                             <td></td>
                                         </tr>
-                                        <tr><td>Harga Sewa /jam<font color="red">*</font></td>
+                                        <tr>
+                                            <td>Kategori Gedung <font color="red">*</font></td>
                                             <td>:</td>
-                                            <td><input type="text" name="harga">
-
-                                                Satuan
-                                                :
-
-                                                <select name="satuan">
-                                                    <option value="IDR">IDR</option>
-                                                    <option value="USD">USD</option>
-                                                    <option value="EURO">EURO</option>
+                                            <td>
+                                                <select name="kategori_gedung">
+                                                    <option value="" selected>Pilih kategori</option>
+                                                    <option value="Pernikahan">Pernikahan</option>
+                                                    <option value="Seminar">Seminar</option>
+                                                    <option value="Serba Guna">Serba Guna</option>
+                                                    <option value="Olahraga">Olahraga</option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alamat Gedung <font color="red">*</font></td>
+                                            <td>:</td>
+                                            <td>
+                                               <input name="alamat_gedung" type="text">
+                                            </td>
+                                        <tr><td>Kota</td><td>:</td>
+                                            <td>
+                                                <input type="text" name="kota_gedung">
+                                            </td>
+                                        </tr>
+                                        <tr><td>Propinsi</td><td>:</td>
+                                            <td>
+                                                    <select name="propinsi_gedung">
+                                                    <option value="" selected>Propinsi</option>
+                                                    <option value="Jawa Barat">Jawa Barat</option>
+                                                    <option value="Jawa Timur">Jawa Timur</option>
+                                                    <option value="Jawa Tengah">Jawa Tengah</option>
                                                 </select>
                                             </td>
                                         </tr>
-                                        <tr><td>Kapasitas</td>
-                                            <td>:</td>
-                                            <td><input type="text" name="kapasitas">
-
-                                                orang</td>
-                                        </tr>
-                                        <tr><td>Luas </td>
-                                            <td>:</td>
-                                            <td><input type="text" name="luas">
-
-                                                meter persegi</td>
-                                        </tr>
                                         <tr>
                                             <td>
-                                                Fasilitas Sub Gedung<font color="red">*</font>
+                                                Deskripsi Gedung<font color="red">*</font>
                                             </td>
                                             <td>:</td>
                                             <td>
-                                                <textarea name="fasilitas_sub"></textarea>
+                                                <textarea name="deskripsi_gedung"></textarea>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Fasilitas
+                                            </td>
+                                            <td>:</td>
+                                            <td>
+                                                <textarea name="fasilitas_gedung"></textarea>
                                             </td>
                                         </tr>
                                         <tr><td></td><td></td>
@@ -113,24 +128,15 @@
                                                 <font color="red">*Pisahkan tiap fasilitas dengan tanda titik (.)</font>
                                             </td>
                                         </tr>
-
-                                        <tr>
-                                            <td>
-                                                Deskripsi Sub Gedung<font color="red">*</font>
-                                            </td>
+                                        
+                                        <tr><td>Email</td>
                                             <td>:</td>
-                                            <td>
-                                                <textarea name="deskripsi_sub"></textarea>
+                                            <td><input type="text" name="email_gedung">
                                             </td>
                                         </tr>
-                                        <tr><td>Status Sewa <font color="red">*</font></td>
+                                        <tr><td>Telp<font color="red">*</font></td>
                                             <td>:</td>
-                                            <td>
-                                                <select name="status">
-                                                    <option value="">    </option>
-                                                    <option value="Tersedia">Tersedia</option>
-                                                    <option value="Telah Disewa">Telah Disewa</option>
-                                                </select>
+                                            <td><input type="text" name="telp_gedung">
                                             </td>
                                         </tr>
                                         <tr><td><input type="submit" name="tambah" value="Simpan"><input type="reset" value="Reset"></td>
@@ -140,52 +146,6 @@
                                         </tr>
                                     </table>
                                 </form>
-
-                                <tr>
-                                    <td>
-                                        <fieldset>
-                                            <legend><h4>Upload Gambar Sub Gedung</h4></legend>
-                                            <table>
-                                                <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
-                                                    <tr>
-                                                        <td>Gambar 1</td>
-                                                        <td>:</td>
-                                                        <td><input type="file" name="foto"></td>
-                                                        <td><input type="Submit" value="Upload"><td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Gambar 2</td>
-                                                        <td>:</td>
-                                                        <td><input type="file" name="foto"></td>
-                                                        <td><input type="Submit" value="Upload"><td>
-                                                    </tr>
-                                                </form>
-
-                                                <tr>
-
-
-
-                                                </tr>
-
-
-
-                                            </table>
-
-                                        </fieldset>
-                                    </td>
-                                </tr>
-
-
-
-
-
-
-
-
-
-
-
-
                             </div>
                         </div>
 
@@ -206,7 +166,15 @@
                             <li>
                                 <h2> </h2>
 
-                                
+                                <fieldset>
+                                    <table>
+                                        <tr>
+                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
+                                        </tr>
+
+                                    </table>
+                                </fieldset>
+
                             </li>
                         </ul>
                     </div>
@@ -224,7 +192,7 @@
                 </div>
                 <div id="footer">
                     <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
-                </div>
+                </div></div>
             </div>
             <!-- end #footer -->
     </body>

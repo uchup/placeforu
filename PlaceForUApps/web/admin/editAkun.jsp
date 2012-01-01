@@ -1,7 +1,7 @@
 <%--
     Document   : profil
     Created on : Nov 16, 2011, 6:44:34 PM
-    Author     : Yuni
+    Author     : Ika
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +14,7 @@
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>PlaceForU - Cara Cepat Sewa Tempat dengan Cepat</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="wrapper">
@@ -25,15 +25,15 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../pemilik">Home (Pemilik)</a></li>
+			<li class="current_page_item"><a href="../pemilik">Homepage</a></li>
                         <li class="current_page_item"><a href="../pemilik/profil">Profil</a></li>
-			<li class="current_page_item"><a href="ListGedung?sessionusername=${sessionusername}">Manajemen Gedung</a></li>
+			<li class="current_page_item"><a href="#">Manajemen Informasi Gedung</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Penyewaan</a></li>
 			<li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
 			<li class="current_page_item"><a href="../logout">Log Out</a></li>
 		</ul>
 	</div>
-	<div id="gallery"><img src="../images/img03.jpg" width="692" height="340" alt="" /></div>
+	<div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
 </div>
 <div id="page">
     <div id="page-bgtop">
@@ -42,8 +42,8 @@
                     <h2 class="title"><a href="#">Profil User</a></h2>
                         <div style="clear: both;">&nbsp;</div>
                         <div class="entry">
-                                  <fieldset>
-
+                                <fieldset>
+                                    <form method='post'  action='EditAkun'>
                                     <table>
                                         <tr>
                                             <td>
@@ -53,39 +53,42 @@
                                                     <tr>
                                                                 <td>Nama Lengkap</td>
                                                                 <td>:</td>
-                                                                <td>${pemilik.nama}</td>
-                                                                <td rowspan=6> <img src="../foto/${pemilik.foto}" width="150" height="200" alt="" /></td>
-
+                                                                <td><input type='text' name='nama' value='${akun.nama}'/>*</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Tipe pengguna</td>
                                                                 <td>:</td>
-                                                                <td>Pemilik Tempat</td>
-
+                                                                <td>
+                                                                    <select name="tipe" disabled>
+                                                                        <option value="1">Pemilik Tempat</option>
+                                                                        <option value="2" >Penyewa Tempat</option>
+                                                                    </select>
+                                                                *</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Email</td>
                                                                 <td>:</td>
-                                                                <td>${pemilik.email}</td>
-
+                                                                <td><input type='text' name='email' value='${akun.email}'/>*</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Alamat</td>
                                                                 <td>:</td>
-                                                                <td>${pemilik.alamat}</td>
-
+                                                                <td><input type='text' name='alamat' value='${akun.alamat}'/>*</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Hp</td>
                                                                 <td>:</td>
-                                                                <td>${pemilik.hape}</td>
-
+                                                                <td><input type='text' name='hape'value='${akun.hape}'  />*</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>No.Telp</td>
                                                                 <td>:</td>
-                                                                <td>${pemilik.telp}</td>
-
+                                                                <td><input type='text' name='telp' value='${akun.telp}'/>*</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Foto</td>
+                                                                <td>:</td>
+                                                                <td><input type='file' name='foto' /></td>
                                                             </tr>
                                                         </table>
                                                     </fieldset>
@@ -99,27 +102,19 @@
                                                             <tr>
                         <td>Username</td>
                         <td>:</td>
-                        <td>${pemilik.username}</td>
-
+                        <td><input type='text' name='usname' value='${akun.username}' readonly="readonly"/>*</td>
                     </tr>
                     <tr>
                         <td>Password</td>
                         <td>:</td>
-                        <td>******</td>
+                        <td><input type='password' name='psword' value='${akun.password}'/>*</td>
 
                     </tr>
 
                      <tr>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
 
-                     <tr>
-                     <br>
 
-                        <td>
-                            <strong> <a href="../pemilik/editprofil">Edit</a> </strong></td>
+                         <td><input type='submit' value='Simpan' /><a href="DaftarAkun">Batalkan</a></td>
                     </tr>
 
 
@@ -129,8 +124,9 @@
                     </td>
         </tr>
                 </table>
-
+                        </form>
                 </fieldset>
+
 				</div>
 			</div>
 		</div>
