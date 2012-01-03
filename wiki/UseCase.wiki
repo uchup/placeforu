@@ -1,5 +1,5 @@
 #labels Phase-Requirements,Phase-Design
-<h1> Daftar Use Case fix per 26 Oktober 2011 </h1>
+<h1> Daftar Use Case </h1>
 
 <h2> Login Logout </h2>
 UC001	Login <br>
@@ -39,8 +39,6 @@ UC025 Mengubah administrasi penyewaan <br>
 UC026 Melakukan konfirmasi pembayaran <br>
 UC027 Melihat histori administrasi (penyewa gedung) <br>
 UC028 Melihat histori administrasi (pemilik gedung) <br>
-
-
 
 
 
