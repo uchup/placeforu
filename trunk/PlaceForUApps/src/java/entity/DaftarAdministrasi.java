@@ -104,5 +104,18 @@ public class DaftarAdministrasi {
         }
         return administrasi;
     }
+   public List<Administrasi> getAllAdm_Confirmed() {
+        List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
+        int statusPembayaran = 1;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM Administrasi AS o WHERE o.statusPembayaran=:statusPembayaran");
+            daftarAdministrasi = q.getResultList();
+            q.setParameter("statusPembayaran", statusPembayaran);
+        } finally {
+            em.close();
+        }
+        return daftarAdministrasi;
+    }
     
 }
