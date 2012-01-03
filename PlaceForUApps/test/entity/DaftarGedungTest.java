@@ -7,6 +7,7 @@ package entity;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,122 +19,98 @@ import static org.junit.Assert.*;
  *
  * @author Yuni
  */
-public class DaftarGedungTest {
+public class DaftarGedungTest extends TestCase{
 
-    public DaftarGedungTest() {
-    }
+    private User user1;
+    private User user2;
+    private Gedung gedung1;
+    private Gedung gedung2;
+    DaftarGedung dg = new DaftarGedung();
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
+    public DaftarGedungTest(String testName) {
+        super(testName);
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+         super.setUp();
+
+    gedung1 = new Gedung();
+
+    gedung1.setNamaGedung("Kusuma");
+    gedung1.setTipeGedung("indoor");
+    gedung1.setAlamatGedung("jl nanas");
+    gedung1.setDeskripsiGedung("nanana");
+    gedung1.setEmailGedung("a@gmail.com");
+    gedung1.setFasilitasGedung("lalalla");
+    gedung1.setKategoriGedung("Pernikahan");
+    gedung1.setKotaGedung("garut");
+    gedung1.setPropinsiGedung("Jawa Barat");
+    gedung1.setTelpGedung("7888");
+
+    gedung2 = new Gedung();
+
+    gedung2.setNamaGedung("Keraton");
+    gedung2.setTipeGedung("outdoor");
+    gedung2.setAlamatGedung("jl nanas");
+    gedung2.setDeskripsiGedung("nanana");
+    gedung2.setEmailGedung("a@gmail.com");
+    gedung2.setFasilitasGedung("lalalla");
+    gedung2.setKategoriGedung("Pernikahan");
+    gedung2.setKotaGedung("garut");
+    gedung2.setPropinsiGedung("Jawa Barat");
+    gedung2.setTelpGedung("7888");
+
     }
 
-    @After
-    public void tearDown() {
-    }
 
-    /**
-     * Test of getEntityManager method, of class DaftarGedung.
-     */
-    @Test
-    public void testGetEntityManager() {
-        System.out.println("getEntityManager");
-        DaftarGedung instance = new DaftarGedung();
-        EntityManager expResult = null;
-        EntityManager result = instance.getEntityManager();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addGedung method, of class DaftarGedung.
-     */
-    @Test
+    @Test // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambahkan gedung
     public void testAddGedung() {
-        System.out.println("addGedung");
-        Gedung gedung = null;
-        DaftarGedung instance = new DaftarGedung();
-        instance.addGedung(gedung);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+
+        dg.addGedung(gedung1);
     }
 
-    /**
-     * Test of getDaftarGedung method, of class DaftarGedung.
-     */
-    @Test
-    public void testGetDaftarGedung() {
-        System.out.println("getDaftarGedung");
-        DaftarGedung instance = new DaftarGedung();
-        List expResult = null;
-        List result = instance.getDaftarGedung();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getDaftarGedungPemilik method, of class DaftarGedung.
-     */
-    @Test
-    public void testGetDaftarGedungPemilik() {
-        System.out.println("getDaftarGedungPemilik");
-        long idpemilik = 0L;
-        DaftarGedung instance = new DaftarGedung();
-        List expResult = null;
-        List result = instance.getDaftarGedungPemilik(idpemilik);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getGedung method, of class DaftarGedung.
-     */
-    @Test
-    public void testGetGedung() {
-        System.out.println("getGedung");
-        long id = 0L;
-        DaftarGedung instance = new DaftarGedung();
-        Gedung expResult = null;
-        Gedung result = instance.getGedung(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of editGedung method, of class DaftarGedung.
-     */
-    @Test
+    @Test // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambahkan gedung
     public void testEditGedung() {
-        System.out.println("editGedung");
-        Gedung gedung = null;
-        DaftarGedung instance = new DaftarGedung();
-        instance.editGedung(gedung);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        gedung1 = dg.getGedung(gedung1.getNamaGedung());
+        gedung1.setNamaGedung(gedung2.getNamaGedung());
+        dg.editGedung(gedung1);
+        assertEquals(gedung2.getNamaGedung(), dg.getGedung(gedung1.getNamaGedung()).getNamaGedung());
+
     }
 
-    /**
-     * Test of deleteGedung method, of class DaftarGedung.
-     */
-    @Test
-    public void testDeleteGedung() throws Exception {
-        System.out.println("deleteGedung");
-        Long id = null;
-        DaftarGedung instance = new DaftarGedung();
-        instance.deleteGedung(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void tesDaftarGedung(){
+
+        assertEquals(1, dg.getDaftarGedung().size());
     }
+
+    public void tesDaftarGedungFromKategori() {
+
+        assertEquals(1, dg.getDaftarGedungFromKategori(gedung1.getKategoriGedung()).size());
+    }
+
+    public void tesDaftarGedungPemilik(){
+
+        assertEquals(1, dg.getDaftarGedungPemilik(user1).size());
+
+    }
+    public void tesCekGedungFromUser (){
+
+        assertTrue(dg.cekGedungFromUser(user1));
+
+    }
+     @Test // bagian ini dilakukan pengetesan pada method deleteGedung()--> metod yg dipakai utk menghapus gedung
+     public void testDeleteGedung() throws Exception{
+        dg.deleteGedung(dg.getGedung(gedung2.getNamaGedung()).getIdGedung());
+
+    }
+
+
+
+
+
+
 
 }

@@ -7,6 +7,7 @@ package entity;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,137 +19,103 @@ import static org.junit.Assert.*;
  *
  * @author Yuni
  */
-public class DaftarSubGedungTest {
+public class DaftarSubGedungTest extends TestCase {
 
-    public DaftarSubGedungTest() {
-    }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
+    private SubGedung subgedung1;
+    private SubGedung subgedung2;
+    DaftarSubGedung sub = new DaftarSubGedung();
 
-    @AfterClass
-    public static void tearDownClass() throws Exception {
+    private User User1;
+    private User User2;
+    private Gedung gedung1;
+    private Gedung gedung2;
+
+    public DaftarSubGedungTest(String testName) {
+        super(testName);
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
+        super.setUp();
+
+        subgedung1 = new SubGedung();
+        subgedung1.setNama_sub_gedung("Sahid");
+        subgedung1.setTipe_sub_gedung(1);
+        subgedung1.setLuas("100");
+        subgedung1.setKapasitas("100");
+        subgedung1.setHarga("1000");
+        subgedung1.setSatuan(1);
+        subgedung1.setDeskripsi_sub("lalala");
+        subgedung1.setFasilitas_sub("nananna");
+        subgedung1.setStatus(1);
+        long id = 200;
+        subgedung1.setId(id);
+
+
+        subgedung2 = new SubGedung();
+        subgedung2.setNama_sub_gedung("Marriotzz");
+        subgedung2.setTipe_sub_gedung(1);
+        subgedung2.setLuas("100");
+        subgedung1.setKapasitas("500");
+        subgedung2.setHarga("1000");
+        subgedung2.setSatuan(1);
+        subgedung2.setDeskripsi_sub("lalala");
+        subgedung2.setFasilitas_sub("nananna");
+        subgedung2.setStatus(1);
+
     }
 
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of getEntityManager method, of class DaftarSubGedung.
-     */
-    @Test
-    public void testGetEntityManager() {
-        System.out.println("getEntityManager");
-        DaftarSubGedung instance = new DaftarSubGedung();
-        EntityManager expResult = null;
-        EntityManager result = instance.getEntityManager();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getSubGedung method, of class DaftarSubGedung.
-     */
-    @Test
-    public void testGetSubGedung() {
-        System.out.println("getSubGedung");
-        Long id = null;
-        DaftarSubGedung instance = new DaftarSubGedung();
-        SubGedung expResult = null;
-        SubGedung result = instance.getSubGedung(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addSubGedung method, of class DaftarSubGedung.
-     */
-    @Test
+    @Test // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambahkan gedung
     public void testAddSubGedung() {
-        System.out.println("addSubGedung");
-        SubGedung subgedung = null;
-        DaftarSubGedung instance = new DaftarSubGedung();
-        instance.addSubGedung(subgedung);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+
+        sub.addSubGedung(subgedung1);
+
     }
 
-    /**
-     * Test of getDaftarSubGedung method, of class DaftarSubGedung.
-     */
-    @Test
-    public void testGetDaftarSubGedung_0args() {
-        System.out.println("getDaftarSubGedung");
-        DaftarSubGedung instance = new DaftarSubGedung();
-        List expResult = null;
-        List result = instance.getDaftarSubGedung();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetSubGedung(){
+
+        assertEquals(subgedung1.getId(), sub.getSubGedung(subgedung1.getNama_sub_gedung()).getId());
     }
 
-    /**
-     * Test of getSubGedungfromId method, of class DaftarSubGedung.
-     */
-    @Test
-    public void testGetSubGedungfromId() {
-        System.out.println("getSubGedungfromId");
-        int id = 0;
-        DaftarSubGedung instance = new DaftarSubGedung();
-        List expResult = null;
-        List result = instance.getSubGedungfromId(id);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of deleteSubGedung method, of class DaftarSubGedung.
-     */
-    @Test
-    public void testDeleteSubGedung() throws Exception {
-        System.out.println("deleteSubGedung");
-        Long id = null;
-        DaftarSubGedung instance = new DaftarSubGedung();
-        instance.deleteSubGedung(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of editSubGedung method, of class DaftarSubGedung.
-     */
-    @Test
+    @Test // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambahkan gedung
     public void testEditSubGedung() {
-        System.out.println("editSubGedung");
-        SubGedung subgedung = null;
-        DaftarSubGedung instance = new DaftarSubGedung();
-        instance.editSubGedung(subgedung);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        subgedung1 = sub.getSubGedung(subgedung1.getId());
+        subgedung1.setNama_sub_gedung(subgedung2.getNama_sub_gedung());
+        sub.editSubGedung(subgedung1);
+        assertEquals(subgedung2.getNama_sub_gedung(), sub.getSubGedung(subgedung1.getNama_sub_gedung()).getNama_sub_gedung());
     }
 
-    /**
-     * Test of getDaftarSubGedung method, of class DaftarSubGedung.
-     */
-    @Test
-    public void testGetDaftarSubGedung_long() {
-        System.out.println("getDaftarSubGedung");
-        long id_gedung = 0L;
-        DaftarSubGedung instance = new DaftarSubGedung();
-        List expResult = null;
-        List result = instance.getDaftarSubGedung(id_gedung);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testDaftarSubGedung(){
+
+    assertEquals(1, sub.getDaftarSubGedung().size());
+
     }
+
+
+    /*public void testSubGedungfromId(){
+
+     assertEquals(1, sub.getSubGedungfromId(200).size());
+
+    }*/
+
+
+     @Test // bagian ini dilakukan pengetesan pada method deleteGedung()--> metod yg dipakai utk menghapus gedung
+     public void testDeleteSubGedung() throws Exception{
+        sub.deleteSubGedung(sub.getSubGedung(subgedung2.getNama_sub_gedung()).getId());
+    }
+
+
+
+
+
+
+
+
+
+
 
 }
