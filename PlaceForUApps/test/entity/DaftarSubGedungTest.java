@@ -35,87 +35,74 @@ public class DaftarSubGedungTest extends TestCase {
         super(testName);
     }
 
+    // bagian ini dilakukan untuk mensetting nilai parameter
     @Before
     public void setUp() throws Exception {
         super.setUp();
-
         subgedung1 = new SubGedung();
         subgedung1.setNama_sub_gedung("Sahid");
-        subgedung1.setTipe_sub_gedung(1);
+        subgedung1.setTipe_sub_gedung("indoor");
         subgedung1.setLuas("100");
         subgedung1.setKapasitas("100");
         subgedung1.setHarga("1000");
-        subgedung1.setSatuan(1);
+        subgedung1.setSatuan("IDR");
         subgedung1.setDeskripsi_sub("lalala");
         subgedung1.setFasilitas_sub("nananna");
-        subgedung1.setStatus(1);
-        long id = 200;
-        subgedung1.setId(id);
-
+        subgedung1.setStatus("tersedia");
+        long idsubgedung = 200;
+        long idgedung = 100;
+        subgedung1.setId(idsubgedung );
+        subgedung1.setId_gedung(idgedung);
 
         subgedung2 = new SubGedung();
         subgedung2.setNama_sub_gedung("Marriotzz");
-        subgedung2.setTipe_sub_gedung(1);
+        subgedung2.setTipe_sub_gedung("outdoor");
         subgedung2.setLuas("100");
         subgedung1.setKapasitas("500");
         subgedung2.setHarga("1000");
-        subgedung2.setSatuan(1);
+        subgedung2.setSatuan("IDR");
         subgedung2.setDeskripsi_sub("lalala");
         subgedung2.setFasilitas_sub("nananna");
-        subgedung2.setStatus(1);
-
+        subgedung2.setStatus("tersedia");
     }
 
     @Test // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambahkan gedung
     public void testAddSubGedung() {
-
-
+        System.out.println("AddGedung");
         sub.addSubGedung(subgedung1);
-
+        sub.addSubGedung(subgedung2);
     }
 
+    @Test // bagian ini dilakukan pengetesan pada method GetSubGedung() --> method yg dipakai utk mendapatkan subgedung berdasarkan id
     public void testGetSubGedung(){
+        System.out.println("GetSubGedung");
+        long idsubgedung  = subgedung1.getId();
 
-        assertEquals(subgedung1.getId(), sub.getSubGedung(subgedung1.getNama_sub_gedung()).getId());
+        assertEquals(subgedung1.getKapasitas(), sub.getSubGedung(subgedung1.getId()).getKapasitas());
     }
 
-
-    @Test // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambahkan gedung
+    @Test // bagian ini dilakukan pengetesan pada method EditSubGedung() --> method yg dipakai utk mengedit gedung
     public void testEditSubGedung() {
-
+        System.out.println("EditSubGedung");
         subgedung1 = sub.getSubGedung(subgedung1.getId());
         subgedung1.setNama_sub_gedung(subgedung2.getNama_sub_gedung());
         sub.editSubGedung(subgedung1);
-        assertEquals(subgedung2.getNama_sub_gedung(), sub.getSubGedung(subgedung1.getNama_sub_gedung()).getNama_sub_gedung());
+        assertEquals(subgedung2.getNama_sub_gedung(), sub.getSubGedung(subgedung1.getId()).getNama_sub_gedung());
     }
 
+    @Test // bagian ini dilakukan pengetesan pada method DaftarSubGedung()
     public void testDaftarSubGedung(){
-
-    assertEquals(1, sub.getDaftarSubGedung().size());
+        System.out.println("DaftarSubGedung");
+        assertEquals(2, sub.getDaftarSubGedung().size());
 
     }
 
-
-    /*public void testSubGedungfromId(){
-
-     assertEquals(1, sub.getSubGedungfromId(200).size());
-
-    }*/
-
-
-     @Test // bagian ini dilakukan pengetesan pada method deleteGedung()--> metod yg dipakai utk menghapus gedung
+   @Test // bagian ini dilakukan pengetesan pada method deleteGedung()--> metod yg dipakai utk menghapus gedung
      public void testDeleteSubGedung() throws Exception{
-        sub.deleteSubGedung(sub.getSubGedung(subgedung2.getNama_sub_gedung()).getId());
+        System.out.println("DeleteSubGedung");
+        sub.deleteSubGedung(subgedung1.getId());
+
     }
-
-
-
-
-
-
-
-
-
 
 
 }
