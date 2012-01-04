@@ -48,18 +48,54 @@ http://placeforu.googlecode.com/files/robustness-menghapus-profil-user.JPG
 <br>
 <br>
 http://placeforu.googlecode.com/files/konfirmasi_registrasi.JPG
-
-Robustness Diagram (Manajemen Informasi Gedung)
-UC010 Menulis informasi gedung
-UC011 Mengubah informasi gedung
-UC012 Menghapus informasi gedung
-UC013 Mencari informasi gedung berdasarkan kategori gedung
-UC014 Mencari Informasi Gedung Berdasarkan harga
-UC015 Menulis informasi sub gedung
-UC016 Mengubah informasi sub gedung
-UC017 Menghapus informasi sub gedung
-UC018 Melihat informasi sub gedung
-
+<br>
+<br>
+<br>
+<h2>Robustness Diagram (Manajemen Informasi Gedung)
+<br>
+<br>
+<h3>UC010 Menulis informasi gedung
+<br>
+<br>
+http://placeforu.googlecode.com/files/robustness-tulis-gedung.JPG
+<br>
+<br>
+<h3>UC011 Mengubah informasi gedung
+<br>
+<br>
+http://placeforu.googlecode.com/files/robustness-ubah-gedung.JPG
+<br>
+<br>
+<h3>UC012 Menghapus informasi gedung
+<br>
+<br>
+http://placeforu.googlecode.com/files/robustness-hapus-gedung.JPG
+<br>
+<br>
+<h3>UC015 Menulis informasi sub gedung
+<br>
+<br>
+http://placeforu.googlecode.com/files/robustness-lihat-info-sub.JPG
+<br>
+<br>
+<h3>UC016 Mengubah informasi sub gedung
+<br>
+<br>
+http://placeforu.googlecode.com/files/robustness-ubah-subgedung.JPG
+<br>
+<br>
+<h3>UC017 Menghapus informasi sub gedung
+<br>
+<br>
+http://placeforu.googlecode.com/files/robustness-hapus-subgedung.JPG
+<br>
+<br>
+<h3>UC018 Melihat informasi sub gedung
+<br>
+<br>
+http://placeforu.googlecode.com/files/robustness-lihat-info-sub.JPG
+<br>
+<br>
 Robustness Diagram (Manajemen Penyewaan)
 UC019 Menyewa gedung
 UC020 Melakukan konfirmasi penyewaan gedung
