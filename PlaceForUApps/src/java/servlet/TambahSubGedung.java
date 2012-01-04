@@ -13,7 +13,6 @@ import entity.SubGedung;
 import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -64,13 +63,13 @@ public class TambahSubGedung extends HttpServlet {
         String deskripsi_sub = request.getParameter("deskripsi_sub");
         String status = request.getParameter("status");
         long id_pemilik=  u.getId();
-        
+
          Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
          Gedung gd = new Gedung();
          gd = dg.getGedung(idGedung);
          request.setAttribute("subgedung", gd);
 
-       
+
 
 
         if (nama_sub_gedung.equals("") || tipe_sub_gedung.equals("") || harga.equals("")
@@ -82,7 +81,7 @@ public class TambahSubGedung extends HttpServlet {
                 requestDispatcher.forward(request, response);
         }
         else{
-            boolean hasilCheck = dg.checkGedung(nama_sub_gedung,idGedung);
+            boolean hasilCheck = dg.cekGedungPemilik(nama_sub_gedung,idGedung);
             if (!hasilCheck) {
                 sub.setNama_sub_gedung(nama_sub_gedung);
                 sub.setTipe_sub_gedung(tipe_sub_gedung);
@@ -96,7 +95,7 @@ public class TambahSubGedung extends HttpServlet {
                 sub.setId_pemilik(id_pemilik);
                 sub.setId_gedung(idGedung);
                 a.addSubGedung(sub);
-                
+
                 RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successSaving2.jsp");
                 message ="Sub Gedung berhasil ditambahkan";

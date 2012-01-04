@@ -43,9 +43,13 @@
                     <div id="content">
                         <div class="post">
                             <h2 class="title"><a href="#">Detail Informasi Sub Gedung</a></h2>
-                            <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
+                            <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#"></a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
+                                <h1>${subgedung.nama_sub_gedung}</h1>
+                                <div class="page-big-image"><img src="sub/${subgedung.foto1}" alt="" id="page-big-image"></div>
+<div class="clear"></div><div class="page-info-table">
+                               
                                 <fieldset>
                                     <form method='post'>
                                         <table>
@@ -130,7 +134,7 @@
                                         </table>
                                     </form>
                                 </fieldset>
-
+</div>
                             </div>
                         </div>
                     </div>

@@ -32,15 +32,15 @@ public class DaftarGedung {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
-    //check whether any Gedung with id_pemilik & namaGedung saved in Daftar Gedung
-    public boolean checkGedung(String namaGedung, long idPemilik) {
+
+    //check whether any Gedung with id_pemilik saved in Daftar Gedung
+    public boolean cekGedungPemilik(String namaGedung, long idPemilik) {
         boolean result = false;
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT count(o) FROM Gedung AS o WHERE o.namaGedung=:namaGedung AND o.idPemilik=:idPemilik");
-            q.setParameter("namaGedung", namaGedung);
+            Query q = em.createQuery("SELECT count(o) FROM Gedung AS o WHERE o.idPemilik=:idPemilik and o.namaGedung=:namaGedung");
             q.setParameter("idPemilik", idPemilik);
+            q.setParameter("namaGedung", namaGedung);
             int jumlahGedung = ((Long) q.getSingleResult()).intValue();
             if (jumlahGedung > 0) {
                 result = true;
@@ -65,7 +65,7 @@ public class DaftarGedung {
         }
         return result;
     }
-    
+
     //add new Gedung
     public void addGedung(Gedung gedung) {
         EntityManager em = null;
@@ -83,21 +83,6 @@ public class DaftarGedung {
 
     //getting list of Gedung
     public List<Gedung> getDaftarGedung() {
-        List<Gedung> daftarGedung = new ArrayList<Gedung>();
-
-        EntityManager em = getEntityManager();
-        try {
-            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o");
-            daftarGedung = q.getResultList();
-            // }
-
-        } finally {
-            em.close();
-        }
-        return daftarGedung;
-    }
-    
-    public List<Gedung> getDaftarGedung(User user) {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
 
         EntityManager em = getEntityManager();
@@ -141,6 +126,19 @@ public class DaftarGedung {
         return gedung;
     }
 
+   public Gedung getGedungFromNama(String namaGedung) {
+        Gedung gedung = null;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.namagedung=:namagedung");
+            q.setParameter("namagedung", namaGedung);
+            gedung = (Gedung) q.getSingleResult();
+        } finally {
+            em.close();
+        }
+        return gedung;
+    }
+
     public void editGedung(Gedung gedung) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -174,17 +172,25 @@ public class DaftarGedung {
             }
         }
     }
-//    public List<Gedung> getGedungfromId(Long id) {
-//        Gedung gedung = null;
-//        EntityManager em = getEntityManager();
-//        try {
-//                Query q = em.createQuery("SELECT object(o)FROM Gedung AS o WHERE o.id=:id_gedung");
-//                q.setParameter("id_gedung", id);
-//                gedung = (Gedung) q.getSingleResult();
-//
-//        } finally {
-//            em.close();
-//        }
-//        return (List<Gedung>) gedung;
-//    }
+
+    public List<Gedung> getDaftarGedungFromKategori(String kategoriGedung) {
+        List<Gedung> daftarGedung = new ArrayList<Gedung>();
+
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o where o.kategoriGedung=:kategoriGedung");
+             q.setParameter("kategoriGedung", kategoriGedung);
+            //int jumlahGedung = ((Long) q.getSingleResult()).intValue();
+            //if (jumlahGedung < 0) {
+            // String pesan = "tidak ada daftar gedung tersimpan";
+            // daftarGedung = (List<Gedung>) q.setParameter("pesan", pesan);
+            // } else {
+            daftarGedung = q.getResultList();
+            // }
+
+        } finally {
+            em.close();
+        }
+        return daftarGedung;
+    }
 }

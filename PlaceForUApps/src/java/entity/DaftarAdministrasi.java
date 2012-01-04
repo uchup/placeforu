@@ -15,7 +15,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import jpa.exceptions.NonexistentEntityException;;
 
 /**
  *
@@ -30,7 +29,7 @@ public class DaftarAdministrasi {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
+
     //add new Administrasi
     public void addAdministrasi(Administrasi administrasi) {
         EntityManager em = null;
@@ -45,7 +44,7 @@ public class DaftarAdministrasi {
             }
         }
     }
-    
+
     public void editAdministrasi(Administrasi adm) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -58,7 +57,7 @@ public class DaftarAdministrasi {
             em.close();
         }
     }
-    
+
     //menampilkan daftar pembayaran yang belum dikonfirmasi
    public List<Administrasi> getAdministrasi_Confirmed(long idPemilik) {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
@@ -74,7 +73,7 @@ public class DaftarAdministrasi {
         }
         return daftarAdministrasi;
     }
-   
+
    public List<Administrasi> getAdministrasi_Unconfirmed(long idPemilik) {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
         int statusPembayaran = 0;
@@ -90,7 +89,7 @@ public class DaftarAdministrasi {
         }
         return daftarAdministrasi;
     }
-   
+
    public Administrasi getAdministrasi(long id) {
         Administrasi administrasi = null;
         EntityManager em = getEntityManager();
@@ -117,5 +116,5 @@ public class DaftarAdministrasi {
         }
         return daftarAdministrasi;
     }
-    
+
 }

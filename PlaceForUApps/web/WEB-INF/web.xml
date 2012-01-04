@@ -148,6 +148,10 @@
         <servlet-name>TambahPengguna</servlet-name>
         <servlet-class>servlet.TambahPengguna</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UploadFotoSub</servlet-name>
+        <servlet-class>servlet.UploadFotoSub</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -295,6 +299,10 @@
     <servlet-mapping>
         <servlet-name>DaftarPengguna</servlet-name>
         <url-pattern>/DaftarPengguna</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UploadFotoSub</servlet-name>
+        <url-pattern>/uploadfotosub</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -65,7 +65,7 @@ public class TambahGedung extends HttpServlet {
             request.setAttribute("message", message);
             requestDispatcher.forward(request, response);
         } else {
-            boolean hasilCheck = dg.checkGedung(nama_gedung,id_pemilik);
+            boolean hasilCheck = dg.cekGedungPemilik(nama_gedung,id_pemilik);
             if (!hasilCheck) {
                 gd.setNamaGedung(nama_gedung);
                 gd.setTipeGedung(tipe_gedung);
