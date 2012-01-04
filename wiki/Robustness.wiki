@@ -1,11 +1,14 @@
-Robustness Diagram
+<h1>Robustness Diagram</h1>
 
-Robustness Diagram (Login Logout)
+<h2>Robustness Diagram (Login Logout)<h/2>
 
-UC001 Login
+<h3> UC001 Login </h3>
 http://placeforu.googlecode.com/files/robustness-login.JPG
 <br>
+<br>
 UC002 Logout
+<br>
+<br>
 http://placeforu.googlecode.com/files/robustness-logout.JPG
 
 Robustness Diagram (Manajemen User)
