@@ -43,7 +43,7 @@ public class UploadFotoGedung extends HttpServlet {
      */
 
     // bisa diganti sesuai spesifikasi
-    private static final String TMP_DIR_PATH = "D:\\Project\\versiterbaru\\PlaceForUApps\\tmp";
+    private static final String TMP_DIR_PATH = "D:\\Project\\cekoutbaru\\PlaceForUApps\\tmp";
     private File tmpDir;
     // bisa diganti sesuai spesifikasi
     private static final String DESTINATION_DIR_PATH ="/gedung";
@@ -111,7 +111,7 @@ public class UploadFotoGedung extends HttpServlet {
 					File file = new File(destinationDir,item.getName());
 					item.write(file);
                                         dg.editGedung(gedung);
-                                        
+
                                         response.sendRedirect("../PlaceForUApps_28Nov/EditGedung?id="+id+"");
 				}
 				out.close();

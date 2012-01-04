@@ -33,15 +33,15 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  * @author Widiasa
  */
 public class UploadFotoSub extends HttpServlet {
-   
-    /** 
+
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private static final String TMP_DIR_PATH = "D:\\Project\\ika\\PlaceForUApps\\tmp";
+    private static final String TMP_DIR_PATH = "D:\\Project\\cekoutbaru\\PlaceForUApps\\tmp";
     private File tmpDir;
     private static final String DESTINATION_DIR_PATH ="/sub";
     private File destinationDir;
@@ -59,10 +59,6 @@ public class UploadFotoSub extends HttpServlet {
         }
     }
 
-
-
-
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
 	response.setContentType("text/plain");
@@ -75,12 +71,9 @@ public class UploadFotoSub extends HttpServlet {
         HttpSession session = request.getSession();
         String message = null;
 
-        String username = (String) session.getAttribute("sessionusername");
-        user = a.getUserFromName(username);
-        long id = 401;
-                //Long.parseLong(request.getParameter("id_sub_gedung"));
+        Long id = Long.valueOf(request.getParameter("idsub")) ;
         sg = dsg.getSubGedung(id);
-        
+
 
 	DiskFileItemFactory  fileItemFactory = new DiskFileItemFactory ();
 		/*
@@ -107,12 +100,12 @@ public class UploadFotoSub extends HttpServlet {
 				 */
 				if(item.isFormField()) {
 					out.println("File Name = "+item.getFieldName()+", Value = "+item.getString());
-                                         response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung");
 				//pemilik/profil
-                                } else {
+                                }
+                                    else{
 					//Handle Uploaded files.
                                         //user.setFoto(item.getName());
-                                    sg.setFoto1(item.getName());
+                                        sg.setFoto1(item.getName());
 //					out.println("Field Name = "+item.getFieldName()+
 //						", File Name = "+item.getName()+
 //						", Content type = "+item.getContentType()+
@@ -124,20 +117,10 @@ public class UploadFotoSub extends HttpServlet {
 					item.write(file);
                                         //a.editUser(user);
                                         dsg.editSubGedung(sg);
-                                        if (sg.getId()== 401){
-                                                message ="Foto berhasil diupload!";
-                                                request.setAttribute("message", message);
-                                                response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung");
-                                                
-                                        }
-                                        else {
-                                                message ="Foto berhasil diupload!";
-                                                request.setAttribute("message", message);
-                                                response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung");
-                                        }
 				}
 				out.close();
 			}
+                        response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung?idsub="+id);
 		}catch(FileUploadException ex) {
 			log("Error encountered while parsing the request",ex);
 		} catch(Exception ex) {

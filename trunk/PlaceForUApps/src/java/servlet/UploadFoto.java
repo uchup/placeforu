@@ -31,16 +31,19 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  * @author Widiasa
  */
 public class UploadFoto extends HttpServlet {
-   
-    /** 
+
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private static final String TMP_DIR_PATH = "D:\\Project\\versiterbaru\\PlaceForUApps\\tmp";
+
+    //path untuk folder tmp bisa berubah sesuai kebutuhan
+    private static final String TMP_DIR_PATH = "D:\\Project\\cekoutbaru\\PlaceForUApps\\tmp";
     private File tmpDir;
+    //path untuk folder foto bisa berubah sesuai kebutuhan
     private static final String DESTINATION_DIR_PATH ="/foto";
     private File destinationDir;
 

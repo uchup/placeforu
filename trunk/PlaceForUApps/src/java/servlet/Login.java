@@ -38,10 +38,12 @@ public class Login extends HttpServlet {
         DaftarUser daftarUser = new DaftarUser();
         String message = null;
 
+
         String name = request.getParameter("uname");
         String pass = request.getParameter("pass");
         User users = daftarUser.getUser(name,pass);
 
+       try{
         if (name.equals("") || pass.equals("") ) {
             RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/error_page.jsp");
@@ -53,23 +55,17 @@ public class Login extends HttpServlet {
             if (users != null) {
                     session.setAttribute("sessionusername", name);
                     if (users.getTipe() == 0) {
-                        request.setAttribute("user", users);
-                        dis = request.getRequestDispatcher("admin/admin_home.jsp");
-                        dis.forward(request, response);
+                        response.sendRedirect("../PlaceForUApps_28Nov/admin");   
                     }
                     else if(users.getTipe() == 1 && users.getStatus() == 1) {
-                        request.setAttribute("user", users);
-                        dis = request.getRequestDispatcher("pemilik/home.jsp");
-                        dis.forward(request, response);
+                        response.sendRedirect("../PlaceForUApps_28Nov/pemilik");
                     }
                     else if(users.getStatus() == 1){
-                        request.setAttribute("user", users);
-                        dis = request.getRequestDispatcher("penyewa/home.jsp");
-                        dis.forward(request, response);
+                        response.sendRedirect("../PlaceForUApps_28Nov/penyewa");
                     }
                     else{
                       RequestDispatcher requestDispatcher =
-                    request.getRequestDispatcher("/error_page.jsp");
+                            request.getRequestDispatcher("/error_page.jsp");
                     message ="Maaf, pendaftaran Anda belum dikonfirmasi!";
                     request.setAttribute("message", message);
                     requestDispatcher.forward(request, response);
@@ -81,8 +77,13 @@ public class Login extends HttpServlet {
                     message ="Username atau password tidak cocok!";
                     request.setAttribute("message", message);
                     requestDispatcher.forward(request, response);
-        }}
-    }
+        }
+        }
+        }
+       catch (NullPointerException npe){
+  response.sendRedirect("../PlaceForUApps_28Nov/");
+    
+    }}
         /*User user = daftarUser.getUser(name,pass);
 
         String username = user.getUsername();

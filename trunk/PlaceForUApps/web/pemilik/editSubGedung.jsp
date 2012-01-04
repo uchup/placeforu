@@ -42,7 +42,7 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Halaman Administrator</a></h2>
+                            <h2 class="title"><a href="#">Edit Informasi Gedung</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
@@ -55,7 +55,7 @@
                                         <tr>
                                         <input type="hidden" name="id_sub_gedung" value='${subgedung.id}'>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td>Nama SubGedung <font color="red">*</font></td>
                                             <td>:</td>
@@ -124,7 +124,7 @@
                                             </td>
                                             <td>:</td>
                                             <td>
-                                                <textarea name="deskripsi_sub" value="${subgedung.nama_sub_gedung}">${subgedung.deskripsi_sub}></textarea>
+                                                <textarea name="deskripsi_sub" value="${subgedung.deskripsi_sub}">${subgedung.deskripsi_sub}</textarea>
                                             </td>
                                         </tr>
                                         <tr><td>Status Sewa <font color="red">*</font></td>
@@ -151,18 +151,17 @@
                                                     <fieldset>
                                                         <legend><h4>Upload Gambar Sub Gedung</h4></legend>
                                                         <table>
-                                                             <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
+                                                             <form action="uploadfotosub?idsub=${subgedung.id}" enctype="multipart/form-data" method="POST">
                                                             <tr>
                         <td>Gambar 1</td>
                         <td>:</td>
                         <td><input type="file" name="foto"></td>
-                        <td><input type="Submit" value="Upload"><td>
                     </tr>
+
                     <tr>
-                        <td>Gambar 2</td>
-                        <td>:</td>
-                        <td><input type="file" name="foto"></td>
-                        <td><input type="Submit" value="Upload"><td>
+                        <td></td>
+                        <td></td>
+                        <td><input type="submit" name="Submit" value="Upload"></td>
                     </tr>
                                                              </form>
 
