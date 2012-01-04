@@ -18,7 +18,7 @@ UC003 Melakukan registrasi akun baru
 http://placeforu.googlecode.com/files/robustness-registrasi.JPG
 <br>
 UC004 Mengubah profil user (semua pengguna) 
-http://placeforu.googlecode.com/files/robustness-ubah profil sendiri.JPG
+http://placeforu.googlecode.com/files/robustness-ubah_profil_sendiri.JPG
 <br>
 UC005 Mengubah profil user (profil milik sendiri)
 http://placeforu.googlecode.com/files/robustness-ubah profil sendiri.JPG
