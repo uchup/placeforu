@@ -6,45 +6,45 @@
 http://placeforu.googlecode.com/files/robustness-login.JPG
 <br>
 <br>
-UC002 Logout
+<h3> UC002 Logout
 <br>
 <br>
 http://placeforu.googlecode.com/files/robustness-logout.JPG
 <br>
-Robustness Diagram (Manajemen User)
+<h2> Robustness Diagram (Manajemen User)
 <br>
 <br>
-UC003 Melakukan registrasi akun baru
+<h3> UC003 Melakukan registrasi akun baru
 <br>
 <br>
 http://placeforu.googlecode.com/files/robustness-registrasi.JPG
 <br>
-UC004 Mengubah profil user (semua pengguna) 
+<h3> UC004 Mengubah profil user (semua pengguna) 
 <br>
 <br>
 http://placeforu.googlecode.com/files/robustness-ubah-profil-sendiri.JPG
 <br>
-UC005 Mengubah profil user (profil milik sendiri)
+<h3> UC005 Mengubah profil user (profil milik sendiri)
 <br>
 <br>
 http://placeforu.googlecode.com/files/robustness-ubah-profil-sendiri.JPG
 <br>
-UC006 Melihat semua profil user
+<h3> UC006 Melihat semua profil user
 <br>
 <br>
 http://placeforu.googlecode.com/files/robustness-lihat-profil-semua.JPG
 <br>
-UC007 Melihat profil user (milik sendiri)
+<h3> UC007 Melihat profil user (milik sendiri)
 <br>
 <br>
-http://placeforu.googlecode.com/files/robustness-lihat-profil-user sendiri.JPG
+http://placeforu.googlecode.com/files/robustness-lihat-profil-user-sendiri.JPG
 <br>
-UC008 Menghapus profil pengguna
+<h3> UC008 Menghapus profil pengguna
 <br>
 <br>
 http://placeforu.googlecode.com/files/robustness-menghapus-profil-user.JPG
 <br>
-UC009 Melakukan konfirmasi registrasi pengguna
+<h3> UC009 Melakukan konfirmasi registrasi pengguna
 <br>
 <br>
 http://placeforu.googlecode.com/files/konfirmasi_registrasi.JPG
