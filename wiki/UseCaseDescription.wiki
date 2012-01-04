@@ -1,5 +1,5 @@
 <h2> Use Case Name :  UC001 LOGIN </h2>
-*Primary Actor* || Administrator, Penyewa, Pemilik ||
-*Normal Flows* || Aktor (pemilik gedung, penyewa gedung, administrator) memasukkan username dan password pada Form Login. Kemudian menekan tombol login.  Sistem akan mencocokkan username, password yang dimasukkan aktor dengan Daftar User. Setelah sistem menemukan data username dan password, maka sistem mengarahkan aktor ke halaman home page (backend). ||
-Alternative Flows || Jika aktor tidak memasukkan username dan password sesuai dengan Daftar User, maka sistem menampilkan jendela "Error Login".
-<br><br>Jika ada field yang kosong, sistem memunculan jendela error "Empty Field".
+|| *Primary Actor* || Administrator, Penyewa, Pemilik ||
+|| *Normal Flows*  || Aktor (pemilik gedung, penyewa gedung, administrator) memasukkan username dan password pada Form Login. Kemudian menekan tombol login.  Sistem akan mencocokkan username, password yang dimasukkan aktor dengan Daftar User. Setelah sistem menemukan data username dan password, maka sistem mengarahkan aktor ke halaman home page (backend). ||
+|| *Alternative Flows* || Jika aktor tidak memasukkan username dan password sesuai dengan Daftar User, maka sistem menampilkan jendela "Error Login".
+<br><br>Jika ada field yang kosong, sistem memunculan jendela error "Empty Field". ||
