@@ -33,7 +33,7 @@ public class Sewa implements Serializable {
     private int status;
     private int totalHargaSewa;
     private int sisaBayar;
-
+    private int durasi;
     public Long getIdSewa() {
         return idSewa;
     }
@@ -41,7 +41,7 @@ public class Sewa implements Serializable {
     public void setIdSewa(Long idSewa) {
         this.idSewa = idSewa;
     }
-    
+
     public int getStatus() {
         return status;
     }
@@ -96,7 +96,7 @@ public class Sewa implements Serializable {
     public void setSampai(Date sampai) {
         this.sampai = sampai;
     }
-    
+
     public int getTotalHargaSewa() {
         return totalHargaSewa;
     }
@@ -104,7 +104,7 @@ public class Sewa implements Serializable {
     public void setTotalHargaSewa(int TotalSewa) {
         this.totalHargaSewa = TotalSewa;
     }
-    
+
     public int getSisaBayar() {
         return sisaBayar;
     }
@@ -112,7 +112,15 @@ public class Sewa implements Serializable {
     public void setSisaBayar(int SisaBayar) {
         this.sisaBayar = SisaBayar;
     }
-    
+
+    public int getDurasi() {
+        return durasi;
+    }
+
+    public void setDurasi(int Durasi) {
+        this.durasi = durasi;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -137,5 +145,5 @@ public class Sewa implements Serializable {
     public String toString() {
         return "entity.Sewa[ id=" + idSewa + " ]";
     }
-    
+
 }

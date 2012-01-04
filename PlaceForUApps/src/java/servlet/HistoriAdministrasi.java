@@ -27,7 +27,7 @@ import javax.servlet.http.HttpSession;
  */
 public class HistoriAdministrasi extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -59,23 +59,19 @@ public class HistoriAdministrasi extends HttpServlet {
                 //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
                 long idAkun = u.getId();
-                
 
-                //jika  pengguna merupakan administrator, maka akan diarahkan ke halaman daftar gedung untuk administrator
+
+                //jika  pengguna merupakan administrator, maka akan diarahkan ke halaman administrasi untuk administrator
                 if (u.getTipe() == 0) {
-                    
+
                     //menampilkan semua histori penyewaan
-                    List<Sewa> daftar_sewa = ds.getAllSewa_Confirmed();
-                    request.setAttribute("penyewaan_1", daftar_sewa);
+                    List<Administrasi> df_adm = da.getAllAdm_Confirmed();
+                    request.setAttribute("admin", df_adm);
 
-                    List<Sewa> daftar_sewa2 = ds.getAllSewa_Unconfirmed();
-                    request.setAttribute("penyewaan_0", daftar_sewa2);
-
-
-                    dis = request.getRequestDispatcher("/admin/historiSewa.jsp");
+                    dis = request.getRequestDispatcher("/admin/historiAdministrasi.jsp");
                     dis.include(request, response);
 
-                } //jika  pengguna merupakan penyewa, maka akan diarahkan ke halaman daftar gedung untuk penyewa
+                } //jika  pengguna merupakan penyewa, maka akan diarahkan ke halaman histori administrasi untuk penyewa
                 else if (u.getTipe() == 1) {
 
                     List<Administrasi> daftarAdministrasi = da.getAdministrasi_Confirmed(idAkun);
@@ -87,11 +83,11 @@ public class HistoriAdministrasi extends HttpServlet {
                     dis = request.getRequestDispatcher("/pemilik/listAdministrasi.jsp");
                     dis.include(request, response);
 
-                } //jika pengguna merupakan pemilik tempat, maka akan diarahkan ke halaman daftar Gedung untuk pemilik
+                } //jika pengguna merupakan pemilik tempat, maka akan diarahkan ke halaman histori administrasi untuk pemilik
                 else if (u.getTipe() == 2) {
 
-                    //List<Sewa> daftar_sewa2 = ds.getUtangPenyewa(idAkun);
-                    //request.setAttribute("penyewa_1", daftar_sewa2);
+                    List<Sewa> daftar_sewa2 = ds.getUtangPenyewa(idAkun);
+                    request.setAttribute("penyewa_1", daftar_sewa2);
 
                     dis = request.getRequestDispatcher("/penyewa/historiAdministrasi.jsp");
                     dis.include(request, response);
@@ -110,7 +106,7 @@ public class HistoriAdministrasi extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -123,7 +119,7 @@ public class HistoriAdministrasi extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -136,7 +132,7 @@ public class HistoriAdministrasi extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

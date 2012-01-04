@@ -29,7 +29,7 @@ import javax.servlet.http.HttpSession;
  */
 public class EditAdministrasi extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -81,17 +81,17 @@ public class EditAdministrasi extends HttpServlet {
                         adm = da.getAdministrasi(idAdm);
                         adm.setStatusPembayaran(1);
                         da.editAdministrasi(adm);
-                        
+
                         //mengubah sisa pembayaran pada database Sewa
                         sw = ds.getSewaFromId(idSewa);
                         int sisa_bayar_db = sw.getSisaBayar();
-                        int SisaBayar = sisa_bayar_db - sisa_bayar;
+                        int SisaBayar = sisa_bayar_db - jml_bayar;
                         sw.setSisaBayar(SisaBayar);
-                        //ds.editSewa(sw);
-                        
+                        ds.editSewa(sw);
+
                         RequestDispatcher requestDispatcher =
                                 request.getRequestDispatcher("/successUpdating.jsp");
-                        message = "Administrasi berhasil dirubah. Konfirmasi pembayaran telah dilakukan" + SisaBayar;
+                        message = "Administrasi berhasil dirubah. Konfirmasi pembayaran telah dilakukan sejumlah " + jml_bayar;
                         String page = "HistoriAdministrasi";
                         request.setAttribute("message", message);
                         request.setAttribute("page", page);
@@ -120,7 +120,7 @@ public class EditAdministrasi extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -190,7 +190,7 @@ public class EditAdministrasi extends HttpServlet {
 
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -203,7 +203,7 @@ public class EditAdministrasi extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

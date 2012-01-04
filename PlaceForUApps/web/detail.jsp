@@ -29,7 +29,6 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="#">Homepage</a></li>
 		</ul>
 	</div>
 	<div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -136,37 +135,7 @@ ${gedung.fasilitasGedung}
 					</div>
 					<div style="clear: both;">&nbsp;</div>
 				</li>
-
                                 <li>
-                                    <h2>Log In</h2>
-
-
-					<form method='post' action='login'>
-                                            <fieldset>
-                                                <table>
-                                                    <tr>
-                                                        <td>Username :</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type='text' name='uname' /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Password :</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type='password' name='pass' /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type='submit' value='Login' />
-                                                        <a href="register">Register</a></td>
-                                                    </tr>
-                                                </table>
-                                            </fieldset>
-                                            </form>
-                                </li>
-
-
-				<li>
 					<h2>Gedung Terbaru</h2>
 					<ul>
 						<li><a href="#">Aliquam libero</a></li>

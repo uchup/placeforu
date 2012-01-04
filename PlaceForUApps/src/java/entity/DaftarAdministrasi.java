@@ -15,6 +15,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+;
 
 /**
  *
@@ -90,19 +91,7 @@ public class DaftarAdministrasi {
         return daftarAdministrasi;
     }
 
-   public Administrasi getAdministrasi(long id) {
-        Administrasi administrasi = null;
-        EntityManager em = getEntityManager();
-        try {
-            Query q = em.createQuery("SELECT object(o) FROM Administrasi AS o WHERE o.id=:id");
-            q.setParameter("id", id);
-            administrasi = (Administrasi) q.getSingleResult();
-
-        } finally {
-            em.close();
-        }
-        return administrasi;
-    }
+   //mendapatkan list semua histori administrasi
    public List<Administrasi> getAllAdm_Confirmed() {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
         int statusPembayaran = 1;
@@ -115,6 +104,20 @@ public class DaftarAdministrasi {
             em.close();
         }
         return daftarAdministrasi;
+    }
+
+   public Administrasi getAdministrasi(long id) {
+        Administrasi administrasi = null;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM Administrasi AS o WHERE o.id=:id");
+            q.setParameter("id", id);
+            administrasi = (Administrasi) q.getSingleResult();
+
+        } finally {
+            em.close();
+        }
+        return administrasi;
     }
 
 }

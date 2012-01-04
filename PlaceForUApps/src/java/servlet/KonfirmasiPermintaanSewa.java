@@ -5,7 +5,9 @@
 package servlet;
 
 import entity.DaftarSewa;
+import entity.DaftarSubGedung;
 import entity.Sewa;
+import entity.SubGedung;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class KonfirmasiPermintaanSewa extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -34,39 +36,48 @@ public class KonfirmasiPermintaanSewa extends HttpServlet {
          String usname = request.getParameter("usname");
         int konfirm = Integer.parseInt(request.getParameter("konfirm"));
         Long idSewa = Long.parseLong(request.getParameter("idSewa"));
+        Long idSubGedung = Long.parseLong(request.getParameter("idSubGedung"));
         RequestDispatcher dis = null;
         String message = null;
         DaftarSewa a = new DaftarSewa();
         Sewa sewa = new Sewa();
         sewa = a.getSewaFromId(idSewa);
+
+        DaftarSubGedung dsg = new DaftarSubGedung();
+        SubGedung sg = new SubGedung();
+        sg = dsg.getSubGedung(idSubGedung);
+
         try {
             //if registration is accepted
             if (konfirm == 1) {
                 sewa.setStatus(1);
                 a.konfirmSewa(sewa);
 
+                sg.setStatus("Telah Disewa");
+                dsg.editSubGedung(sg);
+
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successConfirmation.jsp");
+                request.getRequestDispatcher("/successKonfirmSewa.jsp");
                 message ="Penyewaan berhasil disetujui";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
 
             } //if registration is rejected
             else {
-                a.removeSewa(sewa.getIdSewa());
+                a.removeSewa(idSewa);
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successConfirmation.jsp");
+                request.getRequestDispatcher("/successKonfirmSewa.jsp");
                 message ="Penyewaan berhasil ditolak";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
-            } 
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -79,7 +90,7 @@ public class KonfirmasiPermintaanSewa extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -92,7 +103,7 @@ public class KonfirmasiPermintaanSewa extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

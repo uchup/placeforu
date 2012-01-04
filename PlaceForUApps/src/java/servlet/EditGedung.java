@@ -46,13 +46,13 @@ public class EditGedung extends HttpServlet {
         String emailGedung = request.getParameter("email_gedung");
         String telpGedung = request.getParameter("telp_gedung");
         Long idGedung = Long.parseLong(request.getParameter("id_gedung"));
-        int status = 0;
+
 
         Gedung gd = new Gedung();
         //RequestDispatcher page = null;
         DaftarGedung dg = new DaftarGedung();
         gd = dg.getGedung(idGedung);
-
+       
         gd.setNamaGedung(namaGedung);
         gd.setTipeGedung(tipeGedung);
         gd.setKategoriGedung(kategoriGedung);
@@ -64,7 +64,7 @@ public class EditGedung extends HttpServlet {
         gd.setEmailGedung(emailGedung);
         gd.setTelpGedung(telpGedung);
         request.setAttribute("pemilik", gd);
-        try {
+        
             if (namaGedung.equals("") || tipe.equals("") || kategori.equals("")
                     || propinsiGedung.equals("") || kotaGedung.equals("") || alamatGedung.equals("") || deskripsiGedung.equals("") || telpGedung.equals("")) {
                 RequestDispatcher requestDispatcher =
@@ -82,14 +82,7 @@ public class EditGedung extends HttpServlet {
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
-
-
-
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -109,11 +102,16 @@ public class EditGedung extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         Gedung gd = new Gedung();
 
-        Long id = Long.parseLong(request.getParameter("id"));
+        String idi = request.getParameter("id");
+        if(idi!=null){
+        Long id = Long.parseLong(idi);
         gd = (Gedung) dg.getGedung(id);
         request.setAttribute("gedung", gd);
         dis = request.getRequestDispatcher("/pemilik/editGedung.jsp");
         dis.include(request, response);
+        }
+        else
+        response.sendRedirect("../PlaceForUApps_28Nov/ListGedung");
     }
 
     /**

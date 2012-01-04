@@ -33,7 +33,7 @@ import javax.servlet.http.HttpSession;
  */
 public class SewaBaru extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -105,31 +105,45 @@ public class SewaBaru extends HttpServlet {
                     requestDispatcher.forward(request, response);
                 }//end of if
                 else {
-                    //adding sewa to database Sewa
-                    sewa.setIdGedung(idGedung);
-                    sewa.setIdSubGedung(idSubGedung);
-                    sewa.setIdPenyewa(idPenyewa);
-                    sewa.setIdPemilik(idPemilik);
-                    sewa.setMulai(tgl_mulai);
-                    sewa.setSampai(tgl_sampai);
-                    sewa.setStatus(0);
-                    
-                    //calculate price amount
-                    long milliseconds1 = c1.getTimeInMillis();
-                    long milliseconds2 = c2.getTimeInMillis();
-                    long diff = milliseconds2 - milliseconds1;
-                    int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
-                    int totalHarga = harga * diffDays;
-                    sewa.setTotalHargaSewa(totalHarga);
-                    
-                    daftarSewa.addSewa(sewa);
-                    RequestDispatcher requestDispatcher =
-                            request.getRequestDispatcher("/successSaving.jsp");
-                    message = "Permohonan sewa berhasil dikirimkan, Silahkan menunggu konfirmasi dari kami. Terima Kasih";
-                    page = "HistoriSewa";
-                    request.setAttribute("message", message);
-                    request.setAttribute("page", page);
-                    requestDispatcher.forward(request, response);
+                    sg = ds.getSubGedung(idSubGedung);
+                    //Jika sub gedung masih disewa
+                    if (sg.getStatus().equals("Telah Disewa")) {
+                        RequestDispatcher requestDispatcher =
+                                request.getRequestDispatcher("/error_page.jsp");
+                        message = "Sub Gedung masih disewa oleh penyewa lainnya, silahkan lakukan pemesanan di lain waktu";
+                        request.setAttribute("message", message);
+                        requestDispatcher.forward(request, response);
+
+                    //Jika status sub gedung : tersedia
+                    } else {
+                        //adding sewa to database Sewa
+                        sewa.setIdGedung(idGedung);
+                        sewa.setIdSubGedung(idSubGedung);
+                        sewa.setIdPenyewa(idPenyewa);
+                        sewa.setIdPemilik(idPemilik);
+                        sewa.setMulai(tgl_mulai);
+                        sewa.setSampai(tgl_sampai);
+                        sewa.setStatus(0);
+
+                        //calculate price amount
+                        long milliseconds1 = c1.getTimeInMillis();
+                        long milliseconds2 = c2.getTimeInMillis();
+                        long diff = milliseconds2 - milliseconds1;
+                        int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
+                        int totalHarga = harga * diffDays;
+                        sewa.setDurasi(diffDays);
+                        sewa.setTotalHargaSewa(totalHarga);
+                        sewa.setSisaBayar(totalHarga);
+
+                        daftarSewa.addSewa(sewa);
+                        RequestDispatcher requestDispatcher =
+                                request.getRequestDispatcher("/successSaving.jsp");
+                        message = "Permohonan sewa berhasil dikirimkan, Silahkan menunggu konfirmasi dari kami. Terima Kasih";
+                        page = "HistoriSewa";
+                        request.setAttribute("message", message);
+                        request.setAttribute("page", page);
+                        requestDispatcher.forward(request, response);
+                    }
                 }
 
             }//end of first else
@@ -141,7 +155,7 @@ public class SewaBaru extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -176,7 +190,7 @@ public class SewaBaru extends HttpServlet {
         dis.include(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -193,7 +207,7 @@ public class SewaBaru extends HttpServlet {
         }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

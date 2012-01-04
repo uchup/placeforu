@@ -34,11 +34,12 @@
                 <div id="menu">
                     <ul>
                         <ul>
-                            <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
-                            <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
-                            <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
-                            <li class="current_page_item"><a href="logout">Log Out</a></li>
-                        </ul>
+			<li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
+			<li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Administrasi</a></li>
+			<li class="current_page_item"><a href="logout">Log Out</a></li>
+		</ul>
                     </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -92,7 +93,7 @@
                                         </tr>
                                         <%}%>
                                     </table>
-                                <br>
+                                    <br>
                                     <p> <h4><b>Daftar Penyewaan (Telah Disetujui) </b></h4></p>
                                     <table>
                                         <tr>
@@ -129,7 +130,17 @@
                                             <td><%out.println(namaSubGedung);%></td>
                                             <td><%=sewa.getTotalHargaSewa()%></td>
                                             <td><%=sewa.getMulai()%> s/d <%=sewa.getSampai()%></td>
-                                            <td>Lihat Administrasi</td>
+                                            <%
+                                                String status;
+                                                if (sewa.getSisaBayar() == 0) {
+                                                    status = "Lunas";
+                                                } else {
+                                                    status = "Belum Lunas";
+                                                }
+                                            %>
+                                            <td>
+                                                <%out.println(status);%>
+                                            </td>
                                         </tr>
                                         <%}%>
                                     </table>

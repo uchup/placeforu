@@ -7,11 +7,15 @@ package entity;
 import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -27,7 +31,7 @@ public class DaftarSewa {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-    
+
     //add new Sewa
     public void addSewa(Sewa sewa) {
         EntityManager em = null;
@@ -56,23 +60,39 @@ public class DaftarSewa {
         }
         return sewa;
     }
-   
+
    //getting sewa by its id
    public Sewa getSewaFromId(long idSewa) {
         Sewa sewa = null;
         EntityManager em = getEntityManager();
         try {
-            
+
                 Query q = em.createQuery("SELECT object(o) FROM Sewa AS o WHERE o.idSewa=:idSewa");
                 q.setParameter("idSewa", idSewa);
                 sewa = (Sewa) q.getSingleResult();
-            
+
         } finally {
             em.close();
         }
         return sewa;
     }
-   
+
+   public List<Sewa> getSewa(long idSewa) {
+        List<Sewa> daftarSewa = new ArrayList<Sewa>();
+
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM Sewa AS o WHERE o.idSewa=:idSewa");
+            q.setParameter("idSewa", idSewa);
+
+            daftarSewa = q.getResultList();
+
+        } finally {
+            em.close();
+        }
+        return daftarSewa;
+    }
+
    public List<Sewa> getDaftarSewaPenyewa_Unconfirmed(long idPenyewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int status = 0;
@@ -88,7 +108,7 @@ public class DaftarSewa {
         }
         return daftarSewa;
     }
-   
+
    public List<Sewa> getDaftarSewaPenyewa_Confirmed(long idPenyewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int stat = 1;
@@ -104,7 +124,23 @@ public class DaftarSewa {
         }
         return daftarSewa;
     }
-   
+
+  public List<Sewa> getUtangPenyewa(long idPenyewa) {
+        List<Sewa> daftarSewa = new ArrayList<Sewa>();
+        int sisaBayar=1;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT object(o) FROM Sewa AS o WHERE o.idPenyewa=:idPenyewa AND o.sisaBayar>=:sisaBayar");
+            q.setParameter("idPenyewa", idPenyewa);
+            q.setParameter("sisaBayar", sisaBayar);
+            daftarSewa = q.getResultList();
+
+        } finally {
+            em.close();
+        }
+        return daftarSewa;
+    }
+
    public List<Sewa> getDaftarSewaPemilik_Unconfirmed(long idPemilik) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int status = 0;
@@ -120,7 +156,7 @@ public class DaftarSewa {
         }
         return daftarSewa;
     }
-   
+
    public List<Sewa> getDaftarSewaPemilik_Confirmed(long idPemilik) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int stat = 1;
@@ -136,7 +172,7 @@ public class DaftarSewa {
         }
         return daftarSewa;
     }
-   
+
    //getting list of "sewa" that already confirmed
    public List<Sewa> getAllSewa_Confirmed() {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
@@ -152,7 +188,7 @@ public class DaftarSewa {
         }
         return daftarSewa;
     }
-   
+
    //getting list of "sewa" that still waiting for confirmation
    public List<Sewa> getAllSewa_Unconfirmed() {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
@@ -168,7 +204,7 @@ public class DaftarSewa {
         }
         return daftarSewa;
     }
-   
+
     public void konfirmSewa(Sewa sewa) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -181,7 +217,7 @@ public class DaftarSewa {
             em.close();
         }
     }
-    
+
    //canceling sewa
    public void cancelSewa(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
@@ -203,7 +239,7 @@ public class DaftarSewa {
             }
         }
    }
-   
+
    public void removeSewa(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -224,4 +260,17 @@ public class DaftarSewa {
             }
         }
    }
+
+   public void editSewa(Sewa sewa) {
+        EntityManager em = getEntityManager();
+        em.getTransaction().begin();
+        try { //jik tdk ada error
+            em.merge(sewa);
+            em.getTransaction().commit();
+        } catch (Exception e) {//jk eerror
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+    }
 }

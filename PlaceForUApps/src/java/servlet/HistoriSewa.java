@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 public class HistoriSewa extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -56,11 +56,11 @@ public class HistoriSewa extends HttpServlet {
                 //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
                 long idAkun = u.getId();
-                
+
 
                 //jika  pengguna merupakan administrator, maka akan diarahkan ke halaman daftar gedung untuk administrator
                 if (u.getTipe() == 0) {
-                    
+
                     //menampilkan semua histori penyewaan
                     List<Sewa> daftar_sewa = ds.getAllSewa_Confirmed();
                     request.setAttribute("penyewaan_1", daftar_sewa);
@@ -110,7 +110,7 @@ public class HistoriSewa extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -123,7 +123,7 @@ public class HistoriSewa extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -136,7 +136,7 @@ public class HistoriSewa extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */
