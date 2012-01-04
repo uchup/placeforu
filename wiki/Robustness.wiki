@@ -5,6 +5,7 @@ Robustness Diagram (Login Logout)
 UC001 Login
 http://placeforu.googlecode.com/files/robustness-login.JPG
 UC002 Logout
+http://placeforu.googlecode.com/files/robustness-logout.JPG
 
 Robustness Diagram (Manajemen User)
 UC003 Melakukan registrasi akun baru
@@ -26,8 +27,6 @@ UC016 Mengubah informasi sub gedung
 UC017 Menghapus informasi sub gedung
 UC018 Melihat informasi sub gedung
 
-
-
 Robustness Diagram (Manajemen Penyewaan)
 UC019 Menyewa gedung
 UC020 Melakukan konfirmasi penyewaan gedung
@@ -36,13 +35,8 @@ UC022 Menghapus histori penyewaan
 UC023 Melihat histori penyewaan (pemilik gedung)
 UC024 Melihat histori penyewaan (penyewa gedung)
 
-
-
-
 Robustness Diagram (Manajemen Administrasi)
 UC025 Mengubah administrasi penyewaan
 UC026 Melakukan konfirmasi pembayaran
-
-
 
 
