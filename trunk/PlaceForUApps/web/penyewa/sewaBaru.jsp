@@ -85,7 +85,7 @@
                                             <td></td>
                                             <td></td>
                                         </tr>
-                                        
+
                                         <tr>
                                             <td>Mulai<font color="red">*</font></td>
                                             <td>:</td>
@@ -141,9 +141,9 @@
                                                     <option value="2011">2011</option>
                                                     <option value="2012">2012</option>
                                                     <option value="2013">2013</option>
-                                                    <option value="2014">2014</option>                                                   
-                                                </select> 
-                                            </td> 
+                                                    <option value="2014">2014</option>
+                                                </select>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Sampai<font color="red">*</font></td>
@@ -201,8 +201,8 @@
                                                     <option value="2011">2011</option>
                                                     <option value="2012">2012</option>
                                                     <option value="2013">2013</option>
-                                                    <option value="2014">2014</option>                                                   
-                                                </select> 
+                                                    <option value="2014">2014</option>
+                                                </select>
                                             </td>
                                         </tr>
                                         <tr>

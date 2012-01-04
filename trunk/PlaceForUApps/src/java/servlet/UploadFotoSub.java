@@ -64,7 +64,7 @@ public class UploadFotoSub extends HttpServlet {
 	response.setContentType("text/plain");
         User user = new User();
         RequestDispatcher page = null;
-         RequestDispatcher dis = null;
+        RequestDispatcher dis = null;
         DaftarUser a = new DaftarUser();
         SubGedung sg = new SubGedung();
         DaftarSubGedung dsg = new DaftarSubGedung();

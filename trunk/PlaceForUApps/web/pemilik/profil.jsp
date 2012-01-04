@@ -25,12 +25,11 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../pemilik">Home (Pemilik)</a></li>
                         <li class="current_page_item"><a href="../pemilik/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
-                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="logout">Log Out</a></li>
+                        <li class="current_page_item"><a href="../ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="../HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="../HistoriAdministrasi">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="../logout">Log Out</a></li>
 		</ul>
 	</div>
 	<div id="gallery"><img src="../images/img03.jpg" width="692" height="340" alt="" /></div>

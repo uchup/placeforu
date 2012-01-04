@@ -29,9 +29,9 @@
             </div>
             <div id="header">
                 <div id="menu">
-                <ul>
+               <ul>
 			<li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
-			<li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
+			<li class="current_page_item"><a href="EditPenyewa">Manajemen Profil</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
 			<li class="current_page_item"><a href="logout">Log Out</a></li>
@@ -49,7 +49,7 @@
                             <div class="entry">
                                 <form method='post'  action='AdministrasiBaru'>
                                     <table>
-                                        
+
                                         <tr>
                                             <td>Tanggal Bayar<font color="red">*</font></td>
                                             <td>:</td>
@@ -105,14 +105,14 @@
                                                     <option value="2011">2011</option>
                                                     <option value="2012">2012</option>
                                                     <option value="2013">2013</option>
-                                                    <option value="2014">2014</option>                                                   
+                                                    <option value="2014">2014</option>
                                                 </select>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>ID Sewa</td>
                                             <td>:</td>
-                                            
+
                                             <td>
                                                <input type="text" name="idSewa" value="${sewa.idSewa}" readonly>
                                             </td>
@@ -120,14 +120,14 @@
                                         <tr>
                                             <td>Nama Penyewa</td>
                                             <td>:</td>
-                                            
+
                                             <td>
                                                ${sewa.idPenyewa} - ${akun.nama}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nama Gedung</td>
-                                            <td>:</td>                                          
+                                            <td>:</td>
                                             <td>
                                                ${gedung.namaGedung}
                                             </td>
@@ -135,7 +135,7 @@
                                         <tr>
                                             <td>Nama Sub Gedung</td>
                                             <td>:</td>
-                                            
+
                                             <td>
                                                ${subgedung.nama_sub_gedung}
                                             </td>
@@ -151,7 +151,7 @@
                                             <td></td>
                                             <td></td>
                                             <td>
-                                                
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -163,7 +163,7 @@
                                                     <option value="Tunai">Tunai</option>
                                                     <option value="Cek">Cek</option>
                                                     <option value="Rekening">Rekening</option>
-                                                </select> 
+                                                </select>
                                                 <input type="text" name="no_bukti">
                                             </td>
                                         </tr>
@@ -178,7 +178,7 @@
                                         <tr><td><input type="submit" value="Konfirmasikan"></td>
                                             <td></td>
                                             <td>
-                                                
+
                                             </td></tr>
                                     </table>
                                 </form>
@@ -224,12 +224,14 @@
                             <li><a href="#">Aenean elementum facilisis ligula</a></li>
                             <li><a href="#">Ut tincidunt elit vitae augue</a></li>
                         </ul>
+                        </div>
                     </div>
                 </div>
                 <div id="footer">
                     <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
                 </div>
             </div>
+        
             <!-- end #footer -->
     </body>
 </html>

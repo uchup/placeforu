@@ -34,7 +34,7 @@ import javax.servlet.http.HttpSession;
  */
 public class AdministrasiBaru extends HttpServlet {
 
-    /** 
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -102,7 +102,7 @@ public class AdministrasiBaru extends HttpServlet {
                             sw = ds.getSewaFromId(idSewa);
 
                             //jika jumlah pembayaran yang dimasukkan melebihi sisa pembayaran yang harus dilakukan
-                            if (jml_bayar < sw.getSisaBayar()) {
+                            if (jml_bayar <= sw.getSisaBayar()) {
 
                                 //menambahkan histori administrasi
                                 da.addAdministrasi(adm);
@@ -150,7 +150,7 @@ public class AdministrasiBaru extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
+    /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -193,7 +193,7 @@ public class AdministrasiBaru extends HttpServlet {
         dis.include(request, response);
     }
 
-    /** 
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -210,7 +210,7 @@ public class AdministrasiBaru extends HttpServlet {
         }
     }
 
-    /** 
+    /**
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

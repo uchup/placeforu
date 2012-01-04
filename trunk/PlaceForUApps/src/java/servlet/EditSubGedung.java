@@ -111,7 +111,7 @@ public class EditSubGedung extends HttpServlet {
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
         User u = new User();
-
+try{
         if (session.getAttribute("sessionusername") != null) {
             String username = (String) session.getAttribute("sessionusername");
             //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
@@ -143,6 +143,10 @@ public class EditSubGedung extends HttpServlet {
                 requestDispatcher.forward(request, response);
             }
         }
+        }
+        catch(NullPointerException npe){
+   response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung");
+}
 
     }
 

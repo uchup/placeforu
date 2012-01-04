@@ -55,7 +55,7 @@ public class Administrasi implements Serializable {
         this.idSewa = idSewa;
     }
 
-    
+
     public int getJumlahBayar() {
         return jumlahBayar;
     }
@@ -87,7 +87,7 @@ public class Administrasi implements Serializable {
     public void setTglBayar(Date tglBayar) {
         this.tglBayar = tglBayar;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -120,5 +120,5 @@ public class Administrasi implements Serializable {
     public String toString() {
         return "entity.Administrasi[ id=" + id + " ]";
     }
-    
+
 }

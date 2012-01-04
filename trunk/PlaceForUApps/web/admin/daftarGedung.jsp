@@ -33,7 +33,7 @@
                         <li class="current_page_item"><a href="admin">Home (Admin)</a></li>
 			<li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="#">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
                         <li class="current_page_item"><a href="logout">Logout</a></li>
                     </ul>

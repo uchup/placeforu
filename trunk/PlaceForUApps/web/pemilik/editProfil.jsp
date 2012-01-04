@@ -25,8 +25,7 @@
 <div id="header">
 	<div id="menu">
 		<ul>
-			<li class="current_page_item"><a href="../pemilik">Home (Pemilik)</a></li>
-                        <li class="current_page_item"><a href="../pemilik/profil">Profil</a></li>
+			<li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>

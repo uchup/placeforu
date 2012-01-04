@@ -152,6 +152,30 @@
         <servlet-name>UploadFotoSub</servlet-name>
         <servlet-class>servlet.UploadFotoSub</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BatalSewa</servlet-name>
+        <servlet-class>servlet.BatalSewa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>KonfirmasiPermintaanSewa</servlet-name>
+        <servlet-class>servlet.KonfirmasiPermintaanSewa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HapusHistoriSewa</servlet-name>
+        <servlet-class>servlet.HapusHistoriSewa</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HistoriAdministrasi</servlet-name>
+        <servlet-class>servlet.HistoriAdministrasi</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdministrasiBaru</servlet-name>
+        <servlet-class>servlet.AdministrasiBaru</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditAdministrasi</servlet-name>
+        <servlet-class>servlet.EditAdministrasi</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>logout</servlet-name>
         <url-pattern>/logout</url-pattern>
@@ -303,6 +327,30 @@
     <servlet-mapping>
         <servlet-name>UploadFotoSub</servlet-name>
         <url-pattern>/uploadfotosub</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BatalSewa</servlet-name>
+        <url-pattern>/BatalSewa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>KonfirmasiPermintaanSewa</servlet-name>
+        <url-pattern>/KonfirmasiPermintaanSewa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HapusHistoriSewa</servlet-name>
+        <url-pattern>/HapusHistoriSewa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdministrasiBaru</servlet-name>
+        <url-pattern>/AdministrasiBaru</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAdministrasi</servlet-name>
+        <url-pattern>/EditAdministrasi</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HistoriAdministrasi</servlet-name>
+        <url-pattern>/HistoriAdministrasi</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

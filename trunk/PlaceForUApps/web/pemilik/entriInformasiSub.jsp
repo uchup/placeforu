@@ -73,7 +73,7 @@
                                             <td></td>
                                             <td></td>
                                         </tr>
-                                        <tr><td>Harga Sewa /jam<font color="red">*</font></td>
+                                        <tr><td>Harga Sewa /hari<font color="red">*</font></td>
                                             <td>:</td>
                                             <td><input type="text" name="harga">
 
