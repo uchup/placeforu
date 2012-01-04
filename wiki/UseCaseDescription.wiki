@@ -73,3 +73,77 @@
 || *Normal Flows*  || Aktor (Pengunjung, Administrator, Pemilik Gedung, Penyewa Gedung) memilih menu Informasi Gedung. Sistem mengarahkan aktor ke halaman Daftar Informasi Gedung. Aktor menekan tombol Cari. Sistem menampilkan Form Cari Gedung. Aktor memilih kategori gedung. Sistem mencari data gedung berdasarkan kategori yang dimaksud dari Daftar Gedung dan menampilkannya pada halaman Daftar Informasi Gedung. ||
 || *Alternative Flows*  || Jika aktor adalah pengunjung, maka pencarian langsung dapat dilakukan pada halaman home (frontend) ||
 
+<h2> <font color="green"> Use Case Name : UC015 Menulis informasi sub gedung</font></h2>
+|| *Primary Actor* || Pemilik Gedung||
+|| *Normal Flows*  || Aktor (Administrator, pemilik) menuju halaman Daftar Sub Gedung dan memilih tombol tambah sub gedung. Lalu mengisi field pada halaman Tambah Sub Gedung secara lengkap. Setelah itu, aktor menyimpan informasi sub gedung tersebut dengan menekan tombol Simpan. Maka Sistem akan menyimpan informasi sub gedung dan akan dimunculkan halaman dengan pesan Sub Gedung berhasil ditambahkan.  ||
+|| *Alternative Flows*  || Jika ada field bertanda bintang (mandatory field) yang belum diisi maka akan muncul pesan peringatan data tidak lengkap untuk menginstruksikan aktor mengisi semua field mandatory.<br><br>Jika sebelumnya ada subgedung dengan id_pemilik dan nama sub gedung yang sama dengan Daftar Sub Gedung yang telah ada, maka sistem akan menampilkan halaman pesan error bahwa tidak boleh memasukkan nama subgedung yang sama. ||
+
+<h2> <font color="green"> Use Case Name : UC016 Mengubah Informasi Sub Gedung</font></h2>
+|| *Primary Actor* || Pemilik Gedung||
+|| *Normal Flows*  || Aktor menuju halaman Daftar Sub Gedung. Aktor memilih sub gedung yang akan diubah, kemudian sistem akan menampilkan Form Ubah Sub Gedung. Aktor harus menuliskan informasi lengkap pada semua field bertanda bintang yang ada. Setelah selesai menuliskan informasi tersebut, aktor menekan tombol Ubah, selanjutnya sistem akan menyimpan informasi tersebut. Setelah tersimpan, aktor diarahkan ke halaman yang berisi form daftar sub gedung.  ||
+|| *Alternative Flows*  || Jika ada field bertanda bintang (mandatory field) yang belum diisi maka akan muncul pesan peringatan data tidak lengkap untuk menginstruksikan aktor mengisi semua field mandatory.<br><br>Jika sebelumnya ada subgedung dengan id_pemilik dan nama sub gedung yang sama dengan Daftar Sub Gedung yang telah ada, maka sistem akan menampilkan halaman pesan error bahwa tidak boleh memasukkan nama subgedung yang sama. ||
+
+<h2> <font color="green"> Use Case Name : UC017 Menghapus informasi sub gedung</font></h2>
+|| *Primary Actor* || Pemilik Gedung||
+|| *Normal Flows*  || Aktor menuju halaman Daftar Sub Gedung. Aktor memilih gedung yang akan diubah, kemudian sistem akan menampilkan Form Daftar Sub Gedung. Aktor memilih Sub Gedung yang akan dihapus. Kemudian, sistem akan menampilkan Form Hapus Sub Gedung. Untuk menghapus, maka aktor harus menekan tombol Hapus. Dan setelah tombol hapus tersebut ditekan, maka akan muncul layar konfirmasi penghapusan Subi Gedung. Setelah berhasil menghapus, aktor akan diarahkan ke halaman Daftar Kategori Gedung. ||
+|| *Alternative Flows*  || - ||
+
+<h2> <font color="green"> Use Case Name : UC018 Melihat informasi sub gedung</font></h2>
+|| *Primary Actor* || Pengunjung, Administrator, Pemilik Gedung, atau Penyewa Gedung||
+|| *Normal Flows*  || Aktor (Pengunjung, Administrator, Pemilik Gedung, atau Penyewa Gedung) menuju Daftar Informasi Sub Gedung setelah sebelumnya memilih gedung yang dikehendaki untuk dilihat. ||
+|| *Alternative Flows*  || Jika aktor adalah Pengunjung, maka tidak membutuhkan login. Pengunjung akan langsung diarahkan ke halaman yang berisi Form Daftar Informasi Sub Gedung(frontend)<br>Jika aktor adalah Administrator, Pemilik Gedung, dan Penyewa Gedung, maka harus melakukan login terlebih dahulu untuk masuk pada halaman Daftar Informasi Gedung (backend). ||
+
+<h2> <font color="green"> Use Case Name : UC019 Menyewa gedung</font></h2>
+|| *Primary Actor* || Penyewa Gedung||
+|| *Normal Flows*  || Aktor (Penyewa Gedung)  menyewa gedung dengan menuju halaman informasi Gedung, kemudian sistem akan menampilkan seluruh daftar gedung yang ada. Aktor memilih data / gedung mana yang disewa. Kemudian setelah memilih Gedung, sistem mengarahkan aktor ke daftar sub gedung dari gedung yang dipilih. Sub gedung tersebut dilengkapi dengan status ketersediaan (sudah booked atau available). Untuk menyewa gedung, aktor harus mengisi semua field bertanda bintang  pada Form Penyewaan Baru. Baru kemudian aktor menekan tombol Sewa. Setelah itu sistem akan menampilkan pesan keberhasilan permintaan sewa. ||
+|| *Alternative Flows*  || Jika ada field bertanda bintang yang kosong, maka akan muncul peringatan data tidak lengkap untuk menginstruksikan aktor mengisi semua field. <br>Jika tanggal akhir sewa yang dimasukkan adalah tanggal sebelum tanggal mulai sewa, maka sistem akan menampilkan halaman error yang berisi pesan bahwa "Waktu akhir penyewaan harus setelah waktu awal penyewaan".<br>Jika subgedung sedang disewa oleh penyewa lainnya, maka sistem akan mengarahkan aktor menuju halaman error yang berisi pesan bahwa Sub Gedung sedang disewa oleh penyewa lainnya. ||
+
+<h2> <font color="green"> Use Case Name : UC020 Melakukan konfirmasi penyewaan</font></h2>
+|| *Primary Actor* || Pemilik Gedung||
+|| *Normal Flows*  || Aktor (pemilik gedung) melakukan konfirmasi penyewaan dengan menuju ke halaman manajemen penyewaan dahulu. Sistem memunculkan Form Daftar Permintaan Sewa. Aktor memilih pemrintaan yang akan dikonfirmasi. Untuk menerima permintaan sewa, aktor menekan tombol Terima. Sistem menampilkan pesan bahwa permintaan telah berhasil diterima. ||
+|| *Alternative Flows*  || Jika aktor menolak permintaan sewa, maka aktor menekan tombol Tolak pada daftar pemrintaan sewa. Sistem mengarahkan aktor ke halaman pesan bahwa permintaan sewa berhasil ditolak. ||
+
+<h2> <font color="green"> Use Case Name : UC021 Membatalkan penyewaan</font></h2>
+|| *Primary Actor* || Pemilik Gedung||
+|| *Normal Flows*  || Aktor (penyewa gedung, administrator) membatalkan penyewaan dengan memilih salah satu daftar penyewaan pada Form Pembatalan Sewa yang terdapat di halaman Manajemen Penyewaan. Selanjutnya aktor menekan tombol Batalkan untuk langsung membatalkan sewa. Kemudian muncul layar konfirmasi apakah aktor benar - benar akan melakukan pembatalan. Aktor harus menekan tombol Yakin. ||
+|| *Alternative Flows*  || - ||
+
+<h2> <font color="green"> Use Case Name : UC022 Menghapus histori penyewaan</font></h2>
+|| *Primary Actor* || Administrator||
+|| *Normal Flows*  || Aktor (Administrator) memilih penyewaan yang akan dihapus melalui daftar histori penyewaan. Setelah administrator memilih selanjutnya adalah menekan tombol Hapus dan sistem akan menghapus histori tersebut. ||
+|| *Alternative Flows*  || - ||
+
+<h2> <font color="green"> Use Case Name : UC023 Melihat histori penyewaan (pemilik gedung)</font></h2>
+|| *Primary Actor* || Pemilik Gedung, Administrator||
+|| *Normal Flows*  || Aktor (pemilik gedung, administrator) dapat melihat histori penyewaan dengan menuju ke halaman yang berisi Form Histori Penyewaan (pemilik gedung). Kemudian sistem akan menampilkan histori penyewaan yang pernah dikonfirmasi oleh pemilik gedung. ||
+|| *Alternative Flows*  || - ||
+
+<h2> <font color="green"> Use Case Name : UC024 Melihat histori penyewaan (penyewa gedung)</font></h2>
+|| *Primary Actor* || Penyewa Gedung, Administrator||
+|| *Normal Flows*  || Aktor (pemilik gedung, administrator) dapat melihat Administrasi yang pernah dilakukan  dengan menuju ke halaman yang berisi Daftar Administrasi Pembayaran Persewaan (Pemilik Gedung). Kemudian sistem akan menampilkan daftar administrasi pembayaran yang pernah dilakukan oleh penyewa gedung pada pemilik gedung. ||
+|| *Alternative Flows*  || - ||
+
+<h2> <font color="green"> Use Case Name : UC025 Mengubah administrasi penyewaan</font></h2>
+|| *Primary Actor* || Pemilik Gedung||
+|| *Normal Flows*  || Aktor (pemilik gedung, administrator) menuju halaman yang Manajemen Administrasi. Sistem akan menampilkan Daftar Administrasi. Aktor memilik administrasi yang akan disetujui pembayarannya dengan menekan tombol Terima. Setelah itu sistem akan merubah administrasi penyewaan, yaitu dengan mengubah status pembayaran menjadi "diterima" dan mengurangi sisa pembayaran yang ada pada Daftar Sewa.  Kemudian sistem akan mengarahkan aktor pada halaman pesan bahwa perubahan telah dilakukan (pembayaran telah diterima). ||
+|| *Alternative Flows*  || Jika ada field bertanda bintang yang kosong, maka akan muncul peringatan data tidak lengkap untuk menginstruksikan aktor mengisi semua field.<br><br>Apabila aktor membatalkan penerimaan, aktor menekan tombol batalkan. Sistem akan mengarahkan aktor pada halaman daftar administrasi. ||
+
+<h2> <font color="green"> Use Case Name : UC026 Melakukan konfirmasi pembayaran</font></h2>
+|| *Primary Actor* || Penyewa Gedung||
+|| *Normal Flows*  || Aktor (penyewa gedung, administrator) memilih salah satu dari Daftar Penyewaan Gedung dimana sudah dibayar melalui bank. Selanjutnya sistem akan mengarahkan aktor menuju form Konfirmasi Pembayaran Sewa Gedung dan mengisi semua field yang ada. Setelah itu, aktor menakan tombol Konfirm dan sistem akan mengirimkannya ke pemilik gedung. ||
+|| *Alternative Flows*  || Jika ada field bertanda bintang yang kosong, sistem akan emnampilkan pesan eror bahwa field harus diisi lengkap.<br><br>Jika sisa bayar lebih besar daripada jumlah uang yang dibayarkan, sistem akan menampilkan pesan eror bahwa jumlah bayar harus kurang dari sisa bayar.||
+
+<h2> <font color="green"> Use Case Name : UC027 Melihat administrasi penyewaan (pemilik gedung)</font></h2>
+|| *Primary Actor* || Pemilik Gedung,Administrator||
+|| *Normal Flows*  || Aktor (pemilik gedung, administrator) memilih menu Manajemen Administrasi . Kemudian sistem akan menampilkan daftar administrasi pembayaran yang pernah dilakukan oleh penyewa gedung pada pemilik gedung. ||
+|| *Alternative Flows*  ||-||
+
+<h2> <font color="green"> Use Case Name : UC028 Melihat administrasi penyewaan (pemilik gedung)</font></h2>
+|| *Primary Actor* || Penyewa Gedung, Administrator||
+|| *Normal Flows*  || Aktor (pemilik gedung, administrator) memilih menu Manajemen Administrasi . Kemudian sistem akan menampilkan daftar administrasi pembayaran yang pernah dilakukan oleh pemilik gedung pada pemilik gedung. ||
+|| *Alternative Flows*  ||-||
+
+
+
+
+
