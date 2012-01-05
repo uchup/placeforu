@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.User;
@@ -22,7 +21,7 @@ import javax.servlet.http.HttpSession;
  * @author Widiasa
  */
 public class HomePemilik extends HttpServlet {
-   
+
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -31,7 +30,7 @@ public class HomePemilik extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
@@ -39,7 +38,7 @@ public class HomePemilik extends HttpServlet {
         DaftarUser du = new DaftarUser();
         User u = new User();
 
-        if (session.getAttribute("sessionusername") != null){
+        if (session.getAttribute("sessionusername") != null) {
             String username = (String) session.getAttribute("sessionusername");
             boolean hasilCheck = du.checkUser(username);
             if (hasilCheck) {
@@ -53,19 +52,17 @@ public class HomePemilik extends HttpServlet {
                     dis.forward(request, response);
                     out.close();
                 }
+            } else {
+                dis = request.getRequestDispatcher("index");
+                dis.forward(request, response);
+                out.close();
             }
-            else{
+        } else {
             dis = request.getRequestDispatcher("index");
             dis.forward(request, response);
             out.close();
-            }
         }
-        else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
-            }
-    } 
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -77,9 +74,9 @@ public class HomePemilik extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -90,7 +87,7 @@ public class HomePemilik extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -102,5 +99,4 @@ public class HomePemilik extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

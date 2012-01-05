@@ -52,7 +52,7 @@ public class EditGedung extends HttpServlet {
         //RequestDispatcher page = null;
         DaftarGedung dg = new DaftarGedung();
         gd = dg.getGedung(idGedung);
-       
+
         gd.setNamaGedung(namaGedung);
         gd.setTipeGedung(tipeGedung);
         gd.setKategoriGedung(kategoriGedung);
@@ -64,25 +64,25 @@ public class EditGedung extends HttpServlet {
         gd.setEmailGedung(emailGedung);
         gd.setTelpGedung(telpGedung);
         request.setAttribute("pemilik", gd);
-        
-            if (namaGedung.equals("") || tipe.equals("") || kategori.equals("")
-                    || propinsiGedung.equals("") || kotaGedung.equals("") || alamatGedung.equals("") || deskripsiGedung.equals("") || telpGedung.equals("")) {
-                RequestDispatcher requestDispatcher =
-                        request.getRequestDispatcher("/error_page.jsp");
-                message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
-                request.setAttribute("message", message);
-                requestDispatcher.forward(request, response);
-            } else {
 
-                dg.editGedung(gd);
-                RequestDispatcher requestDispatcher =
-                        request.getRequestDispatcher("/successUpdating.jsp");
-                message = "Data berhasil diubah ";
-                String page = "ListGedung";
-                request.setAttribute("message", message);
-                request.setAttribute("page", page);
-                requestDispatcher.forward(request, response);
-            }
+        if (namaGedung.equals("") || tipe.equals("") || kategori.equals("")
+                || propinsiGedung.equals("") || kotaGedung.equals("") || alamatGedung.equals("") || deskripsiGedung.equals("") || telpGedung.equals("")) {
+            RequestDispatcher requestDispatcher =
+                    request.getRequestDispatcher("/error_page.jsp");
+            message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
+            request.setAttribute("message", message);
+            requestDispatcher.forward(request, response);
+        } else {
+
+            dg.editGedung(gd);
+            RequestDispatcher requestDispatcher =
+                    request.getRequestDispatcher("/successUpdating.jsp");
+            message = "Data berhasil diubah ";
+            String page = "ListGedung";
+            request.setAttribute("message", message);
+            request.setAttribute("page", page);
+            requestDispatcher.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -103,15 +103,15 @@ public class EditGedung extends HttpServlet {
         Gedung gd = new Gedung();
 
         String idi = request.getParameter("id");
-        if(idi!=null){
-        Long id = Long.parseLong(idi);
-        gd = (Gedung) dg.getGedung(id);
-        request.setAttribute("gedung", gd);
-        dis = request.getRequestDispatcher("/pemilik/editGedung.jsp");
-        dis.include(request, response);
+        if (idi != null) {
+            Long id = Long.parseLong(idi);
+            gd = (Gedung) dg.getGedung(id);
+            request.setAttribute("gedung", gd);
+            dis = request.getRequestDispatcher("/pemilik/editGedung.jsp");
+            dis.include(request, response);
+        } else {
+            response.sendRedirect("../PlaceForUApps_28Nov/ListGedung");
         }
-        else
-        response.sendRedirect("../PlaceForUApps_28Nov/ListGedung");
     }
 
     /**

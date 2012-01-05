@@ -48,13 +48,13 @@ public class EditSubGedung extends HttpServlet {
         String deskripsi_sub = request.getParameter("deskripsi_sub");
         String status = request.getParameter("status");
         Long id = Long.parseLong(request.getParameter("id_sub_gedung"));
-        
+
 
         DaftarSubGedung ds = new DaftarSubGedung();
         //RequestDispatcher page = null;
         SubGedung gd = new SubGedung();
         gd = ds.getSubGedung(id);
-        
+
         gd.setDeskripsi_sub(deskripsi_sub);
         gd.setFasilitas_sub(fasilitas_sub);
         gd.setHarga(harga);
@@ -67,26 +67,24 @@ public class EditSubGedung extends HttpServlet {
         request.setAttribute("pemilik", gd);
 
         try {
-           if (nama_sub_gedung.equals("") || tipe_sub_gedung.equals("") || harga.equals("")
-                || deskripsi_sub.equals("") || fasilitas_sub.equals("")||status.equals("")) {
+            if (nama_sub_gedung.equals("") || tipe_sub_gedung.equals("") || harga.equals("")
+                    || deskripsi_sub.equals("") || fasilitas_sub.equals("") || status.equals("")) {
                 RequestDispatcher requestDispatcher =
                         request.getRequestDispatcher("/error_page.jsp");
                 message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
             } else {
-
                 ds.editSubGedung(gd);
                 RequestDispatcher requestDispatcher =
                         request.getRequestDispatcher("/successSaving2.jsp");
                 message = "Informasi Sub Gedung berhasil diubah ";
-                String page = "ListSubGedung?id="+gd.getId_gedung();
+                String page = "ListSubGedung?id=" + gd.getId_gedung();
                 request.setAttribute("message", message);
                 request.setAttribute("page", page);
                 requestDispatcher.forward(request, response);
 
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -111,42 +109,41 @@ public class EditSubGedung extends HttpServlet {
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
         User u = new User();
-try{
-        if (session.getAttribute("sessionusername") != null) {
-            String username = (String) session.getAttribute("sessionusername");
-            //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
-            boolean hasilCheck = du.checkUser(username);
-            if (hasilCheck) {
-                //mengambil user berdasarkan username dari Daftar User
-                u = du.getUserFromName(username);
-                long idPemilik = u.getId();
+        try {
+            if (session.getAttribute("sessionusername") != null) {
+                String username = (String) session.getAttribute("sessionusername");
+                //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
+                boolean hasilCheck = du.checkUser(username);
+                if (hasilCheck) {
+                    //mengambil user berdasarkan username dari Daftar User
+                    u = du.getUserFromName(username);
+                    long idPemilik = u.getId();
 
-                //jika pengguna merupakan pemilik
-                if (u.getTipe() == 1) {
-                    Long id_sub_gedung = Long.parseLong(request.getParameter("idsub"));
-                    gd = (SubGedung) ds.getSubGedung(id_sub_gedung);
-                    request.setAttribute("subgedung", gd);
-                    dis = request.getRequestDispatcher("/pemilik/editSubGedung.jsp");
-                    dis.include(request, response);
+                    //jika pengguna merupakan pemilik
+                    if (u.getTipe() == 1) {
+                        Long id_sub_gedung = Long.parseLong(request.getParameter("idsub"));
+                        gd = (SubGedung) ds.getSubGedung(id_sub_gedung);
+                        request.setAttribute("subgedung", gd);
+                        dis = request.getRequestDispatcher("/pemilik/editSubGedung.jsp");
+                        dis.include(request, response);
 
-                } else if (u.getTipe() == 0) {
-                    Long id_sub_gedung = Long.parseLong(request.getParameter("idsub"));
-                    gd = (SubGedung) ds.getSubGedung(id_sub_gedung);
-                    request.setAttribute("subgedung", gd);
-                    dis = request.getRequestDispatcher("/admin/editSubGedung.jsp");
-                    dis.include(request, response);
+                    } else if (u.getTipe() == 0) {
+                        Long id_sub_gedung = Long.parseLong(request.getParameter("idsub"));
+                        gd = (SubGedung) ds.getSubGedung(id_sub_gedung);
+                        request.setAttribute("subgedung", gd);
+                        dis = request.getRequestDispatcher("/admin/editSubGedung.jsp");
+                        dis.include(request, response);
 
+                    }
+                } else {
+                    RequestDispatcher requestDispatcher =
+                            request.getRequestDispatcher("index.jsp");
+                    requestDispatcher.forward(request, response);
                 }
-            } else {
-                RequestDispatcher requestDispatcher =
-                        request.getRequestDispatcher("index.jsp");
-                requestDispatcher.forward(request, response);
             }
+        } catch (NullPointerException npe) {
+            response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung");
         }
-        }
-        catch(NullPointerException npe){
-   response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung");
-}
 
     }
 

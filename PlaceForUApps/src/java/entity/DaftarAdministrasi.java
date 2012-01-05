@@ -15,14 +15,17 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-;
 
 /**
- *
  * @author Ika
+ *
+ * Kelas ini berfungsi untuk mengelola fungsi yang dibutuhkan berkaitan dengan
+ * modul Manajemen Administrasi, di mana fungsi tersebut dihubungkan dengan kelas entitas
+ * Administrasi yang merepresentasikan tabel Administrasi dalam database
  */
 public class DaftarAdministrasi {
-     public DaftarAdministrasi() {
+
+    public DaftarAdministrasi() {
         emf = Persistence.createEntityManagerFactory("persistence");
     }
     private EntityManagerFactory emf = null;
@@ -31,7 +34,11 @@ public class DaftarAdministrasi {
         return emf.createEntityManager();
     }
 
-    //add new Administrasi
+    /**
+     * @param administrasi Administrasi
+     *
+     * method yang digunakan untuk menambah data administrasi
+     */
     public void addAdministrasi(Administrasi administrasi) {
         EntityManager em = null;
         try {
@@ -46,6 +53,11 @@ public class DaftarAdministrasi {
         }
     }
 
+    /**
+     * @param adm Administrasi
+     *
+     * method yang digunakan untuk mengubah data administrasi
+     */
     public void editAdministrasi(Administrasi adm) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -59,8 +71,14 @@ public class DaftarAdministrasi {
         }
     }
 
-    //menampilkan daftar pembayaran yang belum dikonfirmasi
-   public List<Administrasi> getAdministrasi_Confirmed(long idPemilik) {
+    /**
+     * @param idPemilik long
+     * @return daftarAdministrasi List<Administrasi>
+     *
+     * method yang digunakan untuk mendapatkan daftar administrasi yang sudah di
+     * konfirmasi.
+     */
+    public List<Administrasi> getAdministrasi_Confirmed(long idPemilik) {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
         int statusPembayaran = 1;
         EntityManager em = getEntityManager();
@@ -75,7 +93,14 @@ public class DaftarAdministrasi {
         return daftarAdministrasi;
     }
 
-   public List<Administrasi> getAdministrasi_Unconfirmed(long idPemilik) {
+    /**
+     * @param idPemilik long
+     * @return daftarAdministrasi List<Administrasi>
+     *
+     * method yang digunakan untuk mendapatkan daftar administrasi yang belum di
+     * konfirmasi.
+     */
+    public List<Administrasi> getAdministrasi_Unconfirmed(long idPemilik) {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
         int statusPembayaran = 0;
         EntityManager em = getEntityManager();
@@ -91,8 +116,13 @@ public class DaftarAdministrasi {
         return daftarAdministrasi;
     }
 
-   //mendapatkan list semua histori administrasi
-   public List<Administrasi> getAllAdm_Confirmed() {
+    /**
+     * @return List<Administrasi>
+     *
+     * method yang digunakan untuk mendapatkan seluruh data administrasi yang su
+     * dah dikonfirmasi.
+     */
+    public List<Administrasi> getAllAdm_Confirmed() {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
         int statusPembayaran = 1;
         EntityManager em = getEntityManager();
@@ -106,7 +136,15 @@ public class DaftarAdministrasi {
         return daftarAdministrasi;
     }
 
-   public Administrasi getAdministrasi(long id) {
+    /**
+     * @param long id
+     * @return Administrasi
+     *
+     * method yang digunakan untuk mendapatkan objek Administrasi agar user
+     * mendapatkan detail suatu data administrasi berdasarkan id data
+     * administrasi tersebut.
+     */
+    public Administrasi getAdministrasi(long id) {
         Administrasi administrasi = null;
         EntityManager em = getEntityManager();
         try {
@@ -119,5 +157,4 @@ public class DaftarAdministrasi {
         }
         return administrasi;
     }
-
 }

@@ -26,7 +26,7 @@ public class EditPengguna extends HttpServlet {
      *kelas ini digunakan untuk melakukan edit profil pengguna
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         String message = null;
         String nama = request.getParameter("nama");
         String email = request.getParameter("email");
@@ -68,13 +68,13 @@ public class EditPengguna extends HttpServlet {
                     List<User> users = a.getUsers();
                     request.setAttribute("pengguna", users);
                     //diarahkan ke halaman profil penyewa tempat
-                     RequestDispatcher requestDispatcher =
-                        request.getRequestDispatcher("/successUpdating.jsp");
-                message = "Data Pengguna berhasil diubah";
-                String page = "DaftarPengguna";
-                request.setAttribute("message", message);
-                request.setAttribute("page", page);
-                requestDispatcher.forward(request, response);
+                    RequestDispatcher requestDispatcher =
+                            request.getRequestDispatcher("/successUpdating.jsp");
+                    message = "Data Pengguna berhasil diubah";
+                    String page = "DaftarPengguna";
+                    request.setAttribute("message", message);
+                    request.setAttribute("page", page);
+                    requestDispatcher.forward(request, response);
                 }
             }
 
@@ -82,12 +82,8 @@ public class EditPengguna extends HttpServlet {
             e.printStackTrace();
         }
     }
-   
-           
-               
 
-   // }
-
+    // }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
      * Handles the HTTP <code>GET</code> method.

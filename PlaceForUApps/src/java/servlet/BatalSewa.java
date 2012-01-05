@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 /**
  *
  * @author Ika
@@ -45,15 +44,15 @@ public class BatalSewa extends HttpServlet {
         DaftarSewa ds = new DaftarSewa();
         HttpSession session = request.getSession();
 
-            ds.cancelSewa(idSewa);
+        ds.cancelSewa(idSewa);
 
-            RequestDispatcher requestDispatcher =
+        RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successDeleting.jsp");
-                page = "HistoriSewa";
-                message ="Penyewaan telah dibatalkan";
-                request.setAttribute("message", message);
-                request.setAttribute("page", page);
-                requestDispatcher.forward(request, response);
+        page = "HistoriSewa";
+        message = "Penyewaan telah dibatalkan";
+        request.setAttribute("message", message);
+        request.setAttribute("page", page);
+        requestDispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

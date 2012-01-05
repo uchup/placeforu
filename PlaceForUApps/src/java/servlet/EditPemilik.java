@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarUser;
@@ -26,7 +25,7 @@ public class EditPemilik extends HttpServlet {
      *kelas ini digunakan untuk melakukan edit profil pemilik
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String message = null;
@@ -46,7 +45,7 @@ public class EditPemilik extends HttpServlet {
         HttpSession session = request.getSession();
         user = a.getUserFromName(usname);
 
-       try {
+        try {
             if (nama.equals("") || email.equals("") || telp.equals("")
                     || alamat.equals("") || pass.equals("")) {
                 RequestDispatcher requestDispatcher =
@@ -55,71 +54,69 @@ public class EditPemilik extends HttpServlet {
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
             } else if (user.getUsername().equals(usname) != user.getPassword().equals(pass)) {
-                    RequestDispatcher requestDispatcher =
-                            request.getRequestDispatcher("/error_page.jsp");
-                    message = "Password Salah";
-                    request.setAttribute("message", message);
-                    requestDispatcher.forward(request, response);
-                } else {
-
-                    user = a.getUserFromName(usname);
-
-                    user.setNama(nama);
-                    //user.setTipe(tipe);
-                    user.setEmail(email);
-                    user.setTelp(telp);
-                    user.setAlamat(alamat);
-                    user.setHape(hape);
-                    user.setUsername(usname);
-                    user.setPassword(pass);
-                    a.editUser(user);
-
-                }
-                page = request.getRequestDispatcher("/pemilik/profil");
-                page.forward(request, response);
-            }
-
-         catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-     /* if (nama.equals("") || email.equals("") || telp.equals("") || alamat.equals("") ) {
-
-            user = a.getUserFromName(usname);
-                 page = request.getRequestDispatcher("/pemilik/profil");
-                   message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/error_page.jsp");
+                message = "Password Salah";
                 request.setAttribute("message", message);
-                 page.include(request, response);
-        }
+                requestDispatcher.forward(request, response);
+            } else {
 
-        else if(user.getUsername().equals(usname) != user.getPassword().equals(pass)){
-              user = a.getUserFromName(usname);
+                user = a.getUserFromName(usname);
 
-                request.getRequestDispatcher("editProfil.jsp");
-                message ="Password yang anda masukkan tidak Cocok ";
-               request.setAttribute("message", message);
-                  page.include(request, response);
-
-        }
-        else {
                 user.setNama(nama);
-                user.setTipe(tipe);
+                //user.setTipe(tipe);
                 user.setEmail(email);
                 user.setTelp(telp);
                 user.setAlamat(alamat);
                 user.setHape(hape);
                 user.setUsername(usname);
                 user.setPassword(pass);
-                session.setAttribute("pemilik", user);
                 a.editUser(user);
-             page = request.getRequestDispatcher("/pemilik/profil");
-             page.forward(request, response);
-            }
 
+            }
+            page = request.getRequestDispatcher("/pemilik/profil");
+            page.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-*/
+    }
+    /* if (nama.equals("") || email.equals("") || telp.equals("") || alamat.equals("") ) {
+
+    user = a.getUserFromName(usname);
+    page = request.getRequestDispatcher("/pemilik/profil");
+    message ="Data tidak lengkap, isi semua field dengan tanda (*) ";
+    request.setAttribute("message", message);
+    page.include(request, response);
+    }
+
+    else if(user.getUsername().equals(usname) != user.getPassword().equals(pass)){
+    user = a.getUserFromName(usname);
+
+    request.getRequestDispatcher("editProfil.jsp");
+    message ="Password yang anda masukkan tidak Cocok ";
+    request.setAttribute("message", message);
+    page.include(request, response);
+
+    }
+    else {
+    user.setNama(nama);
+    user.setTipe(tipe);
+    user.setEmail(email);
+    user.setTelp(telp);
+    user.setAlamat(alamat);
+    user.setHape(hape);
+    user.setUsername(usname);
+    user.setPassword(pass);
+    session.setAttribute("pemilik", user);
+    a.editUser(user);
+    page = request.getRequestDispatcher("/pemilik/profil");
+    page.forward(request, response);
+    }
+
+    }
+
+     */
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -131,14 +128,14 @@ public class EditPemilik extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-	RequestDispatcher dis = null;
+        RequestDispatcher dis = null;
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
         User u = new User();
 
-        if (session.getAttribute("sessionusername") != null){
+        if (session.getAttribute("sessionusername") != null) {
             String username = (String) session.getAttribute("sessionusername");
 
             boolean hasilCheck = du.checkUser(username);
@@ -153,18 +150,16 @@ public class EditPemilik extends HttpServlet {
                     dis = request.getRequestDispatcher("index");
                     dis.forward(request, response);
                 }
+            } else {
+                dis = request.getRequestDispatcher("index");
+                dis.forward(request, response);
+
             }
-            else{
+        } else {
             dis = request.getRequestDispatcher("index");
             dis.forward(request, response);
 
-            }
         }
-        else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-
-            }
 
     }
 
@@ -177,7 +172,7 @@ public class EditPemilik extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -189,5 +184,4 @@ public class EditPemilik extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

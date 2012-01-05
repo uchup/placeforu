@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarGedung;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * @author Widiasa
  */
 public class DetailGedungPemilik extends HttpServlet {
-   
+
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -30,8 +29,8 @@ public class DetailGedungPemilik extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-       
+            throws ServletException, IOException {
+
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
         HttpSession session = request.getSession();
@@ -39,14 +38,14 @@ public class DetailGedungPemilik extends HttpServlet {
         Gedung g = new Gedung();
 
         //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
-        if(dg.cekGedung()){
-               Long idGedung = Long.valueOf(request.getParameter("id"));
-               g = dg.getGedung(idGedung);
-               request.setAttribute("gedung", g);
-            }
-            dis = request.getRequestDispatcher("/pemilik/detail.jsp");
-            dis.include(request, response);
-    } 
+        if (dg.cekGedung()) {
+            Long idGedung = Long.valueOf(request.getParameter("id"));
+            g = dg.getGedung(idGedung);
+            request.setAttribute("gedung", g);
+        }
+        dis = request.getRequestDispatcher("/pemilik/detail.jsp");
+        dis.include(request, response);
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /** 
@@ -58,9 +57,9 @@ public class DetailGedungPemilik extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
-    } 
+    }
 
     /** 
      * Handles the HTTP <code>POST</code> method.
@@ -71,7 +70,7 @@ public class DetailGedungPemilik extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -83,5 +82,4 @@ public class DetailGedungPemilik extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

@@ -33,7 +33,7 @@ public class KonfirmasiPermintaanSewa extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-         String usname = request.getParameter("usname");
+        String usname = request.getParameter("usname");
         int konfirm = Integer.parseInt(request.getParameter("konfirm"));
         Long idSewa = Long.parseLong(request.getParameter("idSewa"));
         Long idSubGedung = Long.parseLong(request.getParameter("idSubGedung"));
@@ -52,22 +52,19 @@ public class KonfirmasiPermintaanSewa extends HttpServlet {
             if (konfirm == 1) {
                 sewa.setStatus(1);
                 a.konfirmSewa(sewa);
-
                 sg.setStatus("Telah Disewa");
                 dsg.editSubGedung(sg);
-
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successKonfirmSewa.jsp");
-                message ="Penyewaan berhasil disetujui";
+                        request.getRequestDispatcher("/successKonfirmSewa.jsp");
+                message = "Penyewaan berhasil disetujui";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
-
             } //if registration is rejected
             else {
                 a.removeSewa(idSewa);
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successKonfirmSewa.jsp");
-                message ="Penyewaan berhasil ditolak";
+                        request.getRequestDispatcher("/successKonfirmSewa.jsp");
+                message = "Penyewaan berhasil ditolak";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
             }
