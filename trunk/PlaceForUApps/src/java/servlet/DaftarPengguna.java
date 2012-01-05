@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarUser;
@@ -27,23 +26,23 @@ public class DaftarPengguna extends HttpServlet {
      * kelas ini digunakan untuk melihat profil penyewa dengan kondisi session todak boleh null
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
         User u = new User();
-        
+
         //untuk mendapatkan session dari user yang telah login
-        if (session.getAttribute("sessionusername") != null){
+        if (session.getAttribute("sessionusername") != null) {
             String username = (String) session.getAttribute("sessionusername");
             //melakukan pengecekan untuk memastikan bahwa username telah terdaftar
             boolean hasilCheck = du.checkUser(username);
             if (hasilCheck) {
-                 //mengambil user berdasarkan username dari Daftar User
+                //mengambil user berdasarkan username dari Daftar User
                 u = du.getUserFromName(username);
-                 //username merupakan penyewa tempat
+                //username merupakan penyewa tempat
                 if (u.getTipe() == 0) {
                     //menyimpan daftar pengguna ke dalam list
                     List<User> users = du.getUsers();
@@ -57,18 +56,16 @@ public class DaftarPengguna extends HttpServlet {
                     dis.forward(request, response);
                     out.close();
                 }
+            } else {
+                dis = request.getRequestDispatcher("index");
+                dis.forward(request, response);
+                out.close();
             }
-            else{
+        } else {
             dis = request.getRequestDispatcher("index");
             dis.forward(request, response);
             out.close();
-            }
         }
-        else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-            out.close();
-            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -81,7 +78,7 @@ public class DaftarPengguna extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
 
     }
@@ -95,7 +92,7 @@ public class DaftarPengguna extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -107,5 +104,4 @@ public class DaftarPengguna extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

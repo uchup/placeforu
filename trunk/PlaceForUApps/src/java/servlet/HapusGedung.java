@@ -41,21 +41,21 @@ public class HapusGedung extends HttpServlet {
         String message;
         String page;
         Long gedungid = Long.parseLong(request.getParameter("gedungid"));
-        
+
         Gedung gd = new Gedung();
         //RequestDispatcher page = null;
         DaftarGedung dg = new DaftarGedung();
         HttpSession session = request.getSession();
 
-            dg.deleteGedung(gedungid);
-            
-            RequestDispatcher requestDispatcher =
+        dg.deleteGedung(gedungid);
+
+        RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successDeleting.jsp");
-                page = "ListGedung";
-                message ="Data berhasil dihapus";
-                request.setAttribute("message", message);
-                request.setAttribute("page", page);
-                requestDispatcher.forward(request, response);
+        page = "ListGedung";
+        message = "Data berhasil dihapus";
+        request.setAttribute("message", message);
+        request.setAttribute("page", page);
+        requestDispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,13 +67,13 @@ public class HapusGedung extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(HapusGedung.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
+
     }
 
     /** 
@@ -91,7 +91,7 @@ public class HapusGedung extends HttpServlet {
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(HapusGedung.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /** 

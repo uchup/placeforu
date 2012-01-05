@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarGedung;
@@ -35,7 +34,7 @@ public class DetailSubGedung extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
@@ -43,17 +42,17 @@ public class DetailSubGedung extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         Gedung g = new Gedung();
         DaftarSubGedung dsg = new DaftarSubGedung();
-        SubGedung  sg = new SubGedung();
-      
+        SubGedung sg = new SubGedung();
+
 
         //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
-        if(dsg.cekSubGedung()){
-               Long idSubGedung = Long.valueOf(request.getParameter("id"));
-               sg = dsg.getSubGedung(idSubGedung);
-               request.setAttribute("subgedung", sg);
-            }
-            dis = request.getRequestDispatcher("detailSub.jsp");
-            dis.include(request, response);
+        if (dsg.cekSubGedung()) {
+            Long idSubGedung = Long.valueOf(request.getParameter("id"));
+            sg = dsg.getSubGedung(idSubGedung);
+            request.setAttribute("subgedung", sg);
+        }
+        dis = request.getRequestDispatcher("detailSub.jsp");
+        dis.include(request, response);
 
     }
 
@@ -67,8 +66,8 @@ public class DetailSubGedung extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-      processRequest(request, response);
+            throws ServletException, IOException {
+        processRequest(request, response);
 
     }
 
@@ -81,7 +80,7 @@ public class DetailSubGedung extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -93,5 +92,4 @@ public class DetailSubGedung extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

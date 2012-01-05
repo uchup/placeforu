@@ -47,7 +47,8 @@ public class DaftarSewa {
         }
     }
     //display list of Sewa by idSubGedung
-   public Sewa getSewaforIdSub(long idSubGedung) {
+
+    public Sewa getSewaforIdSub(long idSubGedung) {
         Sewa sewa = null;
         EntityManager em = getEntityManager();
         try {
@@ -61,15 +62,15 @@ public class DaftarSewa {
         return sewa;
     }
 
-   //getting sewa by its id
-   public Sewa getSewaFromId(long idSewa) {
+    //getting sewa by its id
+    public Sewa getSewaFromId(long idSewa) {
         Sewa sewa = null;
         EntityManager em = getEntityManager();
         try {
 
-                Query q = em.createQuery("SELECT object(o) FROM Sewa AS o WHERE o.idSewa=:idSewa");
-                q.setParameter("idSewa", idSewa);
-                sewa = (Sewa) q.getSingleResult();
+            Query q = em.createQuery("SELECT object(o) FROM Sewa AS o WHERE o.idSewa=:idSewa");
+            q.setParameter("idSewa", idSewa);
+            sewa = (Sewa) q.getSingleResult();
 
         } finally {
             em.close();
@@ -77,7 +78,7 @@ public class DaftarSewa {
         return sewa;
     }
 
-   public List<Sewa> getSewa(long idSewa) {
+    public List<Sewa> getSewa(long idSewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
 
         EntityManager em = getEntityManager();
@@ -93,7 +94,7 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-   public List<Sewa> getDaftarSewaPenyewa_Unconfirmed(long idPenyewa) {
+    public List<Sewa> getDaftarSewaPenyewa_Unconfirmed(long idPenyewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int status = 0;
         EntityManager em = getEntityManager();
@@ -109,7 +110,7 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-   public List<Sewa> getDaftarSewaPenyewa_Confirmed(long idPenyewa) {
+    public List<Sewa> getDaftarSewaPenyewa_Confirmed(long idPenyewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int stat = 1;
         EntityManager em = getEntityManager();
@@ -125,9 +126,9 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-  public List<Sewa> getUtangPenyewa(long idPenyewa) {
+    public List<Sewa> getUtangPenyewa(long idPenyewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
-        int sisaBayar=1;
+        int sisaBayar = 1;
         EntityManager em = getEntityManager();
         try {
             Query q = em.createQuery("SELECT object(o) FROM Sewa AS o WHERE o.idPenyewa=:idPenyewa AND o.sisaBayar>=:sisaBayar");
@@ -141,7 +142,7 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-   public List<Sewa> getDaftarSewaPemilik_Unconfirmed(long idPemilik) {
+    public List<Sewa> getDaftarSewaPemilik_Unconfirmed(long idPemilik) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int status = 0;
         EntityManager em = getEntityManager();
@@ -157,7 +158,7 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-   public List<Sewa> getDaftarSewaPemilik_Confirmed(long idPemilik) {
+    public List<Sewa> getDaftarSewaPemilik_Confirmed(long idPemilik) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int stat = 1;
         EntityManager em = getEntityManager();
@@ -173,8 +174,8 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-   //getting list of "sewa" that already confirmed
-   public List<Sewa> getAllSewa_Confirmed() {
+    //getting list of "sewa" that already confirmed
+    public List<Sewa> getAllSewa_Confirmed() {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int stat = 1;
         EntityManager em = getEntityManager();
@@ -189,8 +190,8 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-   //getting list of "sewa" that still waiting for confirmation
-   public List<Sewa> getAllSewa_Unconfirmed() {
+    //getting list of "sewa" that still waiting for confirmation
+    public List<Sewa> getAllSewa_Unconfirmed() {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int status = 0;
         EntityManager em = getEntityManager();
@@ -218,8 +219,8 @@ public class DaftarSewa {
         }
     }
 
-   //canceling sewa
-   public void cancelSewa(Long id) throws NonexistentEntityException {
+    //canceling sewa
+    public void cancelSewa(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
@@ -238,9 +239,9 @@ public class DaftarSewa {
                 em.close();
             }
         }
-   }
+    }
 
-   public void removeSewa(Long id) throws NonexistentEntityException {
+    public void removeSewa(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try {
@@ -259,9 +260,9 @@ public class DaftarSewa {
                 em.close();
             }
         }
-   }
+    }
 
-   public void editSewa(Sewa sewa) {
+    public void editSewa(Sewa sewa) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try { //jik tdk ada error

@@ -45,19 +45,17 @@ public class KonfirmasiRegistrasi extends HttpServlet {
             //if registration is accepted
             if (konfirm == 1) {
                 a.editUser(user);
-
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("../konfirmasiSukses.jsp");
-                message ="Registrasi berhasil disetujui";
+                        request.getRequestDispatcher("../konfirmasiSukses.jsp");
+                message = "Registrasi berhasil disetujui";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
-
             } //if registration is rejected
             else {
                 a.deleteUser(userid);
                 RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("konfirmasiSukses.jsp");
-                message ="Registrasi berhasil ditolak";
+                        request.getRequestDispatcher("konfirmasiSukses.jsp");
+                message = "Registrasi berhasil ditolak";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
             }

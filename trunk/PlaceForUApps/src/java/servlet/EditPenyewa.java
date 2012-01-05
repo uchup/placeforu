@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarUser;
@@ -25,8 +24,8 @@ public class EditPenyewa extends HttpServlet {
     /**
      *kelas ini digunakan untuk melakukan edit profil penyewa
      */
-       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String message = null;
@@ -55,35 +54,34 @@ public class EditPenyewa extends HttpServlet {
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
             } else if (user.getUsername().equals(usname) != user.getPassword().equals(pass)) {
-                    RequestDispatcher requestDispatcher =
-                            request.getRequestDispatcher("/error_page.jsp");
-                    message = "Password Salah";
-                    request.setAttribute("message", message);
-                    requestDispatcher.forward(request, response);
-                } else {
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/error_page.jsp");
+                message = "Password Salah";
+                request.setAttribute("message", message);
+                requestDispatcher.forward(request, response);
+            } else {
 
-                    user = a.getUserFromName(usname);
+                user = a.getUserFromName(usname);
 
-                    user.setNama(nama);
-                    //user.setTipe(tipe);
-                    user.setEmail(email);
-                    user.setTelp(telp);
-                    user.setAlamat(alamat);
-                    user.setHape(hape);
-                    user.setUsername(usname);
-                    user.setPassword(pass);
-                    a.editUser(user);
+                user.setNama(nama);
+                //user.setTipe(tipe);
+                user.setEmail(email);
+                user.setTelp(telp);
+                user.setAlamat(alamat);
+                user.setHape(hape);
+                user.setUsername(usname);
+                user.setPassword(pass);
+                a.editUser(user);
 
-                }
-                page = request.getRequestDispatcher("/penyewa/profil");
-                page.forward(request, response);
             }
-
-         catch (Exception e) {
+            page = request.getRequestDispatcher("/penyewa/profil");
+            page.forward(request, response);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
@@ -93,14 +91,14 @@ public class EditPenyewa extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-	RequestDispatcher dis = null;
+        RequestDispatcher dis = null;
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
         User u = new User();
 
-        if (session.getAttribute("sessionusername") != null){
+        if (session.getAttribute("sessionusername") != null) {
             String username = (String) session.getAttribute("sessionusername");
 
             boolean hasilCheck = du.checkUser(username);
@@ -116,24 +114,22 @@ public class EditPenyewa extends HttpServlet {
                     dis.forward(request, response);
 
                 }
+            } else {
+                dis = request.getRequestDispatcher("index");
+                dis.forward(request, response);
+
             }
-            else{
+        } else {
             dis = request.getRequestDispatcher("index");
             dis.forward(request, response);
 
-            }
         }
-        else{
-            dis = request.getRequestDispatcher("index");
-            dis.forward(request, response);
-
-            }
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -145,5 +141,4 @@ public class EditPenyewa extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

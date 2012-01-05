@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package entity;
 
 import java.io.Serializable;
@@ -17,19 +16,19 @@ import javax.persistence.Id;
  */
 @Entity
 public class SubGedung implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-  
     private Long id_pemilik;
-    private Long id_gedung ;
+    private Long id_gedung;
     private String nama_sub_gedung;
     private String tipe_sub_gedung;
     private String harga;
     private String satuan;
     private String kapasitas;
-    private String  luas;
+    private String luas;
     private String fasilitas_sub;
     private String gambar_sub;
     private String deskripsi_sub;
@@ -77,8 +76,6 @@ public class SubGedung implements Serializable {
         this.luas = luas;
     }
 
-    
-    
     public String getDeskripsi_sub() {
         return deskripsi_sub;
     }
@@ -103,8 +100,6 @@ public class SubGedung implements Serializable {
         this.gambar_sub = gambar_sub;
     }
 
-    
-
     public Long getId_gedung() {
         return id_gedung;
     }
@@ -120,8 +115,6 @@ public class SubGedung implements Serializable {
     public void setId_pemilik(Long id_pemilik) {
         this.id_pemilik = id_pemilik;
     }
-
-   
 
     public String getNama_sub_gedung() {
         return nama_sub_gedung;
@@ -147,8 +140,6 @@ public class SubGedung implements Serializable {
         this.status = status;
     }
 
-    
-
     public String getTipe_sub_gedung() {
         return tipe_sub_gedung;
     }
@@ -157,8 +148,6 @@ public class SubGedung implements Serializable {
         this.tipe_sub_gedung = tipe_sub_gedung;
     }
 
-
-
     public Long getId() {
         return id;
     }
@@ -166,8 +155,6 @@ public class SubGedung implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    
 
     @Override
     public int hashCode() {
@@ -193,5 +180,4 @@ public class SubGedung implements Serializable {
     public String toString() {
         return "entity.SubGedung[id=" + id + "]";
     }
-
 }

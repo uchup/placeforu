@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.User;
@@ -30,7 +29,7 @@ public class Login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
@@ -41,84 +40,45 @@ public class Login extends HttpServlet {
 
         String name = request.getParameter("uname");
         String pass = request.getParameter("pass");
-        User users = daftarUser.getUser(name,pass);
+        User users = daftarUser.getUser(name, pass);
 
-       try{
-        if (name.equals("") || pass.equals("") ) {
-            RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/error_page.jsp");
-                message ="Username atau password kosong!";
+        
+        try {
+            if (name.equals("") || pass.equals("")) {
+                RequestDispatcher requestDispatcher =
+                        request.getRequestDispatcher("/error_page.jsp");
+                message = "Username atau password kosong!";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
-        }
-        else{
-            if (users != null) {
+            } else {
+                if (users != null) {
                     session.setAttribute("sessionusername", name);
                     if (users.getTipe() == 0) {
-                        response.sendRedirect("../PlaceForUApps_28Nov/admin");   
-                    }
-                    else if(users.getTipe() == 1 && users.getStatus() == 1) {
+                        response.sendRedirect("../PlaceForUApps_28Nov/admin");
+                    } else if (users.getTipe() == 1 && users.getStatus() == 1) {
                         response.sendRedirect("../PlaceForUApps_28Nov/pemilik");
-                    }
-                    else if(users.getStatus() == 1){
+                    } else if (users.getStatus() == 1) {
                         response.sendRedirect("../PlaceForUApps_28Nov/penyewa");
+                    } else {
+                        RequestDispatcher requestDispatcher =
+                                request.getRequestDispatcher("/error_page.jsp");
+                        message = "Maaf, pendaftaran Anda belum dikonfirmasi!";
+                        request.setAttribute("message", message);
+                        requestDispatcher.forward(request, response);
                     }
-                    else{
-                      RequestDispatcher requestDispatcher =
+                } else {
+                    RequestDispatcher requestDispatcher =
                             request.getRequestDispatcher("/error_page.jsp");
-                    message ="Maaf, pendaftaran Anda belum dikonfirmasi!";
+                    message = "Username atau password tidak cocok!";
                     request.setAttribute("message", message);
                     requestDispatcher.forward(request, response);
-                    }
-        }
-        else {
-            RequestDispatcher requestDispatcher =
-                    request.getRequestDispatcher("/error_page.jsp");
-                    message ="Username atau password tidak cocok!";
-                    request.setAttribute("message", message);
-                    requestDispatcher.forward(request, response);
-        }
-        }
-        }
-       catch (NullPointerException npe){
-  response.sendRedirect("../PlaceForUApps_28Nov/");
-    
-    }}
-        /*User user = daftarUser.getUser(name,pass);
-
-        String username = user.getUsername();
-        String password = user.getPassword();
-
-        if(name.equals(username) && pass.equals(password)){
-            session.setAttribute("user",username);
-            dis = request.getRequestDispatcher("/backend/home.jsp");
-            dis.forward(request, response);
-        }else{
-            dis = request.getRequestDispatcher("/index.jsp");
-            out.println("Login Salah!!");
-            dis.include(request, response);
-            out.close();
+                }
             }
-UsersJpaController ujc = new UsersJpaController();
-Users users = new Users();
-users = ujc.findUsers(username);
-if (users != null) {
-if (users.getPassword().equalsIgnoreCase(password)) {
-session.setAttribute("sessionusername", username);
-out.println("Hallo" + session.getAttribute("sessionusername"));
-} else {out.println("Password Invalid");}
-else {out.println("Username Invalid");}}*/
-//UsersJpaController ujc = new UsersJpaController();
+        } catch (NullPointerException npe) {
+            response.sendRedirect("../PlaceForUApps_28Nov/");
 
-
-
-//out.println("Hallo" + session.getAttribute("sessionusername"));
-
-
-    //out.println("Username Invalid");
-
-
-
+        }
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -130,7 +90,7 @@ else {out.println("Username Invalid");}}*/
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -143,7 +103,7 @@ else {out.println("Username Invalid");}}*/
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -155,5 +115,4 @@ else {out.println("Username Invalid");}}*/
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

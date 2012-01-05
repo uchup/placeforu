@@ -50,15 +50,14 @@ public class HapusPengguna extends HttpServlet {
             String message;
             String pages;
             RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/successDeleting.jsp");
-                message ="Akun pengguna berhasil dihapus";
-                pages = "DaftarAkun";
-                List<User> users = a.getUsers();
-                request.setAttribute("pengguna", users);
-                request.setAttribute("message", message);
-                request.setAttribute("page", pages);
-                requestDispatcher.forward(request, response);
-
+                    request.getRequestDispatcher("/successDeleting.jsp");
+            message = "Akun pengguna berhasil dihapus";
+            pages = "DaftarAkun";
+            List<User> users = a.getUsers();
+            request.setAttribute("pengguna", users);
+            request.setAttribute("message", message);
+            request.setAttribute("page", pages);
+            requestDispatcher.forward(request, response);
         } finally {
             out.close();
         }

@@ -18,6 +18,7 @@ import javax.persistence.Temporal;
  */
 @Entity
 public class Sewa implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,6 +35,7 @@ public class Sewa implements Serializable {
     private int totalHargaSewa;
     private int sisaBayar;
     private int durasi;
+
     public Long getIdSewa() {
         return idSewa;
     }
@@ -65,6 +67,7 @@ public class Sewa implements Serializable {
     public void setIdPenyewa(Long idPenyewa) {
         this.idPenyewa = idPenyewa;
     }
+
     public Long getIdPemilik() {
         return idPemilik;
     }
@@ -145,5 +148,4 @@ public class Sewa implements Serializable {
     public String toString() {
         return "entity.Sewa[ id=" + idSewa + " ]";
     }
-
 }

@@ -129,14 +129,14 @@ public class DaftarUser {
         return user;
     }
 
-     public User getUserFromId(long id) {
+    public User getUserFromId(long id) {
         User user = null;
         EntityManager em = getEntityManager();
         try {
 
-                Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.id=:id");
-                q.setParameter("id", id);
-                user = (User) q.getSingleResult();
+            Query q = em.createQuery("SELECT object(o) FROM User AS o WHERE o.id=:id");
+            q.setParameter("id", id);
+            user = (User) q.getSingleResult();
 
         } finally {
             em.close();
@@ -150,15 +150,15 @@ public class DaftarUser {
      * method untuk mengubah data pengguna
      * yang sudah ada pada tabel users
      */
-     public void editUser(User user) {
+    public void editUser(User user) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
         try { //jik tdk ada error
             em.merge(user);
             em.getTransaction().commit();
-        } catch (Exception e){//jk eerror
+        } catch (Exception e) {//jk eerror
             em.getTransaction().rollback();
-        }finally {
+        } finally {
             em.close();
         }
     }
@@ -232,7 +232,7 @@ public class DaftarUser {
         try {
             User user;
             try {
-               user = em.find(User.class, id);
+                user = em.find(User.class, id);
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The user with id " + id + " no longer exists.", enfe);
             }
@@ -267,5 +267,4 @@ public class DaftarUser {
         }
         return users;
     }
-
 }

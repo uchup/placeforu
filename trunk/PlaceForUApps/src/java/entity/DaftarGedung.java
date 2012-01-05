@@ -4,7 +4,6 @@
  */
 package entity;
 
-
 import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +18,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
- *
  * @author Ika
+ *
+ * Kelas ini berfungsi untuk mengelola fungsi yang dibutuhkan berkaitan dengan
+ * modul Manajemen Informasi Gedung, di mana fungsi tersebut dihubungkan dengan 
+ * kelas entitas Gedung yang merepresentasikan tabel Gedung dalam database
  */
 public class DaftarGedung {
 
@@ -33,7 +35,13 @@ public class DaftarGedung {
         return emf.createEntityManager();
     }
 
-    //check whether any Gedung with id_pemilik saved in Daftar Gedung
+    /**
+     * @param namaGedung String, idPemilik long
+     * @return result boolean
+     *
+     * method yang digunakan untuk mengecek apakah ada nama gedung dengan
+     * id pemilik yang dimasukkan.
+     */
     public boolean cekGedungPemilik(String namaGedung, long idPemilik) {
         boolean result = false;
         EntityManager em = getEntityManager();
@@ -51,6 +59,12 @@ public class DaftarGedung {
         return result;
     }
 
+    /**
+     * @return result boolean
+     * @author Widiasa
+     *
+     * method yang digunakan untuk mengecek apakah ada data gedung yang sudah dimasukkan
+     */
     public boolean cekGedung() {
         boolean result = false;
         EntityManager em = getEntityManager();
@@ -66,7 +80,11 @@ public class DaftarGedung {
         return result;
     }
 
-    //add new Gedung
+    /**
+     * @param gedung Gedung
+     *
+     * method yang digunakan untuk menambahkan data gedung
+     */
     public void addGedung(Gedung gedung) {
         EntityManager em = null;
         try {
@@ -81,22 +99,32 @@ public class DaftarGedung {
         }
     }
 
-    //getting list of Gedung
+    /**
+     * @return daftarGedung List<Gedung>
+     *
+     * method yang digunakan untuk mendapatkan daftar gedung 
+     */
     public List<Gedung> getDaftarGedung() {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
 
         EntityManager em = getEntityManager();
+
         try {
             Query q = em.createQuery("SELECT object(o) FROM Gedung AS o");
             daftarGedung = q.getResultList();
-            // }
-
         } finally {
             em.close();
         }
         return daftarGedung;
     }
 
+    /**
+     * @param idpemilik long
+     * @return daftarGedung List<Gedung>
+     *
+     * method yang digunakan untuk mendapatkan daftar gedung berdasarkan id
+     * pemiliknya
+     */
     public List<Gedung> getDaftarGedungPemilik(long idpemilik) {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
         int stat = 0;
@@ -112,6 +140,13 @@ public class DaftarGedung {
         return daftarGedung;
     }
 
+    /**
+     * @param id long
+     * @return gedung Gedung
+     *
+     * method yang digunakan untuk mendapatkan data untuk satu gedung
+     * berdasarkan id gedung
+     */
     public Gedung getGedung(long id) {
         Gedung gedung = null;
         EntityManager em = getEntityManager();
@@ -126,7 +161,14 @@ public class DaftarGedung {
         return gedung;
     }
 
-   public Gedung getGedungFromNama(String namaGedung) {
+    /**
+     * @param id long
+     * @return gedung Gedung
+     *
+     * method yang digunakan untuk mendapatkan data untuk satu gedung
+     * berdasarkan namaGedung
+     */
+    public Gedung getGedungFromNama(String namaGedung) {
         Gedung gedung = null;
         EntityManager em = getEntityManager();
         try {
@@ -139,6 +181,11 @@ public class DaftarGedung {
         return gedung;
     }
 
+     /**
+     * @param gedung Gedung
+     *
+     * method yang digunakan untuk mengedit data gedung
+     */
     public void editGedung(Gedung gedung) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -152,6 +199,12 @@ public class DaftarGedung {
         }
     }
 
+    /**
+     * @param id Long
+     * @exception NonexistenceEntityException
+     *
+     * method yang digunakan untuk mengecek apakah ada data gedung yang sudah dimasukkan
+     */
     public void deleteGedung(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -173,21 +226,20 @@ public class DaftarGedung {
         }
     }
 
+    /**
+     * @param kategoriGedung String
+     * @return List<Gedung>
+     *
+     * method yang digunakan untuk mendapatkan data gedung berdasarkan kategori.
+     */
     public List<Gedung> getDaftarGedungFromKategori(String kategoriGedung) {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
 
         EntityManager em = getEntityManager();
         try {
             Query q = em.createQuery("SELECT object(o) FROM Gedung AS o where o.kategoriGedung=:kategoriGedung");
-             q.setParameter("kategoriGedung", kategoriGedung);
-            //int jumlahGedung = ((Long) q.getSingleResult()).intValue();
-            //if (jumlahGedung < 0) {
-            // String pesan = "tidak ada daftar gedung tersimpan";
-            // daftarGedung = (List<Gedung>) q.setParameter("pesan", pesan);
-            // } else {
+            q.setParameter("kategoriGedung", kategoriGedung);
             daftarGedung = q.getResultList();
-            // }
-
         } finally {
             em.close();
         }

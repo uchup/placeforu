@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarSubGedung;
@@ -24,7 +23,7 @@ import java.util.logging.Logger;
  * @author Yuni
  */
 public class HapusSub extends HttpServlet {
-   
+
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -47,13 +46,13 @@ public class HapusSub extends HttpServlet {
 
         dg.deleteSubGedung(id);
 
-            RequestDispatcher requestDispatcher =
+        RequestDispatcher requestDispatcher =
                 request.getRequestDispatcher("/successDeleting2.jsp");
-                page = "ListSubGedung";
-                message ="Data berhasil dihapus";
-                request.setAttribute("message", message);
-                request.setAttribute("page", page);
-                requestDispatcher.forward(request, response);
+        page = "ListSubGedung";
+        message = "Data berhasil dihapus";
+        request.setAttribute("message", message);
+        request.setAttribute("page", page);
+        requestDispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -73,7 +72,8 @@ public class HapusSub extends HttpServlet {
             Logger.getLogger(HapusSub.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    /** 
+
+    /**
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -82,13 +82,13 @@ public class HapusSub extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         try {
             processRequest(request, response);
         } catch (NonexistentEntityException ex) {
             Logger.getLogger(HapusSub.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /** 
@@ -99,5 +99,4 @@ public class HapusSub extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
