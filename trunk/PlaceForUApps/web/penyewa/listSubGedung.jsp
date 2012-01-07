@@ -32,9 +32,10 @@
                 <div id="menu">
                     <ul>
                         <ul>
-                            <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
                             <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
+                            <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
                             <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                            <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                             <li class="current_page_item"><a href="logout">Log Out</a></li>
                         </ul>
                     </ul>
@@ -45,65 +46,40 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Daftar Sub Gedung</a></h2>
-                            <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
+                            <h2 class="title"><a href="#">Daftar SubGedung</a></h2>
                             <div style="clear: both;">&nbsp;</div>
-                            <div class="entry">
-                                <form method='post'>
-                                    <table>
-
-                                        <%Iterator itr;%>
-                                        <% List subgedung_list = (List) request.getAttribute("gedung");
+                            <ul class="listing">
+                                <%Iterator itr;%>
+                                <% List subgedung_list = (List) request.getAttribute("daftarsubgedung");
                                             for (itr = subgedung_list.iterator(); itr.hasNext();) {
                                                 entity.SubGedung subgedung = (entity.SubGedung) itr.next();
-                                        %>
-                                        <tr>
-                                            <td>Nama Subgedung</td>
-                                            <td>:</td>
-                                            <td><%=subgedung.getNama_sub_gedung()%></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tipe</td>
-                                            <td>:</td>
-                                            <td><%=subgedung.getTipe_sub_gedung()%></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Harga</td>
-                                            <td>:</td>
-                                            <td><%=subgedung.getHarga()%> <%=subgedung.getSatuan()%></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Fasilitas</td>
-                                            <td>:</td>
-                                            <td><%=subgedung.getFasilitas_sub()%></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Status</td>
-                                            <td>:</td>
-                                            <td><%=subgedung.getStatus()%>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Disewa Sampai Tanggal</td>
-                                            <td>:</td>
-                                            <td></td>
-                                        </tr>
-
-                                        <tr>
-
-                                            <td><a href="DetailSubGedungPemilik?idsub=<%=subgedung.getId()%>">Detail</a></td>
-                                        </tr>
-                                        <tr>
-
-                                            <td><a href="Sewa?idsub=<%=subgedung.getId()%>">Sewa</a></td>
-                                        </tr>
-                                        
-
-                                        <%}%>
-                                    </table>
-                                </form>
-                            </div>
+                                %>
+                                <li>
+                                    <div class="listinfo">
+                                        <img src="images/imageholder2.jpg" alt="Listing Image" class="listingimage" />
+                                        <h3><%=subgedung.getNama_sub_gedung()%></h3>
+                                        <%
+                                            String status = "";
+                                            if (subgedung.getStatus() == "Telah Disewa") {
+                                                status = "Telah disewa hingga ";
+                                            } else {
+                                                status = subgedung.getStatus();
+                                            }
+                                         %>
+                                        <p><b><i><%out.print(status);%></i></b></p>
+                                         Harga Sewa: <span class="price"><%=subgedung.getHarga()%> <%=subgedung.getSatuan()%></span>
+                                    </div>
+                                    <div class="listingbtns">
+                                        <span class="listbuttons">
+                                            <a href="DetailSubGedungPemilik?idsub=<%=subgedung.getId()%>">Detail</a>
+                                        </span>
+                                        <span class="listbuttons">
+                                            <a href="Sewa?idsub=<%=subgedung.getId()%>">Sewa</a>
+                                        </span></div>
+                                    <div class="clear">&nbsp;</div>
+                                </li>
+                                <%}%>
+                            </ul>
                         </div>
 
                     </div>
@@ -119,22 +95,6 @@
                                     </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
-                            </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <%SubGedung sg = new SubGedung();%>
-
-                                        <tr>
-
-
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
                             </li>
                         </ul>
                     </div>

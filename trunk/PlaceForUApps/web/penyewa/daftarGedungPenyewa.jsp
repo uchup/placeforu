@@ -30,10 +30,10 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-			<li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
-			<li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
-                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
+			<li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
 			<li class="current_page_item"><a href="logout">Log Out</a></li>
 		</ul>
                 </div>
@@ -47,49 +47,32 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a 
                                         href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
-                            <div class="entry">
-                                <form method='post'  action='HapusGedung'>
-                                    <table>
-
-                                        <%Iterator itr;%>
-                                        <% List gedung_list = (List) request.getAttribute("penyewa");
+                            <ul class="listing">
+                                <%Iterator itr;%>
+                                <%entity.DaftarGedung dg = new entity.DaftarGedung();%>
+                                <% List gedung_list = (List) request.getAttribute("gedung");
                                             for (itr = gedung_list.iterator(); itr.hasNext();) {
                                                 entity.Gedung gedung = (entity.Gedung) itr.next();
-                                        %>
-                                        <tr>
-                                            <table>
-                                            <tr>
-                                                <td>Nama Gedung</td>
-                                                <td>:</td>
-                                                <td><%=gedung.getNamaGedung()%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tipe Gedung</td>
-                                                <td>:</td>
-                                                <td><%=gedung.getTipeGedung()%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Kategori Gedung</td>
-                                                <td>:</td>
-                                                <td><%=gedung.getKategoriGedung()%></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Alamat Gedung</td>
-                                                <td>:</td>
-                                                <td><%=gedung.getAlamatGedung()%> , <%=gedung.getKotaGedung()%> - <%=gedung.getPropinsiGedung()%></td>
-                                            </tr> 
-                                            <tr>
-                                                <td><a href="ListSubGedung?id=<%=gedung.getId()%>">>>Lihat Detail</a></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                        </table>
-                                            <hr>        
-                                        </tr>
-                                        <%}%>
-                                    </table>
-                                </form>
-                            </div>
+                                %>
+                                <li>
+                                    <div class="listinfo">
+                                        <img src="images/imageholder2.jpg" alt="Listing Image" class="listingimage" />
+                                        <h3><%=gedung.getNamaGedung()%></h3>
+                                        <p><%=gedung.getTipeGedung()%> --- <%=gedung.getKategoriGedung()%></p>
+                                        Alamat: <%=gedung.getAlamatGedung()%>, <%=gedung.getKotaGedung()%> <%=gedung.getPropinsiGedung()%>
+                                    </div>
+                                    <div class="listingbtns">
+                                        <span class="listbuttons">
+                                            <a href="DetailGedung?idgedung=<%=gedung.getId()%>">Lihat Detail</a>
+                                        </span>
+                                        <span class="listbuttons">
+                                            <a href="ListSubGedung?id=<%=gedung.getId()%>">Lihat Subgedung</a>
+                                        </span></div>
+                                    <div class="clear">&nbsp;</div>
+                                </li>
+                                <%}%>
+                            </ul>
+                            
                         </div>
 
                     </div>

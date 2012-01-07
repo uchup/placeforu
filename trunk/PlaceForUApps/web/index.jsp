@@ -71,7 +71,7 @@
                                     </span></div>
                                 <div class="clear">&nbsp;</div>
                             </li>
-                            <%}%>
+                            <%}}%>
                         </ul>
                     </div>
                     <div id="sidebar">

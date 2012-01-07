@@ -28,9 +28,10 @@
             <div id="header">
                 <div id="menu">
                     <ul>
+                        <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
-			<li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+			<li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
 			<li class="current_page_item"><a href="logout">Log Out</a></li>
                     </ul>
                 </div>
@@ -40,87 +41,67 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Detail Informasi Sub Gedung</a></h2>
-                            <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
-                            <div style="clear: both;">&nbsp;</div>
-                            <div class="entry">
-                                <fieldset>
-                                    <form method='post'>
-                                        <table>
+                           <div class="inside">
+                                <h1>${subgedung.nama_sub_gedung}</h1>
+                                <div class="page-big-image"><img src="sub/${gedung.fotoUtamaGedung}" alt="" id="page-big-image"></div>
+                                <div class="clear"></div>
+                                <div class="page-info-table">
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tbody><tr>
+                                                <th colspan="3">Informasi Umum</th>
+                                            </tr>
                                             <tr>
-                                                <td>
-                                                    <fieldset>
-                                                        <legend><h4>Informasi Sub Gedung</h4></legend>
-                                                        <table>
-                                                            <tr>
-                                                                <td>Nama SubGedung </td>
-                                                                <td>:</td>
-                                                                <td>${subgedung.nama_sub_gedung}</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tipe Sub Gedung</td>
-                                                                <td>:</td>
-
-                                                                <td>
-                                                                    ${subgedung.tipe_sub_gedung}
-                                                                </td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                            <tr><td>Harga Sewa /jam</td>
-                                                                <td>:</td>
-                                                                <td>${subgedung.harga}
-
-                                                                    Satuan
-                                                                    :
-                                                                    ${subgedung.satuan}
-                                                                </td>
-                                                            </tr>
-                                                            <tr><td>Kapasitas</td>
-                                                                <td>:</td>
-                                                                <td>${subgedung.kapasitas} orang</td>
-                                                            </tr>
-                                                            <tr><td>Luas </td>
-                                                                <td>:</td>
-                                                                <td>${subgedung.luas} meter persegi</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    Fasilitas Sub Gedung
-                                                                </td>
-                                                                <td>:</td>
-                                                                <td>
-                                                                    ${subgedung.fasilitas_sub}
-                                                                </td>
-                                                            </tr>
-
-
-                                                            <tr>
-                                                                <td>
-                                                                    Deskripsi Sub Gedung
-                                                                </td>
-                                                                <td>:</td>
-                                                                <td>
-                                                                    ${subgedung.deskripsi_sub}
-                                                                </td>
-                                                            </tr>
-                                                            <tr><td>Status Sewa </td>
-                                                                <td>:</td>
-                                                                <td>
-                                                                    ${subgedung.status}
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-
-                                                    </fieldset>
+                                                <td width="20%">Tipe</td>
+                                                <td width="2%">:</td>
+                                                <td>${subgedung.tipe_sub_gedung}</td>
+                                            </tr>
+                                            <tr>
+                                                <td width="20%">Luas</td>
+                                                <td width="2%">:</td>
+                                                <td>${subgedung.luas} meter persegi</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kapasitas</td>
+                                                <td>:</td>
+                                                <td>${subgedung.kapasitas} orang</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3">Informasi Detail</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Deskripsi</td>
+                                                <td>:</td>
+                                                <td>${subgedung.deskripsi_sub}
                                                 </td>
                                             </tr>
-                                        </table>
-                                    </form>
-                                </fieldset>
-
+                                            <tr>
+                                                <td>Fasilitas</td>
+                                                <td>:</td>
+                                                <td>${subgedung.fasilitas_sub}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <th colspan="3">Informasi Penyewaan</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Harga Sewa/Jam</td>
+                                                <td>:</td>
+                                                <td>${subgedung.harga} ${subgedung.satuan}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Status</td>
+                                                <td>:</td>
+                                                <td>${subgedung.status}</td>
+                                            </tr>
+                                        </tbody></table>
+                                    <a href="javascript:history.go(-1)" onMouseOver="self.status=document.referrer;return true">Kembali</a>
+                                </div>
                             </div>
                         </div>
                     </div>

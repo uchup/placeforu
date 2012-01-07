@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarGedung;
@@ -35,7 +34,7 @@ public class ListSubGedungUmum extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
 
         PrintWriter out = response.getWriter();
         RequestDispatcher dis = null;
@@ -43,30 +42,18 @@ public class ListSubGedungUmum extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         Gedung g = new Gedung();
         DaftarSubGedung dsg = new DaftarSubGedung();
-        SubGedung  sg = new SubGedung();
-          
+        SubGedung sg = new SubGedung();
+
 
         //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
-        if(dg.cekGedung() ){
-               //Long id_gedung = Long.parseLong(request.getParameter("id"));
-              // g = (Gedung) dg.getGedung(id_gedung);
-             //  sg = dsg.getSubGedungfromIDGedung(id_gedung);
-
-                Long id_gedung = Long.parseLong(request.getParameter("id"));
-        List<SubGedung> daftar_sub_gedung = dsg.getDaftarSubGedung(id_gedung);
-        request.setAttribute("gedung", daftar_sub_gedung);
-              
-
-
-
-
-
-               //request.setAttribute("gedung", g);
-               request.setAttribute("subgedung", sg);
-
-            }
-            dis = request.getRequestDispatcher("daftarSub.jsp");
-            dis.include(request, response);
+        if (dg.cekGedung()) {
+            Long id_gedung = Long.parseLong(request.getParameter("id"));
+            List<SubGedung> daftar_sub_gedung = dsg.getDaftarSubGedung(id_gedung);
+            request.setAttribute("gedung", daftar_sub_gedung);
+            request.setAttribute("subgedung", sg);
+        }
+        dis = request.getRequestDispatcher("daftarSub.jsp");
+        dis.include(request, response);
 
     }
 
@@ -80,8 +67,8 @@ public class ListSubGedungUmum extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-      processRequest(request, response);
+            throws ServletException, IOException {
+        processRequest(request, response);
 
     }
 
@@ -94,7 +81,7 @@ public class ListSubGedungUmum extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -106,5 +93,4 @@ public class ListSubGedungUmum extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
