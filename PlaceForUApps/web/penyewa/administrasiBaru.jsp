@@ -29,13 +29,13 @@
             </div>
             <div id="header">
                 <div id="menu">
-               <ul>
-			<li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
-			<li class="current_page_item"><a href="EditPenyewa">Manajemen Profil</a></li>
-                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                    <ul>
+                        <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
+			<li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
 			<li class="current_page_item"><a href="logout">Log Out</a></li>
-		</ul>
+                    </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -114,7 +114,7 @@
                                             <td>:</td>
 
                                             <td>
-                                               <input type="text" name="idSewa" value="${sewa.idSewa}" readonly>
+                                                <input type="text" name="idSewa" value="${sewa.idSewa}" readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -122,14 +122,14 @@
                                             <td>:</td>
 
                                             <td>
-                                               ${sewa.idPenyewa} - ${akun.nama}
+                                                ${sewa.idPenyewa} - ${akun.nama}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nama Gedung</td>
                                             <td>:</td>
                                             <td>
-                                               ${gedung.namaGedung}
+                                                ${gedung.namaGedung}
                                             </td>
                                         </tr>
                                         <tr>
@@ -137,7 +137,7 @@
                                             <td>:</td>
 
                                             <td>
-                                               ${subgedung.nama_sub_gedung}
+                                                ${subgedung.nama_sub_gedung}
                                             </td>
                                         </tr>
                                         <tr>
@@ -224,15 +224,15 @@
                             <li><a href="#">Aenean elementum facilisis ligula</a></li>
                             <li><a href="#">Ut tincidunt elit vitae augue</a></li>
                         </ul>
-                        </div>
                     </div>
                 </div>
-                <div id="footer">
-                    <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
-                </div>
             </div>
-        
-            <!-- end #footer -->
+            <div id="footer">
+                <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
+            </div>
+        </div>
+
+        <!-- end #footer -->
     </body>
 </html>
 

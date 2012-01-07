@@ -32,9 +32,11 @@
                 <div id="menu">
                     <ul>
                         <ul>
-                            <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
+                            <li class="current_page_item"><a href="penyewa">Home</a></li>
                             <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
+                            <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
                             <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                            <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                             <li class="current_page_item"><a href="logout">Log Out</a></li>
                         </ul>
                     </ul>

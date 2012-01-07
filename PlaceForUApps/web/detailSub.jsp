@@ -65,7 +65,7 @@
                                                 <td>${subgedung.kapasitas} orang</td>
                                             </tr>
                                             <tr>
-                                                <td>Luas </td
+                                                <td>Luas </td>
                                                 <td>:</td>
                                                 <td>${subgedung.luas} meter persegi</td>
                                             </tr>

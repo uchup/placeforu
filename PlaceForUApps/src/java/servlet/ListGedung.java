@@ -74,7 +74,7 @@ public class ListGedung extends HttpServlet {
                 else if (u.getTipe() == 2) {
 
                     List<Gedung> daftar_gedung = dg.getDaftarGedung();
-                    request.setAttribute("penyewa", daftar_gedung);
+                    request.setAttribute("gedung", daftar_gedung);
                     request.setAttribute("akun", u);
                     //diarahkan ke halaman profil penyewa tempat
                     dis = request.getRequestDispatcher("/penyewa/daftarGedungPenyewa.jsp");
