@@ -70,16 +70,24 @@ public class DaftarAdministrasiTest extends TestCase {
         admin3.setIdSewa(idSewa2);
     }
 
+    /**
+     * Test of AddAdministrasi method, of class DaftarAdministrasi.
+     */
     @Test
     public void testAddAdministrasi() {
+       System.out.println("AddAdministrasi");
        da.addAdministrasi(admin1);
        da.addAdministrasi(admin3);
 
     }
 
+
+    /**
+     * Test of EditAdministrasi method, of class DaftarAdministrasi.
+     */
     @Test
     public void testEditAdministrasi(){
-
+        System.out.println("EditAdministrasi");
         admin1 = da.getAdministrasi(admin1.getId());
         admin1.setNoBukti(admin2.getNoBukti());
         da.editAdministrasi(admin1);
@@ -87,18 +95,27 @@ public class DaftarAdministrasiTest extends TestCase {
 
     }
 
+    /**
+     * Test of Administrasi_Confirmed method, of class DaftarAdministrasi.
+     */
     public void tesAdministrasi_Confirmed(){
-
+        System.out.println("Administrasi_Confirmed");
                 assertEquals(1, da.getAdministrasi_Confirmed(admin1.getIdPemilik()).size());
     }
 
+    /**
+     * Test of Administrasi_Unconfirmed method, of class DaftarAdministrasi.
+     */
     public void tesAdministrasi_Unconfirmed(){
-
+        System.out.println("Administrasi_Unconfirmed");
                 assertEquals(1, da.getAdministrasi_Unconfirmed(admin3.getIdPemilik()).size());
     }
 
+    /**
+     * Test of AllAdm_Confirmed method, of class DaftarAdministrasi.
+     */
     public void tesAllAdm_Confirmed(){
-
+        System.out.println("AllAdm_Confirmed");
                 assertEquals(1, da.getAllAdm_Confirmed().size());
 
     }

@@ -77,9 +77,18 @@ public class DaftarSubGedungTest extends TestCase {
     public void testGetSubGedung(){
         System.out.println("GetSubGedung");
         long idsubgedung  = subgedung1.getId();
-
         assertEquals(subgedung1.getKapasitas(), sub.getSubGedung(subgedung1.getId()).getKapasitas());
     }
+
+    @Test
+    // bagian ini dilakukan pengetesan pada method GetCheck()
+    public void testCekSubGedung() {
+        System.out.println("CekSubGedung");
+        assertTrue(sub.cekSubGedung());
+
+    }
+
+
 
     @Test // bagian ini dilakukan pengetesan pada method EditSubGedung() --> method yg dipakai utk mengedit gedung
     public void testEditSubGedung() {

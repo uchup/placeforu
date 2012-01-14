@@ -34,7 +34,7 @@ public class DaftarUserTest extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
 
-       user1 = new User();
+        user1 = new User();
         user1.setNama("Ika");
         user1.setTipe(1);
         user1.setEmail("reychan05@gmail.com");
@@ -43,6 +43,7 @@ public class DaftarUserTest extends TestCase {
         user1.setHape("085733523276");
         user1.setUsername("ling1");
         user1.setPassword("amalia");
+
 
         user2 = new User();
         user2.setNama("Ika");
@@ -53,6 +54,9 @@ public class DaftarUserTest extends TestCase {
         user2.setHape("085733523276");
         user2.setUsername("ling2");
         user2.setPassword("ika");
+        user2.setStatus(0);
+        long id = 2;
+        user2.setId(id);
 
         user3 = new User();
         user3.setNama("yuni");
@@ -63,6 +67,7 @@ public class DaftarUserTest extends TestCase {
         user3.setHape("085733523276");
         user3.setUsername("yuni");
         user3.setPassword("nene");
+        user3.setStatus(1);
 
 // bagian ini dilakukan pengetesan pada method addUser() --> method yg dipakai utk menambah user
 
@@ -81,6 +86,7 @@ public class DaftarUserTest extends TestCase {
 // bagian ini dilakukan pengetesan pada method editUser() --> utk mengedit profil pengguna
 
    public void testEditUser (){
+        System.out.println("EditUser");
         user1 = daftar.getUserFromName(user1.getUsername());
         user1.setNama(user3.getNama());
         user1.setPassword(user3.getPassword());
@@ -90,57 +96,52 @@ public class DaftarUserTest extends TestCase {
 
     }
 
+// bagian ini dilakukan pengetesan pada method GetCheck()
+    public void testCheck() {
+        System.out.println("Check");
+        assertTrue(daftar.check(user2.getUsername(),user2.getPassword()));
+    }
+
 // bagian ini dilakukan pengetesan pada method GetUsers() --> method yg dipakai utk melihat daftar seluruh pengguna
     public void testGetUsers(){
 
     System.out.println("getUsers");
-    DaftarUser instance = new DaftarUser();
-    List expResult =  instance.getUsers();
-    List result = instance.getUsers();
-    assertEquals(expResult, result);
+    assertEquals(2, daftar.getUsers().size());
 
     }
 
 // bagian ini dilakukan pengetesan pada method GetUserFromName() --> metod yg dipakai utk mengambil data satu pengguna pada tabel User berdasarkan parameter username
     public void testGetUserFromName(){
-
-        assertEquals(user1.getUsername(),daftar.getUserFromName(user1.getUsername()).getUsername());
+        System.out.println("GetUserFromName");
+        assertEquals("ling1",daftar.getUserFromName(user1.getUsername()).getUsername());
 
     }
 
-// bagian ini dilakukan pengetesan pada method Check() --> utk mengecek keberadaan pengguna brdasarkan username dn password
-    public void testCheck() {
-
-        //daftar.check(user2.getUsername(), user2.getPassword());
-        assertTrue(daftar.check(user2.getUsername(),user2.getPassword()));
-    }
 // bagian ini dilakukan pengetesan pada method CheckUser() --> utk mengecek keberadaan pengguna brdasarkan username -> dipakai pada servlet melihat profil pemilik&penyewa
      public void testCheckUser() {
-
+        System.out.println("CheckUser");
         assertTrue(daftar.checkUser(user2.getUsername()));
     }
 
-// bagian ini dilakukan pengetesan pada method GetUsers() --> method yg dipakai utk melihat daftar seluruh pengguna
+// bagian ini dilakukan pengetesan pada method GetUsername()
     public void testGetUsername(){
-
     System.out.println("getUsername");
-    DaftarUser instance = new DaftarUser();
-    List expResult =  instance.getUsername(user1.getUsername());
-    List result = instance.getUsername(user1.getUsername());
-    assertEquals(expResult, result);
+    String username = user2.getUsername();
+    assertEquals(1, daftar.getUsername(username).size());
 
     }
 
-    public void testGetUnconfirmedUsers(){
+// bagian ini dilakukan pengetesan pada method GetUserfromId()
+    public void testGetUserfromId(){
+    System.out.println("getUserFromId");
+    long id = user2.getId();
+    assertEquals("Ika", daftar.getUserFromId(id).getNama());
 
-    System.out.println("getUnconfirmedUsers");
-    DaftarUser instance = new DaftarUser();
-    List expResult =  instance.getUnconfirmedUsers();
-    List result = instance.getUnconfirmedUsers();
-    assertEquals(expResult, result);
 
     }
 
+
+// bagian ini dilakukan pengetesan pada method tearDown()
      @Override
     protected void tearDown() throws Exception {
         super.tearDown();
@@ -150,8 +151,12 @@ public class DaftarUserTest extends TestCase {
 
 
     }
+ // bagian ini dilakukan pengetesan pada method GetUnconfirmedUsers()
+    public void testGetUnconfirmedUsers(){
 
+    System.out.println("getUnconfirmedUsers");
+    assertEquals(2, daftar.getUnconfirmedUsers().size());
 
-
-
+    }
 }
+

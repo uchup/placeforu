@@ -47,12 +47,12 @@ public class DaftarGedungTest extends TestCase{
     gedung1.setKotaGedung("garut");
     gedung1.setPropinsiGedung("Jawa Barat");
     gedung1.setTelpGedung("7888");
-    long idgedung =155;
+    long idgedung =10;
+    long idpemilik =15;
     gedung1.setId(idgedung);
-    gedung1.setIdPemilik(idgedung);
+    gedung1.setIdPemilik(idpemilik);
 
     gedung2 = new Gedung();
-
     gedung2.setNamaGedung("Keraton");
     gedung2.setTipeGedung("outdoor");
     gedung2.setAlamatGedung("jl nanas");
@@ -83,25 +83,10 @@ public class DaftarGedungTest extends TestCase{
         assertEquals(gedung2.getNamaGedung(), dg.getGedung(gedung1.getId()).getNamaGedung());
 
     }
-    /**
-     * bagian ini dilakukan pengetesan pada method CheckGedung() --> method yg dipakai utk melakukan pengecekan
-       gedung dengan parameter nama gedung dan id pemilik gedung
-     */
-     @Test
-    public void testCheckGedung() {
-        System.out.println("checkGedung");
-        String namaGedung = gedung1.getNamaGedung();
-        long idPemilik = gedung1.getId();
-        DaftarGedung instance = new DaftarGedung();
-        boolean expResult = dg.cekGedungPemilik(gedung1.getNamaGedung(), gedung1.getId());
-        boolean result = instance.cekGedungPemilik(namaGedung, idPemilik);
-
-        assertEquals(expResult, result);
-    }
+    
 
     /**
      * bagian ini dilakukan pengetesan pada method GetDaftarGedung() --> method yg dipakai utk mengambil daftar gedung
-
      */
 
      @Test
