@@ -46,7 +46,7 @@ public class KonfirmasiRegistrasi extends HttpServlet {
             if (konfirm == 1) {
                 a.editUser(user);
                 RequestDispatcher requestDispatcher =
-                        request.getRequestDispatcher("../konfirmasiSukses.jsp");
+                        request.getRequestDispatcher("konfirmasiSukses.jsp");
                 message = "Registrasi berhasil disetujui";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);

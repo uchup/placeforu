@@ -27,14 +27,13 @@
             </div>
             <div id="header">
                 <div id="menu">
-                   <ul>
-			<li class="current_page_item"><a href="admin">Home (Admin)</a></li>
-			<li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
+                    <ul>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
                         <li class="current_page_item"><a href="logout">Logout</a></li>
-		</ul>
+                    </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -164,7 +163,7 @@
                                         </fieldset>
                                     </td>
                                 </tr>
-                           </div>
+                            </div>
                         </div>
 
                     </div>
@@ -184,7 +183,7 @@
                             <li>
                                 <h2> </h2>
 
-                                
+
                             </li>
                         </ul>
                     </div>
@@ -201,11 +200,11 @@
                     </div>
                 </div>
             </div>
-                <div id="footer">
-                    <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
-                </div>
+            <div id="footer">
+                <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
             </div>
-            <!-- end #footer -->
+        </div>
+        <!-- end #footer -->
     </body>
 </html>
 

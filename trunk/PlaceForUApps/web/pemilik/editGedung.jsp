@@ -39,8 +39,8 @@
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
                                 <table>
-                                <form method='post'  action='EditGedung'>
-                                    
+                                    <form method='post'  action='EditGedung'>
+
                                         <input type="hidden" name="id_gedung" value="${gedung.id}">
                                         <tr>
                                             <td>Nama Gedung <font color="red">*</font></td>
@@ -91,7 +91,7 @@
                                         </tr>
                                         <tr><td>Propinsi</td><td>:</td>
                                             <td>
-                                                    <select name="propinsi_gedung">
+                                                <select name="propinsi_gedung">
                                                     <option value="" selected>Propinsi</option>
                                                     <option value="Jawa Barat">Jawa Barat</option>
                                                     <option value="Jawa Timur">Jawa Timur</option>
@@ -105,7 +105,7 @@
                                             </td>
                                             <td>:</td>
                                             <td>
-                                                <textarea name="deskripsi_gedung" value="${gedung.deskripsiGedung}">${gedung.deskripsiGedung}</textarea>
+                                                <textarea cols="" rows=""  name="deskripsi_gedung" value="${gedung.deskripsiGedung}">${gedung.deskripsiGedung}</textarea>
                                             </td>
                                         </tr>
                                         <tr>
@@ -117,7 +117,7 @@
                                                 <textarea name="fasilitas_gedung"value="${gedung.fasilitasGedung}">${gedung.fasilitasGedung}</textarea>
                                             </td>
                                         </tr>
-                                       <tr><td></td><td></td>
+                                        <tr><td></td><td></td>
                                             <td>
                                                 <font color="red">*Pisahkan tiap fasilitas dengan tanda titik (.)</font>
                                             </td>
@@ -135,23 +135,17 @@
                                             <td></td>
                                             <td></td>
                                         </tr>
-                                    
-                                </form>
-                                    
-                                        <tr>
-                                        <form action="uploadfotogedung?id=${gedung.id}" enctype="multipart/form-data" method="POST">
-                                                <td>Foto</td>
-                                                <td>:</td>
-                                                <td><input type="file" name="foto"><input type="Submit" value="Upload"><td>
-                                            </form>
-                                                </tr>
-                                 </table>
+                                    </form>
+                                    <tr>
+                                    <form action="uploadfotogedung?id=${gedung.id}" enctype="multipart/form-data" method="POST">
+                                        <td>Foto</td>
+                                        <td>:</td>
+                                        <td><input type="file" name="foto"><input type="Submit" value="Upload"><td>
+                                    </form>
+                                    </tr>
+                                </table>
                             </div>
-
-
-
                         </div>
-
                     </div>
                     <div id="sidebar">
                         <ul>
@@ -180,11 +174,10 @@
                         </ul>
                     </div>
                 </div>
-            
                 <div id="footer">
                     <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
                 </div></div>
-           </div>
-            <!-- end #footer -->
+        </div>
+        <!-- end #footer -->
     </body>
 </html>

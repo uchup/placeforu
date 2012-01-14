@@ -5,8 +5,6 @@
 
 package servlet;
 
-import entity.User;
-import entity.DaftarUser;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

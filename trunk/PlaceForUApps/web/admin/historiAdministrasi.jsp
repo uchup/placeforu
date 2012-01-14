@@ -37,12 +37,12 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-			<li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
                         <li class="current_page_item"><a href="logout">Logout</a></li>
-		</ul>
+                    </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -53,9 +53,8 @@
                             <h2 class="title"><a href="#">Histori Sewa</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
-                            <div class="entry">
                                 <form method='post'>
-                                    <p> <h4><b>Histori Administrasi Sewa </b></h4></p>
+                                    <h4><b>Histori Administrasi Sewa </b></h4>
                                     <table>
                                         <tr>
                                             <td>ID Sewa</td>
@@ -65,45 +64,44 @@
                                             <td>Tgl Bayar</td>
                                             <td>Penyewa</td>
                                             <td>Pemilik</td>
-
                                             <td></td>
                                         </tr>
                                         <%Iterator itr2;%>
                                         <% List sewa_list2 = (List) request.getAttribute("admin");
-                                            for (itr2 = sewa_list2.iterator(); itr2.hasNext();) {
-                                                entity.Administrasi adm = (entity.Administrasi) itr2.next();
+                                                    for (itr2 = sewa_list2.iterator(); itr2.hasNext();) {
+                                                        entity.Administrasi adm = (entity.Administrasi) itr2.next();
                                         %>
                                         <tr>
                                             <td><%=adm.getIdSewa()%></td>
                                             <%
-                                                entity.Sewa sw = new Sewa();
-                                                entity.DaftarSewa ds = new DaftarSewa();
-                                                sw = ds.getSewaFromId(adm.getIdSewa());
+                                                                                                    entity.Sewa sw = new Sewa();
+                                                                                                    entity.DaftarSewa ds = new DaftarSewa();
+                                                                                                    sw = ds.getSewaFromId(adm.getIdSewa());
 
-                                                entity.Gedung g = new Gedung();
-                                                entity.DaftarGedung dg = new DaftarGedung();
-                                                g = dg.getGedung(sw.getIdGedung());
-                                                String namaGedung = g.getNamaGedung();
+                                                                                                    entity.Gedung g = new Gedung();
+                                                                                                    entity.DaftarGedung dg = new DaftarGedung();
+                                                                                                    g = dg.getGedung(sw.getIdGedung());
+                                                                                                    String namaGedung = g.getNamaGedung();
 
-                                                entity.User u = new User();
-                                                entity.DaftarUser du = new DaftarUser();
-                                                u = du.getUserFromId(sw.getIdPemilik());
-                                                String namaPemilik = u.getNama();
+                                                                                                    entity.User u = new User();
+                                                                                                    entity.DaftarUser du = new DaftarUser();
+                                                                                                    u = du.getUserFromId(sw.getIdPemilik());
+                                                                                                    String namaPemilik = u.getNama();
 
-                                                entity.User u2 = new User();
-                                                entity.DaftarUser du2 = new DaftarUser();
-                                                u2 = du.getUserFromId(sw.getIdPenyewa());
-                                                String namaPenyewa = u2.getNama();
+                                                                                                    entity.User u2 = new User();
+                                                                                                    entity.DaftarUser du2 = new DaftarUser();
+                                                                                                    u2 = du.getUserFromId(sw.getIdPenyewa());
+                                                                                                    String namaPenyewa = u2.getNama();
 
 
                                             %>
                                             <td><%out.println(namaGedung);%></td>
                                             <%
-                                                entity.SubGedung sg = new SubGedung();
-                                                entity.DaftarSubGedung dgs = new DaftarSubGedung();
+                                                                                                    entity.SubGedung sg = new SubGedung();
+                                                                                                    entity.DaftarSubGedung dgs = new DaftarSubGedung();
 
-                                                sg = dgs.getSubGedung(sw.getIdSubGedung());
-                                                String namaSubGedung = sg.getNama_sub_gedung();
+                                                                                                    sg = dgs.getSubGedung(sw.getIdSubGedung());
+                                                                                                    String namaSubGedung = sg.getNama_sub_gedung();
                                             %>
                                             <td><%out.println(namaSubGedung);%></td>
                                             <td><%=adm.getJumlahBayar()%></td>
@@ -130,22 +128,6 @@
                                     </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
-                            </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <%SubGedung sg = new SubGedung();%>
-
-                                        <tr>
-
-
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
                             </li>
                         </ul>
                     </div>

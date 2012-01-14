@@ -29,13 +29,13 @@
             </div>
             <div id="header">
                 <div id="menu">
-               <ul>
-                        <li class="current_page_item"><a href="EditPemilik">Manajemen Profil</a></li>
-			<li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                    <ul>
+                        <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
-			<li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
-			<li class="current_page_item"><a href="logout">Log Out</a></li>
-		</ul>
+                        <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
+                        <li class="current_page_item"><a href="logout">Log Out</a></li>
+                    </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -69,7 +69,7 @@
                                             <td>:</td>
 
                                             <td>
-                                               <input type="text" name="idSewa" value="${adm.idSewa}" readonly>
+                                                <input type="text" name="idSewa" value="${adm.idSewa}" readonly>
                                             </td>
                                         </tr>
                                         <tr>
@@ -77,14 +77,14 @@
                                             <td>:</td>
 
                                             <td>
-                                               ${akun.nama}
+                                                ${akun.nama}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Nama Gedung</td>
                                             <td>:</td>
                                             <td>
-                                               ${gedung.namaGedung}
+                                                ${gedung.namaGedung}
                                             </td>
                                         </tr>
                                         <tr>
@@ -92,14 +92,14 @@
                                             <td>:</td>
 
                                             <td>
-                                               ${subgedung.nama_sub_gedung}
+                                                ${subgedung.nama_sub_gedung}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Sisa Bayar <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                               <input type="text" name="sisa_bayar" value="${sewa.sisaBayar}" readonly> ${subgedung.satuan}
+                                                <input type="text" name="sisa_bayar" value="${sewa.sisaBayar}" readonly> ${subgedung.satuan}
                                             </td>
                                         </tr>
                                         <tr>
@@ -134,7 +134,6 @@
                                         <tr><td><input type="submit" value="Terima"><a href="HistoriAdministrasi"> Batalkan</a></td>
                                             <td></td>
                                             <td>
-
                                             </td></tr>
                                     </table>
                                 </form>
@@ -155,19 +154,6 @@
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
                             </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -182,11 +168,12 @@
                         </ul>
                     </div>
                 </div>
-                <div id="footer">
-                    <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
-                </div>
             </div>
-            <!-- end #footer -->
+            <div id="footer">
+                <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
+            </div>
+        </div>
+        <!-- end #footer -->
     </body>
 </html>
 

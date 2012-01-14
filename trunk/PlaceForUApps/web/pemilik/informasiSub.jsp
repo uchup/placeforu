@@ -28,7 +28,6 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">Home (Pemilik)</a></li>
                         <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
@@ -48,93 +47,93 @@
                             <div class="entry">
                                 <h1>${subgedung.nama_sub_gedung}</h1>
                                 <div class="page-big-image"><img src="sub/${subgedung.foto1}" alt="" id="page-big-image"></div>
-<div class="clear"></div><div class="page-info-table">
-                               
-                                <fieldset>
-                                    <form method='post'>
-                                        <table>
-                                            <tr>
-                                                <td>
-                                                    <fieldset>
-                                                        <legend><h4>Informasi Sub Gedung</h4></legend>
-                                                        <table>
-                                                            <tr>
-                                                                <td>Nama SubGedung </td>
-                                                                <td>:</td>
-                                                                <td>${subgedung.nama_sub_gedung}</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Tipe Sub Gedung</td>
-                                                                <td>:</td>
+                                <div class="clear"></div>
+                                <div class="page-info-table">
+                                    <fieldset>
+                                        <form method='post'>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <fieldset>
+                                                            <legend><h4>Informasi Sub Gedung</h4></legend>
+                                                            <table>
+                                                                <tr>
+                                                                    <td>Nama SubGedung </td>
+                                                                    <td>:</td>
+                                                                    <td>${subgedung.nama_sub_gedung}</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Tipe Sub Gedung</td>
+                                                                    <td>:</td>
 
-                                                                <td>
-                                                                    ${subgedung.tipe_sub_gedung}
-                                                                </td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-                                                            <tr><td>Harga Sewa /jam</td>
-                                                                <td>:</td>
-                                                                <td>${subgedung.harga}
+                                                                    <td>
+                                                                        ${subgedung.tipe_sub_gedung}
+                                                                    </td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr><td>Harga Sewa /jam</td>
+                                                                    <td>:</td>
+                                                                    <td>${subgedung.harga}
 
-                                                                    Satuan
-                                                                    :
-                                                                    ${subgedung.satuan}
-                                                                </td>
-                                                            </tr>
-                                                            <tr><td>Kapasitas</td>
-                                                                <td>:</td>
-                                                                <td>${subgedung.kapasitas} orang</td>
-                                                            </tr>
-                                                            <tr><td>Luas </td>
-                                                                <td>:</td>
-                                                                <td>${subgedung.luas} meter persegi</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    Fasilitas Sub Gedung
-                                                                </td>
-                                                                <td>:</td>
-                                                                <td>
-                                                                    ${subgedung.fasilitas_sub}
-                                                                </td>
-                                                            </tr>
-
-
-                                                            <tr>
-                                                                <td>
-                                                                    Deskripsi Sub Gedung
-                                                                </td>
-                                                                <td>:</td>
-                                                                <td>
-                                                                    ${subgedung.deskripsi_sub}
-                                                                </td>
-                                                            </tr>
-                                                            <tr><td>Status Sewa </td>
-                                                                <td>:</td>
-                                                                <td>
-                                                                    ${subgedung.status}
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr>
+                                                                        Satuan
+                                                                        :
+                                                                        ${subgedung.satuan}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td>Kapasitas</td>
+                                                                    <td>:</td>
+                                                                    <td>${subgedung.kapasitas} orang</td>
+                                                                </tr>
+                                                                <tr><td>Luas </td>
+                                                                    <td>:</td>
+                                                                    <td>${subgedung.luas} meter persegi</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Fasilitas Sub Gedung
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td>
+                                                                        ${subgedung.fasilitas_sub}
+                                                                    </td>
+                                                                </tr>
 
 
-                                                                <td><a href="EditSubGedung?idsub=${subgedung.id}">Edit</a></td>
-                                                            </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        Deskripsi Sub Gedung
+                                                                    </td>
+                                                                    <td>:</td>
+                                                                    <td>
+                                                                        ${subgedung.deskripsi_sub}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr><td>Status Sewa </td>
+                                                                    <td>:</td>
+                                                                    <td>
+                                                                        ${subgedung.status}
+                                                                    </td>
+                                                                </tr>
+
+                                                                <tr>
 
 
-                                                        </table>
+                                                                    <td><a href="EditSubGedung?idsub=${subgedung.id}">Edit</a></td>
+                                                                </tr>
 
-                                                    </fieldset>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </form>
-                                </fieldset>
-</div>
+
+                                                            </table>
+
+                                                        </fieldset>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </fieldset>
+                                </div>
                             </div>
                         </div>
                     </div>

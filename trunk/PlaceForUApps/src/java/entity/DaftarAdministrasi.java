@@ -17,11 +17,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
- * @author Ika
- *
  * Kelas ini berfungsi untuk mengelola fungsi yang dibutuhkan berkaitan dengan
  * modul Manajemen Administrasi, di mana fungsi tersebut dihubungkan dengan kelas entitas
  * Administrasi yang merepresentasikan tabel Administrasi dalam database
+ *
+ * @author Ika
  */
 public class DaftarAdministrasi {
 
@@ -35,9 +35,9 @@ public class DaftarAdministrasi {
     }
 
     /**
-     * @param administrasi Administrasi
-     *
      * method yang digunakan untuk menambah data administrasi
+     *
+     * @param administrasi Administrasi
      */
     public void addAdministrasi(Administrasi administrasi) {
         EntityManager em = null;
@@ -54,9 +54,9 @@ public class DaftarAdministrasi {
     }
 
     /**
-     * @param adm Administrasi
-     *
      * method yang digunakan untuk mengubah data administrasi
+     *
+     * @param adm Administrasi
      */
     public void editAdministrasi(Administrasi adm) {
         EntityManager em = getEntityManager();
@@ -72,11 +72,11 @@ public class DaftarAdministrasi {
     }
 
     /**
-     * @param idPemilik long
-     * @return daftarAdministrasi List<Administrasi>
-     *
      * method yang digunakan untuk mendapatkan daftar administrasi yang sudah di
      * konfirmasi.
+     *
+     * @param idPemilik long
+     * @return daftarAdministrasi List<Administrasi>
      */
     public List<Administrasi> getAdministrasi_Confirmed(long idPemilik) {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
@@ -94,11 +94,11 @@ public class DaftarAdministrasi {
     }
 
     /**
-     * @param idPemilik long
-     * @return daftarAdministrasi List<Administrasi>
-     *
      * method yang digunakan untuk mendapatkan daftar administrasi yang belum di
      * konfirmasi.
+     *
+     * @param idPemilik long
+     * @return daftarAdministrasi List<Administrasi>
      */
     public List<Administrasi> getAdministrasi_Unconfirmed(long idPemilik) {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
@@ -117,10 +117,10 @@ public class DaftarAdministrasi {
     }
 
     /**
-     * @return List<Administrasi>
-     *
      * method yang digunakan untuk mendapatkan seluruh data administrasi yang su
      * dah dikonfirmasi.
+     * 
+     * @return List<Administrasi>
      */
     public List<Administrasi> getAllAdm_Confirmed() {
         List<Administrasi> daftarAdministrasi = new ArrayList<Administrasi>();
@@ -128,8 +128,8 @@ public class DaftarAdministrasi {
         EntityManager em = getEntityManager();
         try {
             Query q = em.createQuery("SELECT object(o) FROM Administrasi AS o WHERE o.statusPembayaran=:statusPembayaran");
-            daftarAdministrasi = q.getResultList();
             q.setParameter("statusPembayaran", statusPembayaran);
+            daftarAdministrasi = q.getResultList();
         } finally {
             em.close();
         }
@@ -137,12 +137,12 @@ public class DaftarAdministrasi {
     }
 
     /**
-     * @param long id
-     * @return Administrasi
-     *
      * method yang digunakan untuk mendapatkan objek Administrasi agar user
      * mendapatkan detail suatu data administrasi berdasarkan id data
      * administrasi tersebut.
+     *
+     * @param id long
+     * @return Administrasi
      */
     public Administrasi getAdministrasi(long id) {
         Administrasi administrasi = null;

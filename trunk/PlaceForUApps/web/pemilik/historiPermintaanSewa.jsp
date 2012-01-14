@@ -34,7 +34,7 @@
                 <div id="menu">
                     <ul>
                         <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
@@ -51,8 +51,8 @@
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <form method='post'>
-                                    <p> <h4><b>Daftar Permintaan Sewa (Menunggu Konfirmasi) </b></h4></p>
+                                <form action=""  method='post'>
+                                    <h4><b>Daftar Permintaan Sewa (Menunggu Konfirmasi) </b></h4>
                                     <table>
                                         <tr>
                                             <td>ID Sewa</td>
@@ -93,7 +93,7 @@
                                         <%}%>
                                     </table>
                                     <br>
-                                    <p> <h4><b>Daftar Permintaan Sewa (Telah Disetujui) </b></h4></p>
+                                    <h4><b>Daftar Permintaan Sewa (Telah Disetujui) </b></h4>
                                     <table>
                                         <tr>
                                             <td>ID Sewa</td>
@@ -160,22 +160,6 @@
                                     </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
-                            </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <%SubGedung sg = new SubGedung();%>
-
-                                        <tr>
-
-
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
                             </li>
                         </ul>
                     </div>

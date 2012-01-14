@@ -93,8 +93,8 @@ public class DaftarGedungTest extends TestCase{
         String namaGedung = gedung1.getNamaGedung();
         long idPemilik = gedung1.getId();
         DaftarGedung instance = new DaftarGedung();
-        boolean expResult = dg.checkGedung(gedung1.getNamaGedung(), gedung1.getId());
-        boolean result = instance.checkGedung(namaGedung, idPemilik);
+        boolean expResult = dg.cekGedungPemilik(gedung1.getNamaGedung(), gedung1.getId());
+        boolean result = instance.cekGedungPemilik(namaGedung, idPemilik);
 
         assertEquals(expResult, result);
     }

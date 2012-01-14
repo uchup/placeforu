@@ -29,7 +29,7 @@
                 <div id="menu">
                     <ul>
                         <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
@@ -46,152 +46,122 @@
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
                                 <fieldset>
-                                                        <legend><h4>Informasi Sub Gedung</h4></legend>
-
-                                <form method='post'  action='EditSubGedung'>
-                                    <table>
-
-                                        <tr>
-                                        <input type="hidden" name="id_sub_gedung" value='${subgedung.id}'>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Nama SubGedung <font color="red">*</font></td>
-                                            <td>:</td>
-                                            <td><input type="text" name="nama_sub_gedung" value="${subgedung.nama_sub_gedung}"></td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Tipe Sub Gedung <font color="red">*</font></td>
-                                            <td>:</td>
-                                            <td>
-                                               <select name="tipe_sub_gedung">
-                                                    <option value="">Pilih tipe gedung</option>
-                                                    <option value="Outdoor">Outdoor</option>
-                                                    <option value="Indoor">Indoor</option>
-                                                    <option value="Outdoor&Indoor">Outdoor&Indoor</option>
-                                                </select>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr><td>Harga Sewa /jam<font color="red">*</font></td>
-                                            <td>:</td>
-                                            <td><input type="text" name="harga" value="${subgedung.harga}">
-
-                                            Satuan
-                                            :
-
-                                                <select name="satuan">
-                                                    <option value="IDR">IDR</option>
-                                                    <option value="USD">USD</option>
-                                                    <option value="EURO">EURO</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr><td>Kapasitas</td>
-                                            <td>:</td>
-                                            <td><input type="text" name="kapasitas" value="${subgedung.kapasitas}">
-
-                                             orang</td>
-                                        </tr>
-                                        <tr><td>Luas </td>
-                                            <td>:</td>
-                                            <td><input type="text" name="luas" value="${subgedung.luas}">
-
-                                            meter persegi</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                Fasilitas Sub Gedung<font color="red">*</font>
-                                            </td>
-                                            <td>:</td>
-                                            <td>
-                                                <textarea name="fasilitas_sub" value="${subgedung.nama_sub_gedung}">${subgedung.fasilitas_sub}</textarea>
-                                            </td>
-                                        </tr>
-                                        <tr><td></td><td></td>
-                                            <td>
-                                                <font color="red">*Pisahkan tiap fasilitas dengan tanda titik (.)</font>
-                                            </td>
-                                        </tr>
-
-                                         <tr>
-                                            <td>
-                                                Deskripsi Sub Gedung<font color="red">*</font>
-                                            </td>
-                                            <td>:</td>
-                                            <td>
-                                                <textarea name="deskripsi_sub" value="${subgedung.deskripsi_sub}">${subgedung.deskripsi_sub}</textarea>
-                                            </td>
-                                        </tr>
-                                        <tr><td>Status Sewa <font color="red">*</font></td>
-                                            <td>:</td>
-                                            <td>
-                                                <select name="status">
-                                                    <option value="">    </option>
-                                                    <option value="Tersedia">Tersedia</option>
-                                                    <option value="Telah Disewa">Telah Disewa</option>
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr><td><input type="submit" name="tambah" value="Simpan"><input type="reset" value="Reset"></td>
-                                            <td></td>
-                                            <td>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </form>
-                                            </fieldset>
-
-                                <tr>
+                                    <legend><h4>Informasi Sub Gedung</h4></legend>
+                                    <form method='post'  action='EditSubGedung'>
+                                        <table>
+                                            <tr>
+                                            <input type="hidden" name="id_sub_gedung" value='${subgedung.id}'>
+                                            </tr>
+                                            <tr>
+                                                <td>Nama SubGedung <font color="red">*</font></td>
+                                                <td>:</td>
+                                                <td><input type="text" name="nama_sub_gedung" value="${subgedung.nama_sub_gedung}"></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tipe Sub Gedung <font color="red">*</font></td>
+                                                <td>:</td>
                                                 <td>
-                                                    <fieldset>
-                                                        <legend><h4>Upload Gambar Sub Gedung</h4></legend>
-                                                        <table>
-                                                             <form action="uploadfotosub?idsub=${subgedung.id}" enctype="multipart/form-data" method="POST">
-                                                            <tr>
-                        <td>Gambar 1</td>
-                        <td>:</td>
-                        <td><input type="file" name="foto"></td>
-                    </tr>
+                                                    <select name="tipe_sub_gedung">
+                                                        <option value="">Pilih tipe gedung</option>
+                                                        <option value="Outdoor">Outdoor</option>
+                                                        <option value="Indoor">Indoor</option>
+                                                        <option value="Outdoor&Indoor">Outdoor&Indoor</option>
+                                                    </select>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr><td>Harga Sewa /jam<font color="red">*</font></td>
+                                                <td>:</td>
+                                                <td><input type="text" name="harga" value="${subgedung.harga}">
+                                                    Satuan
+                                                    :
+                                                    <select name="satuan">
+                                                        <option value="IDR">IDR</option>
+                                                        <option value="USD">USD</option>
+                                                        <option value="EURO">EURO</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr><td>Kapasitas</td>
+                                                <td>:</td>
+                                                <td><input type="text" name="kapasitas" value="${subgedung.kapasitas}">
 
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td><input type="submit" name="Submit" value="Upload"></td>
-                    </tr>
-                                                             </form>
-
-                     <tr>
-
-
-
-                    </tr>
-
-
-
-                    </table>
-
-                    </fieldset>
-                    </td>
-        </tr>
-
-
-
-
-
-
-
-
-
-
-
-
+                                                    orang</td>
+                                            </tr>
+                                            <tr><td>Luas </td>
+                                                <td>:</td>
+                                                <td><input type="text" name="luas" value="${subgedung.luas}">
+                                                    meter persegi</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Fasilitas Sub Gedung<font color="red">*</font>
+                                                </td>
+                                                <td>:</td>
+                                                <td>
+                                                    <textarea name="fasilitas_sub" value="${subgedung.nama_sub_gedung}">${subgedung.fasilitas_sub}</textarea>
+                                                </td>
+                                            </tr>
+                                            <tr><td></td><td></td>
+                                                <td>
+                                                    <font color="red">*Pisahkan tiap fasilitas dengan tanda titik (.)</font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Deskripsi Sub Gedung<font color="red">*</font>
+                                                </td>
+                                                <td>:</td>
+                                                <td>
+                                                    <textarea name="deskripsi_sub" value="${subgedung.deskripsi_sub}">${subgedung.deskripsi_sub}</textarea>
+                                                </td>
+                                            </tr>
+                                            <tr><td>Status Sewa <font color="red">*</font></td>
+                                                <td>:</td>
+                                                <td>
+                                                    <select name="status">
+                                                        <option value="">    </option>
+                                                        <option value="Tersedia">Tersedia</option>
+                                                        <option value="Telah Disewa">Telah Disewa</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr><td><input type="submit" name="tambah" value="Simpan"><input type="reset" value="Reset"></td>
+                                                <td></td>
+                                                <td>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </fieldset>
+                                <tr>
+                                    <td>
+                                        <fieldset>
+                                            <legend><h4>Upload Gambar Sub Gedung</h4></legend>
+                                            <table>
+                                                <form action="uploadfotosub?idsub=${subgedung.id}" enctype="multipart/form-data" method="POST">
+                                                    <tr>
+                                                        <td>Gambar 1</td>
+                                                        <td>:</td>
+                                                        <td><input type="file" name="foto"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td><input type="submit" name="Submit" value="Upload"></td>
+                                                    </tr>
+                                                </form>
+                                                <tr>
+                                                </tr>
+                                            </table>
+                                        </fieldset>
+                                    </td>
+                                </tr>
                             </div>
                         </div>
-
                     </div>
                     <div id="sidebar">
                         <ul>
@@ -206,19 +176,6 @@
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
                             </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            <td><a href="TambahSubGedung">Tambah Sub Gedung</a></td>
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -231,13 +188,14 @@
                             <li><a href="#">Aenean elementum facilisis ligula</a></li>
                             <li><a href="#">Ut tincidunt elit vitae augue</a></li>
                         </ul>
-                    </div></div>
-                </div>
-                <div id="footer">
-                    <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
+                    </div>
                 </div>
             </div>
-            <!-- end #footer -->
+            <div id="footer">
+                <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
+            </div>
+        </div>
+        <!-- end #footer -->
     </body>
 </html>
 

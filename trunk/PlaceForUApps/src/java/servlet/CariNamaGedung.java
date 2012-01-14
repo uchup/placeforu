@@ -5,26 +5,24 @@
 package servlet;
 
 import entity.DaftarGedung;
-import entity.DaftarSubGedung;
 import entity.Gedung;
-import entity.SubGedung;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Widiasa
  */
-public class DetailSubGedung extends HttpServlet {
+public class CariNamaGedung extends HttpServlet {
 
-    /**
+    /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
      * @param response servlet response
@@ -33,29 +31,36 @@ public class DetailSubGedung extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        RequestDispatcher dis = null;
-        HttpSession session = request.getSession();
         DaftarGedung dg = new DaftarGedung();
-        Gedung g = new Gedung();
-        DaftarSubGedung dsg = new DaftarSubGedung();
-        SubGedung sg = new SubGedung();
-
-
-        //mengambil parameter yang sudah dikirim dari halaman daftarPengguna.jsp
-        if (dsg.cekSubGedung()) {
-            Long idSubGedung = Long.valueOf(request.getParameter("id"));
-            sg = dsg.getSubGedung(idSubGedung);
-            request.setAttribute("subgedung", sg);
+        Gedung gd = new Gedung();
+        RequestDispatcher dis = null;
+        List<Gedung> listGedung = new ArrayList<Gedung>();
+        try {
+            String namaGedung = request.getParameter("namagedung");
+            String kategoriGedung = request.getParameter("kategorigedung");
+            if (kategoriGedung.equals("")) {
+                listGedung = dg.searchDaftarGedungFromNama(namaGedung);
+                
+            } else if (namaGedung.equals("")) {
+                listGedung = dg.searchDaftarGedungFromKategori(kategoriGedung);
+            }
+            else if(!kategoriGedung.equals("")&&!namaGedung.equals("")){
+                listGedung = dg.searchDaftarGedungFromNamaDanKategori(namaGedung, kategoriGedung);
+            }else{
+                response.sendRedirect("../PlaceForUApps_28Nov/");
+            }
+            request.setAttribute("hasilcari", listGedung);
+            dis = request.getRequestDispatcher("listcarigedung.jsp");
+            dis.include(request, response);
+        } finally {
+            out.close();
         }
-        dis = request.getRequestDispatcher("detailSub.jsp");
-        dis.include(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
+    /** 
      * Handles the HTTP <code>GET</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -66,10 +71,9 @@ public class DetailSubGedung extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
     }
 
-    /**
+    /** 
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
      * @param response servlet response
@@ -82,7 +86,7 @@ public class DetailSubGedung extends HttpServlet {
         processRequest(request, response);
     }
 
-    /**
+    /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
      */

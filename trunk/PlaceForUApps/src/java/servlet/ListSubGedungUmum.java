@@ -6,10 +6,8 @@ package servlet;
 
 import entity.DaftarGedung;
 import entity.DaftarSubGedung;
-import entity.DaftarUser;
 import entity.Gedung;
 import entity.SubGedung;
-import entity.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;

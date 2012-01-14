@@ -28,9 +28,8 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="pemilik">Home (Pemilik)</a></li>
-                        <li class="current_page_item"><a href="pemilik/profil">Manajemen Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
@@ -42,13 +41,12 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Halaman Administrator</a></h2>
+                            <h2 class="title"><a href="#">Entri Informasi SubGedung</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
                                 <form method='post'  action='TambahSubGedung'>
                                     <table>
-
                                         <tr>
                                         <input type="hidden" name="id_gedung" value='${gedung.id}'>
                                         </tr>
@@ -76,10 +74,8 @@
                                         <tr><td>Harga Sewa /hari<font color="red">*</font></td>
                                             <td>:</td>
                                             <td><input type="text" name="harga">
-
                                                 Satuan
                                                 :
-
                                                 <select name="satuan">
                                                     <option value="IDR">IDR</option>
                                                     <option value="USD">USD</option>
@@ -140,55 +136,8 @@
                                         </tr>
                                     </table>
                                 </form>
-
-                                <tr>
-                                    <td>
-                                        <fieldset>
-                                            <legend><h4>Upload Gambar Sub Gedung</h4></legend>
-                                            <table>
-                                                <form action="../uploadfoto" enctype="multipart/form-data" method="POST">
-                                                    <tr>
-                                                        <td>Gambar 1</td>
-                                                        <td>:</td>
-                                                        <td><input type="file" name="foto"></td>
-                                                        <td><input type="Submit" value="Upload"><td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Gambar 2</td>
-                                                        <td>:</td>
-                                                        <td><input type="file" name="foto"></td>
-                                                        <td><input type="Submit" value="Upload"><td>
-                                                    </tr>
-                                                </form>
-
-                                                <tr>
-
-
-
-                                                </tr>
-
-
-
-                                            </table>
-
-                                        </fieldset>
-                                    </td>
-                                </tr>
-
-
-
-
-
-
-
-
-
-
-
-
                             </div>
                         </div>
-
                     </div>
                     <div id="sidebar">
                         <ul>

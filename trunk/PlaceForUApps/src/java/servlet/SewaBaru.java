@@ -56,7 +56,7 @@ public class SewaBaru extends HttpServlet {
         String page = null;
         String message = null;
 
-        //getting parameter from input
+        //mengambil nilai masukan dari form pada sewaBaru.jsp
         Long idGedung = Long.parseLong(request.getParameter("idGedung"));
         Long idSubGedung = Long.parseLong(request.getParameter("idSubGedung"));
         Long idPemilik = Long.parseLong(request.getParameter("idPemilik"));
@@ -80,7 +80,7 @@ public class SewaBaru extends HttpServlet {
 
 
         try {
-            //first if --> Jika ada field bertanda bintang yang kosong (tidak diisi)
+            //Jika ada field bertanda bintang yang kosong (tidak diisi)
             if (tg_mulai.equals("") || bl_mulai.equals("") || th_mulai.equals("")
                     || tg_sampai.equals("") || bl_sampai.equals("") || th_sampai.equals("")) {
                 RequestDispatcher requestDispatcher =
@@ -88,7 +88,7 @@ public class SewaBaru extends HttpServlet {
                 message = "Data tidak lengkap, isi semua field dengan tanda (*) ";
                 request.setAttribute("message", message);
                 requestDispatcher.forward(request, response);
-            }//end of first if
+            }
             else {
                 Calendar c1 = Calendar.getInstance();
                 Calendar c2 = Calendar.getInstance();
@@ -97,6 +97,7 @@ public class SewaBaru extends HttpServlet {
                 c2.set(Integer.parseInt(th_sampai), Integer.parseInt(bl_sampai), Integer.parseInt(tg_sampai));
 
                 //Membandingkan 2 inputan pada Field waktu mulai penyewaan dengan waktu akhir penyewaan
+                //Jika masukan tanggal pada field akhir sebelum tanggal sewa
                 if (c2.before(c1)) {
                     RequestDispatcher requestDispatcher =
                             request.getRequestDispatcher("/error_page.jsp");
@@ -116,7 +117,7 @@ public class SewaBaru extends HttpServlet {
 
                     //Jika status sub gedung : tersedia
                     } else {
-                        //adding sewa to database Sewa
+                        //memasukkan parameter pada tiap method di entitas user
                         sewa.setIdGedung(idGedung);
                         sewa.setIdSubGedung(idSubGedung);
                         sewa.setIdPenyewa(idPenyewa);
@@ -125,16 +126,19 @@ public class SewaBaru extends HttpServlet {
                         sewa.setSampai(tgl_sampai);
                         sewa.setStatus(0);
 
-                        //calculate price amount
+                        //menghitung total harga sewa
                         long milliseconds1 = c1.getTimeInMillis();
                         long milliseconds2 = c2.getTimeInMillis();
                         long diff = milliseconds2 - milliseconds1;
                         int diffDays = (int) (diff / (24 * 60 * 60 * 1000));
-                        int totalHarga = harga * diffDays;
+                        int totalHarga = harga * diffDays; //total harga adalah hasil kali antara harga sub gedung dengan jumlah hari sewa
                         sewa.setDurasi(diffDays);
                         sewa.setTotalHargaSewa(totalHarga);
+
+                        //memasukkan sisa bayar secara default sama dengan total harga
                         sewa.setSisaBayar(totalHarga);
 
+                        //menambahkan sewa ke dalam DaftarSewa
                         daftarSewa.addSewa(sewa);
                         RequestDispatcher requestDispatcher =
                                 request.getRequestDispatcher("/successSaving.jsp");
@@ -146,8 +150,8 @@ public class SewaBaru extends HttpServlet {
                     }
                 }
 
-            }//end of first else
-        }//end of try
+            }
+        }
         catch (Exception e) {
             e.printStackTrace();
         }
@@ -174,6 +178,7 @@ public class SewaBaru extends HttpServlet {
         DaftarGedung dg = new DaftarGedung();
         DaftarUser du = new DaftarUser();
         User u = new User();
+
 
         String username = (String) session.getAttribute("sessionusername");
         u = du.getUserFromName(username);
