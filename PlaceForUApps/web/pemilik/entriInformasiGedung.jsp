@@ -28,8 +28,8 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                       <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
@@ -58,7 +58,7 @@
                                             <td>Tipe Gedung<font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                               <select name="tipe_gedung">
+                                                <select name="tipe_gedung">
                                                     <option value="">Pilih tipe gedung</option>
                                                     <option value="Outdoor">Outdoor</option>
                                                     <option value="Indoor">Indoor</option>
@@ -87,7 +87,7 @@
                                             <td>Alamat Gedung <font color="red">*</font></td>
                                             <td>:</td>
                                             <td>
-                                               <input name="alamat_gedung" type="text">
+                                                <input name="alamat_gedung" type="text">
                                             </td>
                                         <tr><td>Kota</td><td>:</td>
                                             <td>
@@ -96,7 +96,7 @@
                                         </tr>
                                         <tr><td>Propinsi</td><td>:</td>
                                             <td>
-                                                    <select name="propinsi_gedung">
+                                                <select name="propinsi_gedung">
                                                     <option value="" selected>Propinsi</option>
                                                     <option value="Jawa Barat">Jawa Barat</option>
                                                     <option value="Jawa Timur">Jawa Timur</option>
@@ -127,7 +127,7 @@
                                                 <font color="red">*Pisahkan tiap fasilitas dengan tanda titik (.)</font>
                                             </td>
                                         </tr>
-                                        
+
                                         <tr><td>Email</td>
                                             <td>:</td>
                                             <td><input type="text" name="email_gedung">
@@ -162,19 +162,6 @@
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
                             </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -192,8 +179,8 @@
                 <div id="footer">
                     <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
                 </div></div>
-            </div>
-            <!-- end #footer -->
+        </div>
+        <!-- end #footer -->
     </body>
 </html>
 

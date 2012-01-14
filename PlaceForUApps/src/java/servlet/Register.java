@@ -72,7 +72,7 @@ public class Register extends HttpServlet {
                 user.setPassword(pass);
                 user.setStatus(status);
                 daftar.addUser(user);
-                   response.sendRedirect("../PlaceForUApps_28Nov");
+                response.sendRedirect("../PlaceForUApps_28Nov");
             } else {
                    //out.println("Username telah terdaftar");
                 message ="Username telah terdaftar, ulangi lagi ";

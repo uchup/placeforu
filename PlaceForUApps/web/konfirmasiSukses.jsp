@@ -15,7 +15,7 @@
         <meta name="description" content="" />
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>PlaceForU - Cara Cepat Sewa Tempat dengan Cepat</title>
-        <link href="../css/style.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="screen" />
     </head>
     <body>
         <div id="wrapper">
@@ -34,8 +34,8 @@
                                         <td><font color="blue"><%=  request.getAttribute("message")%></font></td>
                                     </tr>
                                     <tr>
-                                        <td><a href="konfirm">Konfirmasi Registrasi Lainnya</a> ||
-                                            <a href="daftarpengguna">Ke Daftar Pengguna</a></td>
+                                        <td><a href="KonfirmasiRegistrasi">Konfirmasi Registrasi Lainnya</a> ||
+                                            <a href="DaftarPengguna">Ke Daftar Pengguna</a></td>
                                     </tr>
                                 </table>
                             </div>

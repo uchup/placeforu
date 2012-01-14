@@ -18,6 +18,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
+ * Kelas ini berfungsi untuk mengelola fungsi yang dibutuhkan berkaitan dengan
+ * modul Manajemen Penyewaan, di mana fungsi tersebut dihubungkan dengan kelas entitas
+ * Sewa yang merepresentasikan tabel Sewa dalam database
  *
  * @author Ika
  */
@@ -32,7 +35,11 @@ public class DaftarSewa {
         return emf.createEntityManager();
     }
 
-    //add new Sewa
+    /**
+     * method yang digunakan untuk memasukkan data penyewaan baru
+     *
+     * @param sewa Sewa
+     */
     public void addSewa(Sewa sewa) {
         EntityManager em = null;
         try {
@@ -46,23 +53,15 @@ public class DaftarSewa {
             }
         }
     }
-    //display list of Sewa by idSubGedung
 
-    public Sewa getSewaforIdSub(long idSubGedung) {
-        Sewa sewa = null;
-        EntityManager em = getEntityManager();
-        try {
-            Query q = em.createQuery("SELECT object(o) FROM Sewa AS o WHERE o.idSubgedung=:idSubGedung AND o.sampai=:(SELECT MAX(sampai) FROM Sewa)");
-            q.setParameter("idSubGedung", idSubGedung);
-            sewa = (Sewa) q.getSingleResult();
-
-        } finally {
-            em.close();
-        }
-        return sewa;
-    }
-
-    //getting sewa by its id
+    /**
+     * method yang digunakan untuk mendapatkan objek Sewa agar user
+     * mendapatkan detail suatu data penyewaan berdasarkan idSewa dari data
+     * penyewaan tersebut.
+     *
+     * @param  idSewa long
+     * @return Sewa
+     */
     public Sewa getSewaFromId(long idSewa) {
         Sewa sewa = null;
         EntityManager em = getEntityManager();
@@ -78,22 +77,12 @@ public class DaftarSewa {
         return sewa;
     }
 
-    public List<Sewa> getSewa(long idSewa) {
-        List<Sewa> daftarSewa = new ArrayList<Sewa>();
-
-        EntityManager em = getEntityManager();
-        try {
-            Query q = em.createQuery("SELECT object(o) FROM Sewa AS o WHERE o.idSewa=:idSewa");
-            q.setParameter("idSewa", idSewa);
-
-            daftarSewa = q.getResultList();
-
-        } finally {
-            em.close();
-        }
-        return daftarSewa;
-    }
-
+    /**
+     * method yang digunakan untuk mendapatkan daftar penyewaan yang belum di
+     * konfirmasi berdasarkan id penyewa.@param idPenyewa long
+     *
+     * @return daftarSewa List<Sewa>
+     */
     public List<Sewa> getDaftarSewaPenyewa_Unconfirmed(long idPenyewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int status = 0;
@@ -110,6 +99,13 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
+    /**
+     * method yang digunakan untuk mendapatkan daftar penyewaan yang sudah di
+     * konfirmasi berdasarkan id penyewa.
+     * 
+     * @param idPenyewa long
+     * @return daftarSewa List<Sewa>
+     */
     public List<Sewa> getDaftarSewaPenyewa_Confirmed(long idPenyewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int stat = 1;
@@ -126,6 +122,13 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
+    /**
+     * method yang digunakan untuk mendapatkan daftar penyewaan yang
+     * belum lunas dibayar berdasarkan id penyewa.
+     *
+     * @param idPenyewa long
+     * @return daftarSewa List<Sewa>
+     */
     public List<Sewa> getUtangPenyewa(long idPenyewa) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int sisaBayar = 1;
@@ -142,6 +145,13 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
+    /**
+     * method yang digunakan untuk mendapatkan daftar penyewaan yang belum di
+     * konfirmasi berdasarkan id pemilik.
+     *
+     * @param idPemilik long
+     * @return daftarSewa List<Sewa>
+     */
     public List<Sewa> getDaftarSewaPemilik_Unconfirmed(long idPemilik) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int status = 0;
@@ -158,6 +168,13 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
+    /**
+     * method yang digunakan untuk mendapatkan daftar penyewaan yang sudah di
+     * konfirmasi berdasarkan id pemilik.
+     *
+     * @param idPemilik long
+     * @return daftarSewa List<Sewa>
+     */
     public List<Sewa> getDaftarSewaPemilik_Confirmed(long idPemilik) {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int stat = 1;
@@ -174,7 +191,12 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-    //getting list of "sewa" that already confirmed
+    /**
+     * method yang digunakan untuk mendapatkan daftar penyewaan yang sudah di
+     * konfirmasi
+     *
+     * @return daftarSewa List<Sewa>
+     */
     public List<Sewa> getAllSewa_Confirmed() {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int stat = 1;
@@ -190,7 +212,12 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
-    //getting list of "sewa" that still waiting for confirmation
+    /**
+     * method yang digunakan untuk mendapatkan daftar penyewaan yang belum di
+     * konfirmasi
+     *
+     * @return daftarSewa List<Sewa>
+     */
     public List<Sewa> getAllSewa_Unconfirmed() {
         List<Sewa> daftarSewa = new ArrayList<Sewa>();
         int status = 0;
@@ -206,6 +233,12 @@ public class DaftarSewa {
         return daftarSewa;
     }
 
+    /**
+     * method yang digunakan untuk memberi konfirmasi pada penyewaan yang belum
+     * dikonfirmasi
+     *
+     * @param sewa Sewa
+     */
     public void konfirmSewa(Sewa sewa) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -219,7 +252,12 @@ public class DaftarSewa {
         }
     }
 
-    //canceling sewa
+    /**
+     * method yang digunakan untuk membatalkan penyewaan
+     *
+     * @param id Long
+     * @throws NonexistentEntityException
+     */
     public void cancelSewa(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -241,6 +279,12 @@ public class DaftarSewa {
         }
     }
 
+    /**
+     * method yang digunakan untuk menghapus penyewaan
+     *
+     * @param id Long
+     * @throws NonexistentEntityException
+     */
     public void removeSewa(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
@@ -262,6 +306,11 @@ public class DaftarSewa {
         }
     }
 
+    /**
+     * method yang digunakan untuk mengubah penyewaan
+     *
+     * @param sewa Sewa
+     */
     public void editSewa(Sewa sewa) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();

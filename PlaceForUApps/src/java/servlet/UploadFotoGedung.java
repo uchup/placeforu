@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarGedung;
@@ -41,87 +40,90 @@ public class UploadFotoGedung extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-
     // bisa diganti sesuai spesifikasi
     private static final String TMP_DIR_PATH = "D:\\Project\\cekoutbaru\\PlaceForUApps\\tmp";
     private File tmpDir;
     // bisa diganti sesuai spesifikasi
-    private static final String DESTINATION_DIR_PATH ="/gedung";
+    private static final String DESTINATION_DIR_PATH = "/gedung";
     private File destinationDir;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         tmpDir = new File(TMP_DIR_PATH);
-        if(!tmpDir.isDirectory()) {
+        if (!tmpDir.isDirectory()) {
             throw new ServletException(TMP_DIR_PATH + " is not a directory");
         }
         String realPath = getServletContext().getRealPath(DESTINATION_DIR_PATH);
         destinationDir = new File(realPath);
-        if(!destinationDir.isDirectory()) {
-            throw new ServletException(DESTINATION_DIR_PATH+" is not a directory");
+        if (!destinationDir.isDirectory()) {
+            throw new ServletException(DESTINATION_DIR_PATH + " is not a directory");
         }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-	response.setContentType("text/plain");
+        response.setContentType("text/plain");
         Gedung gedung = new Gedung();
         DaftarGedung dg = new DaftarGedung();
         HttpSession session = request.getSession();
         String message = null;
 
-        Long id = Long.valueOf(request.getParameter("id")) ;
+        Long id = Long.valueOf(request.getParameter("id"));
         gedung = dg.getGedung(id);
 
-	DiskFileItemFactory  fileItemFactory = new DiskFileItemFactory ();
+        DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
+        /*
+         *Set the size threshold, above which content will be stored on disk.
+         */
+        fileItemFactory.setSizeThreshold(1 * 1024 * 1024); //1 MB
 		/*
-		 *Set the size threshold, above which content will be stored on disk.
-		 */
-		fileItemFactory.setSizeThreshold(1*1024*1024); //1 MB
-		/*
-		 * Set the temporary directory to store the uploaded files of size above threshold.
-		 */
-		fileItemFactory.setRepository(tmpDir);
+         * Set the temporary directory to store the uploaded files of size above threshold.
+         */
+        fileItemFactory.setRepository(tmpDir);
 
-	ServletFileUpload uploadHandler = new ServletFileUpload(fileItemFactory);
+        ServletFileUpload uploadHandler = new ServletFileUpload(fileItemFactory);
 
         try {
-			/*
-			 * Parse the request
-			 */
-			List items = uploadHandler.parseRequest(request);
-			Iterator itr = items.iterator();
-			while(itr.hasNext()) {
-				FileItem item = (FileItem) itr.next();
-				/*
-				 * Handle Form Fields.
-				 */
-				if(item.isFormField()) {
-					out.println("File Name = "+item.getFieldName()+", Value = "+item.getString());
-				} else {
-					//Handle Uploaded files.
-                                        gedung.setFotoUtamaGedung(item.getName());
+            /*
+             * Parse the request
+             */
+            List items = uploadHandler.parseRequest(request);
+            Iterator itr = items.iterator();
+            while (itr.hasNext()) {
+                FileItem item = (FileItem) itr.next();
+                /*
+                 * Handle Form Fields.
+                 */
+                if (item.isFormField()) {
+                    out.println("File Name = " + item.getFieldName() + ", Value = " + item.getString());
+                } else {
+                    //Handle Uploaded files.
+                    gedung.setFotoUtamaGedung(item.getName());
 //					out.println("Field Name = "+item.getFieldName()+
 //						", File Name = "+item.getName()+
 //						", Content type = "+item.getContentType()+
 //						", File Size = "+item.getSize());
 					/*
-					 * Write file to the ultimate location.
-					 */
-					File file = new File(destinationDir,item.getName());
-					item.write(file);
-                                        dg.editGedung(gedung);
+                     * Write file to the ultimate location.
+                     */
+                    File file = new File(destinationDir, item.getName());
+                    item.write(file);
+                    dg.editGedung(gedung);
+                    message = "Foto gedung berhasil disimpan.";
+                    String page = "/EditGedung?id" + id;
+                    request.setAttribute("page", page);
+                    request.setAttribute("message", message);
+                    RequestDispatcher rd = request.getRequestDispatcher("/successSaving.jsp");
+                    rd.forward(request, response);
+                    // response.sendRedirect("../PlaceForUApps_28Nov/EditGedung?id=" + id);
+                }
+                out.close();
+            }
+        } catch (FileUploadException ex) {
+            log("Error encountered while parsing the request", ex);
+        } catch (Exception ex) {
+            log("Error encountered while uploading file", ex);
+        }
 
-                                        response.sendRedirect("../PlaceForUApps_28Nov/EditGedung?id="+id+"");
-				}
-				out.close();
-			}
-		}catch(FileUploadException ex) {
-			log("Error encountered while parsing the request",ex);
-		} catch(Exception ex) {
-			log("Error encountered while uploading file",ex);
-		}
-
-	}
-
+    }
 }

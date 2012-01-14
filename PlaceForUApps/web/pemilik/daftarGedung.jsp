@@ -29,7 +29,7 @@
                 <div id="menu">
                     <ul>
                         <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
@@ -56,8 +56,8 @@
                                         </tr>
                                         <%Iterator itr;%>
                                         <% List gedung_list = (List) request.getAttribute("pemilik");
-                                            for (itr = gedung_list.iterator(); itr.hasNext();) {
-                                                entity.Gedung gedung = (entity.Gedung) itr.next();
+                                                    for (itr = gedung_list.iterator(); itr.hasNext();) {
+                                                        entity.Gedung gedung = (entity.Gedung) itr.next();
                                         %>
                                         <tr>
                                         <input type="hidden" name="id_gedung" value="<%=gedung.getId()%>">
@@ -66,77 +66,76 @@
                                         <td>${akun.nama}</td>
                                         <td><a href="ListSubGedung?id=<%=gedung.getId()%>">>>Lihat List Subgedung</a>
                                             <br>
-                                        <a href="TambahSubGedung?id=<%=gedung.getId()%>">>>Tambah Sub Gedung</a>
+                                            <a href="TambahSubGedung?id=<%=gedung.getId()%>">>>Tambah Sub Gedung</a>
                                         </td>
                                         <td><a href="EditGedung?id=<%=gedung.getId()%>">Ubah</a> /<a href="DetailGedungPemilik?id=<%=gedung.getId()%>">Detail </a>/ <a href="HapusGedung?gedungid=<%=gedung.getId()%>">Hapus</a></td>
-                                                    </tr>
-                                                    <%}%>
-                                                    </table>
-                                                    </form>
-                                                    </div>
-                                                    </div>
+                                        </tr>
+                                        <%}%>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
 
-                                                    </div>
-                                                    <div id="sidebar">
-                                                        <ul>
-                                                            <li>
-                                                                <div id="search" >
-                                                                    <form method="get" action="#">
-                                                                        <div>
-                                                                            <input type="text" name="s" id="search-text" value="" />
-                                                                            <input type="submit" id="search-submit" value="GO" />
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                                <div style="clear: both;">&nbsp;</div>
-                                                            </li>
-                                                            <li>
-                                                                <h2> </h2>
+                    </div>
+                    <div id="sidebar">
+                        <ul>
+                            <li>
+                                <div id="search" >
+                                    <form method="get" action="#">
+                                        <div>
+                                            <input type="text" name="s" id="search-text" value="" />
+                                            <input type="submit" id="search-submit" value="GO" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div style="clear: both;">&nbsp;</div>
+                            </li>
+                            <li>
+                                <h2> </h2>
+                                <fieldset>
+                                    <table>
+                                        <tr>
+                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
+                                        </tr>
 
-                                                                <fieldset>
-                                                                    <table>
-                                                                        <tr>
-                                                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
-                                                                        </tr>
+                                    </table>
+                                </fieldset>
 
-                                                                    </table>
-                                                                </fieldset>
-
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    </div>
-                                                    </div>
-                                                    <div id="footer-bg">
-                                                        <div id="footer-content">
-                                                            <div id="col1">
-                                                                <ul class="style1">
-                                                                    <li><a href="#">Etiam malesuada rutrum enim</a></li>
-                                                                    <li><a href="#">Aenean elementum facilisis ligula</a></li>
-                                                                    <li><a href="#">Ut tincidunt elit vitae augue</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div id="col2">
-                                                                <ul class="style1">
-                                                                    <li><a href="#">Etiam malesuada rutrum enim</a></li>
-                                                                    <li><a href="#">Aenean elementum facilisis ligula</a></li>
-                                                                    <li><a href="#">Ut tincidunt elit vitae augue</a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div id="col3">
-                                                                <ul class="style1">
-                                                                    <li><a href="#">Etiam malesuada rutrum enim</a></li>
-                                                                    <li><a href="#">Aenean elementum facilisis ligula</a></li>
-                                                                    <li><a href="#">Ut tincidunt elit vitae augue</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="footer">
-                                                        <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
-                                                    </div>
-                                                    </div>
-                                                    <!-- end #footer -->
-                                                    </body>
-                                                    </html>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-bg">
+                <div id="footer-content">
+                    <div id="col1">
+                        <ul class="style1">
+                            <li><a href="#">Etiam malesuada rutrum enim</a></li>
+                            <li><a href="#">Aenean elementum facilisis ligula</a></li>
+                            <li><a href="#">Ut tincidunt elit vitae augue</a></li>
+                        </ul>
+                    </div>
+                    <div id="col2">
+                        <ul class="style1">
+                            <li><a href="#">Etiam malesuada rutrum enim</a></li>
+                            <li><a href="#">Aenean elementum facilisis ligula</a></li>
+                            <li><a href="#">Ut tincidunt elit vitae augue</a></li>
+                        </ul>
+                    </div>
+                    <div id="col3">
+                        <ul class="style1">
+                            <li><a href="#">Etiam malesuada rutrum enim</a></li>
+                            <li><a href="#">Aenean elementum facilisis ligula</a></li>
+                            <li><a href="#">Ut tincidunt elit vitae augue</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
+            </div>
+        </div>
+        <!-- end #footer -->
+    </body>
+</html>
 

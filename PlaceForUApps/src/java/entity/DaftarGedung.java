@@ -18,11 +18,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
- * @author Ika
- *
  * Kelas ini berfungsi untuk mengelola fungsi yang dibutuhkan berkaitan dengan
- * modul Manajemen Informasi Gedung, di mana fungsi tersebut dihubungkan dengan 
+ * modul Manajemen Informasi Gedung, di mana fungsi tersebut dihubungkan dengan
  * kelas entitas Gedung yang merepresentasikan tabel Gedung dalam database
+ * 
+ * @author Ika
  */
 public class DaftarGedung {
 
@@ -36,11 +36,11 @@ public class DaftarGedung {
     }
 
     /**
-     * @param namaGedung String, idPemilik long
-     * @return result boolean
-     *
      * method yang digunakan untuk mengecek apakah ada nama gedung dengan
      * id pemilik yang dimasukkan.
+     *
+     * @param namaGedung String, idPemilik long
+     * @return result boolean
      */
     public boolean cekGedungPemilik(String namaGedung, long idPemilik) {
         boolean result = false;
@@ -59,11 +59,28 @@ public class DaftarGedung {
         return result;
     }
 
+    public boolean cekNamaGedung(String namaGedung) {
+        boolean result = false;
+        EntityManager em = getEntityManager();
+        try {
+            Query q = em.createQuery("SELECT count(o) FROM Gedung AS o WHERE o.namaGedung=:namaGedung");
+            q.setParameter("namaGedung", namaGedung);
+            int jumlahGedung = ((Long) q.getSingleResult()).intValue();
+            if (jumlahGedung > 0) {
+                result = true;
+            }
+        } finally {
+            em.close();
+        }
+        return result;
+    }
+
     /**
+     * method yang digunakan untuk mengecek apakah ada nama gedung dengan
+     * id pemilik yang dimasukkan.
+     * 
      * @return result boolean
      * @author Widiasa
-     *
-     * method yang digunakan untuk mengecek apakah ada data gedung yang sudah dimasukkan
      */
     public boolean cekGedung() {
         boolean result = false;
@@ -81,12 +98,12 @@ public class DaftarGedung {
     }
 
     /**
-     * @param gedung Gedung
-     *
      * method yang digunakan untuk menambahkan data gedung
+     * 
+     * @param gedung Gedung
      */
     public void addGedung(Gedung gedung) {
-        EntityManager em = null;
+      EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
@@ -98,11 +115,12 @@ public class DaftarGedung {
             }
         }
     }
+     
 
     /**
-     * @return daftarGedung List<Gedung>
+     * method yang digunakan untuk mendapatkan daftar gedung
      *
-     * method yang digunakan untuk mendapatkan daftar gedung 
+     * @return daftarGedung List<Gedung>
      */
     public List<Gedung> getDaftarGedung() {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
@@ -119,21 +137,19 @@ public class DaftarGedung {
     }
 
     /**
-     * @param idpemilik long
-     * @return daftarGedung List<Gedung>
-     *
      * method yang digunakan untuk mendapatkan daftar gedung berdasarkan id
      * pemiliknya
+     *
+     * @param idpemilik long
+     * @return daftarGedung List<Gedung>
      */
     public List<Gedung> getDaftarGedungPemilik(long idpemilik) {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
-        int stat = 0;
         EntityManager em = getEntityManager();
         try {
             Query q = em.createQuery("SELECT object(o) FROM Gedung AS o WHERE o.idPemilik=:idpemilik");
             q.setParameter("idpemilik", idpemilik);
             daftarGedung = q.getResultList();
-
         } finally {
             em.close();
         }
@@ -141,11 +157,11 @@ public class DaftarGedung {
     }
 
     /**
-     * @param id long
-     * @return gedung Gedung
-     *
      * method yang digunakan untuk mendapatkan data untuk satu gedung
      * berdasarkan id gedung
+     *
+     * @param id long
+     * @return gedung Gedung
      */
     public Gedung getGedung(long id) {
         Gedung gedung = null;
@@ -162,11 +178,11 @@ public class DaftarGedung {
     }
 
     /**
-     * @param id long
-     * @return gedung Gedung
-     *
      * method yang digunakan untuk mendapatkan data untuk satu gedung
      * berdasarkan namaGedung
+     *
+     * @param namaGedung String
+     * @return gedung Gedung
      */
     public Gedung getGedungFromNama(String namaGedung) {
         Gedung gedung = null;
@@ -181,10 +197,10 @@ public class DaftarGedung {
         return gedung;
     }
 
-     /**
-     * @param gedung Gedung
-     *
+    /**
      * method yang digunakan untuk mengedit data gedung
+     *
+     * @param gedung Gedung
      */
     public void editGedung(Gedung gedung) {
         EntityManager em = getEntityManager();
@@ -200,10 +216,10 @@ public class DaftarGedung {
     }
 
     /**
+     * method yang digunakan untuk mengecek apakah ada data gedung yang sudah dimasukkan
+     *
      * @param id Long
      * @exception NonexistenceEntityException
-     *
-     * method yang digunakan untuk mengecek apakah ada data gedung yang sudah dimasukkan
      */
     public void deleteGedung(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
@@ -227,18 +243,54 @@ public class DaftarGedung {
     }
 
     /**
+     * method yang digunakan untuk mendapatkan data gedung berdasarkan kategori.
+     *
      * @param kategoriGedung String
      * @return List<Gedung>
-     *
-     * method yang digunakan untuk mendapatkan data gedung berdasarkan kategori.
      */
-    public List<Gedung> getDaftarGedungFromKategori(String kategoriGedung) {
+    public List<Gedung> searchDaftarGedungFromKategori(String kategoriGedung) {
         List<Gedung> daftarGedung = new ArrayList<Gedung>();
 
         EntityManager em = getEntityManager();
         try {
-            Query q = em.createQuery("SELECT object(o) FROM Gedung AS o where o.kategoriGedung=:kategoriGedung");
-            q.setParameter("kategoriGedung", kategoriGedung);
+            Query q = 
+                em.createQuery("SELECT object(o) FROM Gedung AS o where o.kategoriGedung LIKE :pattern ORDER BY o.id DESC");
+            q.setParameter("pattern", "%"+kategoriGedung+"%");
+            daftarGedung = q.getResultList();
+        } finally {
+            em.close();
+        }
+        return daftarGedung;
+    }
+
+    /**
+     * method yang digunakan untuk mendapatkan data gedung berdasarkan nama.
+     *
+     * @param namaGedung String
+     * @return List<Gedung>
+     */
+    public List<Gedung> searchDaftarGedungFromNama(String namaGedung) {
+        List<Gedung> daftarGedung = new ArrayList<Gedung>();
+        EntityManager em = getEntityManager();
+        try {
+            Query q = 
+                em.createQuery("SELECT object(o) FROM Gedung AS o where o.namaGedung LIKE :pattern ORDER BY o.id DESC");
+            q.setParameter("pattern", "%"+namaGedung+"%");
+            daftarGedung = q.getResultList();
+        } finally {
+            em.close();
+        }
+        return daftarGedung;
+    }
+
+    public List<Gedung> searchDaftarGedungFromNamaDanKategori(String namaGedung, String kategoriGedung) {
+        List<Gedung> daftarGedung = new ArrayList<Gedung>();
+        EntityManager em = getEntityManager();
+        try {
+            Query q =
+                em.createQuery("SELECT object(o) FROM Gedung AS o where o.namaGedung LIKE :nama AND o.kategoriGedung LIKE :kategori ORDER BY o.id DESC");
+            q.setParameter("nama", "%"+namaGedung+"%");
+            q.setParameter("kategori", "%"+kategoriGedung+"%");
             daftarGedung = q.getResultList();
         } finally {
             em.close();

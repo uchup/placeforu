@@ -6,7 +6,6 @@ package servlet;
 
 import entity.Administrasi;
 import entity.DaftarAdministrasi;
-import entity.DaftarGedung;
 import entity.DaftarSewa;
 import entity.DaftarUser;
 import entity.Sewa;
@@ -42,7 +41,6 @@ public class HistoriAdministrasi extends HttpServlet {
         RequestDispatcher dis = null;
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
-        DaftarGedung dg = new DaftarGedung();
         User u = new User();
         DaftarSewa ds = new DaftarSewa();
         Sewa s = new Sewa();

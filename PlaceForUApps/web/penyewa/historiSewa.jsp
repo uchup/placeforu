@@ -48,9 +48,8 @@
                         <div class="post">
                             <h2 class="title"><a href="#">Histori Sewa</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
-                            <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
-                                <h4><b>Daftar Penyewaan (Menunggu Konfirmasi) </b></h4>
+                                <h4><b>Daftar Penyewaan (Menunggu Konfirmasi)</b></h4>
                                 <table>
                                     <tr>
                                         <td>ID Sewa</td>

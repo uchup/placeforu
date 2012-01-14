@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package servlet;
 
 import entity.DaftarSubGedung;
@@ -43,27 +42,26 @@ public class UploadFotoSub extends HttpServlet {
      */
     private static final String TMP_DIR_PATH = "D:\\Project\\cekoutbaru\\PlaceForUApps\\tmp";
     private File tmpDir;
-    private static final String DESTINATION_DIR_PATH ="/sub";
+    private static final String DESTINATION_DIR_PATH = "/sub";
     private File destinationDir;
 
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         tmpDir = new File(TMP_DIR_PATH);
-        if(!tmpDir.isDirectory()) {
+        if (!tmpDir.isDirectory()) {
             throw new ServletException(TMP_DIR_PATH + " is not a directory");
         }
         String realPath = getServletContext().getRealPath(DESTINATION_DIR_PATH);
         destinationDir = new File(realPath);
-        if(!destinationDir.isDirectory()) {
-            throw new ServletException(DESTINATION_DIR_PATH+" is not a directory");
+        if (!destinationDir.isDirectory()) {
+            throw new ServletException(DESTINATION_DIR_PATH + " is not a directory");
         }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-	response.setContentType("text/plain");
+        response.setContentType("text/plain");
         User user = new User();
-        RequestDispatcher page = null;
         RequestDispatcher dis = null;
         DaftarUser a = new DaftarUser();
         SubGedung sg = new SubGedung();
@@ -71,62 +69,65 @@ public class UploadFotoSub extends HttpServlet {
         HttpSession session = request.getSession();
         String message = null;
 
-        Long id = Long.valueOf(request.getParameter("idsub")) ;
-        sg = dsg.getSubGedung(id);
+        Long idsub = Long.valueOf(request.getParameter("idsub"));
+        sg = dsg.getSubGedung(idsub);
 
 
-	DiskFileItemFactory  fileItemFactory = new DiskFileItemFactory ();
+        DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
+        /*
+         *Set the size threshold, above which content will be stored on disk.
+         */
+        fileItemFactory.setSizeThreshold(1 * 1024 * 1024); //1 MB
 		/*
-		 *Set the size threshold, above which content will be stored on disk.
-		 */
-		fileItemFactory.setSizeThreshold(1*1024*1024); //1 MB
-		/*
-		 * Set the temporary directory to store the uploaded files of size above threshold.
-		 */
-		fileItemFactory.setRepository(tmpDir);
+         * Set the temporary directory to store the uploaded files of size above threshold.
+         */
+        fileItemFactory.setRepository(tmpDir);
 
-	ServletFileUpload uploadHandler = new ServletFileUpload(fileItemFactory);
+        ServletFileUpload uploadHandler = new ServletFileUpload(fileItemFactory);
 
         try {
-			/*
-			 * Parse the request
-			 */
-			List items = uploadHandler.parseRequest(request);
-			Iterator itr = items.iterator();
-			while(itr.hasNext()) {
-				FileItem item = (FileItem) itr.next();
-				/*
-				 * Handle Form Fields.
-				 */
-				if(item.isFormField()) {
-					out.println("File Name = "+item.getFieldName()+", Value = "+item.getString());
-				//pemilik/profil
-                                }
-                                    else{
-					//Handle Uploaded files.
-                                        //user.setFoto(item.getName());
-                                        sg.setFoto1(item.getName());
+            /*
+             * Parse the request
+             */
+            List items = uploadHandler.parseRequest(request);
+            Iterator itr = items.iterator();
+            while (itr.hasNext()) {
+                FileItem item = (FileItem) itr.next();
+                /*
+                 * Handle Form Fields.
+                 */
+                if (item.isFormField()) {
+                    out.println("File Name = " + item.getFieldName() + ", Value = " + item.getString());
+                    //pemilik/profil
+                } else {
+                    //Handle Uploaded files.
+                    //user.setFoto(item.getName());
+                    sg.setFoto1(item.getName());
 //					out.println("Field Name = "+item.getFieldName()+
 //						", File Name = "+item.getName()+
 //						", Content type = "+item.getContentType()+
 //						", File Size = "+item.getSize());
 					/*
-					 * Write file to the ultimate location.
-					 */
-					File file = new File(destinationDir,item.getName());
-					item.write(file);
-                                        //a.editUser(user);
-                                        dsg.editSubGedung(sg);
-				}
-				out.close();
-			}
-                        response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung?idsub="+id);
-		}catch(FileUploadException ex) {
-			log("Error encountered while parsing the request",ex);
-		} catch(Exception ex) {
-			log("Error encountered while uploading file",ex);
-		}
+                     * Write file to the ultimate location.
+                     */
+                    File file = new File(destinationDir, item.getName());
+                    item.write(file);
+                    dsg.editSubGedung(sg);
+                    message = "Foto gedung berhasil disimpan.";
+                    String page = "/EditSubGedung?idsub"+ idsub;
+                    request.setAttribute("page", page);
+                    request.setAttribute("message", message);
+                    RequestDispatcher rd = request.getRequestDispatcher("/successSaving.jsp");
+                    rd.forward(request, response);
+                  //  response.sendRedirect("../PlaceForUApps_28Nov/EditSubGedung?idsub=" + id);
+                }
+                out.close();
+            }
+        } catch (FileUploadException ex) {
+            log("Error encountered while parsing the request", ex);
+        } catch (Exception ex) {
+            log("Error encountered while uploading file", ex);
+        }
 
-	}
-
+    }
 }

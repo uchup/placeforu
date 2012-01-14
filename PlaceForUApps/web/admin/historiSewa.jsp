@@ -33,13 +33,13 @@
             </div>
             <div id="header">
                 <div id="menu">
-                <ul>
-			<li class="current_page_item"><a href="ListGedung">Manajemen Informasi</a></li>
+                    <ul>
+                        <li class="current_page_item"><a href="DaftarPengguna">Manajemen User</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
-                        <li class="current_page_item"><a href="DaftarAkun">Manajemen User</a></li>
                         <li class="current_page_item"><a href="logout">Logout</a></li>
-		</ul>
+                    </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -50,9 +50,8 @@
                             <h2 class="title"><a href="#">Histori Sewa</a></h2>
                             <p class="meta"><span class="date"><% new Date();%></span><span class="posted">Posted by <a href="#">Administrator</a></span></p>
                             <div style="clear: both;">&nbsp;</div>
-                            <div class="entry">
                                 <form method='post'>
-                                    <p> <h4><b>Histori Penyewaan (Telah dikonfirmasi) </b></h4></p>
+                                    <h4><b>Histori Penyewaan (Telah dikonfirmasi) </b></h4>
                                     <table>
                                         <tr>
 
@@ -67,37 +66,37 @@
                                         </tr>
                                         <%Iterator itr;%>
                                         <% List sewa_list = (List) request.getAttribute("penyewaan_1");
-                                            for (itr = sewa_list.iterator(); itr.hasNext();) {
-                                                entity.Sewa sewa = (entity.Sewa) itr.next();
+                                                    for (itr = sewa_list.iterator(); itr.hasNext();) {
+                                                        entity.Sewa sewa = (entity.Sewa) itr.next();
                                         %>
                                         <tr>
 
                                             <%
-                                                entity.Gedung g = new Gedung();
-                                                entity.DaftarGedung dg = new DaftarGedung();
-                                                Long idGedung = sewa.getIdGedung();
-                                                g = dg.getGedung(idGedung);
-                                                String namaGedung = g.getNamaGedung();
+                                                                                            entity.Gedung g = new Gedung();
+                                                                                            entity.DaftarGedung dg = new DaftarGedung();
+                                                                                            Long idGedung = sewa.getIdGedung();
+                                                                                            g = dg.getGedung(idGedung);
+                                                                                            String namaGedung = g.getNamaGedung();
                                             %>
                                             <td><%out.println(namaGedung);%></td>
                                             <%
-                                                entity.SubGedung sg = new SubGedung();
-                                                entity.DaftarSubGedung dgs = new DaftarSubGedung();
-                                                Long idSubGedung = sewa.getIdSubGedung();
-                                                sg = dgs.getSubGedung(idSubGedung);
-                                                String namaSubGedung = sg.getNama_sub_gedung();
+                                                                                            entity.SubGedung sg = new SubGedung();
+                                                                                            entity.DaftarSubGedung dgs = new DaftarSubGedung();
+                                                                                            Long idSubGedung = sewa.getIdSubGedung();
+                                                                                            sg = dgs.getSubGedung(idSubGedung);
+                                                                                            String namaSubGedung = sg.getNama_sub_gedung();
                                             %>
                                             <td><%out.println(namaSubGedung);%></td>
                                             <%
-                                                entity.User u = new User();
-                                                entity.User u1 = new User();
-                                                entity.DaftarUser du = new DaftarUser();
-                                                Long idPemilik = sewa.getIdPemilik();
-                                                Long idPenyewa = sewa.getIdPenyewa();
-                                                u = du.getUserFromId(idPemilik);
-                                                String namaPemilik = u.getNama();
-                                                u1 = du.getUserFromId(idPenyewa);
-                                                String namaPenyewa = u1.getNama();
+                                                                                            entity.User u = new User();
+                                                                                            entity.User u1 = new User();
+                                                                                            entity.DaftarUser du = new DaftarUser();
+                                                                                            Long idPemilik = sewa.getIdPemilik();
+                                                                                            Long idPenyewa = sewa.getIdPenyewa();
+                                                                                            u = du.getUserFromId(idPemilik);
+                                                                                            String namaPemilik = u.getNama();
+                                                                                            u1 = du.getUserFromId(idPenyewa);
+                                                                                            String namaPenyewa = u1.getNama();
                                             %>
                                             <td><%out.println(namaPemilik);%></td>
                                             <td><%out.println(namaPenyewa);%></td>
@@ -108,8 +107,8 @@
                                         </tr>
                                         <%}%>
                                     </table>
-                                <br>
-                                    <p> <h4><b>Daftar Penyewaan (Menunggu Konfirmasi) </b></h4></p>
+                                    <br>
+                                    <h4><b>Daftar Penyewaan (Menunggu Konfirmasi)</b></h4>
                                     <table>
                                         <tr>
 
@@ -124,37 +123,37 @@
                                         </tr>
                                         <%Iterator itr2;%>
                                         <% List sewa_list2 = (List) request.getAttribute("penyewaan_0");
-                                            for (itr2 = sewa_list2.iterator(); itr2.hasNext();) {
-                                                entity.Sewa sewa = (entity.Sewa) itr2.next();
+                                                    for (itr2 = sewa_list2.iterator(); itr2.hasNext();) {
+                                                        entity.Sewa sewa = (entity.Sewa) itr2.next();
                                         %>
                                         <tr>
 
                                             <%
-                                                entity.Gedung g = new Gedung();
-                                                entity.DaftarGedung dg = new DaftarGedung();
-                                                Long idGedung = sewa.getIdGedung();
-                                                g = dg.getGedung(idGedung);
-                                                String namaGedung = g.getNamaGedung();
+                                                                                            entity.Gedung g = new Gedung();
+                                                                                            entity.DaftarGedung dg = new DaftarGedung();
+                                                                                            Long idGedung = sewa.getIdGedung();
+                                                                                            g = dg.getGedung(idGedung);
+                                                                                            String namaGedung = g.getNamaGedung();
                                             %>
                                             <td><%out.println(namaGedung);%></td>
                                             <%
-                                                entity.SubGedung sg = new SubGedung();
-                                                entity.DaftarSubGedung dgs = new DaftarSubGedung();
-                                                Long idSubGedung = sewa.getIdSubGedung();
-                                                sg = dgs.getSubGedung(idSubGedung);
-                                                String namaSubGedung = sg.getNama_sub_gedung();
+                                                                                            entity.SubGedung sg = new SubGedung();
+                                                                                            entity.DaftarSubGedung dgs = new DaftarSubGedung();
+                                                                                            Long idSubGedung = sewa.getIdSubGedung();
+                                                                                            sg = dgs.getSubGedung(idSubGedung);
+                                                                                            String namaSubGedung = sg.getNama_sub_gedung();
                                             %>
                                             <td><%out.println(namaSubGedung);%></td>
                                             <%
-                                                entity.User u = new User();
-                                                entity.User u1 = new User();
-                                                entity.DaftarUser du = new DaftarUser();
-                                                Long idPemilik = sewa.getIdPemilik();
-                                                Long idPenyewa = sewa.getIdPemilik();
-                                                u = du.getUserFromId(idPemilik);
-                                                String namaPemilik = u.getNama();
-                                                u1 = du.getUserFromId(idPenyewa);
-                                                String namaPenyewa = u1.getNama();
+                                                                                            entity.User u = new User();
+                                                                                            entity.User u1 = new User();
+                                                                                            entity.DaftarUser du = new DaftarUser();
+                                                                                            Long idPemilik = sewa.getIdPemilik();
+                                                                                            Long idPenyewa = sewa.getIdPemilik();
+                                                                                            u = du.getUserFromId(idPemilik);
+                                                                                            String namaPemilik = u.getNama();
+                                                                                            u1 = du.getUserFromId(idPenyewa);
+                                                                                            String namaPenyewa = u1.getNama();
                                             %>
                                             <td><%out.println(namaPemilik);%></td>
                                             <td><%out.println(namaPenyewa);%></td>
@@ -181,23 +180,7 @@
                                     </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
-                            </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <%SubGedung sg = new SubGedung();%>
-
-                                        <tr>
-
-
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
-                            </li>
+                            </li>                            
                         </ul>
                     </div>
                 </div>
@@ -230,7 +213,7 @@
             <div id="footer">
                 <p>Copyright (c) 2011 PlaceForU.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Templates</a> & PlaceForU Team.</p>
             </div>
-        </div>
+    </div>
         <!-- end #footer -->
     </body>
 </html>

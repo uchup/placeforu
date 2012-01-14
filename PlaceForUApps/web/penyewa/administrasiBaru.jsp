@@ -184,7 +184,6 @@
                                 </form>
                             </div>
                         </div>
-
                     </div>
                     <div id="sidebar">
                         <ul>
@@ -198,19 +197,6 @@
                                     </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
-                            </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            <td><a href="TambahGedung">Tambah Gedung</a></td>
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
                             </li>
                         </ul>
                     </div>

@@ -39,11 +39,11 @@
                 <div id="menu">
                     <ul>
                         <li class="current_page_item"><a href="pemilik/profil">Profil</a></li>
-                        <li class="current_page_item"><a href="ListGedung">Manajemen Informasi Gedung</a></li>
+                        <li class="current_page_item"><a href="ListGedung">Manajemen Gedung</a></li>
                         <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
                         <li class="current_page_item"><a href="logout">Log Out</a></li>
-		</ul>
+                    </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -71,39 +71,39 @@
                                         </tr>
                                         <%Iterator itr;%>
                                         <% List adm_list = (List) request.getAttribute("pemilik_1");
-                                            for (itr = adm_list.iterator(); itr.hasNext();) {
-                                                entity.Administrasi adm = (entity.Administrasi) itr.next();
+                                                    for (itr = adm_list.iterator(); itr.hasNext();) {
+                                                        entity.Administrasi adm = (entity.Administrasi) itr.next();
                                         %>
                                         <tr>
                                             <td><%=adm.getIdSewa()%></td>
                                             <%
-                                                entity.Sewa s = new Sewa();
-                                                entity.DaftarSewa ds = new DaftarSewa();
-                                                Long idSewa = adm.getIdSewa();
-                                                s = ds.getSewaFromId(idSewa);
-                                                Long idPenyewa = s.getIdPenyewa();
-                                                entity.User u = new User();
-                                                entity.DaftarUser du = new DaftarUser();
-                                                u = du.getUserFromId(idPenyewa);
-                                                String namaPenyewa = u.getNama();
-                                                String totalBayar = Integer.toString(s.getTotalHargaSewa());
-                                                String sisaBayar = Integer.toString(s.getSisaBayar());
+                                                                                            entity.Sewa s = new Sewa();
+                                                                                            entity.DaftarSewa ds = new DaftarSewa();
+                                                                                            Long idSewa = adm.getIdSewa();
+                                                                                            s = ds.getSewaFromId(idSewa);
+                                                                                            Long idPenyewa = s.getIdPenyewa();
+                                                                                            entity.User u = new User();
+                                                                                            entity.DaftarUser du = new DaftarUser();
+                                                                                            u = du.getUserFromId(idPenyewa);
+                                                                                            String namaPenyewa = u.getNama();
+                                                                                            String totalBayar = Integer.toString(s.getTotalHargaSewa());
+                                                                                            String sisaBayar = Integer.toString(s.getSisaBayar());
                                             %>
                                             <td><%out.println(namaPenyewa);%></td>
                                             <%
-                                                Long idGedung = s.getIdGedung();
-                                                entity.Gedung gd = new Gedung();
-                                                entity.DaftarGedung dg = new DaftarGedung();
-                                                gd = dg.getGedung(idGedung);
-                                                String namaGedung = gd.getNamaGedung();
+                                                                                            Long idGedung = s.getIdGedung();
+                                                                                            entity.Gedung gd = new Gedung();
+                                                                                            entity.DaftarGedung dg = new DaftarGedung();
+                                                                                            gd = dg.getGedung(idGedung);
+                                                                                            String namaGedung = gd.getNamaGedung();
                                             %>
                                             <td><%out.println(namaGedung);%></td>
                                             <%
-                                                Long idSubGedung = s.getIdSubGedung();
-                                                entity.SubGedung sgd = new SubGedung();
-                                                entity.DaftarSubGedung dsg = new DaftarSubGedung();
-                                                sgd = dsg.getSubGedung(idSubGedung);
-                                                String namaSubGedung = sgd.getNama_sub_gedung();
+                                                                                            Long idSubGedung = s.getIdSubGedung();
+                                                                                            entity.SubGedung sgd = new SubGedung();
+                                                                                            entity.DaftarSubGedung dsg = new DaftarSubGedung();
+                                                                                            sgd = dsg.getSubGedung(idSubGedung);
+                                                                                            String namaSubGedung = sgd.getNama_sub_gedung();
                                             %>
                                             <td><%out.println(namaSubGedung);%></td>
                                             <td><%=adm.getTglBayar()%></td>
@@ -129,39 +129,39 @@
                                         </tr>
                                         <%Iterator itr2;%>
                                         <% List adm2_list = (List) request.getAttribute("pemilik_0");
-                                            for (itr2 = adm2_list.iterator(); itr2.hasNext();) {
-                                                entity.Administrasi adm2 = (entity.Administrasi) itr2.next();
+                                                    for (itr2 = adm2_list.iterator(); itr2.hasNext();) {
+                                                        entity.Administrasi adm2 = (entity.Administrasi) itr2.next();
                                         %>
                                         <tr>
                                             <td><%=adm2.getIdSewa()%></td>
                                             <%
-                                                entity.Sewa s = new Sewa();
-                                                entity.DaftarSewa ds = new DaftarSewa();
-                                                Long idSewa = adm2.getIdSewa();
-                                                s = ds.getSewaFromId(idSewa);
-                                                Long idPenyewa = s.getIdPenyewa();
-                                                entity.User u = new User();
-                                                entity.DaftarUser du = new DaftarUser();
-                                                u = du.getUserFromId(idPenyewa);
-                                                String namaPenyewa = u.getNama();
-                                                String totalBayar = Integer.toString(s.getTotalHargaSewa());
-                                                String sisaBayar = Integer.toString(s.getSisaBayar());
+                                                                                            entity.Sewa s = new Sewa();
+                                                                                            entity.DaftarSewa ds = new DaftarSewa();
+                                                                                            Long idSewa = adm2.getIdSewa();
+                                                                                            s = ds.getSewaFromId(idSewa);
+                                                                                            Long idPenyewa = s.getIdPenyewa();
+                                                                                            entity.User u = new User();
+                                                                                            entity.DaftarUser du = new DaftarUser();
+                                                                                            u = du.getUserFromId(idPenyewa);
+                                                                                            String namaPenyewa = u.getNama();
+                                                                                            String totalBayar = Integer.toString(s.getTotalHargaSewa());
+                                                                                            String sisaBayar = Integer.toString(s.getSisaBayar());
                                             %>
                                             <td><%out.println(namaPenyewa);%></td>
                                             <%
-                                                Long idGedung = s.getIdGedung();
-                                                entity.Gedung gd = new Gedung();
-                                                entity.DaftarGedung dg = new DaftarGedung();
-                                                gd = dg.getGedung(idGedung);
-                                                String namaGedung = gd.getNamaGedung();
+                                                                                            Long idGedung = s.getIdGedung();
+                                                                                            entity.Gedung gd = new Gedung();
+                                                                                            entity.DaftarGedung dg = new DaftarGedung();
+                                                                                            gd = dg.getGedung(idGedung);
+                                                                                            String namaGedung = gd.getNamaGedung();
                                             %>
                                             <td><%out.println(namaGedung);%></td>
                                             <%
-                                                Long idSubGedung = s.getIdSubGedung();
-                                                entity.SubGedung sgd = new SubGedung();
-                                                entity.DaftarSubGedung dsg = new DaftarSubGedung();
-                                                sgd = dsg.getSubGedung(idSubGedung);
-                                                String namaSubGedung = sgd.getNama_sub_gedung();
+                                                                                            Long idSubGedung = s.getIdSubGedung();
+                                                                                            entity.SubGedung sgd = new SubGedung();
+                                                                                            entity.DaftarSubGedung dsg = new DaftarSubGedung();
+                                                                                            sgd = dsg.getSubGedung(idSubGedung);
+                                                                                            String namaSubGedung = sgd.getNama_sub_gedung();
                                             %>
                                             <td><%out.println(namaSubGedung);%></td>
                                             <td><%=adm2.getTglBayar()%></td>
@@ -189,17 +189,6 @@
                                     </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
-                            </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-
-
-                                    </table>
-                                </fieldset>
-
                             </li>
                         </ul>
                     </div>

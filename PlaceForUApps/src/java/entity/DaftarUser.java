@@ -7,6 +7,8 @@ package entity;
 import entity.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
@@ -14,18 +16,14 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 /**
- * @author Widiasa
- *
  * Kelas ini berfungsi untuk mengelola fungsi yang dibutuhkan berkaitan dengan
  * modul Manajemen User, di mana fungsi tersebut dihubungkan dengan kelas entitas
  * User yang merepresentasikan tabel User dalam database
+ *
+ * @author Widiasa
  */
 public class DaftarUser {
 
-    /**
-     * method yang menghubungkan dengan database sesuai dengan
-     * konfigurasi pada persistence unit
-     */
     public DaftarUser() {
         emf = Persistence.createEntityManagerFactory("persistence");
     }
@@ -36,11 +34,11 @@ public class DaftarUser {
     }
 
     /**
-     * @param username String
-     * @param password String
-     *
      * method yang digunakan untuk mengecek keberadaan pengguna
      * pada tabel User berdasarkan parameter username dan password
+     *
+     * @param username String
+     * @param password String
      */
     public boolean check(String username, String password) {
         boolean result = false;
@@ -60,10 +58,10 @@ public class DaftarUser {
     }
 
     /**
-     * @param username String
-     *
      * method yang digunakan untuk mengecek keberadaan pengguna
      * pada tabel User berdasarkan parameter username
+     *
+     * @param username String
      */
     public boolean checkUser(String username) {
         boolean result = false;
@@ -82,12 +80,11 @@ public class DaftarUser {
     }
 
     /**
-     * @param username String
-     * @param password String
-     * @return User entity
-     *
      * method untuk mengambil data satu pengguna pada tabel User
      * berdasarkan parameter username dan password
+     *
+     * @param username String, password String
+     * @return User entity
      */
     public User getUser(String username, String password) {
         User user = null;
@@ -107,11 +104,11 @@ public class DaftarUser {
     }
 
     /**
-     * @param username String
-     * @return User entity
-     *
      * method untuk mengambil data satu pengguna pada tabel User
      * berdasarkan parameter username
+     *
+     * @param username String
+     * @return User entity
      */
     public User getUserFromName(String username) {
         User user = null;
@@ -129,6 +126,13 @@ public class DaftarUser {
         return user;
     }
 
+    /**
+     * method untuk mengambil data satu pengguna pada tabel User
+     * berdasarkan parameter id
+     *
+     * @param id long
+     * @return User entity
+     */
     public User getUserFromId(long id) {
         User user = null;
         EntityManager em = getEntityManager();
@@ -145,10 +149,9 @@ public class DaftarUser {
     }
 
     /**
-     * @param user User entity
+     * method untuk mengubah data pengguna yang sudah ada pada tabel users
      *
-     * method untuk mengubah data pengguna
-     * yang sudah ada pada tabel users
+     * @param user User entity
      */
     public void editUser(User user) {
         EntityManager em = getEntityManager();
@@ -164,22 +167,30 @@ public class DaftarUser {
     }
 
     /**
-     * @param user User entity
-     *
      * method untuk menambahkan data pengguna baru ke dalam tabel users
+     *
+     * @param user User entity
      */
     public void addUser(User user) {
         EntityManager em = getEntityManager();
-        em.getTransaction().begin();
-        try {
-            em.persist(user);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            em.getTransaction().rollback();
-        } finally {
-            em.close();
-        }
-    }
+        boolean hasilCheck1 = checkUser(user.getUsername());
+        if (!hasilCheck1) {
+            em.getTransaction().begin();
+            try {
+                em.persist(user);
+                em.getTransaction().commit();
+            } catch (Exception e) {
+                em.getTransaction().rollback();
+            } finally {
+                em.close();
+            }
+        } else {
+            try {
+                throw new MyException("Username telah ada");
+            } catch (MyException ex) {
+                Logger.getLogger(DaftarUser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }}
 
     /**
      * @return List<User>
@@ -201,10 +212,10 @@ public class DaftarUser {
     }
 
     /**
-     * @param user String
-     * @return List<User>
-     *
      * method untuk menampilkan list/daftar username pengguna dari tabel User
+     *
+     * @param username String
+     * @return List<User>
      */
     public List<User> getUsername(String username) {
         List<User> users = new ArrayList<User>();
@@ -222,9 +233,9 @@ public class DaftarUser {
     }
 
     /**
-     * @param usname String
-     *
      * method untuk menghapus satu data pengguna di tabel User
+     *
+     * @param id Long
      */
     public void deleteUser(Long id) throws NonexistentEntityException {
         EntityManager em = getEntityManager();
@@ -248,10 +259,10 @@ public class DaftarUser {
     }
 
     /**
-     * @return List<User>
-     *
      * method untuk menampilkan list/daftar pengguna yang belum
      * dikonfirmasi dari tabel User
+     *
+     * @return List<User>
      */
     public List<User> getUnconfirmedUsers() {
         List<User> users = new ArrayList<User>();

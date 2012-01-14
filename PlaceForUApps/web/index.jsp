@@ -29,7 +29,7 @@
             <div id="header">
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="#">Homepage</a></li>
+                        <li class="current_page_item"><a href="index">Homepage</a></li>
                     </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
@@ -38,41 +38,42 @@
                 <div id="page-bgtop">
                     <div id="content">
                         <div class="post">
-                            <h2 class="title"><a href="#">Selamat Datang di PlaceForU</a></h2>
+                            <h1 class="title"><a href="#">Selamat Datang di PlaceForU</a></h1>
                             <div style="clear: both;">&nbsp;</div>
                             <div class="entry">
                                 <p> <strong>PlaceForU</strong>, merupakan aplikasi berbasis web yang dirancang untuk memudahkan Anda dalam mencari dan menyewa tempat untuk momen spesial Anda. </p><p><strong>Daftar segera dan rasakan kemudahannya!</strong></p>
                             </div>
+                            <h2 class="title">
+                                Daftar Gedung
+                            </h2>
+                            <ul class="listing">
+                                <%Iterator itr;%>
+                                <%entity.DaftarGedung dg = new entity.DaftarGedung();%>
+                                <% List gedung_list = (List) request.getAttribute("gedung");
+                                            if (dg.cekGedung()) {
+                                                for (itr = gedung_list.iterator(); itr.hasNext();) {
+                                                    entity.Gedung gedung = (entity.Gedung) itr.next();
+                                %>
+                                <li>
+                                    <div class="listinfo">
+                                        <img src="images/imageholder2.jpg" alt="Listing Image" class="listingimage" />
+                                        <h3><%=gedung.getNamaGedung()%></h3>
+                                        <p><%=gedung.getDeskripsiGedung()%></p>
+
+                                    </div>
+                                    <div class="listingbtns">
+                                        <span class="listbuttons">
+                                            <a href="DetailGedung?idgedung=<%=gedung.getId()%>">Lihat Detail</a>
+                                        </span>
+                                        <span class="listbuttons">
+                                            <a href="ListSubGedungUmum?id=<%=gedung.getId()%>">Lihat Subgedung</a>
+                                        </span></div>
+                                    <div class="clear">&nbsp;</div>
+                                </li>
+                                <%}
+                                        }%>
+                            </ul>
                         </div>
-                        <h1 class="title">
-                            Daftar Gedung
-                        </h1>
-                        <ul class="listing">
-                            <%Iterator itr;%>
-                            <%entity.DaftarGedung dg = new entity.DaftarGedung();%>
-                            <% List gedung_list = (List) request.getAttribute("gedung");
-                                        if (dg.cekGedung()) {
-                                            for (itr = gedung_list.iterator(); itr.hasNext();) {
-                                                entity.Gedung gedung = (entity.Gedung) itr.next();
-                            %>
-                            <li>
-                                <div class="listinfo">
-                                    <img src="images/imageholder2.jpg" alt="Listing Image" class="listingimage" />
-                                    <h3><%=gedung.getNamaGedung()%></h3>
-                                    <p><%=gedung.getDeskripsiGedung()%></p>
-                                    Harga Sewa: <span class="price">Rp0 </span>
-                                </div>
-                                <div class="listingbtns">
-                                    <span class="listbuttons">
-                                        <a href="DetailGedung?idgedung=<%=gedung.getId()%>">Lihat Detail</a>
-                                    </span>
-                                    <span class="listbuttons">
-                                        <a href="ListSubGedungUmum?id=<%=gedung.getId()%>">Lihat Subgedung</a>
-                                    </span></div>
-                                <div class="clear">&nbsp;</div>
-                            </li>
-                            <%}}%>
-                        </ul>
                     </div>
                     <div id="sidebar">
                         <ul>
@@ -113,25 +114,45 @@
                                 </form>
                             </li>
                             <li>
-                                <h2>Gedung Terbaru</h2>
-                                <ul>
-                                    <li><a href="#">Aliquam libero</a></li>
-                                    <li><a href="#">Consectetuer adipiscing elit</a></li>
-                                    <li><a href="#">Metus aliquam pellentesque</a></li>
-                                    <li><a href="#">Suspendisse iaculis mauris</a></li>
-                                    <li><a href="#">Urnanet non molestie semper</a></li>
-                                    <li><a href="#">Proin gravida orci porttitor</a></li>
-                                </ul>
+                                <h2>Cari Gedung</h2>
+                                <form method='post'  action='CariNamaGedung'>
+                                    <fieldset>
+                                        <table>
+                                            <tr>
+                                                <td>Nama Gedung:</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type='text' name='namagedung'/></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kategori Gedung:</td>
+                                            </tr>
+                                            <tr>
+                                                <td><select name="kategorigedung">
+                                                        <option value="" selected>Pilih kategori</option>
+                                                        <option value="Pernikahan">Pernikahan</option>
+                                                        <option value="Seminar">Seminar</option>
+                                                        <option value="Serba Guna">Serba Guna</option>
+                                                        <option value="Olahraga">Olahraga</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><input type="submit" value="Cari" name="cari"/></td>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+                                </form>
                             </li>
                             <li>
                                 <h2>Gedung Terlaris</h2>
                                 <ul>
-                                    <li><a href="#">Aliquam libero</a></li>
-                                    <li><a href="#">Consectetuer adipiscing elit</a></li>
-                                    <li><a href="#">Metus aliquam pellentesque</a></li>
-                                    <li><a href="#">Suspendisse iaculis mauris</a></li>
-                                    <li><a href="#">Urnanet non molestie semper</a></li>
-                                    <li><a href="#">Proin gravida orci porttitor</a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
+                                    <li><a href="#"></a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -142,23 +163,23 @@
                 <div id="footer-content">
                     <div id="col1">
                         <ul class="style1">
-                            <li><a href="#">Etiam malesuada rutrum enim</a></li>
-                            <li><a href="#">Aenean elementum facilisis ligula</a></li>
-                            <li><a href="#">Ut tincidunt elit vitae augue</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
                         </ul>
                     </div>
                     <div id="col2">
                         <ul class="style1">
-                            <li><a href="#">Etiam malesuada rutrum enim</a></li>
-                            <li><a href="#">Aenean elementum facilisis ligula</a></li>
-                            <li><a href="#">Ut tincidunt elit vitae augue</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
                         </ul>
                     </div>
                     <div id="col3">
                         <ul class="style1">
-                            <li><a href="#">Etiam malesuada rutrum enim</a></li>
-                            <li><a href="#">Aenean elementum facilisis ligula</a></li>
-                            <li><a href="#">Ut tincidunt elit vitae augue</a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
+                            <li><a href="#"></a></li>
                         </ul>
                     </div>
                 </div>

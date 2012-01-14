@@ -32,10 +32,10 @@
                     <ul>
                         <li class="current_page_item"><a href="penyewa/profil">Profil</a></li>
                         <li class="current_page_item"><a href="ListGedung">Informasi Gedung</a></li>
-			<li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
+                        <li class="current_page_item"><a href="HistoriSewa">Manajemen Penyewaan</a></li>
                         <li class="current_page_item"><a href="HistoriAdministrasi">Manajemen Administrasi</a></li>
-			<li class="current_page_item"><a href="logout">Log Out</a></li>
-		</ul>
+                        <li class="current_page_item"><a href="logout">Log Out</a></li>
+                    </ul>
                 </div>
                 <div id="gallery"><img src="images/img03.jpg" width="692" height="340" alt="" /></div>
             </div>
@@ -72,9 +72,7 @@
                                 </li>
                                 <%}%>
                             </ul>
-                            
                         </div>
-
                     </div>
                     <div id="sidebar">
                         <ul>
@@ -88,19 +86,6 @@
                                     </form>
                                 </div>
                                 <div style="clear: both;">&nbsp;</div>
-                            </li>
-                            <li>
-                                <h2> </h2>
-
-                                <fieldset>
-                                    <table>
-                                        <tr>
-                                            
-                                        </tr>
-
-                                    </table>
-                                </fieldset>
-
                             </li>
                         </ul>
                     </div>

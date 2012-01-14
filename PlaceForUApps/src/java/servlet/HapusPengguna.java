@@ -52,7 +52,7 @@ public class HapusPengguna extends HttpServlet {
             RequestDispatcher requestDispatcher =
                     request.getRequestDispatcher("/successDeleting.jsp");
             message = "Akun pengguna berhasil dihapus";
-            pages = "DaftarAkun";
+            pages = "DaftarPengguna";
             List<User> users = a.getUsers();
             request.setAttribute("pengguna", users);
             request.setAttribute("message", message);

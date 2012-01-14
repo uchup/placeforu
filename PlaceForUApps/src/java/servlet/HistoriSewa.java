@@ -4,10 +4,8 @@
  */
 package servlet;
 
-import entity.DaftarGedung;
 import entity.DaftarSewa;
 import entity.DaftarUser;
-import entity.Gedung;
 import entity.Sewa;
 import entity.User;
 import java.io.IOException;
@@ -41,7 +39,6 @@ public class HistoriSewa extends HttpServlet {
         RequestDispatcher dis = null;
         HttpSession session = request.getSession();
         DaftarUser du = new DaftarUser();
-        DaftarGedung dg = new DaftarGedung();
         User u = new User();
         DaftarSewa ds = new DaftarSewa();
         Sewa s = new Sewa();
